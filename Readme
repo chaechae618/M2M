@@ -1,32 +1,40 @@
-# AI 기반 커리어 질문 설계 및 멘토 매칭 시스템
+# AI Career Question Design & Mentor Matching System
 
-## 1. 프로젝트 개요
+> 막연한 진로 고민을 구조화된 질문으로 바꾸고,  
+> AI 답변과 멘토 매칭을 통해 커리어 정보 접근 격차를 줄이는 Agentic RAG 기반 시스템
 
-본 프로젝트는 청년들이 진로와 직무 정보를 탐색하는 과정에서 겪는 정보 격차를 해결하기 위한 AI 기반 커리어 의사결정 지원 시스템입니다.
+---
 
-기존의 멘토링 서비스가 현직자와의 연결 자체에 집중했다면, 본 프로젝트는 사용자의 막연한 진로 고민을 먼저 구조화하고, 답변 가능한 질문으로 변환한 뒤, AI 답변 또는 멘토 연결로 분기하는 구조를 설계했습니다.
+## Overview
 
-또한 멘토의 답변은 동의 기반으로 축적되어 이후 유사한 고민을 가진 사용자에게 재사용될 수 있도록 구성했습니다. 이를 통해 개인의 경험이 일회성 상담으로 끝나지 않고, 커리어 지식 자산으로 축적되는 구조를 목표로 합니다.
+청년들이 진로와 직무 정보를 탐색할 때 겪는 어려움은 단순한 정보 부족이 아닙니다.  
+문제는 **누구에게 물어야 하는지**, **무엇을 질문해야 하는지**, 그리고 **얻은 답변이 어떻게 다시 활용될 수 있는지**가 구조화되어 있지 않다는 점에 있습니다.
 
-## 2. 문제 정의
+본 프로젝트는 사용자의 막연한 진로 고민을 AI가 분석하여 답변 가능한 질문으로 변환하고, 기존에 축적된 커리어 데이터와 멘토 답변을 기반으로 1차 답변을 제공합니다.  
+답변이 충분하지 않거나 개인 경험 기반의 조언이 필요한 경우에는 사용자 맥락에 맞는 멘토를 연결합니다.
 
-청년들이 진로를 탐색할 때 겪는 문제는 단순한 정보 부족이 아닙니다.
+멘토의 답변은 동의 기반으로 정제 및 저장되어, 이후 유사한 고민을 가진 사용자에게 다시 활용될 수 있습니다.
 
-- 직무가 실제로 어떤 일을 하는지 알기 어렵습니다.
-- 자신과 유사한 경로를 가진 현직자를 찾기 어렵습니다.
-- 현직자를 만나더라도 무엇을 질문해야 할지 정리하기 어렵습니다.
-- 반복되는 질문과 답변이 축적되지 않아 매번 같은 탐색 비용이 발생합니다.
-- 개인 네트워크에 따라 현직자 정보 접근성이 달라지는 구조적 격차가 존재합니다.
+---
 
-본 프로젝트는 이러한 문제를 `질문 설계`, `AI 기반 답변`, `멘토 매칭`, `답변 자산화`의 흐름으로 해결하고자 합니다.
+## Problem
 
-## 3. 핵심 아이디어
+기존 커리어 탐색 과정에는 다음과 같은 한계가 있습니다.
 
-사용자의 막연한 진로 고민을 AI가 분석하여 구체적인 질문으로 변환하고, 기존에 축적된 답변 데이터와 직무 정보를 기반으로 1차 답변을 제공합니다.
+| 문제 | 설명 |
+|---|---|
+| 현직자 접근성 차이 | 개인 네트워크에 따라 현직자 정보 접근 기회가 달라짐 |
+| 질문 설계의 어려움 | 사용자가 자신의 고민을 구체적인 질문으로 정리하기 어려움 |
+| 멘토 탐색의 비효율 | 나와 유사한 경험을 가진 멘토를 찾기 어려움 |
+| 반복되는 탐색 비용 | 유사한 질문과 답변이 축적되지 않아 매번 새롭게 탐색해야 함 |
+| 경험의 휘발성 | 멘토의 답변이 일회성 대화로 끝나고 지식 자산으로 남지 않음 |
 
-이후 생성된 답변이 충분한지 평가하고, 개인 경험 기반 조언이 필요한 경우에는 적합한 멘토를 연결합니다.
+---
 
-멘토의 답변은 동의 기반으로 정제 및 저장되어 이후 유사한 질문에 재사용됩니다.
+## Core Idea
+
+본 프로젝트는 커리어 멘토링을 단순한 연결 서비스가 아니라,  
+**질문 설계 → AI 답변 → 답변 평가 → 멘토 매칭 → 답변 자산화**의 순환 구조로 설계합니다.
 
 ```text
 사용자 고민 입력
@@ -42,3 +50,195 @@ RAG 기반 답변 생성
 AI 답변 제공 또는 멘토 연결
         ↓
 멘토 답변 축적 및 재사용
+```
+
+---
+
+## Key Features
+
+### 1. Career Concern Structuring
+
+사용자의 자유로운 진로 고민을 AI가 분석하여 다음 요소로 분해합니다.
+
+- 목표
+- 현재 상태
+- 제약 조건
+- 정보 부족 지점
+- 의사결정에 필요한 질문
+
+이를 통해 막연한 고민을 실제로 답변 가능한 질문 단위로 변환합니다.
+
+---
+
+### 2. Question Design Agent
+
+AI가 사용자의 상황을 바탕으로 더 명확하고 구체적인 질문을 생성합니다.
+
+예시:
+
+```text
+입력:
+마케팅 직무가 저에게 맞을까요?
+
+변환된 질문:
+1. 데이터 분석 경험이 있는 지원자가 마케팅 직무에서 강점으로 활용할 수 있는 역량은 무엇인가?
+2. 브랜드 마케팅과 퍼포먼스 마케팅 중 어떤 직무가 더 적합한가?
+3. 포트폴리오에서 어떤 경험을 강조해야 마케팅 직무 적합성을 보여줄 수 있는가?
+```
+
+---
+
+### 3. RAG-based Answer Generation
+
+축적된 멘토 답변, 직무 정보, 채용공고, 공개 인터뷰 등의 데이터를 검색하여 사용자 질문에 대한 1차 답변을 생성합니다.
+
+단순히 LLM이 답변을 생성하는 것이 아니라, 검색된 근거를 기반으로 답변을 구성하는 RAG 구조를 활용합니다.
+
+---
+
+### 4. Answer Sufficiency Evaluation
+
+생성된 답변이 사용자에게 충분한지 평가합니다.
+
+평가 기준은 다음과 같습니다.
+
+- 질문과의 관련성
+- 근거의 충분성
+- 답변의 실질적 유용성
+- 개인 경험 기반 조언 필요 여부
+
+답변이 충분하면 AI 답변을 제공하고, 부족한 경우 멘토 연결로 전환합니다.
+
+---
+
+### 5. Graph-based Mentor Matching
+
+단순히 같은 직무의 멘토를 추천하는 것이 아니라,  
+사용자와 유사한 커리어 경로 또는 고민 맥락을 가진 멘토를 탐색합니다.
+
+그래프 구조에는 다음 정보가 포함됩니다.
+
+- 사용자
+- 관심 직무
+- 산업군
+- 전공
+- 경험
+- 커리어 전환 경로
+- 멘토 답변 이력
+
+---
+
+### 6. Knowledge Assetization
+
+멘토의 답변은 동의 기반으로 정제되어 지식 베이스에 축적됩니다.  
+이를 통해 시간이 지날수록 AI가 참고할 수 있는 커리어 데이터가 늘어나고, 반복 질문에 대한 답변 품질이 개선됩니다.
+
+---
+
+## System Architecture
+
+```text
+Frontend
+ └─ User Input Interface
+ └─ Chat-based Career Concern Collection
+
+Backend
+ └─ FastAPI Server
+ └─ Agent Flow Controller
+ └─ LLM API Handler
+
+AI Layer
+ └─ Profile Agent
+ └─ Question Design Agent
+ └─ RAG Answer Agent
+ └─ Self-Evaluation Agent
+ └─ Mentor Matching Agent
+
+Data Layer
+ └─ Mentor Answer Database
+ └─ Career Knowledge Base
+ └─ Vector Database
+ └─ Graph Database
+```
+
+---
+
+## Tech Stack
+
+### Frontend
+
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+
+### Backend
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
+
+### AI / LLM
+
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat)
+![LangGraph](https://img.shields.io/badge/LangGraph-20232A?style=flat)
+![RAG](https://img.shields.io/badge/RAG-Retrieval_Augmented_Generation-blue?style=flat)
+![GraphRAG](https://img.shields.io/badge/GraphRAG-Mentor_Matching-purple?style=flat)
+
+### Database / Search
+
+![Vector DB](https://img.shields.io/badge/Vector_DB-Semantic_Search-orange?style=flat)
+![Neo4j](https://img.shields.io/badge/Neo4j-4581C3?style=flat&logo=neo4j&logoColor=white)
+![BM25](https://img.shields.io/badge/BM25-Hybrid_Search-lightgrey?style=flat)
+
+---
+
+## MVP Scope
+
+초기 MVP에서는 전체 기능을 모두 구현하기보다, 핵심 사용자 흐름을 검증하는 데 집중합니다.
+
+| 기능 | 설명 |
+|---|---|
+| 사용자 고민 입력 | 대화형 인터페이스를 통한 진로 고민 수집 |
+| 질문 재구성 | AI가 고민을 답변 가능한 질문으로 변환 |
+| RAG 답변 생성 | 샘플 커리어 데이터 기반 1차 답변 생성 |
+| 답변 평가 | 답변 충분성 및 멘토 연결 필요 여부 판단 |
+| 멘토 매칭 | 사용자 맥락 기반 기본 멘토 추천 |
+| 답변 저장 | 멘토 답변의 동의 기반 저장 구조 설계 |
+
+---
+
+## Expected Impact
+
+### Individual Impact
+
+막연한 진로 고민을 구체적인 질문으로 바꾸어 진로 탐색에 필요한 시간과 시행착오를 줄입니다.
+
+### Career Information Infrastructure
+
+직무 중심 채용 환경에서 청년들이 실제 직무를 더 잘 이해할 수 있도록 돕습니다.
+
+### Social Impact
+
+개인 네트워크에 따라 달라지던 현직자 정보 접근성을 완화하고, 커리어 정보를 공유 가능한 지식 자산으로 전환합니다.
+
+---
+
+## Roadmap
+
+- [ ] 사용자 고민 입력 인터페이스 구현
+- [ ] 질문 설계 Agent 구현
+- [ ] 커리어 데이터 기반 RAG 파이프라인 구축
+- [ ] 답변 충분성 평가 로직 설계
+- [ ] 그래프 기반 멘토 매칭 프로토타입 구현
+- [ ] 멘토 답변 저장 및 재사용 구조 설계
+- [ ] 사용자 테스트 및 피드백 반영
+- [ ] 서비스 배포
+
+---
+
+## Project Significance
+
+이 프로젝트는 단순히 AI가 커리어 조언을 제공하는 것을 목표로 하지 않습니다.
+
+핵심은 사용자의 고민을 더 좋은 질문으로 바꾸고, 필요한 경우 사람의 경험과 연결하며, 그 결과를 다시 지식 자산으로 축적하는 구조를 만드는 것입니다.
+
+이를 통해 진로 정보 탐색의 비효율을 줄이고, 누구나 더 쉽게 직무 경험과 현직자 지식에 접근할 수 있는 커리어 정보 인프라를 구현하고자 합니다.
