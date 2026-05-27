@@ -1,0 +1,8 @@
+.env
+data_db/data/
+data_db/db/
+data_db/scripts/generate_mentor_db.py
+*.sqlite
+*.pdf
+*.docx
+__pycache__/
