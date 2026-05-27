@@ -1,0 +1,12 @@
+{
+  "schema_name": "mentor_answers",
+  "description": "멘토 답변 정보 DB",
+  "fields": {
+    "answer_id": "string",
+    "mentor_id": "string",
+    "question_content": "string",
+    "answer_content": "string",
+    "answer_summarize": "string"
+  },
+  "records": []
+}

@@ -1,0 +1,25 @@
+{
+  "schema_name": "mentors",
+  "description": "멘토 기본 정보 DB",
+  "fields": {
+    "mentor_id": "string",
+    "mentor_info": {
+      "name": "string",
+      "gender": "string",
+      "age": "int"
+    },
+    "background": {
+      "school": "string",
+      "major": "string",
+      "grade": "string or null",
+      "status": "string"
+    },
+    "current_role": "string",
+    "years_of_experience": "int",
+    "total_questions": "int",
+    "matching_summary_text": "string",
+    "be_go": "string",
+    "active": "bool"
+  },
+  "records": []
+}

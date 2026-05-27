@@ -1,0 +1,18 @@
+{
+  "schema_name": "mentor_experiences",
+  "description": "멘토 경험 정보 DB",
+  "fields": {
+    "experience_id": "string",
+    "mentor_id": "string",
+    "experience_type": "project | internship | work | club | course | certification | award | education | etc",
+    "title": "string",
+    "description": "string",
+    "organization": "string",
+    "start_date": "YYYY-MM",
+    "end_date": "YYYY-MM or present",
+    "role": "string",
+    "key_skills": "string",
+    "tools": "string"
+  },
+  "records": []
+}
