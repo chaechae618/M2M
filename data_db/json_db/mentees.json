@@ -1,0 +1,33 @@
+{
+  "schema_name": "mentees",
+  "description": "멘티 기본 정보 DB",
+  "fields": {
+    "mentee_id": "string",
+    "mentee_info": {
+      "name": "string",
+      "gender": "string",
+      "age": "int"
+    },
+    "background": {
+      "school": "string",
+      "major": "string",
+      "grade": "string or null",
+      "status": "string"
+    },
+    "considering_options": {
+      "graduate_school": "bool",
+      "internship": "bool",
+      "full_time": "bool"
+    },
+    "target_goal_extracted": {
+      "primary": "string",
+      "secondary": "list[string]"
+    },
+    "interest_domain": "list[string]",
+    "total_session": "int",
+    "matching_summary_text": "string",
+    "be_go": "string",
+    "active": "bool"
+  },
+  "records": []
+}

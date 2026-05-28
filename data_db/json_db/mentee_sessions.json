@@ -1,0 +1,17 @@
+{
+  "schema_name": "mentee_sessions",
+  "description": "멘티 세션/질문 정보 DB",
+  "fields": {
+    "session_id": "string",
+    "mentee_id": "string",
+    "mentor_id": "string or null",
+    "refined_question": "string",
+    "conversation_summary": "string",
+    "matching_status": "bool",
+    "mentor_answer": "string",
+    "created_at": "YYYY-MM-DD HH:MM",
+    "closed_session": "bool",
+    "closed_at": "YYYY-MM-DD HH:MM or null"
+  },
+  "records": []
+}
