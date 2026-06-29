@@ -12,7 +12,7 @@ import os
 import re
 import json
 from openai import OpenAI
-from db.json_db import create_session, new_id
+from db.json_db import create_question_session, new_id
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
@@ -781,15 +781,36 @@ class QuestionRefineAgent:
         missing_important  = diag.get("missing_but_important") or result.get("missing_but_important", [])
 
         # 4. 세션 저장
-        session = create_session(
+        hard_case_flags = {
+            "requires_artifact_review": routing_hints.get("requires_artifact_review", False),
+            "recency_sensitive":        routing_hints.get("recency_sensitive", False),
+            "scope_too_broad":          routing_hints.get("scope_too_broad", False),
+            "risk_flags":               routing_hints.get("risk_flags", []),
+            "question_structure":       routing_hints.get("question_structure", ""),
+            "document_help_type":       routing_hints.get("document_help_type", ""),
+            "recency_level":            routing_hints.get("recency_level", ""),
+            "recency_reason":           routing_hints.get("recency_reason", ""),
+            "source_role":              routing_hints.get("source_role", ""),
+            "target_role":              routing_hints.get("target_role", ""),
+            "target_role_specificity":  routing_hints.get("target_role_specificity", "unclear"),
+            "bridge_hypothesis":        routing_hints.get("bridge_hypothesis", ""),
+            "transferable_skills":      routing_hints.get("transferable_skills", []),
+            "target_domain_candidates": routing_hints.get("target_domain_candidates", []),
+        }
+
+        session = create_question_session(
             mentee_id=self.mentee_id,
             refined_question=refined_question,
             conversation_summary=conversation_summary,
-            collected_info=collected_info,
-            routing_hints=routing_hints,
+            safe_context=safe_context,
             search_query=search_query,
             match_query=match_query,
+            current_bottleneck=current_bottleneck,
+            expected_answer_type=expected_ans_type,
+            question_units=question_units,
             taxonomy_tags=taxonomy_tags,
+            routing_hints=routing_hints,
+            hard_case_flags=hard_case_flags,
         )
 
         # 5. 에이전트 상태에 저장
