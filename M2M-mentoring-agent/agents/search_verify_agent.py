@@ -78,6 +78,18 @@ def normalize_ids(raw_ids, max_len: int) -> list[int]:
     return result
 
 
+def _question_unit_texts(question_units: list[dict] | None) -> list[str]:
+    """Agent 1 schema uses 'question'; keep 'unit' as a legacy fallback."""
+    texts = []
+    for unit in question_units or []:
+        if not isinstance(unit, dict):
+            continue
+        text = unit.get("question") or unit.get("unit") or ""
+        if text:
+            texts.append(text)
+    return texts
+
+
 # 개인정보 정규식 선처리 (LLM 호출 전 1차 필터, 생성 답변에도 재사용)
 _PRIVACY_PATTERNS = [
     r'\d{2,4}학번',
@@ -387,7 +399,7 @@ class SearchVerifyAgent:
                 mentor_match_hints={
                     "desired_help":  "이력서·포트폴리오 피드백",
                     "risk_flags":    risk_flags,
-                    "question_units": [u.get("unit", "") for u in question_units],
+                    "question_units": _question_unit_texts(question_units),
                 },
                 retrieval_log=retrieval_log,
             )
@@ -543,7 +555,7 @@ class SearchVerifyAgent:
                 reason=reason,
                 mentor_match_hints={
                     "risk_flags":         risk_flags,
-                    "question_units":     [u.get("unit", "") for u in question_units],
+                    "question_units":     _question_unit_texts(question_units),
                     "current_bottleneck": current_bottleneck,
                 },
                 retrieval_log=retrieval_log,
@@ -662,7 +674,7 @@ class SearchVerifyAgent:
                 mentor_match_hints={
                     "avg_score":          round(avg_score, 4),
                     "risk_flags":         risk_flags,
-                    "question_units":     [u.get("unit", "") for u in question_units],
+                    "question_units":     _question_unit_texts(question_units),
                     "current_bottleneck": current_bottleneck,
                     "privacy_safe":       privacy_safe,
                 },
@@ -749,7 +761,7 @@ class SearchVerifyAgent:
                 for i, a in enumerate(retrieved)
             )
             units_text = (
-                "; ".join(u.get("unit", "") for u in (question_units or []))
+                "; ".join(_question_unit_texts(question_units))
                 or "없음"
             )
             prompt = VERIFY_PROMPT.format(
