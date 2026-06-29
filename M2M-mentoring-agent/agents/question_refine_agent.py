@@ -596,7 +596,7 @@ class QuestionRefineAgent:
             f"{'사용자' if m['role'] == 'user' else '에이전트'}: {m['content']}"
             for m in self.messages if m["role"] in ("user", "assistant")
         )
-        prompt = CHECK_PROMPT.format(transcript=transcript)
+        prompt = CHECK_PROMPT.replace("{transcript}", transcript)
         check_messages = [
             {"role": "system", "content": CHECK_SYSTEM},
             {"role": "user",   "content": prompt},
@@ -677,8 +677,9 @@ class QuestionRefineAgent:
         """self-refine: 생성 결과 품질 검토 → (pass, fix_instructions)"""
         check_messages = [
             {"role": "system", "content": "너는 진로 멘토링 질문 정제 결과를 평가하는 evaluator다. JSON만 출력한다."},
-            {"role": "user",   "content": REFINE_CHECK_PROMPT.format(
-                refinement_json=json.dumps(result, ensure_ascii=False, indent=2)
+            {"role": "user",   "content": REFINE_CHECK_PROMPT.replace(
+                "{refinement_json}",
+                json.dumps(result, ensure_ascii=False, indent=2),
             )},
         ]
         try:
