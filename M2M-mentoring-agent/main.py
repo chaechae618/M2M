@@ -259,6 +259,40 @@ def print_divider(title: str = "") -> None:
         print(f"{chr(9472) * 50}")
 
 
+def confirm_refined_question(agent: QuestionRefineAgent) -> bool:
+    """Show Agent 1's refined question and let the mentee confirm or revise it."""
+    while True:
+        print_divider("STEP 1.5 | 정제 질문 확인")
+        print("제가 이해한 질문은 아래와 같습니다.\n")
+        print(f"정제된 질문: {getattr(agent, 'refined_question', '')}\n")
+        confirm = input("이 내용이 궁금하신 게 맞나요? (y/n, 종료: q): ").strip().lower()
+
+        if confirm in ("y", "yes", ""):
+            return True
+        if confirm in ("q", "quit", "exit"):
+            return False
+        if confirm not in ("n", "no"):
+            print("y 또는 n으로 입력해 주세요.")
+            continue
+
+        revision = input("\n어떤 부분을 수정하면 좋을까요? 원하는 질문을 편하게 적어주세요: ").strip()
+        if not revision:
+            print("수정 내용이 비어 있어 다시 확인할게요.")
+            continue
+
+        agent.is_done = False
+        agent.messages.append({
+            "role": "user",
+            "content": (
+                "방금 정제된 질문이 제 의도와 조금 달라요. "
+                "다음 수정 의견을 반영해서 질문을 다시 정제해 주세요.\n"
+                f"수정 의견: {revision}"
+            ),
+        })
+        response = agent._finalize()
+        print(f"\n에이전트: {response}\n")
+
+
 # ─────────────────────────────────────────
 # 멘티 플로우
 # ─────────────────────────────────────────
@@ -291,7 +325,11 @@ def run_mentee_flow(mentee_id: str | None = None) -> None:
             break
 
     # ── Agent 1 완료: 세션 저장 + 멘티 프로필 갱신 ──
-    session = save_question_session_from_agent1(agent, mentee_id)
+    if not confirm_refined_question(agent):
+        print("종료합니다.")
+        return
+
+    session = get_session(getattr(agent, "session_id", ""))
     update_mentee_profile_from_agent1(mentee_id, agent)
 
     # ── Pipeline context 구성 ──
