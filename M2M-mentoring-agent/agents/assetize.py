@@ -24,7 +24,9 @@ from db.json_db import (
     get_assetized_answers, new_id, now_str, DB_DIR,
 )
 from utils.embedding import get_embedding, top_k_similar
+from utils.env import load_project_env
 
+load_project_env()
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 

@@ -7,6 +7,7 @@
 import os
 import numpy as np
 from openai import OpenAI
+from utils.env import load_project_env
 
 _client: OpenAI | None = None
 
@@ -14,6 +15,7 @@ _client: OpenAI | None = None
 def _get_client() -> OpenAI:
     global _client
     if _client is None:
+        load_project_env()
         _client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
     return _client
 

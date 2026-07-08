@@ -16,15 +16,15 @@ import json
 import re
 import argparse
 from pathlib import Path
-from dotenv import load_dotenv
 
-load_dotenv()
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from openai import OpenAI
 from agents.question_refine_agent import QuestionRefineAgent
+from utils.env import load_project_env
 
+load_project_env()
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 EVAL_DIR  = ROOT / "eval"

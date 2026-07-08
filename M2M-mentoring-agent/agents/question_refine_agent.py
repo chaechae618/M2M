@@ -13,7 +13,9 @@ import re
 import json
 from openai import OpenAI
 from db.json_db import create_question_session, new_id
+from utils.env import load_project_env
 
+load_project_env()
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 

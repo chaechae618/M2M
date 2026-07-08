@@ -25,7 +25,9 @@ from utils.embedding import (
     get_embedding, cosine_similarity,
     build_profile_text, build_career_text, build_answer_text,
 )
+from utils.env import load_project_env
 
+load_project_env()
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 

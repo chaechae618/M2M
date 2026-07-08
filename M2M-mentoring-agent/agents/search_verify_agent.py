@@ -35,7 +35,9 @@ from datetime import datetime
 from openai import OpenAI
 from db.json_db import get_assetized_answers, update_session
 from utils.embedding import get_embedding, top_k_similar
+from utils.env import load_project_env
 
+load_project_env()
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 
@@ -132,6 +134,32 @@ def _build_stale_notice(stale_ids: list[int]) -> str:
         "채용 트렌드·연봉·특정 회사 기준 등 시점 민감 정보를 인용할 경우 "
         "반드시 '최신 정보는 직접 확인이 필요합니다'라고 표시하세요.\n"
     )
+
+
+_GENERAL_INFO_HINTS = [
+    "무엇", "뭐", "어떤", "어떻게", "방법", "준비", "스킬", "역량",
+    "직무", "업무", "역할", "면접", "포트폴리오", "자소서", "로드맵",
+    "차이", "차이점", "종류", "과정", "현업", "평균", "트렌드", "필요",
+    "고려", "요소", "개발", "학습", "중요",
+]
+
+_PERSONAL_JUDGMENT_BLOCKERS = [
+    "제 상황", "내 상황", "저한테", "나한테", "저에게", "나에게",
+    "가능할까요", "맞을까요", "괜찮을까요", "될까요", "합격",
+    "스펙", "학점", "학년", "전공인데", "비전공", "전향", "이직",
+    "가족", "경제", "지역", "지방", "포트폴리오 봐", "첨삭",
+    "이력서 봐", "자소서 봐",
+]
+
+
+def _is_general_info_question(text: str) -> bool:
+    """개인 판단보다 일반 정보·준비 방법을 묻는 질문인지 보수적으로 판정."""
+    compact = re.sub(r"\s+", "", text or "")
+    if not compact:
+        return False
+    if any(token in compact for token in _PERSONAL_JUDGMENT_BLOCKERS):
+        return False
+    return any(token in compact for token in _GENERAL_INFO_HINTS)
 
 
 # ─────────────────────────────────────────
@@ -278,6 +306,94 @@ PARTIAL_ANSWER_PROMPT = """너는 맨투맨 진로 멘토링 서비스의 AI 상
 {retrieved_answers}"""
 
 
+GENERAL_DIRECT_GATE_PROMPT = """아래 진로 상담 질문이 멘토 연결 없이 AI가 일반 지식으로 직접 답변해도 안전한지 판정해줘.
+반드시 JSON만 출력해.
+
+[direct_general_allowed=true 기준]
+- 일반적인 직무 정보, 준비 방법, 필요한 역량, 학습 방법, 직무 차이, 면접 준비 요소
+- 특정 개인의 합격 가능성/적합성 판단이 아님
+- 이력서/자소서/포트폴리오/작품을 실제로 봐야 하는 검토 요청이 아님
+- 최신 채용 공고, 특정 회사 내부 정보, 개인 사정에 따른 의사결정이 핵심이 아님
+- 일반론으로 답하되 개인 상황별 예외는 멘토 확인을 권장할 수 있음
+
+[direct_general_allowed=false 기준]
+- "내 상황에서", "저한테 맞나요", "가능할까요", "합격할까요" 같은 개인 판단
+- 자료 첨삭/검토/평가가 필요한 질문
+- 구체적인 경력 선택, 이직 가능성, 개인 스펙 판단
+- 멘토의 실제 경험 확인이 핵심인 질문
+- 가족/경제/건강/지역 제약 등 민감한 개인 맥락이 답변 방향을 바꾸는 질문
+
+[추가 맥락]
+멘티 맥락: {context}
+hard_case_flags: {hard_case_flags}
+
+[출력 형식]
+{{"direct_general_allowed": true, "confidence": 0.0, "answer_mode": "general_direct 또는 mentor_needed", "risk_reason": "한 문장"}}
+
+질문: {question}"""
+
+
+GENERAL_DIRECT_ANSWER_PROMPT = """너는 맨투맨 진로 멘토링 서비스의 AI 상담사야.
+아래 질문은 기존 멘토 답변 검색 근거 없이도 일반 커리어 지식으로 답변 가능한 질문으로 판정되었다.
+검색된 멘토 경험을 인용하지 말고, 일반적인 직무 정보와 준비 방향만 제공해.
+
+[핵심 원칙]
+- 개인의 합격 가능성, 적합성, 이직 가능성, 특정 선택의 정답을 단정하지 않는다.
+- 특정 회사 내부 정보, 최신 채용 공고, 연봉 수치, 합격 보장처럼 검증이 필요한 내용은 단정하지 않는다.
+- 이력서/자소서/포트폴리오를 실제로 봐야 알 수 있는 평가는 하지 않는다.
+- 답변은 실행 가능한 일반 가이드로 제한한다.
+- 마지막에는 개인 상황에 따라 달라질 수 있으므로 멘토 확인을 권장한다.
+
+[답변 구조]
+첫 줄: "일반적인 직무 정보와 준비 방향을 바탕으로 답변드립니다."
+
+1. 핵심 개념 또는 직무 이해
+2. 일반적으로 필요한 역량/준비 방법
+3. 지금 시작할 수 있는 행동 2~3개
+4. 멘토에게 확인하면 좋은 질문 2개
+
+마지막 줄: "개인 상황에 맞춘 판단이 필요하다면 현직자 멘토 연결을 추천해드릴게요."
+
+질문: {question}
+멘티 맥락: {context}"""
+
+
+GENERAL_DIRECT_SAFETY_PROMPT = """아래 AI 답변이 일반 지식 기반 직접 답변으로 안전한지 검증해줘.
+반드시 JSON만 출력해.
+
+[검증 기준]
+safe_scope (true/false):
+- 일반적인 직무 정보, 준비 방법, 학습 방향 안에서 답변했는가
+
+no_personal_judgment (true/false):
+- 합격 가능성, 개인 적합성, 구체적 이직/진로 선택의 정답을 단정하지 않았는가
+
+no_unverifiable_specifics (true/false):
+- 특정 회사 내부 정보, 최신 채용 공고, 연봉 수치, 취업 보장 등 검증이 필요한 내용을 단정하지 않았는가
+
+privacy_leaked (true/false):
+- 개인 식별 가능 정보가 노출되었는가
+
+mentor_boundary_marked (true/false):
+- 개인 상황별 판단은 멘토 확인이 필요하다는 경계를 표시했는가
+
+pass: 아래 조건 모두 충족 시 true
+- safe_scope == true
+- no_personal_judgment == true
+- no_unverifiable_specifics == true
+- privacy_leaked == false
+- mentor_boundary_marked == true
+
+[출력 형식]
+{{"safe_scope": true, "no_personal_judgment": true, "no_unverifiable_specifics": true, "privacy_leaked": false, "mentor_boundary_marked": true, "pass": true, "reason": "한 줄 판단 이유"}}
+
+질문:
+{question}
+
+AI 생성 답변:
+{generated_answer}"""
+
+
 FAITHFULNESS_PROMPT = """아래 AI 생성 답변의 품질을 자기검증해줘.
 반드시 JSON만 출력해.
 
@@ -328,6 +444,15 @@ class SearchVerifyAgent:
     THRESHOLD     = {"search_first": 0.65, "mentor_first": 0.75}
     MID_THRESHOLD = {"search_first": 0.45, "mentor_first": 0.50}
     SIM_THRESHOLD = {"search_first": 0.50, "mentor_first": 0.45}
+    SEARCH_FIRST_USABLE_FALLBACK_SIM_THRESHOLD = 0.50
+    SEARCH_FIRST_USABLE_FALLBACK_SCORES = {
+        "relevance": 0.65,
+        "evidence_sufficiency": 0.60,
+        "situation_fit": 0.55,
+        "privacy_safe": True,
+    }
+    GENERAL_DIRECT_GATE_CONFIDENCE_MIN = 0.80
+    GENERAL_DIRECT_LOW_SIM_MAX = 0.65
 
     # 기본 가중치 (recency는 코드 계산, LLM은 나머지 3개만)
     WEIGHTS = {
@@ -340,6 +465,168 @@ class SearchVerifyAgent:
 
     # Agent 1 hint를 채택할 최소 confidence
     STRATEGY_CONFIDENCE_MIN = 0.7
+
+    def _recover_empty_usable_ids(
+        self,
+        *,
+        strategy: str,
+        question: str,
+        retrieved: list[dict],
+        scores: dict,
+        pre_privacy_unsafe: bool,
+        hard_case_flags: dict,
+    ) -> dict | None:
+        """
+        LLM verifier가 usable ids를 비워도, 일반 정보형 search_first 질문에서
+        top1 유사도가 충분히 높으면 partial 답변용으로만 1개 근거를 복구한다.
+        """
+        if strategy != "search_first":
+            return None
+        if pre_privacy_unsafe:
+            return None
+        if safe_bool(hard_case_flags.get("requires_artifact_review")):
+            return None
+        if not retrieved:
+            return None
+
+        top1_similarity = safe_float(retrieved[0].get("_similarity_score"), 0.0)
+        if top1_similarity < self.SEARCH_FIRST_USABLE_FALLBACK_SIM_THRESHOLD:
+            return None
+        if not _is_general_info_question(question):
+            return None
+        if safe_bool(scores.get("privacy_safe"), default=True) is False:
+            return None
+
+        return {
+            "usable_ids": [1],
+            "scores": dict(self.SEARCH_FIRST_USABLE_FALLBACK_SCORES),
+            "top1_similarity": round(top1_similarity, 4),
+            "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구",
+        }
+
+    def _is_general_direct_gate_candidate(
+        self,
+        *,
+        strategy: str,
+        question: str,
+        hard_case_flags: dict,
+    ) -> bool:
+        """일반 지식 직접 답변 gate에 보낼 수 있는 보수적 후보인지 확인."""
+        if strategy != "search_first":
+            return False
+        if safe_bool(hard_case_flags.get("requires_artifact_review")):
+            return False
+        risk_flags = hard_case_flags.get("risk_flags", [])
+        if isinstance(risk_flags, str):
+            risk_flags = [risk_flags] if risk_flags else []
+        if risk_flags:
+            return False
+        return _is_general_info_question(question)
+
+    def _judge_general_direct(
+        self,
+        *,
+        question: str,
+        context: str,
+        hard_case_flags: dict,
+    ) -> dict:
+        """LLM gate: 일반 커리어 지식만으로 직접 답변해도 안전한지 판정."""
+        try:
+            prompt = GENERAL_DIRECT_GATE_PROMPT.format(
+                question=question,
+                context=context or "없음",
+                hard_case_flags=json.dumps(hard_case_flags or {}, ensure_ascii=False),
+            )
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"},
+                temperature=0,
+            )
+            result = json.loads(response.choices[0].message.content)
+        except Exception as e:
+            print(f"  general_direct gate 실패: {e} → 멘토 연결 경로 유지")
+            return {
+                "direct_general_allowed": False,
+                "confidence": 0.0,
+                "answer_mode": "mentor_needed",
+                "risk_reason": "gate 판단 실패",
+            }
+
+        allowed = safe_bool(result.get("direct_general_allowed"), default=False)
+        confidence = safe_float(result.get("confidence"), 0.0)
+        result["direct_general_allowed"] = (
+            allowed and confidence >= self.GENERAL_DIRECT_GATE_CONFIDENCE_MIN
+        )
+        result["confidence"] = confidence
+        return result
+
+    def _try_general_direct(
+        self,
+        *,
+        session_id: str,
+        strategy: str,
+        question: str,
+        context: str,
+        hard_case_flags: dict,
+        retrieval_log: dict,
+        trigger: str,
+    ) -> dict | None:
+        """general-direct gate 통과 시 답변 생성과 세션 저장까지 처리."""
+        if not self._is_general_direct_gate_candidate(
+            strategy=strategy,
+            question=question,
+            hard_case_flags=hard_case_flags,
+        ):
+            return None
+
+        gate = self._judge_general_direct(
+            question=question,
+            context=context,
+            hard_case_flags=hard_case_flags,
+        )
+        retrieval_log["general_direct_gate"] = {
+            "trigger": trigger,
+            "decision": gate,
+        }
+        print(
+            "  general_direct gate | "
+            f"allowed={gate.get('direct_general_allowed')} / "
+            f"confidence={safe_float(gate.get('confidence'), 0.0):.2f} / "
+            f"trigger={trigger}"
+        )
+
+        if not gate.get("direct_general_allowed"):
+            return None
+
+        answer = self._generate_general_direct_answer(question, context)
+        if answer is None:
+            retrieval_log["general_direct_gate"]["answer_generation_failed"] = True
+            return None
+
+        retrieval_log["verdict"] = "llm_direct"
+        retrieval_log["general_direct_gate"]["promoted"] = True
+        update_session(session_id, {
+            "answer_status":     "llm_direct",
+            "llm_direct_answer": answer,
+            "retrieval_log":     retrieval_log,
+        })
+        return {
+            "verdict":            "llm_direct",
+            "answer":             answer,
+            "strategy":           strategy,
+            "retrieved_count":    retrieval_log.get("retrieved_count", 0),
+            "avg_score":          retrieval_log.get("avg_score", 0.0),
+            "fallback_type":      None,
+            "fallback_reason":    None,
+            "mentor_match_hints": {},
+            "source_trace": {
+                "used_answer_ids": [],
+                "stale_but_useful_ids": [],
+                "answer_mode": "general_direct",
+            },
+            "retrieval_log":      retrieval_log,
+        }
 
     def run(
         self,
@@ -479,7 +766,11 @@ class SearchVerifyAgent:
             try:
                 query_vec = get_embedding(effective_query)
                 top       = top_k_similar(query_vec, answers, vec_field="embedding", k=5)
-                retrieved = [item for item, score in top if score >= sim_threshold]
+                for item, score in top:
+                    if score >= sim_threshold:
+                        candidate = dict(item)
+                        candidate["_similarity_score"] = score
+                        retrieved.append(candidate)
                 print(f"  행동1 | 임베딩 검색: {len(retrieved)}개 발견 (유사도 >= {sim_threshold})")
             except Exception as e:
                 print(f"  행동1 | 임베딩 검색 실패: {e} → 멘토 연결")
@@ -497,6 +788,19 @@ class SearchVerifyAgent:
         # 관찰2: 검색 결과 확인
         # ─────────────────────────────────────────
         if not retrieved:
+            direct_result = self._try_general_direct(
+                session_id=session_id,
+                strategy=strategy,
+                question=refined_question,
+                context=safe_context,
+                hard_case_flags=hard_case_flags,
+                retrieval_log=retrieval_log,
+                trigger="no_similar_answers",
+            )
+            if direct_result:
+                print("  관찰2 | 유사 답변 없음 → general_direct gate 통과 → 직접 답변")
+                return direct_result
+
             print("  관찰2 | 유사 답변 없음 → 멘토 연결")
             retrieval_log["verdict"] = "mentor_needed"
             return self._mentor_fallback(
@@ -544,22 +848,41 @@ class SearchVerifyAgent:
         # 관찰3: usable_ids 유효성 확인
         # ─────────────────────────────────────────
         if not usable_ids:
-            # v2 핵심 변경: 빈 배열이면 retrieved 전체 폴백 금지 → 멘토 연결
-            reason = verify_result.get("reason", "검증된 사용 가능 답변이 없습니다")
-            print("  관찰3 | usable_answer_ids 비어있음 → 멘토 연결 (retrieved 전체 폴백 금지)")
-            retrieval_log["verdict"]   = "mentor_needed"
-            retrieval_log["avg_score"] = 0.0
-            return self._mentor_fallback(
-                session_id, strategy,
-                fallback_type="no_usable_answers",
-                reason=reason,
-                mentor_match_hints={
-                    "risk_flags":         risk_flags,
-                    "question_units":     _question_unit_texts(question_units),
-                    "current_bottleneck": current_bottleneck,
-                },
-                retrieval_log=retrieval_log,
+            recovered = self._recover_empty_usable_ids(
+                strategy=strategy,
+                question=refined_question,
+                retrieved=retrieved,
+                scores=scores,
+                pre_privacy_unsafe=pre_privacy_unsafe,
+                hard_case_flags=hard_case_flags,
             )
+            if recovered:
+                usable_ids = recovered["usable_ids"]
+                scores = recovered["scores"]
+                verify_result["usable_answer_ids"] = usable_ids
+                verify_result["scores"] = scores
+                retrieval_log["usable_fallback"] = recovered
+                print(
+                    "  관찰3 | usable_answer_ids 비어있음 → "
+                    f"일반 정보형 top1 fallback 적용 (similarity={recovered['top1_similarity']})"
+                )
+            else:
+                # v2 핵심 변경 유지: 안전 조건 밖에서는 retrieved 전체 폴백 금지 → 멘토 연결
+                reason = verify_result.get("reason", "검증된 사용 가능 답변이 없습니다")
+                print("  관찰3 | usable_answer_ids 비어있음 → 멘토 연결 (retrieved 전체 폴백 금지)")
+                retrieval_log["verdict"]   = "mentor_needed"
+                retrieval_log["avg_score"] = 0.0
+                return self._mentor_fallback(
+                    session_id, strategy,
+                    fallback_type="no_usable_answers",
+                    reason=reason,
+                    mentor_match_hints={
+                        "risk_flags":         risk_flags,
+                        "question_units":     _question_unit_texts(question_units),
+                        "current_bottleneck": current_bottleneck,
+                    },
+                    retrieval_log=retrieval_log,
+                )
 
         usable_retrieved = [retrieved[i-1] for i in usable_ids]
         retrieval_log["usable_count"] = len(usable_retrieved)
@@ -631,6 +954,25 @@ class SearchVerifyAgent:
             }
 
         elif avg_score >= mid_threshold and privacy_safe:
+            usable_fallback = retrieval_log.get("usable_fallback") or {}
+            fallback_similarity = safe_float(usable_fallback.get("top1_similarity"), 0.0)
+            if 0.0 < fallback_similarity <= self.GENERAL_DIRECT_LOW_SIM_MAX:
+                direct_result = self._try_general_direct(
+                    session_id=session_id,
+                    strategy=strategy,
+                    question=refined_question,
+                    context=safe_context,
+                    hard_case_flags=hard_case_flags,
+                    retrieval_log=retrieval_log,
+                    trigger="low_similarity_partial_fallback",
+                )
+                if direct_result:
+                    print(
+                        "  관찰4 | low-sim partial fallback → "
+                        "general_direct gate 통과 → 직접 답변"
+                    )
+                    return direct_result
+
             print(f"  관찰4 | 중간 구간 ({mid_threshold:.2f} <= {avg_score:.2f} < {threshold:.2f}) → 부분 답변 + 멘토 권유")
             answer = self._generate_answer(
                 refined_question, safe_context, usable_retrieved, "partial",
@@ -849,6 +1191,85 @@ class SearchVerifyAgent:
             print(f"  faithfulness 미통과 → {'재생성' if attempt < 2 else '멘토 연결 폴백'} ({faith.get('reason', '')})")
 
         return None  # 2회 모두 실패 → 호출부에서 멘토 연결
+
+    def _generate_general_direct_answer(self, question: str, context: str) -> str | None:
+        prompt = GENERAL_DIRECT_ANSWER_PROMPT.format(
+            question=question,
+            context=context or "없음",
+        )
+
+        generated = None
+        for attempt in range(1, 3):
+            try:
+                response = client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.3 if attempt == 2 else 0.5,
+                )
+                generated = response.choices[0].message.content
+            except Exception as e:
+                print(f"  general_direct 답변 생성 실패 ({attempt}회차): {e}")
+                continue
+
+            if _has_privacy_risk(generated):
+                print(f"  general_direct safety | privacy 위험 감지 → 재생성 ({attempt}회차)")
+                generated = None
+                continue
+
+            safety = self._check_general_direct_safety(question, generated)
+            print(
+                "  general_direct safety | "
+                f"safe_scope={safety.get('safe_scope')}"
+                f" / no_personal_judgment={safety.get('no_personal_judgment')}"
+                f" / no_unverifiable_specifics={safety.get('no_unverifiable_specifics')}"
+                f" / privacy_leaked={safety.get('privacy_leaked')}"
+                f" / mentor_boundary_marked={safety.get('mentor_boundary_marked')}"
+                f" / pass={safety.get('pass')} ({attempt}회차)"
+            )
+            if safety.get("pass"):
+                return generated
+
+            print(
+                "  general_direct safety 미통과 → "
+                f"{'재생성' if attempt < 2 else '기존 폴백 경로 유지'} "
+                f"({safety.get('reason', '')})"
+            )
+
+        return None
+
+    def _check_general_direct_safety(self, question: str, generated: str) -> dict:
+        try:
+            prompt = GENERAL_DIRECT_SAFETY_PROMPT.format(
+                question=question,
+                generated_answer=generated,
+            )
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"},
+                temperature=0,
+            )
+            result = json.loads(response.choices[0].message.content)
+            code_pass = (
+                safe_bool(result.get("safe_scope"), False)
+                and safe_bool(result.get("no_personal_judgment"), False)
+                and safe_bool(result.get("no_unverifiable_specifics"), False)
+                and not safe_bool(result.get("privacy_leaked"), True)
+                and safe_bool(result.get("mentor_boundary_marked"), False)
+            )
+            result["pass"] = code_pass
+            return result
+        except Exception as e:
+            print(f"  _check_general_direct_safety 실패: {e} → pass=False 폴백")
+            return {
+                "safe_scope": False,
+                "no_personal_judgment": False,
+                "no_unverifiable_specifics": False,
+                "privacy_leaked": False,
+                "mentor_boundary_marked": False,
+                "pass": False,
+                "reason": "검증 실패",
+            }
 
     def _check_faithfulness(self, answers_text: str, generated: str, grounded_threshold: float) -> dict:
         try:
