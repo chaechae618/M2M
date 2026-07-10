@@ -1,4 +1,7 @@
 .env
+.DS_Store
+example_data.csv
+*조사*.md
 data_db/data/
 data_db/db/
 data_db/scripts/generate_mentor_db.py

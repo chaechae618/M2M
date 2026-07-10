@@ -1,0 +1,1019 @@
+{
+  "baseline": {
+    "file": "M2M-mentoring-agent/eval/agent2_baseline_results.json",
+    "config": {},
+    "summary": {
+      "case_count": 185,
+      "accuracy": 0.2486,
+      "gold_counts": {
+        "partial_with_mentor_suggest": 129,
+        "mentor_needed": 11,
+        "llm_direct": 45
+      },
+      "predicted_counts": {
+        "partial_with_mentor_suggest": 38,
+        "mentor_needed": 140,
+        "llm_direct": 7
+      },
+      "wrong_direct_answer_count": 0,
+      "wrong_direct_answer_case_ids": [],
+      "mentor_needed_missed_count": 3,
+      "mentor_needed_missed_case_ids": [
+        "realqa_137",
+        "realqa_059",
+        "realqa_034"
+      ],
+      "confusion_matrix": {
+        "llm_direct": {
+          "llm_direct": 7,
+          "partial_with_mentor_suggest": 4,
+          "mentor_needed": 34
+        },
+        "partial_with_mentor_suggest": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 31,
+          "mentor_needed": 98
+        },
+        "mentor_needed": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 3,
+          "mentor_needed": 8
+        }
+      },
+      "per_label": {
+        "llm_direct": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 38,
+          "precision": 1.0,
+          "recall": 0.1556,
+          "f1": 0.2692
+        },
+        "partial_with_mentor_suggest": {
+          "tp": 31,
+          "fp": 7,
+          "fn": 98,
+          "precision": 0.8158,
+          "recall": 0.2403,
+          "f1": 0.3713
+        },
+        "mentor_needed": {
+          "tp": 8,
+          "fp": 132,
+          "fn": 3,
+          "precision": 0.0571,
+          "recall": 0.7273,
+          "f1": 0.106
+        }
+      }
+    },
+    "fallback_by_gold": {
+      "llm_direct": {
+        "no_usable_answers": 19,
+        "no_similar_answers": 15,
+        "none": 11
+      },
+      "partial_with_mentor_suggest": {
+        "none": 31,
+        "no_usable_answers": 65,
+        "score_below_threshold": 30,
+        "requires_artifact_review": 3
+      },
+      "mentor_needed": {
+        "requires_artifact_review": 5,
+        "none": 3,
+        "score_below_threshold": 1,
+        "no_usable_answers": 2
+      }
+    },
+    "offline_direct_threshold_simulation": [
+      {
+        "direct_search_first_threshold": 0.55,
+        "partial_to_direct_candidates": 2,
+        "gold_direct": 2,
+        "wrong_direct": 0,
+        "case_ids": [
+          "direct_supp_006",
+          "direct_supp_032"
+        ]
+      },
+      {
+        "direct_search_first_threshold": 0.6,
+        "partial_to_direct_candidates": 2,
+        "gold_direct": 2,
+        "wrong_direct": 0,
+        "case_ids": [
+          "direct_supp_006",
+          "direct_supp_032"
+        ]
+      },
+      {
+        "direct_search_first_threshold": 0.65,
+        "partial_to_direct_candidates": 0,
+        "gold_direct": 0,
+        "wrong_direct": 0,
+        "case_ids": []
+      }
+    ]
+  },
+  "sim_search_045": {
+    "file": "M2M-mentoring-agent/eval/agent2_calib_sim_search_045.json",
+    "config": {
+      "SIM_THRESHOLD": {
+        "search_first": 0.45,
+        "mentor_first": 0.45
+      },
+      "MID_THRESHOLD": {
+        "search_first": 0.45,
+        "mentor_first": 0.5
+      },
+      "THRESHOLD": {
+        "search_first": 0.65,
+        "mentor_first": 0.75
+      },
+      "WEIGHTS": {
+        "search_first": {
+          "relevance": 0.3,
+          "evidence_sufficiency": 0.3,
+          "situation_fit": 0.2,
+          "recency": 0.2
+        },
+        "mentor_first": {
+          "relevance": 0.15,
+          "evidence_sufficiency": 0.2,
+          "situation_fit": 0.5,
+          "recency": 0.15
+        }
+      }
+    },
+    "summary": {
+      "case_count": 185,
+      "accuracy": 0.2432,
+      "gold_counts": {
+        "partial_with_mentor_suggest": 129,
+        "mentor_needed": 11,
+        "llm_direct": 45
+      },
+      "predicted_counts": {
+        "partial_with_mentor_suggest": 45,
+        "mentor_needed": 136,
+        "llm_direct": 4
+      },
+      "wrong_direct_answer_count": 0,
+      "wrong_direct_answer_case_ids": [],
+      "mentor_needed_missed_count": 3,
+      "mentor_needed_missed_case_ids": [
+        "realqa_137",
+        "realqa_059",
+        "realqa_034"
+      ],
+      "confusion_matrix": {
+        "llm_direct": {
+          "llm_direct": 4,
+          "partial_with_mentor_suggest": 9,
+          "mentor_needed": 32
+        },
+        "partial_with_mentor_suggest": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 33,
+          "mentor_needed": 96
+        },
+        "mentor_needed": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 3,
+          "mentor_needed": 8
+        }
+      },
+      "per_label": {
+        "llm_direct": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 41,
+          "precision": 1.0,
+          "recall": 0.0889,
+          "f1": 0.1633
+        },
+        "partial_with_mentor_suggest": {
+          "tp": 33,
+          "fp": 12,
+          "fn": 96,
+          "precision": 0.7333,
+          "recall": 0.2558,
+          "f1": 0.3793
+        },
+        "mentor_needed": {
+          "tp": 8,
+          "fp": 128,
+          "fn": 3,
+          "precision": 0.0588,
+          "recall": 0.7273,
+          "f1": 0.1088
+        }
+      }
+    },
+    "fallback_by_gold": {
+      "llm_direct": {
+        "score_below_threshold": 8,
+        "no_similar_answers": 4,
+        "no_usable_answers": 20,
+        "none": 13
+      },
+      "partial_with_mentor_suggest": {
+        "none": 33,
+        "no_usable_answers": 69,
+        "score_below_threshold": 24,
+        "requires_artifact_review": 3
+      },
+      "mentor_needed": {
+        "requires_artifact_review": 5,
+        "none": 3,
+        "no_usable_answers": 3
+      }
+    },
+    "offline_direct_threshold_simulation": [
+      {
+        "direct_search_first_threshold": 0.55,
+        "partial_to_direct_candidates": 4,
+        "gold_direct": 4,
+        "wrong_direct": 0,
+        "case_ids": [
+          "direct_supp_021",
+          "direct_supp_023",
+          "direct_supp_025",
+          "direct_supp_035"
+        ]
+      },
+      {
+        "direct_search_first_threshold": 0.6,
+        "partial_to_direct_candidates": 3,
+        "gold_direct": 3,
+        "wrong_direct": 0,
+        "case_ids": [
+          "direct_supp_021",
+          "direct_supp_023",
+          "direct_supp_025"
+        ]
+      },
+      {
+        "direct_search_first_threshold": 0.65,
+        "partial_to_direct_candidates": 0,
+        "gold_direct": 0,
+        "wrong_direct": 0,
+        "case_ids": []
+      }
+    ]
+  },
+  "strategy_aware_verify_failed_partial": {
+    "file": "M2M-mentoring-agent/eval/agent2_strategy_verify_results.json",
+    "status": "stopped_after_regression",
+    "reason": "Partial run produced wrong_direct_answer_count=1 and worse partial recall; production prompt change was reverted.",
+    "summary": {
+      "case_count": 42,
+      "accuracy": 0.1429,
+      "gold_counts": {
+        "partial_with_mentor_suggest": 39,
+        "mentor_needed": 3
+      },
+      "predicted_counts": {
+        "mentor_needed": 38,
+        "llm_direct": 1,
+        "partial_with_mentor_suggest": 3
+      },
+      "wrong_direct_answer_count": 1,
+      "wrong_direct_answer_case_ids": [
+        "realqa_127"
+      ],
+      "mentor_needed_missed_count": 0,
+      "mentor_needed_missed_case_ids": [],
+      "confusion_matrix": {
+        "llm_direct": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 0,
+          "mentor_needed": 0
+        },
+        "partial_with_mentor_suggest": {
+          "llm_direct": 1,
+          "partial_with_mentor_suggest": 3,
+          "mentor_needed": 35
+        },
+        "mentor_needed": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 0,
+          "mentor_needed": 3
+        }
+      },
+      "per_label": {
+        "llm_direct": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "partial_with_mentor_suggest": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 36,
+          "precision": 1.0,
+          "recall": 0.0769,
+          "f1": 0.1429
+        },
+        "mentor_needed": {
+          "tp": 3,
+          "fp": 35,
+          "fn": 0,
+          "precision": 0.0789,
+          "recall": 1.0,
+          "f1": 0.1463
+        }
+      }
+    }
+  },
+  "usable_fallback_offline_simulation": {
+    "file": "M2M-mentoring-agent/eval/agent2_usable_fallback_simulation.json",
+    "status": "completed_offline_simulation",
+    "interpretation": "Safe for converting a narrow set of search_first no_usable_answers cases to partial_with_mentor_suggest, but not sufficient for llm_direct recall. Raising the fallback score to direct would create wrong_direct risk on at least realqa_127.",
+    "baseline_summary": {
+      "case_count": 185,
+      "accuracy": 0.2486,
+      "gold_counts": {
+        "partial_with_mentor_suggest": 129,
+        "mentor_needed": 11,
+        "llm_direct": 45
+      },
+      "predicted_counts": {
+        "partial_with_mentor_suggest": 38,
+        "mentor_needed": 140,
+        "llm_direct": 7
+      },
+      "wrong_direct_answer_count": 0,
+      "wrong_direct_answer_case_ids": [],
+      "mentor_needed_missed_count": 3,
+      "mentor_needed_missed_case_ids": [
+        "realqa_137",
+        "realqa_059",
+        "realqa_034"
+      ],
+      "confusion_matrix": {
+        "llm_direct": {
+          "llm_direct": 7,
+          "partial_with_mentor_suggest": 4,
+          "mentor_needed": 34
+        },
+        "partial_with_mentor_suggest": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 31,
+          "mentor_needed": 98
+        },
+        "mentor_needed": {
+          "llm_direct": 0,
+          "partial_with_mentor_suggest": 3,
+          "mentor_needed": 8
+        }
+      },
+      "per_label": {
+        "llm_direct": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 38,
+          "precision": 1.0,
+          "recall": 0.1556,
+          "f1": 0.2692
+        },
+        "partial_with_mentor_suggest": {
+          "tp": 31,
+          "fp": 7,
+          "fn": 98,
+          "precision": 0.8158,
+          "recall": 0.2403,
+          "f1": 0.3713
+        },
+        "mentor_needed": {
+          "tp": 8,
+          "fp": 132,
+          "fn": 3,
+          "precision": 0.0571,
+          "recall": 0.7273,
+          "f1": 0.106
+        }
+      }
+    },
+    "variants": {
+      "fallback_top1_05": {
+        "changed_count": 17,
+        "summary": {
+          "case_count": 185,
+          "accuracy": 0.2541,
+          "gold_counts": {
+            "partial_with_mentor_suggest": 129,
+            "mentor_needed": 11,
+            "llm_direct": 45
+          },
+          "predicted_counts": {
+            "partial_with_mentor_suggest": 55,
+            "mentor_needed": 123,
+            "llm_direct": 7
+          },
+          "wrong_direct_answer_count": 0,
+          "wrong_direct_answer_case_ids": [],
+          "mentor_needed_missed_count": 3,
+          "mentor_needed_missed_case_ids": [
+            "realqa_137",
+            "realqa_059",
+            "realqa_034"
+          ],
+          "confusion_matrix": {
+            "llm_direct": {
+              "llm_direct": 7,
+              "partial_with_mentor_suggest": 20,
+              "mentor_needed": 18
+            },
+            "partial_with_mentor_suggest": {
+              "llm_direct": 0,
+              "partial_with_mentor_suggest": 32,
+              "mentor_needed": 97
+            },
+            "mentor_needed": {
+              "llm_direct": 0,
+              "partial_with_mentor_suggest": 3,
+              "mentor_needed": 8
+            }
+          },
+          "per_label": {
+            "llm_direct": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 38,
+              "precision": 1.0,
+              "recall": 0.1556,
+              "f1": 0.2692
+            },
+            "partial_with_mentor_suggest": {
+              "tp": 32,
+              "fp": 23,
+              "fn": 97,
+              "precision": 0.5818,
+              "recall": 0.2481,
+              "f1": 0.3478
+            },
+            "mentor_needed": {
+              "tp": 8,
+              "fp": 115,
+              "fn": 3,
+              "precision": 0.065,
+              "recall": 0.7273,
+              "f1": 0.1194
+            }
+          }
+        },
+        "block_reasons": {
+          "not_search_first": 139,
+          "allowed": 17,
+          "not_no_usable": 26,
+          "not_general_question": 3
+        }
+      },
+      "fallback_top1_048": {
+        "changed_count": 17,
+        "summary": {
+          "case_count": 185,
+          "accuracy": 0.2541,
+          "gold_counts": {
+            "partial_with_mentor_suggest": 129,
+            "mentor_needed": 11,
+            "llm_direct": 45
+          },
+          "predicted_counts": {
+            "partial_with_mentor_suggest": 55,
+            "mentor_needed": 123,
+            "llm_direct": 7
+          },
+          "wrong_direct_answer_count": 0,
+          "wrong_direct_answer_case_ids": [],
+          "mentor_needed_missed_count": 3,
+          "mentor_needed_missed_case_ids": [
+            "realqa_137",
+            "realqa_059",
+            "realqa_034"
+          ],
+          "confusion_matrix": {
+            "llm_direct": {
+              "llm_direct": 7,
+              "partial_with_mentor_suggest": 20,
+              "mentor_needed": 18
+            },
+            "partial_with_mentor_suggest": {
+              "llm_direct": 0,
+              "partial_with_mentor_suggest": 32,
+              "mentor_needed": 97
+            },
+            "mentor_needed": {
+              "llm_direct": 0,
+              "partial_with_mentor_suggest": 3,
+              "mentor_needed": 8
+            }
+          },
+          "per_label": {
+            "llm_direct": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 38,
+              "precision": 1.0,
+              "recall": 0.1556,
+              "f1": 0.2692
+            },
+            "partial_with_mentor_suggest": {
+              "tp": 32,
+              "fp": 23,
+              "fn": 97,
+              "precision": 0.5818,
+              "recall": 0.2481,
+              "f1": 0.3478
+            },
+            "mentor_needed": {
+              "tp": 8,
+              "fp": 115,
+              "fn": 3,
+              "precision": 0.065,
+              "recall": 0.7273,
+              "f1": 0.1194
+            }
+          }
+        },
+        "block_reasons": {
+          "not_search_first": 139,
+          "allowed": 17,
+          "not_no_usable": 26,
+          "not_general_question": 3
+        }
+      },
+      "fallback_top1_045": {
+        "changed_count": 17,
+        "summary": {
+          "case_count": 185,
+          "accuracy": 0.2541,
+          "gold_counts": {
+            "partial_with_mentor_suggest": 129,
+            "mentor_needed": 11,
+            "llm_direct": 45
+          },
+          "predicted_counts": {
+            "partial_with_mentor_suggest": 55,
+            "mentor_needed": 123,
+            "llm_direct": 7
+          },
+          "wrong_direct_answer_count": 0,
+          "wrong_direct_answer_case_ids": [],
+          "mentor_needed_missed_count": 3,
+          "mentor_needed_missed_case_ids": [
+            "realqa_137",
+            "realqa_059",
+            "realqa_034"
+          ],
+          "confusion_matrix": {
+            "llm_direct": {
+              "llm_direct": 7,
+              "partial_with_mentor_suggest": 20,
+              "mentor_needed": 18
+            },
+            "partial_with_mentor_suggest": {
+              "llm_direct": 0,
+              "partial_with_mentor_suggest": 32,
+              "mentor_needed": 97
+            },
+            "mentor_needed": {
+              "llm_direct": 0,
+              "partial_with_mentor_suggest": 3,
+              "mentor_needed": 8
+            }
+          },
+          "per_label": {
+            "llm_direct": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 38,
+              "precision": 1.0,
+              "recall": 0.1556,
+              "f1": 0.2692
+            },
+            "partial_with_mentor_suggest": {
+              "tp": 32,
+              "fp": 23,
+              "fn": 97,
+              "precision": 0.5818,
+              "recall": 0.2481,
+              "f1": 0.3478
+            },
+            "mentor_needed": {
+              "tp": 8,
+              "fp": 115,
+              "fn": 3,
+              "precision": 0.065,
+              "recall": 0.7273,
+              "f1": 0.1194
+            }
+          }
+        },
+        "block_reasons": {
+          "not_search_first": 139,
+          "allowed": 17,
+          "not_no_usable": 26,
+          "not_general_question": 3
+        }
+      }
+    }
+  },
+  "usable_fallback_applied": {
+    "file": "M2M-mentoring-agent/eval/agent2_usable_fallback_applied_results.json",
+    "status": "completed_full_validation",
+    "code_change": "M2M-mentoring-agent/agents/search_verify_agent.py",
+    "config": {
+      "scope": "search_first only",
+      "top1_similarity_threshold": 0.5,
+      "blocked_when": [
+        "pre_privacy_unsafe",
+        "requires_artifact_review",
+        "not_general_info_question",
+        "verifier_privacy_safe_false"
+      ],
+      "fallback_scores": {
+        "relevance": 0.65,
+        "evidence_sufficiency": 0.6,
+        "situation_fit": 0.55,
+        "privacy_safe": true
+      },
+      "intended_effect": "Recover empty usable_answer_ids as partial_with_mentor_suggest only, not llm_direct."
+    },
+    "summary": {
+      "case_count": 185,
+      "accuracy": 0.2757,
+      "gold_counts": {
+        "partial_with_mentor_suggest": 129,
+        "mentor_needed": 11,
+        "llm_direct": 45
+      },
+      "predicted_counts": {
+        "partial_with_mentor_suggest": 60,
+        "mentor_needed": 118,
+        "llm_direct": 7
+      },
+      "wrong_direct_answer_count": 0,
+      "wrong_direct_answer_case_ids": [],
+      "mentor_needed_missed_count": 3,
+      "mentor_needed_missed_case_ids": [
+        "realqa_137",
+        "realqa_059",
+        "realqa_034"
+      ],
+      "per_label": {
+        "llm_direct": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 38,
+          "precision": 1.0,
+          "recall": 0.1556,
+          "f1": 0.2692
+        },
+        "partial_with_mentor_suggest": {
+          "tp": 36,
+          "fp": 24,
+          "fn": 93,
+          "precision": 0.6,
+          "recall": 0.2791,
+          "f1": 0.381
+        },
+        "mentor_needed": {
+          "tp": 8,
+          "fp": 110,
+          "fn": 3,
+          "precision": 0.0678,
+          "recall": 0.7273,
+          "f1": 0.124
+        }
+      }
+    },
+    "fallback_applied": {
+      "count": 19,
+      "gold_to_predicted": {
+        "partial_with_mentor_suggest -> partial_with_mentor_suggest": 1,
+        "llm_direct -> partial_with_mentor_suggest": 18
+      },
+      "case_ids": [
+        "realqa_127",
+        "direct_supp_005",
+        "direct_supp_006",
+        "direct_supp_008",
+        "direct_supp_009",
+        "direct_supp_010",
+        "direct_supp_012",
+        "direct_supp_014",
+        "direct_supp_016",
+        "direct_supp_017",
+        "direct_supp_018",
+        "direct_supp_020",
+        "direct_supp_024",
+        "direct_supp_027",
+        "direct_supp_028",
+        "direct_supp_036",
+        "direct_supp_037",
+        "direct_supp_041",
+        "direct_supp_043"
+      ]
+    },
+    "baseline_delta": {
+      "accuracy": 0.0271,
+      "partial_predicted_count": 22,
+      "mentor_needed_predicted_count": -22,
+      "llm_direct_predicted_count": 0,
+      "wrong_direct_answer_count": 0,
+      "mentor_needed_missed_count": 0,
+      "partial_recall": 0.0388,
+      "partial_precision": -0.2158
+    },
+    "interpretation": "The fallback safely reduces over-conservative mentor_needed routing by converting high-similarity search_first no_usable cases into partial answers. It does not improve llm_direct recall because conservative fallback scores intentionally stay below the direct threshold. Partial precision drops because many direct-supplement cases are recovered as partial rather than direct."
+  },
+  "general_direct_simulation": {
+    "file": "M2M-mentoring-agent/eval/agent2_general_direct_simulation.json",
+    "status": "completed_offline_simulation",
+    "description": "Simulated a general-knowledge direct route for safe search_first questions that either had no similar asset answers or were recovered as partial by low-similarity usable fallback.",
+    "variants": {
+      "no_similar_only": {
+        "changed_count": 15,
+        "summary": {
+          "case_count": 185,
+          "accuracy": 0.3568,
+          "predicted_counts": {
+            "partial_with_mentor_suggest": 60,
+            "mentor_needed": 103,
+            "llm_direct": 22
+          },
+          "wrong_direct_answer_count": 0,
+          "mentor_needed_missed_count": 3,
+          "llm_direct_recall": 0.4889,
+          "llm_direct_precision": 1.0
+        }
+      },
+      "no_similar_plus_low_sim_partial": {
+        "changed_count": 33,
+        "summary": {
+          "case_count": 185,
+          "accuracy": 0.4541,
+          "predicted_counts": {
+            "partial_with_mentor_suggest": 42,
+            "mentor_needed": 103,
+            "llm_direct": 40
+          },
+          "wrong_direct_answer_count": 0,
+          "mentor_needed_missed_count": 3,
+          "llm_direct_recall": 0.8889,
+          "llm_direct_precision": 1.0
+        }
+      }
+    },
+    "interpretation": "The broader variant gives the best validation improvement, but it is still a replay simulation and needs an explicit production answer-generation path because current direct generation is designed around retrieved mentor answers."
+  },
+  "general_direct_llm_gate_simulation": {
+    "file": "M2M-mentoring-agent/eval/agent2_general_direct_llm_gate_simulation.json",
+    "status": "completed_llm_gated_simulation",
+    "description": "Used an LLM gate to decide whether each heuristic candidate can be answered directly from general career knowledge without personal judgment or artifact review.",
+    "candidate_count": 33,
+    "allowed_count": 32,
+    "rejected_case_ids": [
+      "direct_supp_011"
+    ],
+    "summary": {
+      "case_count": 185,
+      "accuracy": 0.4486,
+      "predicted_counts": {
+        "partial_with_mentor_suggest": 42,
+        "mentor_needed": 104,
+        "llm_direct": 39
+      },
+      "wrong_direct_answer_count": 0,
+      "mentor_needed_missed_count": 3,
+      "llm_direct_precision": 1.0,
+      "llm_direct_recall": 0.8667,
+      "llm_direct_f1": 0.9286,
+      "partial_precision": 0.8571,
+      "partial_recall": 0.2791
+    },
+    "interpretation": "LLM gating keeps the validation safety target intact while recovering most direct-answer cases. This is the strongest next production candidate, but production implementation should add a separate general_direct answer mode and verifier because no_similar cases have no retrieved mentor evidence for the existing faithfulness check."
+  },
+  "conformal_retrieval_calibration": {
+    "paper": "CONFLARE: Conformal Large Language Model Retrieval (2404.04287v1)",
+    "calibration_file": "M2M-mentoring-agent/eval/agent2_conformal_retrieval_calibration.json",
+    "script": "M2M-mentoring-agent/eval/calibrate_agent2_conformal_retrieval.py",
+    "status": "completed_full_validation_comparison",
+    "calibration_filter": {
+      "case_id_prefix": "realqa_",
+      "gold_verdict": "partial_with_mentor_suggest",
+      "reason": "CONFLARE assumes questions are answerable from the retrieval corpus. Synthetic llm_direct and mentor_needed cases were excluded from threshold calibration."
+    },
+    "calibrated_thresholds": {
+      "alpha_0.01": 0.853453,
+      "alpha_0.05": 0.894219,
+      "alpha_0.10": 0.908944,
+      "alpha_0.20": 0.922403
+    },
+    "compared_runs": {
+      "current_with_usable_fallback": {
+        "file": "M2M-mentoring-agent/eval/agent2_usable_fallback_applied_results.json",
+        "sim_threshold": {
+          "search_first": 0.5,
+          "mentor_first": 0.45
+        },
+        "summary": {
+          "accuracy": 0.2757,
+          "predicted_counts": {
+            "partial_with_mentor_suggest": 60,
+            "mentor_needed": 118,
+            "llm_direct": 7
+          },
+          "wrong_direct_answer_count": 0,
+          "mentor_needed_missed_count": 3,
+          "llm_direct_precision": 1.0,
+          "llm_direct_recall": 0.1556,
+          "partial_precision": 0.6,
+          "partial_recall": 0.2791
+        }
+      },
+      "conformal_alpha_0.01": {
+        "file": "M2M-mentoring-agent/eval/agent2_conformal_alpha001_results.json",
+        "sim_threshold": {
+          "search_first": 0.853453,
+          "mentor_first": 0.853453
+        },
+        "summary": {
+          "accuracy": 0.2541,
+          "predicted_counts": {
+            "mentor_needed": 144,
+            "partial_with_mentor_suggest": 38,
+            "llm_direct": 3
+          },
+          "wrong_direct_answer_count": 3,
+          "wrong_direct_answer_case_ids": [
+            "realqa_113",
+            "realqa_095",
+            "realqa_049"
+          ],
+          "mentor_needed_missed_count": 1,
+          "llm_direct_precision": 0.0,
+          "llm_direct_recall": 0.0,
+          "partial_precision": 0.9737,
+          "partial_recall": 0.2868,
+          "fallback_counts": {
+            "no_usable_answers": 49,
+            "requires_artifact_review": 8,
+            "none": 41,
+            "no_similar_answers": 87
+          }
+        }
+      },
+      "conformal_alpha_0.05": {
+        "file": "M2M-mentoring-agent/eval/agent2_conformal_alpha005_results.json",
+        "sim_threshold": {
+          "search_first": 0.894219,
+          "mentor_first": 0.894219
+        },
+        "summary": {
+          "accuracy": 0.1514,
+          "predicted_counts": {
+            "mentor_needed": 165,
+            "partial_with_mentor_suggest": 19,
+            "llm_direct": 1
+          },
+          "wrong_direct_answer_count": 1,
+          "wrong_direct_answer_case_ids": [
+            "realqa_113"
+          ],
+          "mentor_needed_missed_count": 1,
+          "llm_direct_precision": 0.0,
+          "llm_direct_recall": 0.0,
+          "partial_precision": 0.9474,
+          "partial_recall": 0.1395,
+          "fallback_counts": {
+            "no_similar_answers": 145,
+            "requires_artifact_review": 8,
+            "none": 20,
+            "no_usable_answers": 12
+          }
+        }
+      }
+    },
+    "interpretation": "Directly replacing Agent2's similarity thresholds with CONFLARE-style cutoffs is not beneficial in the current system. The calibrated thresholds are much higher than the current runtime thresholds and cause retrieval collapse: no_similar_answers increases from 15 in the current run to 87 at alpha=0.01 and 145 at alpha=0.05. This also eliminates llm_direct recall and introduces wrong_direct cases. The likely cause is calibration mismatch: source_answer_similarity in the validation artifact is not equivalent to the runtime retrieval score distribution after search_query routing, top-k truncation, and current asset embeddings. CONFLARE remains useful as a diagnostic/calibration framework, but it should be recalibrated from the exact runtime retriever scores and used as a retrieval-uncertainty signal, not as a direct replacement for the production SIM_THRESHOLD yet."
+  },
+  "runtime_conformal_calibration": {
+    "paper": "CONFLARE: Conformal Large Language Model Retrieval (2404.04287v1)",
+    "calibration_file": "M2M-mentoring-agent/eval/agent2_runtime_conformal_calibration.json",
+    "script": "M2M-mentoring-agent/eval/calibrate_agent2_runtime_conformal.py",
+    "status": "completed_final_validation_comparison",
+    "runtime_query_definition": "case['query'] exactly as used by evaluate_agent2_baseline.py",
+    "calibration_filter": {
+      "case_id_prefix": "realqa_",
+      "gold_verdict": "partial_with_mentor_suggest",
+      "reason": "Calibrated only on corpus-answerable real QA partial cases, excluding synthetic llm_direct and mentor_needed rows."
+    },
+    "calibrated_thresholds": {
+      "alpha_0.01": 0.723084,
+      "alpha_0.05": 0.757704,
+      "alpha_0.10": 0.800914,
+      "alpha_0.20": 0.83894
+    },
+    "compared_runs": {
+      "runtime_conformal_alpha_0.01": {
+        "file": "M2M-mentoring-agent/eval/agent2_runtime_conformal_alpha001_results.json",
+        "sim_threshold": {
+          "search_first": 0.723084,
+          "mentor_first": 0.723084
+        },
+        "summary": {
+          "accuracy": 0.3622,
+          "predicted_counts": {
+            "mentor_needed": 122,
+            "partial_with_mentor_suggest": 58,
+            "llm_direct": 5
+          },
+          "wrong_direct_answer_count": 5,
+          "wrong_direct_answer_case_ids": [
+            "realqa_127",
+            "realqa_113",
+            "realqa_095",
+            "realqa_049",
+            "realqa_025"
+          ],
+          "mentor_needed_missed_count": 1,
+          "llm_direct_precision": 0.0,
+          "llm_direct_recall": 0.0,
+          "partial_precision": 0.9828,
+          "partial_recall": 0.4419,
+          "mentor_needed_recall": 0.9091
+        }
+      },
+      "best_overall_candidate": {
+        "file": "M2M-mentoring-agent/eval/agent2_general_direct_llm_gate_simulation.json",
+        "method": "general_direct_llm_gate_simulation",
+        "summary": {
+          "accuracy": 0.4486,
+          "wrong_direct_answer_count": 0,
+          "mentor_needed_missed_count": 3,
+          "llm_direct_precision": 1.0,
+          "llm_direct_recall": 0.8667,
+          "partial_precision": 0.8571,
+          "partial_recall": 0.2791
+        }
+      }
+    },
+    "decision": "Do not choose runtime conformal threshold replacement as the best method. It improves accuracy over the baseline and usable fallback, but it creates 5 wrong_direct cases and still fails to recover true llm_direct cases. Choose the general_direct LLM gate as the best-performing candidate, with a production implementation required before deployment.",
+    "interpretation": "Runtime calibration fixes the earlier source-score mismatch and gives a much less aggressive threshold than the first conformal experiment. However, thresholding retrieval alone cannot solve the direct-answer class because many llm_direct supplement cases intentionally have no sufficiently similar mentor answer. The direct-answer path needs a separate general-knowledge gate and generation mode rather than lower/higher retrieval thresholds."
+  },
+  "production_general_direct_implementation": {
+    "file": "M2M-mentoring-agent/eval/agent2_production_general_direct_results.json",
+    "implemented_in": "M2M-mentoring-agent/agents/search_verify_agent.py",
+    "status": "implemented_and_validated",
+    "description": "Implemented the selected general-direct LLM gate in production Agent2 flow. The gate runs for safe search_first general-info questions when retrieval has no similar answers or when usable fallback produced a low-similarity partial candidate.",
+    "production_logic": {
+      "candidate_filters": [
+        "strategy == search_first",
+        "requires_artifact_review == false",
+        "risk_flags is empty",
+        "question matches conservative general-info heuristic",
+        "trigger is no_similar_answers or low_similarity_partial_fallback"
+      ],
+      "gate_confidence_min": 0.8,
+      "low_similarity_partial_max": 0.65,
+      "answer_mode": "general_direct",
+      "safety_check": "general_direct_safety verifier checks scope, no personal judgment, no unverifiable specifics, privacy, and mentor boundary marking"
+    },
+    "summary": {
+      "case_count": 185,
+      "accuracy": 0.4432,
+      "predicted_counts": {
+        "partial_with_mentor_suggest": 38,
+        "mentor_needed": 109,
+        "llm_direct": 38
+      },
+      "wrong_direct_answer_count": 0,
+      "wrong_direct_answer_case_ids": [],
+      "mentor_needed_missed_count": 2,
+      "mentor_needed_missed_case_ids": [
+        "realqa_059",
+        "realqa_034"
+      ],
+      "llm_direct_precision": 1.0,
+      "llm_direct_recall": 0.8444,
+      "llm_direct_f1": 0.9157,
+      "partial_precision": 0.9211,
+      "partial_recall": 0.2713,
+      "mentor_needed_recall": 0.8182
+    },
+    "gate_effect": {
+      "promoted_count": 31,
+      "rejected_count": 1,
+      "rejected_case_ids": [
+        "direct_supp_011"
+      ]
+    },
+    "interpretation": "The production implementation closely matches the LLM-gated simulation while preserving the key safety target: wrong_direct remains 0. Accuracy is slightly lower than the simulation because one additional llm_direct case remains partial/mentor-routed under the full production flow, but the selected strategy is validated for deployment."
+  }
+}

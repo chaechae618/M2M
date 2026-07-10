@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent2 Validation Experiment Report - 2026-07-08</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18202a;
+      --muted: #667085;
+      --line: #d9dee7;
+      --accent: #1f6feb;
+      --good: #0f8a5f;
+      --warn: #b7791f;
+      --bad: #c2410c;
+      --soft-blue: #eaf2ff;
+      --soft-green: #eaf8f2;
+      --soft-orange: #fff3df;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+      line-height: 1.55;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .subtitle {
+      max-width: 840px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    section {
+      margin-top: 22px;
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric {
+      min-height: 112px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 8px;
+      border: 1px solid #b9d2ff;
+      background: var(--soft-blue);
+    }
+
+    .callout.good {
+      border-color: #b7e4d0;
+      background: var(--soft-green);
+    }
+
+    .callout.warn {
+      border-color: #f2d29b;
+      background: var(--soft-orange);
+    }
+
+    table {
+      width: 100%;
+      margin-top: 14px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 11px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef1f6;
+      color: #344054;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .num {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eef1f6;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.good {
+      background: #dff6ed;
+      color: var(--good);
+    }
+
+    .tag.warn {
+      background: #fff0d4;
+      color: var(--warn);
+    }
+
+    .tag.bad {
+      background: #ffe5d6;
+      color: var(--bad);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    code {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: #eef1f6;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    .path-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .path {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .winner {
+      background: linear-gradient(180deg, #ffffff 0%, #f3fff9 100%);
+      border-color: #a9dfc5;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        width: min(100% - 24px, 1120px);
+        padding-top: 24px;
+      }
+
+      section {
+        padding: 18px;
+      }
+
+      .grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">M2M Mentoring Agent2 Validation</p>
+      <h1>Agent2 검색·검증 전략 실험 결과 공유</h1>
+      <p class="subtitle">
+        2026-07-08 기준, 실제 멘토·멘티 상담 Q&A에서 만든 validation set으로 Agent2의 routing,
+        retrieval threshold, fallback, general-direct gate, CONFLARE 기반 보정 아이디어를 비교했다.
+      </p>
+    </header>
+
+    <section class="winner">
+      <h2>최종 결론</h2>
+      <p>
+        오늘 실험 기준 최고 성능 방식은 <strong>general-direct LLM gate</strong>다.
+        단순 threshold 재설정보다 별도 general-direct 판단 경로를 두는 방식이
+        <code>llm_direct</code> 케이스를 가장 많이 회수하면서도 <code>wrong_direct</code>를 만들지 않았다.
+      </p>
+      <div class="grid">
+        <div class="metric">
+          <strong>선택 방식</strong>
+          <span>LLM Gate</span>
+          <small>general-direct 후보를 LLM으로 안전성 판정</small>
+        </div>
+        <div class="metric">
+          <strong>최고 Accuracy</strong>
+          <span>0.4486</span>
+          <small>185개 validation case 기준</small>
+        </div>
+        <div class="metric">
+          <strong>wrong_direct</strong>
+          <span>0</span>
+          <small>직접 답변 오분류 없음</small>
+        </div>
+        <div class="metric">
+          <strong>llm_direct Recall</strong>
+          <span>0.8667</span>
+          <small>45개 direct case 중 대부분 회수</small>
+        </div>
+      </div>
+      <div class="callout good">
+        <strong>의사결정:</strong> 다음 단계는 추가 threshold 탐색이 아니라
+        <code>general_direct</code> 전용 gate, answer mode, verifier를 production 코드에 구현하는 것이다.
+      </div>
+    </section>
+
+    <section>
+      <h2>Validation Dataset</h2>
+      <p>
+        원본 <code>example_data.csv</code>는 실제 멘토·멘티 상담 서비스의 질답 리스트다.
+        정제 후 real QA 140건을 만들고, 라벨 분포 보정을 위해 general-direct 성격의 synthetic supplement 45건을 추가했다.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>값</th>
+            <th>설명</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>원본 데이터</td>
+            <td class="num">158 rows</td>
+            <td>실제 상담 서비스에서 가져온 Q&A CSV</td>
+          </tr>
+          <tr>
+            <td>정제 후 real QA</td>
+            <td class="num">140 cases</td>
+            <td>평가에 사용할 수 있는 질문·답변 쌍</td>
+          </tr>
+          <tr>
+            <td>Direct supplement</td>
+            <td class="num">45 cases</td>
+            <td>멘토 답변 검색 없이 일반 커리어 지식으로 직접 답변 가능한 케이스 보강</td>
+          </tr>
+          <tr>
+            <td>최종 validation set</td>
+            <td class="num">185 cases</td>
+            <td><code>partial</code> 129, <code>mentor_needed</code> 11, <code>llm_direct</code> 45</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>전체 실험 결과</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>실험</th>
+            <th>Accuracy</th>
+            <th>Predicted 분포</th>
+            <th>wrong_direct</th>
+            <th>mentor_needed missed</th>
+            <th>llm_direct P/R</th>
+            <th>판단</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Baseline</td>
+            <td class="num">0.2486</td>
+            <td>partial 38 / mentor 140 / direct 7</td>
+            <td class="num">0</td>
+            <td class="num">3</td>
+            <td class="num">1.0000 / 0.1556</td>
+            <td><span class="tag warn">Too conservative</span></td>
+          </tr>
+          <tr>
+            <td>sim threshold 0.45</td>
+            <td class="num">0.2432</td>
+            <td>partial 45 / mentor 136 / direct 4</td>
+            <td class="num">0</td>
+            <td class="num">3</td>
+            <td class="num">1.0000 / 0.0889</td>
+            <td><span class="tag bad">Worse</span></td>
+          </tr>
+          <tr>
+            <td>Usable fallback 적용</td>
+            <td class="num">0.2757</td>
+            <td>partial 60 / mentor 118 / direct 7</td>
+            <td class="num">0</td>
+            <td class="num">3</td>
+            <td class="num">1.0000 / 0.1556</td>
+            <td><span class="tag warn">Small gain</span></td>
+          </tr>
+          <tr>
+            <td>General-direct heuristic</td>
+            <td class="num">0.4541</td>
+            <td>partial 42 / mentor 103 / direct 40</td>
+            <td class="num">0</td>
+            <td class="num">3</td>
+            <td class="num">1.0000 / 0.8889</td>
+            <td><span class="tag good">Strong simulation</span></td>
+          </tr>
+          <tr>
+            <td><strong>General-direct LLM gate</strong></td>
+            <td class="num"><strong>0.4486</strong></td>
+            <td>partial 42 / mentor 104 / direct 39</td>
+            <td class="num"><strong>0</strong></td>
+            <td class="num">3</td>
+            <td class="num"><strong>1.0000 / 0.8667</strong></td>
+            <td><span class="tag good">Selected</span></td>
+          </tr>
+          <tr>
+            <td>CONFLARE source alpha=0.01</td>
+            <td class="num">0.2541</td>
+            <td>partial 38 / mentor 144 / direct 3</td>
+            <td class="num">3</td>
+            <td class="num">1</td>
+            <td class="num">0.0000 / 0.0000</td>
+            <td><span class="tag bad">Not viable</span></td>
+          </tr>
+          <tr>
+            <td>CONFLARE source alpha=0.05</td>
+            <td class="num">0.1514</td>
+            <td>partial 19 / mentor 165 / direct 1</td>
+            <td class="num">1</td>
+            <td class="num">1</td>
+            <td class="num">0.0000 / 0.0000</td>
+            <td><span class="tag bad">Retrieval collapse</span></td>
+          </tr>
+          <tr>
+            <td>Runtime CONFLARE alpha=0.01</td>
+            <td class="num">0.3622</td>
+            <td>partial 58 / mentor 122 / direct 5</td>
+            <td class="num">5</td>
+            <td class="num">1</td>
+            <td class="num">0.0000 / 0.0000</td>
+            <td><span class="tag bad">Unsafe direct</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>주요 관찰</h2>
+      <div class="two-col">
+        <div>
+          <h3>1. Baseline 문제</h3>
+          <p>
+            Baseline은 <code>mentor_needed</code>로 과도하게 보내는 경향이 강했다.
+            전체 185건 중 140건을 멘토 연결로 예측했고, <code>llm_direct</code> recall은 0.1556에 머물렀다.
+          </p>
+          <ul>
+            <li><code>llm_direct</code> 45건 중 34건이 <code>mentor_needed</code>로 밀림</li>
+            <li><code>partial</code> 129건 중 98건도 <code>mentor_needed</code>로 밀림</li>
+            <li>안전성은 좋지만 자동 응답 가능 케이스를 너무 많이 놓침</li>
+          </ul>
+        </div>
+        <div>
+          <h3>2. Usable fallback 효과</h3>
+          <p>
+            search-first에서 검색 결과가 있는데 verifier가 usable을 비우는 경우,
+            일반 정보성 질문에 한해 conservative partial로 복구했다.
+          </p>
+          <ul>
+            <li>19건 복구</li>
+            <li>Accuracy 0.2486 → 0.2757</li>
+            <li><code>wrong_direct</code> 0 유지</li>
+            <li>다만 <code>llm_direct</code> recall 개선은 없음</li>
+          </ul>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>3. General-direct gate가 강했던 이유</h3>
+          <p>
+            많은 <code>llm_direct</code> 케이스는 기존 멘토 답변 corpus에 근거가 없거나 낮은 similarity를 보인다.
+            따라서 retrieval threshold를 낮추는 것보다, 일반 커리어 지식으로 직접 답변 가능한 질문인지 별도 판정하는 것이 더 맞다.
+          </p>
+          <ul>
+            <li>LLM gate 후보 33건 중 32건 허용</li>
+            <li>거절 케이스: <code>direct_supp_011</code></li>
+            <li><code>wrong_direct</code> 없이 direct recall 0.8667 확보</li>
+          </ul>
+        </div>
+        <div>
+          <h3>4. CONFLARE 적용 결과</h3>
+          <p>
+            논문 아이디어는 retrieval calibration framework로는 유용하지만,
+            현재 Agent2에 threshold replacement로 직접 적용하는 것은 맞지 않았다.
+          </p>
+          <ul>
+            <li>source-score conformal은 threshold가 너무 높아 검색 붕괴 발생</li>
+            <li>runtime conformal은 score mismatch를 줄였지만 <code>wrong_direct</code> 5건 발생</li>
+            <li><code>llm_direct</code> 문제는 retrieval calibration만으로 해결되지 않음</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>CONFLARE Threshold 기록</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Calibration 기준</th>
+            <th>alpha=0.01</th>
+            <th>alpha=0.05</th>
+            <th>alpha=0.10</th>
+            <th>alpha=0.20</th>
+            <th>메모</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>기존 source_answer_similarity</td>
+            <td class="num">0.853453</td>
+            <td class="num">0.894219</td>
+            <td class="num">0.908944</td>
+            <td class="num">0.922403</td>
+            <td>실제 runtime query와 점수 분포가 달라 retrieval collapse 발생</td>
+          </tr>
+          <tr>
+            <td>Runtime query similarity</td>
+            <td class="num">0.723084</td>
+            <td class="num">0.757704</td>
+            <td class="num">0.800914</td>
+            <td class="num">0.838940</td>
+            <td>더 현실적인 threshold지만 direct class를 해결하지 못함</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout warn">
+        <strong>해석:</strong> CONFLARE는 “검색 결과가 충분한가”를 보정하는 데는 참고할 수 있지만,
+        “검색 근거 없이 일반 지식으로 답변해도 되는가”를 판단하는 장치는 아니다.
+      </div>
+    </section>
+
+    <section>
+      <h2>최종 선택 기준</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>기준</th>
+            <th>왜 중요한가</th>
+            <th>최종 선택에서의 상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>wrong_direct</code> 최소화</td>
+            <td>근거가 부족한데 직접 답변하는 것은 서비스 리스크가 큼</td>
+            <td><span class="tag good">0건</span></td>
+          </tr>
+          <tr>
+            <td><code>llm_direct</code> recall</td>
+            <td>일반 정보성 질문을 불필요하게 멘토 연결로 보내지 않기 위함</td>
+            <td><span class="tag good">0.8667</span></td>
+          </tr>
+          <tr>
+            <td>전체 accuracy</td>
+            <td>validation set 전체 routing 품질</td>
+            <td><span class="tag good">0.4486</span></td>
+          </tr>
+          <tr>
+            <td>Production 구현 가능성</td>
+            <td>현재 구조에 gate와 answer mode를 분리해 넣을 수 있음</td>
+            <td><span class="tag warn">구현 필요</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>다음 작업</h2>
+      <ol>
+        <li>
+          <strong><code>general_direct</code> verdict 또는 answer mode 추가</strong>
+          <br>
+          현재 직접 답변은 retrieved mentor answer 기반에 가깝다. no-similar 케이스에도 대응하려면 일반 지식 답변 모드를 분리해야 한다.
+        </li>
+        <li>
+          <strong>LLM gate production prompt 추가</strong>
+          <br>
+          질문이 일반 커리어 지식으로 안전하게 답변 가능한지, 개인 판단·자료 검토·고위험 조언이 필요한지 구분한다.
+        </li>
+        <li>
+          <strong>general-direct 전용 verifier 추가</strong>
+          <br>
+          기존 verifier는 retrieved answer faithfulness에 묶여 있으므로, 일반 답변의 안전성·범위·비개인화 여부를 따로 검증해야 한다.
+        </li>
+        <li>
+          <strong>회귀 평가 자동화</strong>
+          <br>
+          이번 validation set 185건을 고정 regression suite로 두고, <code>wrong_direct</code>, direct recall, partial recall을 계속 추적한다.
+        </li>
+        <li>
+          <strong>API key 교체</strong>
+          <br>
+          실험 중 사용한 OpenAI key는 대화에 노출되었으므로 폐기하고 새 key로 교체한다.
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>산출물</h2>
+      <p class="muted">오늘 생성·갱신된 주요 파일이다. 팀 리뷰 때 아래 결과 파일을 기준으로 재현 가능하다.</p>
+      <div class="path-list">
+        <div class="path">M2M-mentoring-agent/eval/agent2_calibration_summary.json</div>
+        <div class="path">M2M-mentoring-agent/eval/agent2_baseline_results.json</div>
+        <div class="path">M2M-mentoring-agent/eval/agent2_usable_fallback_applied_results.json</div>
+        <div class="path">M2M-mentoring-agent/eval/agent2_general_direct_llm_gate_simulation.json</div>
+        <div class="path">M2M-mentoring-agent/eval/agent2_conformal_retrieval_calibration.json</div>
+        <div class="path">M2M-mentoring-agent/eval/agent2_runtime_conformal_calibration.json</div>
+        <div class="path">M2M-mentoring-agent/eval/agent2_runtime_conformal_alpha001_results.json</div>
+        <div class="path">M2M-mentoring-agent/agents/search_verify_agent.py</div>
+      </div>
+      <p class="footer-note">
+        이 HTML은 공유용 요약본이며, 세부 case-level 결과는 각 JSON 파일에서 확인한다.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
