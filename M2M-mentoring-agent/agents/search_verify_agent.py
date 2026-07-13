@@ -92,6 +92,23 @@ def _question_unit_texts(question_units: list[dict] | None) -> list[str]:
     return texts
 
 
+def _question_unit_lines(question_units: list[dict] | None) -> list[str]:
+    """검증 프롬프트용: 각 unit을 answerability 라벨과 함께 표시한다.
+    VERIFY_PROMPT가 unit별 answerability(searchable/mentor_needed)를 참조하므로,
+    텍스트만 넘기던 기존 방식과 달리 라벨을 함께 넘겨야 unit별 부분답변 판단이 작동한다."""
+    lines = []
+    for unit in question_units or []:
+        if not isinstance(unit, dict):
+            continue
+        text = unit.get("question") or unit.get("unit") or ""
+        if not text:
+            continue
+        ans = unit.get("answerability", "")   # searchable / mentor_needed / artifact_needed
+        tag = f"[{ans}] " if ans else ""
+        lines.append(f"- {tag}{text}")
+    return lines
+
+
 # 개인정보 정규식 선처리 (LLM 호출 전 1차 필터, 생성 답변에도 재사용)
 _PRIVACY_PATTERNS = [
     r'\d{2,4}학번',
@@ -1103,7 +1120,7 @@ class SearchVerifyAgent:
                 for i, a in enumerate(retrieved)
             )
             units_text = (
-                "; ".join(_question_unit_texts(question_units))
+                "\n".join(_question_unit_lines(question_units))
                 or "없음"
             )
             prompt = VERIFY_PROMPT.format(

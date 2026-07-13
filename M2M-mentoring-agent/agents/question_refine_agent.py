@@ -180,6 +180,8 @@ C층(diagnostics): 평가·로그·self-refine에 사용하는 진단 구조
 - search_query: 개인정보 제외, 직무·준비 방법·상황 키워드 중심
 - match_query: 멘티 배경·전환여부·원하는 도움 포함, 멘토 프로필과 매칭되도록 풍부하게
 
+{domain_guideline}
+
 [Hard-case Rules — 아래 패턴이 보이면 반드시 적용]
 
 ★ Rule 1. 직무 전환 질문 (transition_type != "없음")
@@ -523,6 +525,11 @@ CHECK_PROMPT = """[Task]
 - clarification_type: "priority"(우선순위 불명확) / "role"(직무 불명확) / "experience"(경험 불명확) / "constraint"(제약 불명확) / "bottleneck"(병목 불명확) / "none"
 - next_action: "ask_followup" / "finalize"
 
+[Domain]
+- domain: 멘티의 관심 직무가 다음 중 어디에 속하는지 분류한다.
+  "회계/재무/금융" / "마케팅/MD" / "IT개발/데이터" / "기타"
+  (아직 관심 직무가 불명확하거나 세 분야에 속하지 않으면 "기타")
+
 [Output] JSON만 출력한다.
 {
   "fields": {
@@ -544,12 +551,43 @@ CHECK_PROMPT = """[Task]
     "clarification_type": "none",
     "next_action": "ask_followup"
   },
+  "domain": "회계/재무/금융 | 마케팅/MD | IT개발/데이터 | 기타 중 하나",
   "missing_fields": ["부족한 항목명"],
   "next_best_question": "아직 부족하다면 다음에 물어볼 가장 중요한 질문 1개"
 }
 
 대화 내용:
 {transcript}"""
+
+
+# ─────────────────────────────────────────
+# 분야 특화 정제 지침 (REFINEMENT_PROMPT {domain_guideline} 슬롯에 주입)
+#   - 실제 validation set(117건) 통계에서 도출한 도메인 prior
+#   - 기존 9개 병목 라벨·hard rule·스키마는 참조만, 변경 없음 (additive)
+#   - "기타" 분야는 빈 문자열 → 기존 일반 프롬프트 그대로
+# ─────────────────────────────────────────
+
+GUIDELINE_REFINE = {
+    "회계/재무/금융": """[분야 특화 정제 지침 — 회계/재무/금융]
+- 빈출 병목(9개 라벨 중 매핑): 실행순서_불명확(자격증 취득 vs 실무경험 우선순위), 경험_공백_극복(비전공·경험 부족), 직무_미분화(은행/증권/세무/IB/PB 등 세부직무 미선택), 자료피드백_필요(자소서·이력서 검토)
+- 정제 시 파악: 보유 자격증 / 목표 세부직무(은행 WM·기업금융·PB / 증권 IB·운용역 / 세무 / 원가·재무) / 실무경험 유무
+- search_query 키워드: 회계·재무·은행·증권·세무·IB·PB·자산운용·원가·[자격증명]·인턴·실무경험
+- 참고: 가능성판단은 이 분야에선 드묾 → risk_flags 과도 적용 주의""",
+
+    "마케팅/MD": """[분야 특화 정제 지침 — 마케팅/MD]
+- 빈출 병목(9개 라벨 중 매핑): 직무_미분화(퍼포먼스/브랜드/콘텐츠/MD/그로스 세부직무 미선택), 자료피드백_필요(자소서·포트폴리오 검토), 경험_공백_극복(비전공·경험 부족), 전환논리_부족(타 직무→마케팅 전환)
+- 정제 시 파악: 목표 세부직무 / 보유 작업물(포트폴리오·공모전·대외활동) / 정량성과 경험
+- search_query 키워드: 마케팅·기획·MD·콘텐츠·브랜드·광고·퍼포먼스·CRM·그로스·포트폴리오·공모전·정량성과
+- 참고: 자료 직접 검토 필요 시 requires_artifact_review (기존 규칙 그대로)""",
+
+    "IT개발/데이터": """[분야 특화 정제 지침 — IT개발/데이터]
+- 빈출 병목(9개 라벨 중 매핑): 자료피드백_필요(프로젝트·GitHub·포트폴리오 검토), 실행순서_불명확(기술스택 학습 순서), 직무_미분화(프론트/백엔드/데이터/ML 미선택), 경험_공백_극복(비전공·부트캠프), 가능성_불확실(비전공 전환 가능성)
+- 정제 시 파악: 목표 세부직무(프론트/백엔드/데이터분석/데이터엔지니어/ML·AI) / 보유 기술스택 / 프로젝트·GitHub 유무 / 비전공·부트캠프 여부
+- search_query 키워드: 개발·데이터·백엔드·프론트·AI·머신러닝·SQL·프로젝트·포트폴리오·기술스택·코딩테스트
+- 참고: 가능성판단 상대적으로 높음 → risk_flags + mentor_first (기존 규칙)""",
+
+    "기타": "",
+}
 
 
 # ─────────────────────────────────────────
@@ -567,6 +605,7 @@ class QuestionRefineAgent:
         self.messages: list[dict] = [{"role": "system", "content": SYSTEM_PROMPT}]
         self.turn_count = 0
         self.max_turns  = 10
+        self.domain     = "기타"   # CHECK_PROMPT가 분류 → 정제 시 도메인 가이드라인 선택
         self.is_done    = False
 
     def chat(self, user_input: str) -> str:
@@ -616,6 +655,10 @@ class QuestionRefineAgent:
             print(f"  충분성 체크 실패: {e} → 부족으로 처리")
             return False, "ask_followup"
 
+        # ── 도메인 분류 캡처 (정제 시 도메인 가이드라인 선택에 사용) ──
+        domain = result.get("domain", "기타")
+        self.domain = domain if domain in GUIDELINE_REFINE else "기타"
+
         # ── 필드 점수 판단 ──
         fields = result.get("fields", {})
         scores = {k: clamp01(v.get("score", 0)) for k, v in fields.items() if isinstance(v, dict)}
@@ -664,8 +707,13 @@ class QuestionRefineAgent:
     def _generate_refinement(self, fix_hint: str = "") -> dict:
         """REFINEMENT_PROMPT 실행 → raw dict 반환"""
         extra = f"\n\n[수정 지시사항]\n{fix_hint}" if fix_hint else ""
+        # 분야 특화 지침 주입 (self.domain은 CHECK_PROMPT가 분류, "기타"→빈 문자열=기존 프롬프트)
+        domain_block = GUIDELINE_REFINE.get(getattr(self, "domain", "기타"), "")
+        if domain_block:
+            print(f"  정제 | 분야 특화 지침 주입: {self.domain}")
+        refine_prompt = REFINEMENT_PROMPT.replace("{domain_guideline}", domain_block)
         refine_messages = self.messages + [
-            {"role": "user", "content": REFINEMENT_PROMPT + extra}
+            {"role": "user", "content": refine_prompt + extra}
         ]
         resp = client.chat.completions.create(
             model="gpt-4o",
