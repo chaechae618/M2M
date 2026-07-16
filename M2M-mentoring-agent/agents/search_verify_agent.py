@@ -447,9 +447,9 @@ AI 생성 답변:
 # ─────────────────────────────────────────
 
 class SearchVerifyAgent:
-    THRESHOLD     = {"search_first": 0.65, "mentor_first": 0.75}
+    THRESHOLD     = {"search_first": 0.60, "mentor_first": 0.60}
     MID_THRESHOLD = {"search_first": 0.45, "mentor_first": 0.50}
-    SIM_THRESHOLD = {"search_first": 0.50, "mentor_first": 0.45}
+    SIM_THRESHOLD = {"search_first": 0.55, "mentor_first": 0.55}
     SEARCH_FIRST_USABLE_FALLBACK_SIM_THRESHOLD = 0.50
     SEARCH_FIRST_USABLE_FALLBACK_SCORES = {
         "relevance": 0.65,
@@ -457,7 +457,7 @@ class SearchVerifyAgent:
         "situation_fit": 0.55,
         "privacy_safe": True,
     }
-    GENERAL_DIRECT_GATE_CONFIDENCE_MIN = 0.80
+    GENERAL_DIRECT_GATE_CONFIDENCE_MIN = 0.75
     GENERAL_DIRECT_LOW_SIM_MAX = 0.65
 
     # 기본 가중치 (recency는 코드 계산, LLM은 나머지 3개만)
