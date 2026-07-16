@@ -31,7 +31,7 @@ INPUT_JSON = ROOT / "eval" / "agent2_realqa_retrieval_candidates.json"
 ASSET_JSON = ROOT / "data" / "cleaned" / "example_qa_asset_candidates.json"
 OUTPUT_JSON = ROOT / "eval" / "agent2_realqa_labeled_initial.json"
 
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-4.1-mini"
 
 
 SYSTEM_PROMPT = """너는 멘토링 서비스의 Agent2 validation dataset 라벨러다.

@@ -34,11 +34,17 @@ import json
 from datetime import datetime
 from openai import OpenAI
 from db.json_db import get_assetized_answers, update_session
+from agents.personal_decision_guard import personal_decision_guard_flag
 from utils.embedding import get_embedding, top_k_similar
 from utils.env import load_project_env
 
 load_project_env()
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+DEFAULT_CHAT_MODEL = os.environ.get("AGENT2_OPENAI_MODEL", "gpt-4.1-mini")
+
+
+def get_chat_model() -> str:
+    return os.environ.get("AGENT2_OPENAI_MODEL", DEFAULT_CHAT_MODEL)
 
 
 # ─────────────────────────────────────────
@@ -538,7 +544,7 @@ class SearchVerifyAgent:
                 hard_case_flags=json.dumps(hard_case_flags or {}, ensure_ascii=False),
             )
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model=get_chat_model(),
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0,
@@ -645,6 +651,10 @@ class SearchVerifyAgent:
         print("[검색검증 에이전트 v2] 실행 중...")
         routing_hints    = routing_hints or {}
         hard_case_flags  = hard_case_flags or {}
+        hard_case_flags = {
+            **hard_case_flags,
+            **personal_decision_guard_flag(refined_question),
+        }
         question_units   = question_units or []
         safe_context     = safe_context or conversation_summary
         current_bottleneck   = current_bottleneck or ""
@@ -686,6 +696,25 @@ class SearchVerifyAgent:
                 mentor_match_hints={
                     "desired_help":  "이력서·포트폴리오 피드백",
                     "risk_flags":    risk_flags,
+                    "question_units": _question_unit_texts(question_units),
+                },
+                retrieval_log=retrieval_log,
+            )
+
+        if safe_bool(hard_case_flags.get("requires_personal_decision")):
+            print("  guard | requires_personal_decision=True -> mentor_needed")
+            retrieval_log["verdict"] = "mentor_needed"
+            retrieval_log["personal_decision_guard"] = hard_case_flags.get("personal_decision_guard", {})
+            return self._mentor_fallback(
+                session_id, "mentor_first",
+                fallback_type="personal_decision_required",
+                reason=hard_case_flags.get(
+                    "personal_decision_reason",
+                    "Personal career decision requires mentor judgment.",
+                ),
+                mentor_match_hints={
+                    "desired_help": "personal career decision",
+                    "risk_flags": risk_flags,
                     "question_units": _question_unit_texts(question_units),
                 },
                 retrieval_log=retrieval_log,
@@ -1072,7 +1101,7 @@ class SearchVerifyAgent:
         try:
             prompt   = COMPLEXITY_PROMPT.format(question=question)
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model=get_chat_model(),
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0,
@@ -1116,7 +1145,7 @@ class SearchVerifyAgent:
                 risk_flags=", ".join(risk_flags) if risk_flags else "없음",
             )
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model=get_chat_model(),
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0,
@@ -1160,7 +1189,7 @@ class SearchVerifyAgent:
         for attempt in range(1, 3):
             try:
                 response  = client.chat.completions.create(
-                    model="gpt-4o",
+                    model=get_chat_model(),
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.3 if attempt == 2 else 0.5,
                 )
@@ -1202,7 +1231,7 @@ class SearchVerifyAgent:
         for attempt in range(1, 3):
             try:
                 response = client.chat.completions.create(
-                    model="gpt-4o",
+                    model=get_chat_model(),
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.3 if attempt == 2 else 0.5,
                 )
@@ -1244,7 +1273,7 @@ class SearchVerifyAgent:
                 generated_answer=generated,
             )
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model=get_chat_model(),
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0,
@@ -1279,7 +1308,7 @@ class SearchVerifyAgent:
                 grounded_threshold=grounded_threshold,
             )
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model=get_chat_model(),
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0,

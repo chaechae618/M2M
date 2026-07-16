@@ -38,7 +38,7 @@ REALQA_LABELED_JSON = ROOT / "eval" / "agent2_realqa_labeled_initial.json"
 SUPPLEMENT_JSON = ROOT / "eval" / "agent2_direct_supplement.json"
 COMBINED_JSON = ROOT / "eval" / "agent2_balanced_with_direct_supplement.json"
 
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-4.1-mini"
 
 
 SYSTEM_PROMPT = """너는 Agent2 validation dataset을 보강하는 데이터 생성기다.

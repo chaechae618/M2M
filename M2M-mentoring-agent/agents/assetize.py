@@ -366,7 +366,7 @@ class AssetizeAgent:
     def _judge(self, prompt: str) -> dict:
         try:
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4.1-mini",
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0,
@@ -383,7 +383,7 @@ class AssetizeAgent:
                 answer_content=answer_content[:1500],   # 토큰 절약
             )
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4.1-mini",
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0,

@@ -1,0 +1,4527 @@
+{
+  "description": "Agent2 Itda-140 binary routing evaluation.",
+  "dataset": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\agent2_itda_eval.json",
+  "assets": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\json_db\\mentor_answers.json",
+  "config": {
+    "SIM_THRESHOLD": {
+      "search_first": 0.5,
+      "mentor_first": 0.45
+    },
+    "MID_THRESHOLD": {
+      "search_first": 0.45,
+      "mentor_first": 0.5
+    },
+    "THRESHOLD": {
+      "search_first": 0.65,
+      "mentor_first": 0.75
+    },
+    "GENERAL_DIRECT_GATE_CONFIDENCE_MIN": 0.8,
+    "DISABLE_GENERAL_DIRECT": false,
+    "model": "gpt-4.1-mini"
+  },
+  "summary": {
+    "case_count": 80,
+    "accuracy": 0.9,
+    "gold_counts": {
+      "llm_direct": 40,
+      "mentor_needed": 40
+    },
+    "predicted_counts": {
+      "llm_direct": 32,
+      "mentor_needed": 48
+    },
+    "raw_predicted_counts": {
+      "llm_direct": 32,
+      "mentor_needed": 45,
+      "partial_with_mentor_suggest": 3
+    },
+    "wrong_direct_count": 0,
+    "wrong_direct_case_ids": [],
+    "over_mentor_count": 8,
+    "over_mentor_case_ids": [
+      "llm_db_082",
+      "llm_db_005",
+      "llm_db_012",
+      "llm_db_015",
+      "llm_db_014",
+      "llm_db_028",
+      "llm_db_076",
+      "llm_db_089"
+    ],
+    "confusion_matrix": {
+      "llm_direct": {
+        "llm_direct": 32,
+        "mentor_needed": 8
+      },
+      "mentor_needed": {
+        "llm_direct": 0,
+        "mentor_needed": 40
+      }
+    },
+    "per_label": {
+      "llm_direct": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 8,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889
+      },
+      "mentor_needed": {
+        "tp": 40,
+        "fp": 8,
+        "fn": 0,
+        "precision": 0.8333,
+        "recall": 1.0,
+        "f1": 0.9091
+      }
+    },
+    "subtype_recall": {
+      "llm_direct_db": 0.6,
+      "llm_direct_general": 1.0,
+      "mentor_needed": 1.0
+    }
+  },
+  "results": [
+    {
+      "case_id": "llm_db_030",
+      "query": "식품 업계 현직자는 새로운 소비 트렌드와 상품 아이디어를 어떤 경로로 발견하나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_030",
+        "timestamp": "2026-07-16T18:53:02.971488",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 일반적인 직무 정보와 관련되어 있어 AI가 안전하게 답변 가능함"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_036",
+      "query": "개발자로 취업하기 전에 다른 IT 직무로 시작한 경력이 이후 개발 직무 전환에 도움이 될 수 있나요?",
+      "domain": "IT 개발, 데이터",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 2,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_095"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_036",
+        "timestamp": "2026-07-16T18:53:08.860047",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 2,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.5086,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_092",
+      "query": "보도자료의 기본 구성은 어떻게 되나요?",
+      "domain": "홍보/CSR",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_092",
+        "timestamp": "2026-07-16T18:53:12.280852",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "보도자료 기본 구성에 대한 일반적인 정보 요청으로 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_072",
+      "query": "마케팅/MD 직무 자기소개서 초안을 작성했습니다. 제 전공(비전공(일반))과 현재 상황(학점 낮음)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_072",
+        "timestamp": "2026-07-16T18:53:14.042338",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_095",
+      "query": "광고대행사 신입 취업을 위해 반드시 준비해야 할 경험, 포트폴리오, 역량은 무엇인가요?",
+      "domain": "홍보/CSR",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 1,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_046"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_095",
+        "timestamp": "2026-07-16T18:53:14.045910",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.501,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "mentor_148",
+      "query": "전문/특수 직무의 실제 하루 업무와 야근 빈도, 팀 내 분위기가 회사마다 어떻게 다른지 현직 경험을 바탕으로 알려주시고 제 성향에 맞는지도 봐주세요.",
+      "domain": "전문/특수",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.385,
+      "fallback_type": "score_below_threshold",
+      "fallback_reason": "대부분 답변이 질문의 핵심인 전문/특수 직무의 실제 업무, 야근 빈도, 팀 분위기, 성향 적합성에 대한 구체적 경험이나 정보 제공이 부족하며, 일부는 단순 인사나 상황 공감에 그쳐 근거로 활용하기 어려움.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_148",
+        "timestamp": "2026-07-16T18:53:18.032516",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.385,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_100",
+      "query": "홍보 캠페인에서 핵심 메시지는 어떻게 정의하나요?",
+      "domain": "홍보/CSR",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_100",
+        "timestamp": "2026-07-16T18:53:21.195711",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 특정 개인 상황이나 합격 가능성 판단이 아닌 일반적인 직무 지식에 관한 내용임"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_142",
+      "query": "전문/특수 직무 자기소개서 초안을 작성했습니다. 제 전공(영어영문학)과 현재 상황(직무 전환 중)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "전문/특수",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_142",
+        "timestamp": "2026-07-16T18:53:22.773076",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_172",
+      "query": "유통/무역/구매 직무 자기소개서 초안을 작성했습니다. 제 전공(산업공학)과 현재 상황(학점 낮음)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "유통/무역/구매",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_172",
+        "timestamp": "2026-07-16T18:53:22.776813",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_006",
+      "query": "전략/기획 면접에서 받은 질문과 제가 한 답변을 정리했습니다. 어떤 부분이 감점 요소였을지 면접관 관점에서 평가해 주세요.",
+      "domain": "전략/기획",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 전략/기획 면접에서 받은 질문과 답변의 감점 요소 평가라는 구체적 요청과 직접적으로 관련이 없고, 대부분 일반적인 격려나 직무 관련 언급에 그쳐 실제 평가 근거로 활용하기에 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_006",
+        "timestamp": "2026-07-16T18:53:22.781875",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_082",
+      "query": "중견기업 회계 직무 신입 지원에 일반적으로 필요한 학점, 자격증, 경험은 어느 정도인가요?",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 1,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변이 질문과 관련된 구체적인 정보나 근거를 제공하지 않아 답변 근거로 활용하기에 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_082",
+        "timestamp": "2026-07-16T18:53:26.157540",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_034",
+      "query": "시장 규모를 추정할 때 TAM, SAM, SOM은 무엇을 뜻하나요?",
+      "domain": "전략/기획",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_034",
+        "timestamp": "2026-07-16T18:53:29.030690",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "시장 규모 개념에 대한 일반적인 설명으로 개인 맞춤형 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_005",
+      "query": "비전공자가 CRM 마케팅 인턴에 지원할 때 어떤 역량과 경험을 강조해야 하나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 1,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "제공된 답변이 비전공자가 CRM 마케팅 인턴에 지원할 때 강조할 역량과 경험에 대해 구체적 조언이나 근거를 제시하지 않아 직접적인 답변 근거로 활용하기 어렵다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_005",
+        "timestamp": "2026-07-16T18:53:30.758552",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_116",
+      "query": "서비스 기획/UI,UX 면접에서 받은 질문과 제가 한 답변을 정리했습니다. 어떤 부분이 감점 요소였을지 면접관 관점에서 평가해 주세요.",
+      "domain": "서비스 기획/UI,UX",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 서비스 기획/UI,UX 면접 질문과 답변 평가에 직접적으로 관련된 내용이 부족하며, 대부분 일반적 위로나 다른 직무 관련 언급으로 실제 감점 요소 평가 근거로 활용하기 어렵다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_116",
+        "timestamp": "2026-07-16T18:53:35.561562",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_058",
+      "query": "공사/공기업 직무의 실제 하루 업무와 야근 빈도, 팀 내 분위기가 회사마다 어떻게 다른지 현직 경험을 바탕으로 알려주시고 제 성향에 맞는지도 봐주세요.",
+      "domain": "공사/공기업",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 공사/공기업 직무의 실제 하루 업무, 야근 빈도, 팀 분위기 등 구체적 현직 경험이나 회사별 차이를 다루지 않고, 멘티 성향과의 연계도 전혀 없으며, 대부분 질문 확인이나 일반적 조언에 그쳐 답변 근거로 활용하기에 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_058",
+        "timestamp": "2026-07-16T18:53:38.331661",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_063",
+      "query": "홍보/CSR 직무로 지금 제 스펙(컴퓨터공학 전공, 졸업유예 중)이면 실제 서류 합격 가능성이 어느 정도인지 냉정하게 평가해 주세요.",
+      "domain": "홍보/CSR",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 3,
+      "avg_score": 0.335,
+      "fallback_type": "score_below_threshold",
+      "fallback_reason": "검색된 답변 대부분이 홍보/CSR 직무의 서류 합격 가능성 평가에 직접적 근거가 부족하며, 일부는 관련 없는 개발자 직무 내용이 포함되어 있어 활용도가 매우 낮음.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_063",
+        "timestamp": "2026-07-16T18:53:41.414464",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 3,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.335,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_191",
+      "query": "의료/보건 직무로 A사와 B사 오퍼를 동시에 받았습니다. 제 상황(인턴 경험 없음)과 장기 커리어를 고려하면 어느 쪽을 선택하는 게 나을지 멘토님의 판단을 듣고 싶습니다.",
+      "domain": "의료/보건",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들이 멘티의 구체적 상황과 장기 커리어 고려에 따른 A사와 B사 선택에 대해 직접적이고 구체적인 조언을 제공하지 못해 근거로 활용하기에 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_191",
+        "timestamp": "2026-07-16T18:53:44.314277",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_018",
+      "query": "현직 마케터는 트렌드와 소비자 감각을 유지하기 위해 어떤 자료와 행동을 꾸준히 활용하나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_018",
+        "timestamp": "2026-07-16T18:53:47.180882",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 개인 판단이나 민감한 정보 요구 없이 일반적인 직무 정보에 해당함"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_185",
+      "query": "연구/설계 포트폴리오를 준비했는데 제 배경(비전공(일반), 지방 거주)에서 프로젝트 구성과 우선순위가 적절한지 직접 피드백받고 싶습니다.",
+      "domain": "연구/설계",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_185",
+        "timestamp": "2026-07-16T18:53:48.676404",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_122",
+      "query": "기타 사무 직무 자기소개서 초안을 작성했습니다. 제 전공(무역학)과 현재 상황(학점 낮음)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "기타 사무",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_122",
+        "timestamp": "2026-07-16T18:53:48.682441",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_069",
+      "query": "영업 성과지표로 자주 쓰이는 전환율은 어떻게 계산하나요?",
+      "domain": "영업/영업관리",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_069",
+        "timestamp": "2026-07-16T18:53:48.689019",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "전환율 계산 방법은 일반적인 직무 지식에 해당하며 개인 상황 판단이 필요하지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_064",
+      "query": "홍보/CSR 현직자분이 보시기에 제가 받은 A사 팀의 조직문화와 리더 스타일이 괜찮은지 판단하고 싶습니다. 면접에서 들은 내용을 바탕으로 입사 여부를 조언해 주세요.",
+      "domain": "홍보/CSR",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 멘티 질문인 'A사 팀의 조직문화와 리더 스타일에 대한 판단 및 입사 조언'과 직접 관련된 내용이 거의 없으며, 대부분 일반적인 자기소개서, 경력 전환, 홍보 직무 소개 등으로 구체적 근거로 활용하기 어렵다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_064",
+        "timestamp": "2026-07-16T18:53:50.621972",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_132",
+      "query": "IT개발/데이터 직무 자기소개서 초안을 작성했습니다. 제 전공(산업공학)과 현재 상황(자격증 없음)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "IT개발/데이터",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_132",
+        "timestamp": "2026-07-16T18:53:53.726851",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_162",
+      "query": "영업/영업관리 직무 자기소개서 초안을 작성했습니다. 제 전공(무역학)과 현재 상황(경력 부족)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "영업/영업관리",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_162",
+        "timestamp": "2026-07-16T18:53:53.736852",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_009",
+      "query": "전략/기획 분야 대학원 진학과 바로 취업 중 고민입니다. 제 전공(컴퓨터공학)과 상황(인턴 경험 없음)에서 어느 선택이 더 유리할지 조언해 주세요.",
+      "domain": "전략/기획",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 질문의 핵심인 '컴퓨터공학 전공자의 전략/기획 분야 대학원 진학과 취업 선택'에 대해 구체적 조언이나 비교 분석을 제공하지 않아 근거로 활용하기에 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_009",
+        "timestamp": "2026-07-16T18:53:53.759805",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_087",
+      "query": "금융권 취업에서 학벌이 미치는 영향은 어느 정도이며 어떤 경험과 역량으로 보완할 수 있나요?",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_087",
+        "timestamp": "2026-07-16T18:53:56.419876",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 개인 판단이나 첨삭 요청이 아니며, 일반적인 직무 정보와 준비 방법에 관한 내용임"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_012",
+      "query": "이직을 준비하면서 생기는 불안과 조급함을 관리하려면 어떤 기준과 방법이 도움이 되나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "no_similar_answers",
+      "fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_012",
+        "timestamp": "2026-07-16T18:53:58.056143",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_015",
+      "query": "마케터는 유행하는 콘텐츠와 밈을 어느 정도까지 꾸준히 관찰해야 하나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "no_similar_answers",
+      "fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_015",
+        "timestamp": "2026-07-16T18:53:58.402608",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_151",
+      "query": "회계/재무/금융 직무로 A사와 B사 오퍼를 동시에 받았습니다. 제 상황(지방 거주)과 장기 커리어를 고려하면 어느 쪽을 선택하는 게 나을지 멘토님의 판단을 듣고 싶습니다.",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 3,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 멘티 상황에 대한 구체적 조언이나 두 회사 선택에 대한 판단 근거를 제공하지 않고, 일반적인 격려와 축하에 그쳐 실제 답변 근거로 활용하기에 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_151",
+        "timestamp": "2026-07-16T18:53:58.749151",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 3,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_016",
+      "query": "인사/총무/노무 면접에서 받은 질문과 제가 한 답변을 정리했습니다. 어떤 부분이 감점 요소였을지 면접관 관점에서 평가해 주세요.",
+      "domain": "인사/총무/노무",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들 중 인사/총무/노무 면접 질문과 답변 평가에 직접적으로 관련된 내용이 거의 없고, 대부분 다른 직무나 일반적인 위로·조언에 그쳐 실제 감점 요소 평가 근거로 활용하기에 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_016",
+        "timestamp": "2026-07-16T18:54:01.136852",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_019",
+      "query": "인사/총무/노무 분야 대학원 진학과 바로 취업 중 고민입니다. 제 전공(디자인학)과 상황(지방 거주)에서 어느 선택이 더 유리할지 조언해 주세요.",
+      "domain": "인사/총무/노무",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 1,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변이 전공(디자인학)과 인사/총무/노무 분야 진학 또는 취업 선택에 대한 구체적 조언을 제공하지 않아 근거로 활용하기 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_019",
+        "timestamp": "2026-07-16T18:54:04.192562",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 1,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_189",
+      "query": "연구/설계 분야 대학원 진학과 바로 취업 중 고민입니다. 제 전공(화학공학)과 상황(졸업유예 중)에서 어느 선택이 더 유리할지 조언해 주세요.",
+      "domain": "연구/설계",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "no_similar_answers",
+      "fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_189",
+        "timestamp": "2026-07-16T18:54:09.112799",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_059",
+      "query": "재고관리에서 안전재고를 두는 이유는 무엇인가요?",
+      "domain": "생산/품질/제조",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_059",
+        "timestamp": "2026-07-16T18:54:09.490714",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 특정 개인 상황이나 판단을 요구하지 않고, 일반적인 직무 지식에 관한 내용이기 때문입니다."
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_004",
+      "query": "취업할 스타트업을 고를 때 회사의 성장 가능성과 재무 상태, 조직 환경을 어떤 기준으로 확인해야 하나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_004",
+        "timestamp": "2026-07-16T18:54:11.294152",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 일반적인 기준과 방법을 묻고 있어 AI가 일반 지식으로 안전하게 답변 가능함"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_064",
+      "query": "영업관리 직무에서 매출 예측은 어떻게 활용되나요?",
+      "domain": "영업/영업관리",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_064",
+        "timestamp": "2026-07-16T18:54:12.972083",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 일반적인 직무 정보와 활용 방법에 관한 내용으로 개인 판단이나 민감한 정보가 포함되어 있지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_014",
+      "query": "마케팅과 홍보는 업무 목적과 성과 지표 측면에서 어떻게 다른가요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "partial_with_mentor_suggest",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 1,
+      "avg_score": 0.47000000000000003,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_127"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_014",
+        "timestamp": "2026-07-16T18:54:14.713026",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.47,
+        "verdict": "partial_with_mentor_suggest",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_025",
+      "query": "공무원/비영리 포트폴리오를 준비했는데 제 배경(비전공(일반), 인턴 경험 없음)에서 프로젝트 구성과 우선순위가 적절한지 직접 피드백받고 싶습니다.",
+      "domain": "공무원/비영리",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_025",
+        "timestamp": "2026-07-16T18:54:17.219360",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_057",
+      "query": "공사/공기업 분야로 전환하려고 하는데 현재 경력을 버리고 신입으로 지원할지, 관련 경험을 더 쌓은 뒤 경력직으로 지원할지 제 상황(공백기 있음)에 맞춰 결정해 주세요.",
+      "domain": "공사/공기업",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "personal_decision_required",
+      "fallback_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_057",
+        "timestamp": "2026-07-16T18:54:17.227419",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": true,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": true,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다."
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "personal_decision_guard": {
+          "has_personal_context": true,
+          "has_decision_request": true,
+          "has_high_risk_career_choice": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_019",
+      "query": "시장조사에서 정성조사와 정량조사의 차이는 무엇인가요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_019",
+        "timestamp": "2026-07-16T18:54:17.237134",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 특정 개인 판단이나 민감한 정보 요구 없이 일반적인 직무 지식에 관한 내용임"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_139",
+      "query": "IT개발/데이터 분야 대학원 진학과 바로 취업 중 고민입니다. 제 전공(디자인학)과 상황(졸업유예 중)에서 어느 선택이 더 유리할지 조언해 주세요.",
+      "domain": "IT개발/데이터",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.385,
+      "fallback_type": "score_below_threshold",
+      "fallback_reason": "대부분 답변이 질문과 직접 관련 없거나 구체적 조언이 부족하며, 일부 답변(3,4)만 간접적으로 상황에 맞는 경험담을 제공해 참고 가능하나 충분한 근거로 보기 어려움.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_139",
+        "timestamp": "2026-07-16T18:54:18.734843",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 2,
+        "stale_ids": [],
+        "avg_score": 0.385,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_113",
+      "query": "서비스 기획/UI,UX 직무로 지금 제 스펙(디자인학 전공, 졸업유예 중)이면 실제 서류 합격 가능성이 어느 정도인지 냉정하게 평가해 주세요.",
+      "domain": "서비스 기획/UI,UX",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 4,
+      "avg_score": 0.42,
+      "fallback_type": "score_below_threshold",
+      "fallback_reason": "검색된 답변 중 서비스 기획/UI,UX 직무와 관련해 구체적이고 직접적인 서류 합격 가능성 평가를 제공하는 답변이 부족하며, 일부는 주제와 다소 동떨어져 있어 근거로 활용하기에 약함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_113",
+        "timestamp": "2026-07-16T18:54:22.061847",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 4,
+        "usable_count": 2,
+        "stale_ids": [],
+        "avg_score": 0.42,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_055",
+      "query": "신입 데이터 엔지니어 취업에서 부족한 경쟁력을 보완하려면 어떤 프로젝트나 역량을 추가해야 하나요?",
+      "domain": "IT 개발, 데이터",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 1,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_089"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_055",
+        "timestamp": "2026-07-16T18:54:25.378757",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.551,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "mentor_002",
+      "query": "전략/기획 직무 자기소개서 초안을 작성했습니다. 제 전공(무역학)과 현재 상황(비전공)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "전략/기획",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_002",
+        "timestamp": "2026-07-16T18:54:27.847091",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_032",
+      "query": "SWOT 분석의 네 가지 요소는 무엇인가요?",
+      "domain": "전략/기획",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_032",
+        "timestamp": "2026-07-16T18:54:27.856282",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 일반적인 개념 설명으로 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_065",
+      "query": "회계 업무와 자금 업무는 역할, 일상 업무, 필요 역량 측면에서 어떻게 다른가요?",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 5,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_076"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_065",
+        "timestamp": "2026-07-16T18:54:29.630817",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 5,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.594,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "mentor_031",
+      "query": "생산/품질/제조 직무로 A사와 B사 오퍼를 동시에 받았습니다. 제 상황(공백기 있음)과 장기 커리어를 고려하면 어느 쪽을 선택하는 게 나을지 멘토님의 판단을 듣고 싶습니다.",
+      "domain": "생산/품질/제조",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 2,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 멘티 상황에 대한 구체적 조언이나 두 회사 선택에 대한 직접적 판단 근거를 제공하지 못하며, 대부분 일반적인 격려나 커리어 방향성에 대한 모호한 조언에 그쳐 실제 답변 근거로 활용하기에 매우 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_031",
+        "timestamp": "2026-07-16T18:54:33.945295",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 2,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_049",
+      "query": "디자인/예술 분야 대학원 진학과 바로 취업 중 고민입니다. 제 전공(컴퓨터공학)과 상황(공백기 있음)에서 어느 선택이 더 유리할지 조언해 주세요.",
+      "domain": "디자인/예술",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 4,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 전반적으로 질문의 핵심인 '컴퓨터공학 전공자가 디자인/예술 분야 대학원 진학과 취업 중 어느 선택이 유리한지'에 대한 구체적 조언이나 비교 분석이 부족하며, 대부분 일반적 위로나 상황 공감에 그쳐 실제 답변 근거로 활용하기 어렵다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_049",
+        "timestamp": "2026-07-16T18:54:41.919385",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 4,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_133",
+      "query": "IT개발/데이터 직무로 지금 제 스펙(사회학 전공, 인턴 경험 없음)이면 실제 서류 합격 가능성이 어느 정도인지 냉정하게 평가해 주세요.",
+      "domain": "IT개발/데이터",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.42,
+      "fallback_type": "score_below_threshold",
+      "fallback_reason": "검색된 답변들 중 IT개발/데이터 직무의 서류 합격 가능성에 대해 직접적이고 구체적으로 평가한 답변이 부족하며, 일부는 주제와 다소 동떨어져 있어 근거로 활용하기에 약함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_133",
+        "timestamp": "2026-07-16T18:54:46.338901",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 2,
+        "stale_ids": [],
+        "avg_score": 0.42,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_098",
+      "query": "홍보·PR 직무를 희망하는 대학생은 어떤 활동을 통해 실무 경험과 포트폴리오를 만들 수 있나요?",
+      "domain": "홍보/CSR",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 1,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_043"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_098",
+        "timestamp": "2026-07-16T18:54:49.762801",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.5583,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_089",
+      "query": "공기업 채용공고에서 자격요건과 우대사항은 어떻게 다른가요?",
+      "domain": "공사/공기업",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_089",
+        "timestamp": "2026-07-16T18:54:52.569988",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 공기업 채용공고의 일반적인 용어 차이에 관한 것으로 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_105",
+      "query": "서비스 포트폴리오를 준비했는데 제 배경(비전공(일반), 졸업유예 중)에서 프로젝트 구성과 우선순위가 적절한지 직접 피드백받고 싶습니다.",
+      "domain": "서비스",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_105",
+        "timestamp": "2026-07-16T18:54:54.832542",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_018",
+      "query": "UTM 파라미터는 무엇이고 마케팅 성과 분석에 어떻게 쓰이나요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_018",
+        "timestamp": "2026-07-16T18:54:54.846013",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 일반적인 개념 설명과 활용 방법에 관한 내용으로 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_084",
+      "query": "공기업 자기소개서에서 경험을 구조화하는 STAR 방식은 무엇인가요?",
+      "domain": "공사/공기업",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_084",
+        "timestamp": "2026-07-16T18:54:57.188510",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 STAR 방식에 대한 일반적인 설명을 요구하여 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_075",
+      "query": "디자인 시스템은 무엇이고 어떤 장점이 있나요?",
+      "domain": "디자인/예술",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_075",
+        "timestamp": "2026-07-16T18:54:58.921055",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 일반적인 직무 정보와 개념 설명에 해당하여 AI가 안전하게 답변 가능함"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_028",
+      "query": "광고대행사 AE의 주요 업무와 일반적으로 기대되는 역량, 업무 환경은 어떤가요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 2,
+      "avg_score": 0.41,
+      "fallback_type": "score_below_threshold",
+      "fallback_reason": "검색된 답변 중 답변 1이 AE 직무 경험을 언급하나 구체적 업무, 역량, 환경에 대한 설명이 부족하며, 답변 2는 무관하거나 매우 간략해 근거로 활용하기 어려움.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_028",
+        "timestamp": "2026-07-16T18:55:00.770758",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 2,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.41,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_085",
+      "query": "교육/상담/컨설팅 포트폴리오를 준비했는데 제 배경(산업공학, 지방 거주)에서 프로젝트 구성과 우선순위가 적절한지 직접 피드백받고 싶습니다.",
+      "domain": "교육/상담/컨설팅",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_085",
+        "timestamp": "2026-07-16T18:55:03.931611",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_041",
+      "query": "채용 담당자와 HRBP의 역할은 어떻게 다른가요?",
+      "domain": "인사/총무/노무",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_041",
+        "timestamp": "2026-07-16T18:55:03.943715",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 특정 개인 상황이나 합격 가능성 판단이 아닌 일반적인 직무 차이 설명에 해당함"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_059",
+      "query": "공사/공기업 분야 대학원 진학과 바로 취업 중 고민입니다. 제 전공(디자인학)과 상황(인턴 경험 없음)에서 어느 선택이 더 유리할지 조언해 주세요.",
+      "domain": "공사/공기업",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들이 공사/공기업 분야 대학원 진학과 바로 취업 중 선택에 대해 구체적 조언을 제공하지 못하며, 디자인학 전공과 인턴 경험 부재 상황에 대한 맞춤형 근거가 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_059",
+        "timestamp": "2026-07-16T18:55:05.485391",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_076",
+      "query": "회계 직무 자기소개서에서 강조해야 할 핵심 역량과 경험은 무엇인가요?",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "partial_with_mentor_suggest",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 5,
+      "avg_score": 0.55,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_075",
+          "itda_073"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_076",
+        "timestamp": "2026-07-16T18:55:08.373288",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 5,
+        "usable_count": 2,
+        "stale_ids": [],
+        "avg_score": 0.55,
+        "verdict": "partial_with_mentor_suggest",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_125",
+      "query": "기타 사무 포트폴리오를 준비했는데 제 배경(산업공학, 인턴 경험 없음)에서 프로젝트 구성과 우선순위가 적절한지 직접 피드백받고 싶습니다.",
+      "domain": "기타 사무",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_125",
+        "timestamp": "2026-07-16T18:55:12.144791",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_182",
+      "query": "연구/설계 직무 자기소개서 초안을 작성했습니다. 제 전공(영어영문학)과 현재 상황(자격증 없음)을 반영해 문장별로 첨삭해 주실 수 있나요?",
+      "domain": "연구/설계",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_182",
+        "timestamp": "2026-07-16T18:55:12.155264",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_166",
+      "query": "영업/영업관리 면접에서 받은 질문과 제가 한 답변을 정리했습니다. 어떤 부분이 감점 요소였을지 면접관 관점에서 평가해 주세요.",
+      "domain": "영업/영업관리",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 영업/영업관리 면접에서 받은 질문과 답변의 감점 요소를 면접관 관점에서 평가해 달라는 구체적 요청에 직접적으로 부합하지 않고, 대부분 일반적 조언이나 다른 직무 관련 내용으로 구성되어 있어 근거로 활용하기에 부족함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_166",
+        "timestamp": "2026-07-16T18:55:12.167431",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_061",
+      "query": "홍보/CSR 직무로 A사와 B사 오퍼를 동시에 받았습니다. 제 상황(나이 고민)과 장기 커리어를 고려하면 어느 쪽을 선택하는 게 나을지 멘토님의 판단을 듣고 싶습니다.",
+      "domain": "홍보/CSR",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.42,
+      "fallback_type": "score_below_threshold",
+      "fallback_reason": "검색된 답변들은 멘티의 구체적 상황(나이, 장기 커리어)과 두 회사 오퍼 비교에 대한 직접적 조언이 부족하며, 대부분 일반적 커리어 조언이나 직무 소개에 그쳐 실제 판단 근거로 활용하기에 약함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_061",
+        "timestamp": "2026-07-16T18:55:15.450274",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 2,
+        "stale_ids": [],
+        "avg_score": 0.42,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_general_073",
+      "query": "와이어프레임과 프로토타입은 어떻게 다른가요?",
+      "domain": "디자인/예술",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_073",
+        "timestamp": "2026-07-16T18:55:18.937699",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 특정 개인 상황이나 판단을 요구하지 않고, 일반적인 개념 설명에 해당함"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_087",
+      "query": "교육/상담/컨설팅 분야로 전환하려고 하는데 현재 경력을 버리고 신입으로 지원할지, 관련 경험을 더 쌓은 뒤 경력직으로 지원할지 제 상황(나이 고민)에 맞춰 결정해 주세요.",
+      "domain": "교육/상담/컨설팅",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "personal_decision_required",
+      "fallback_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_087",
+        "timestamp": "2026-07-16T18:55:20.509973",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": true,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": true,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다."
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "personal_decision_guard": {
+          "has_personal_context": true,
+          "has_decision_request": true,
+          "has_high_risk_career_choice": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_083",
+      "query": "블라인드 채용의 기본 원칙은 무엇인가요?",
+      "domain": "공사/공기업",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_083",
+        "timestamp": "2026-07-16T18:55:20.523409",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 블라인드 채용의 기본 원칙에 대한 일반적인 정보 요청으로, 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_070",
+      "query": "은행 PB와 증권사 PB는 고객, 상품, 영업 방식, 커리어 측면에서 어떻게 다른가요?",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 2,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_071"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_070",
+        "timestamp": "2026-07-16T18:55:21.900922",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 2,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.6138,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_072",
+      "query": "디자인 포트폴리오 프로젝트 설명에는 어떤 요소가 필요하나요?",
+      "domain": "디자인/예술",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_072",
+        "timestamp": "2026-07-16T18:55:24.449573",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 일반적인 직무 정보와 준비 방법에 관한 내용으로 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_055",
+      "query": "공사/공기업 포트폴리오를 준비했는데 제 배경(영어영문학, 졸업유예 중)에서 프로젝트 구성과 우선순위가 적절한지 직접 피드백받고 싶습니다.",
+      "domain": "공사/공기업",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "requires_artifact_review",
+      "fallback_reason": "포트폴리오·이력서 등 자료 검토가 필요한 질문입니다",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_055",
+        "timestamp": "2026-07-16T18:55:26.067684",
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "artifact_review",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_034",
+      "query": "생산/품질/제조 현직자분이 보시기에 제가 받은 A사 팀의 조직문화와 리더 스타일이 괜찮은지 판단하고 싶습니다. 면접에서 들은 내용을 바탕으로 입사 여부를 조언해 주세요.",
+      "domain": "생산/품질/제조",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 멘티 질문인 '생산/품질/제조 현직자의 시선에서 조직문화와 리더 스타일 판단 및 입사 조언'과 직접 관련된 내용이 없고, 구체적 근거로 활용하기 어려워 답변 근거로 부적절함.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_034",
+        "timestamp": "2026-07-16T18:55:26.085498",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "mentor_017",
+      "query": "인사/총무/노무 분야로 전환하려고 하는데 현재 경력을 버리고 신입으로 지원할지, 관련 경험을 더 쌓은 뒤 경력직으로 지원할지 제 상황(인턴 경험 없음)에 맞춰 결정해 주세요.",
+      "domain": "인사/총무/노무",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "personal_decision_required",
+      "fallback_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_017",
+        "timestamp": "2026-07-16T18:55:29.556087",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": true,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": true,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다."
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "personal_decision_guard": {
+          "has_personal_context": true,
+          "has_decision_request": true,
+          "has_high_risk_career_choice": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_089",
+      "query": "은행 신입 지원 시 학점, 자격증, 인턴, 금융 지식 중 무엇을 우선적으로 준비해야 하나요?",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "partial_with_mentor_suggest",
+      "correct": false,
+      "strategy": "search_first",
+      "retrieved_count": 3,
+      "avg_score": 0.55,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_051"
+        ],
+        "stale_but_useful_ids": [
+          1
+        ]
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_089",
+        "timestamp": "2026-07-16T18:55:29.582556",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 3,
+        "usable_count": 1,
+        "stale_ids": [
+          1
+        ],
+        "avg_score": 0.55,
+        "verdict": "partial_with_mentor_suggest",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    },
+    {
+      "case_id": "llm_db_029",
+      "query": "식품 마케팅 신입 지원자가 우선적으로 준비해야 할 산업 이해와 직무 경험은 무엇인가요?",
+      "domain": "마케팅/MD",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 1,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_112"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_029",
+        "timestamp": "2026-07-16T18:55:34.001914",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.5991,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_028",
+      "query": "은행의 기업금융과 개인금융 업무는 어떻게 다른가요?",
+      "domain": "회계/재무/금융",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_028",
+        "timestamp": "2026-07-16T18:55:36.952144",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 특정 개인 판단이나 민감한 정보 요구 없이 일반적인 직무 차이 설명에 해당함"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_098",
+      "query": "기업 사회공헌 프로그램의 성과는 어떤 방식으로 측정할 수 있나요?",
+      "domain": "홍보/CSR",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_098",
+        "timestamp": "2026-07-16T18:55:41.129041",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 0.9,
+            "answer_mode": "general_direct",
+            "risk_reason": "질문이 특정 개인 상황이나 합격 가능성 판단이 아니며, 일반적인 성과 측정 방법에 관한 내용이기 때문입니다."
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_db_032",
+      "query": "PM 취업을 준비할 때 프로젝트 경험을 어떤 구조로 정리해야 하며, 직무 이해에 도움 되는 방법은 무엇인가요?",
+      "domain": "IT 개발, 데이터",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_db",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 2,
+      "avg_score": 0.685,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [
+          "itda_109"
+        ],
+        "stale_but_useful_ids": []
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_db_032",
+        "timestamp": "2026-07-16T18:55:42.899937",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 2,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.685,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "usable_fallback": {
+          "usable_ids": [
+            1
+          ],
+          "scores": {
+            "relevance": 0.65,
+            "evidence_sufficiency": 0.6,
+            "situation_fit": 0.55,
+            "privacy_safe": true
+          },
+          "top1_similarity": 0.5278,
+          "reason": "search_first 일반 정보형 질문에서 top1 유사도가 높아 partial 답변용 근거 1개를 복구"
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_055",
+      "query": "제조업에서 BOM은 무엇인가요?",
+      "domain": "생산/품질/제조",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_055",
+        "timestamp": "2026-07-16T18:55:45.590496",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "제조업에서 BOM의 정의는 일반적인 직무 정보로 개인 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_147",
+      "query": "전문/특수 분야로 전환하려고 하는데 현재 경력을 버리고 신입으로 지원할지, 관련 경험을 더 쌓은 뒤 경력직으로 지원할지 제 상황(졸업유예 중)에 맞춰 결정해 주세요.",
+      "domain": "전문/특수",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": "personal_decision_required",
+      "fallback_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_147",
+        "timestamp": "2026-07-16T18:55:47.372049",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": true,
+          "personal_decision_guard": {
+            "has_personal_context": true,
+            "has_decision_request": true,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": "개인 상황 기반 선택/결정이 필요한 질문입니다."
+        },
+        "question_units": [],
+        "strategy": null,
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "personal_decision_guard": {
+          "has_personal_context": true,
+          "has_decision_request": true,
+          "has_high_risk_career_choice": true
+        }
+      }
+    },
+    {
+      "case_id": "llm_general_051",
+      "query": "생산관리와 품질관리 직무의 차이는 무엇인가요?",
+      "domain": "생산/품질/제조",
+      "gold_verdict": "llm_direct",
+      "subtype": "llm_direct_general",
+      "predicted_verdict": "llm_direct",
+      "raw_predicted_verdict": "llm_direct",
+      "correct": true,
+      "strategy": "search_first",
+      "retrieved_count": 0,
+      "avg_score": 0.0,
+      "fallback_type": null,
+      "fallback_reason": null,
+      "source_trace": {
+        "used_answer_ids": [],
+        "stale_but_useful_ids": [],
+        "answer_mode": "general_direct"
+      },
+      "retrieval_log": {
+        "session_id": "itda_eval_llm_general_051",
+        "timestamp": "2026-07-16T18:55:47.389397",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "search_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "general_direct_gate": {
+          "trigger": "no_similar_answers",
+          "decision": {
+            "direct_general_allowed": true,
+            "confidence": 1.0,
+            "answer_mode": "general_direct",
+            "risk_reason": "직무 차이에 대한 일반적인 정보 제공으로 개인 맞춤 판단이나 민감한 정보가 포함되지 않음"
+          },
+          "promoted": true
+        }
+      }
+    },
+    {
+      "case_id": "mentor_018",
+      "query": "인사/총무/노무 직무의 실제 하루 업무와 야근 빈도, 팀 내 분위기가 회사마다 어떻게 다른지 현직 경험을 바탕으로 알려주시고 제 성향에 맞는지도 봐주세요.",
+      "domain": "인사/총무/노무",
+      "gold_verdict": "mentor_needed",
+      "subtype": "mentor_needed",
+      "predicted_verdict": "mentor_needed",
+      "raw_predicted_verdict": "mentor_needed",
+      "correct": true,
+      "strategy": "mentor_first",
+      "retrieved_count": 5,
+      "avg_score": 0.0,
+      "fallback_type": "no_usable_answers",
+      "fallback_reason": "검색된 답변들은 인사/총무/노무 직무의 실제 하루 업무, 야근 빈도, 팀 분위기 등 구체적 현직 경험이나 멘티 성향과의 적합성에 대한 직접적 정보가 부족하며, 일부는 회계팀이나 직무 전환 관련 내용으로 주제와 맞지 않아 근거로 활용하기 어렵다.",
+      "source_trace": {},
+      "retrieval_log": {
+        "session_id": "itda_eval_mentor_018",
+        "timestamp": "2026-07-16T18:55:49.110882",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "mentor_judgment_required"
+          ],
+          "question_structure": "",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 5,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      }
+    }
+  ]
+}

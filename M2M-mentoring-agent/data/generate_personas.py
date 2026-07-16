@@ -283,7 +283,7 @@ MENTOR_SYSTEM = """너는 한국 취업·진로 멘토링 플랫폼의 가상 �
 JSON 외 다른 텍스트 출력 금지."""
 
 
-def call_llm(system: str, user: str, model: str = "gpt-4o") -> dict:
+def call_llm(system: str, user: str, model: str = "gpt-4.1-mini") -> dict:
     resp = client.chat.completions.create(
         model=model,
         messages=[{"role": "system", "content": system},

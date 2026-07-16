@@ -1,0 +1,287 @@
+{
+  "description": "Agent2 Itda method comparison.",
+  "dataset": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\agent2_itda_eval.json",
+  "assets": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\json_db\\mentor_answers.json",
+  "grid_best_config": {
+    "sim_threshold": 0.55,
+    "direct_threshold": 0.6,
+    "general_direct_confidence": 0.75
+  },
+  "model": "gpt-4.1-mini",
+  "methods": [
+    {
+      "name": "old_baseline_no_general_direct",
+      "output": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\itda_eval_method_comparison_guard\\old_baseline_no_general_direct.json",
+      "config": {
+        "SIM_THRESHOLD": {
+          "search_first": 0.5,
+          "mentor_first": 0.45
+        },
+        "MID_THRESHOLD": {
+          "search_first": 0.45,
+          "mentor_first": 0.5
+        },
+        "THRESHOLD": {
+          "search_first": 0.65,
+          "mentor_first": 0.75
+        },
+        "GENERAL_DIRECT_GATE_CONFIDENCE_MIN": 0.8,
+        "DISABLE_GENERAL_DIRECT": true,
+        "model": "gpt-4.1-mini"
+      },
+      "summary": {
+        "case_count": 80,
+        "accuracy": 0.6,
+        "gold_counts": {
+          "llm_direct": 40,
+          "mentor_needed": 40
+        },
+        "predicted_counts": {
+          "mentor_needed": 72,
+          "llm_direct": 8
+        },
+        "raw_predicted_counts": {
+          "mentor_needed": 70,
+          "llm_direct": 8,
+          "partial_with_mentor_suggest": 2
+        },
+        "wrong_direct_count": 0,
+        "wrong_direct_case_ids": [],
+        "over_mentor_count": 32,
+        "over_mentor_case_ids": [
+          "llm_db_030",
+          "llm_general_092",
+          "llm_general_100",
+          "llm_db_082",
+          "llm_general_034",
+          "llm_db_005",
+          "llm_db_018",
+          "llm_general_069",
+          "llm_db_087",
+          "llm_db_012",
+          "llm_db_015",
+          "llm_general_059",
+          "llm_db_004",
+          "llm_general_064",
+          "llm_db_014",
+          "llm_general_019",
+          "llm_general_032",
+          "llm_general_089",
+          "llm_general_018",
+          "llm_general_084",
+          "llm_general_075",
+          "llm_db_028",
+          "llm_general_041",
+          "llm_db_076",
+          "llm_general_073",
+          "llm_general_083",
+          "llm_general_072",
+          "llm_db_089",
+          "llm_general_028",
+          "llm_general_098",
+          "llm_general_055",
+          "llm_general_051"
+        ],
+        "confusion_matrix": {
+          "llm_direct": {
+            "llm_direct": 8,
+            "mentor_needed": 32
+          },
+          "mentor_needed": {
+            "llm_direct": 0,
+            "mentor_needed": 40
+          }
+        },
+        "per_label": {
+          "llm_direct": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 32,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333
+          },
+          "mentor_needed": {
+            "tp": 40,
+            "fp": 32,
+            "fn": 0,
+            "precision": 0.5556,
+            "recall": 1.0,
+            "f1": 0.7143
+          }
+        },
+        "subtype_recall": {
+          "llm_direct_db": 0.4,
+          "llm_direct_general": 0.0,
+          "mentor_needed": 1.0
+        }
+      }
+    },
+    {
+      "name": "current_baseline_default_thresholds",
+      "output": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\itda_eval_method_comparison_guard\\current_baseline_default_thresholds.json",
+      "config": {
+        "SIM_THRESHOLD": {
+          "search_first": 0.5,
+          "mentor_first": 0.45
+        },
+        "MID_THRESHOLD": {
+          "search_first": 0.45,
+          "mentor_first": 0.5
+        },
+        "THRESHOLD": {
+          "search_first": 0.65,
+          "mentor_first": 0.75
+        },
+        "GENERAL_DIRECT_GATE_CONFIDENCE_MIN": 0.8,
+        "DISABLE_GENERAL_DIRECT": false,
+        "model": "gpt-4.1-mini"
+      },
+      "summary": {
+        "case_count": 80,
+        "accuracy": 0.9,
+        "gold_counts": {
+          "llm_direct": 40,
+          "mentor_needed": 40
+        },
+        "predicted_counts": {
+          "llm_direct": 32,
+          "mentor_needed": 48
+        },
+        "raw_predicted_counts": {
+          "llm_direct": 32,
+          "mentor_needed": 45,
+          "partial_with_mentor_suggest": 3
+        },
+        "wrong_direct_count": 0,
+        "wrong_direct_case_ids": [],
+        "over_mentor_count": 8,
+        "over_mentor_case_ids": [
+          "llm_db_082",
+          "llm_db_005",
+          "llm_db_012",
+          "llm_db_015",
+          "llm_db_014",
+          "llm_db_028",
+          "llm_db_076",
+          "llm_db_089"
+        ],
+        "confusion_matrix": {
+          "llm_direct": {
+            "llm_direct": 32,
+            "mentor_needed": 8
+          },
+          "mentor_needed": {
+            "llm_direct": 0,
+            "mentor_needed": 40
+          }
+        },
+        "per_label": {
+          "llm_direct": {
+            "tp": 32,
+            "fp": 0,
+            "fn": 8,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8889
+          },
+          "mentor_needed": {
+            "tp": 40,
+            "fp": 8,
+            "fn": 0,
+            "precision": 0.8333,
+            "recall": 1.0,
+            "f1": 0.9091
+          }
+        },
+        "subtype_recall": {
+          "llm_direct_db": 0.6,
+          "llm_direct_general": 1.0,
+          "mentor_needed": 1.0
+        }
+      }
+    },
+    {
+      "name": "grid_search_best",
+      "output": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\itda_eval_method_comparison_guard\\grid_search_best.json",
+      "config": {
+        "SIM_THRESHOLD": {
+          "search_first": 0.55,
+          "mentor_first": 0.55
+        },
+        "MID_THRESHOLD": {
+          "search_first": 0.45,
+          "mentor_first": 0.5
+        },
+        "THRESHOLD": {
+          "search_first": 0.6,
+          "mentor_first": 0.6
+        },
+        "GENERAL_DIRECT_GATE_CONFIDENCE_MIN": 0.75,
+        "DISABLE_GENERAL_DIRECT": false,
+        "model": "gpt-4.1-mini"
+      },
+      "summary": {
+        "case_count": 80,
+        "accuracy": 0.925,
+        "gold_counts": {
+          "llm_direct": 40,
+          "mentor_needed": 40
+        },
+        "predicted_counts": {
+          "llm_direct": 34,
+          "mentor_needed": 46
+        },
+        "raw_predicted_counts": {
+          "llm_direct": 34,
+          "mentor_needed": 45,
+          "partial_with_mentor_suggest": 1
+        },
+        "wrong_direct_count": 0,
+        "wrong_direct_case_ids": [],
+        "over_mentor_count": 6,
+        "over_mentor_case_ids": [
+          "llm_db_082",
+          "llm_db_005",
+          "llm_db_012",
+          "llm_db_015",
+          "llm_db_014",
+          "llm_db_089"
+        ],
+        "confusion_matrix": {
+          "llm_direct": {
+            "llm_direct": 34,
+            "mentor_needed": 6
+          },
+          "mentor_needed": {
+            "llm_direct": 0,
+            "mentor_needed": 40
+          }
+        },
+        "per_label": {
+          "llm_direct": {
+            "tp": 34,
+            "fp": 0,
+            "fn": 6,
+            "precision": 1.0,
+            "recall": 0.85,
+            "f1": 0.9189
+          },
+          "mentor_needed": {
+            "tp": 40,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.8696,
+            "recall": 1.0,
+            "f1": 0.9302
+          }
+        },
+        "subtype_recall": {
+          "llm_direct_db": 0.7,
+          "llm_direct_general": 1.0,
+          "mentor_needed": 1.0
+        }
+      }
+    }
+  ]
+}

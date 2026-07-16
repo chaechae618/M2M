@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Agent2 Itda Method Comparison</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 32px; line-height: 1.5; color: #172033; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th, td { border: 1px solid #d8deea; padding: 8px; text-align: right; }
+    th { background: #f2f5f9; }
+    td:first-child, th:first-child { text-align: left; }
+    .note { border: 1px solid #d8deea; padding: 14px; margin: 14px 0; }
+  </style>
+</head>
+<body>
+  <h1>Agent2 Itda Method Comparison</h1>
+  <div class="note">
+    Dataset: D:\ai rookie\M2M\M2M-mentoring-agent\eval\agent2_itda_validation.json<br />
+    Methods: old baseline, current baseline, grid-search best.
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>method</th>
+        <th>cases</th>
+        <th>accuracy</th>
+        <th>wrong_direct</th>
+        <th>direct precision</th>
+        <th>direct recall</th>
+        <th>mentor recall</th>
+        <th>db direct recall</th>
+        <th>general direct recall</th>
+        <th>mentor subtype recall</th>
+      </tr>
+    </thead>
+    <tbody><tr><td>old_baseline_no_general_direct</td><td>320</td><td>0.6500</td><td>0</td><td>1.0000</td><td>0.3000</td><td>1.0000</td><td>0.5500</td><td>0.0500</td><td>1.0000</td></tr><tr><td>current_baseline_default_thresholds</td><td>320</td><td>0.8906</td><td>0</td><td>1.0000</td><td>0.7812</td><td>1.0000</td><td>0.6125</td><td>0.9500</td><td>1.0000</td></tr><tr><td>grid_search_best</td><td>320</td><td>0.9313</td><td>1</td><td>0.9929</td><td>0.8688</td><td>0.9938</td><td>0.7875</td><td>0.9500</td><td>0.9938</td></tr></tbody>
+  </table>
+</body>
+</html>

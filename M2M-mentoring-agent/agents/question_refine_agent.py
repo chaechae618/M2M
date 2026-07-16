@@ -579,7 +579,7 @@ class QuestionRefineAgent:
                 return self._finalize()
 
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4.1-mini",
             messages=self.messages,
             temperature=0.7,
         )
@@ -606,7 +606,7 @@ class QuestionRefineAgent:
 
         try:
             resp = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4.1-mini",
                 messages=check_messages,
                 response_format={"type": "json_object"},
                 temperature=0,
@@ -668,7 +668,7 @@ class QuestionRefineAgent:
             {"role": "user", "content": REFINEMENT_PROMPT + extra}
         ]
         resp = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4.1-mini",
             messages=refine_messages,
             response_format={"type": "json_object"},
             temperature=0.3,
@@ -686,7 +686,7 @@ class QuestionRefineAgent:
         ]
         try:
             resp = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4.1-mini",
                 messages=check_messages,
                 response_format={"type": "json_object"},
                 temperature=0,

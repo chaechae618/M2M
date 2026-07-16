@@ -1,0 +1,411 @@
+{
+  "description": "Agent2 Itda method comparison.",
+  "dataset": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\agent2_itda_validation.json",
+  "assets": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\json_db\\mentor_answers.json",
+  "grid_best_config": {
+    "sim_threshold": 0.55,
+    "direct_threshold": 0.6,
+    "general_direct_confidence": 0.75
+  },
+  "model": "gpt-4.1-mini",
+  "methods": [
+    {
+      "name": "old_baseline_no_general_direct",
+      "output": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\itda_method_comparison\\old_baseline_no_general_direct.json",
+      "config": {
+        "SIM_THRESHOLD": {
+          "search_first": 0.5,
+          "mentor_first": 0.45
+        },
+        "MID_THRESHOLD": {
+          "search_first": 0.45,
+          "mentor_first": 0.5
+        },
+        "THRESHOLD": {
+          "search_first": 0.65,
+          "mentor_first": 0.75
+        },
+        "GENERAL_DIRECT_GATE_CONFIDENCE_MIN": 0.8,
+        "DISABLE_GENERAL_DIRECT": true,
+        "model": "gpt-4.1-mini"
+      },
+      "summary": {
+        "case_count": 320,
+        "accuracy": 0.65,
+        "gold_counts": {
+          "mentor_needed": 160,
+          "llm_direct": 160
+        },
+        "predicted_counts": {
+          "mentor_needed": 272,
+          "llm_direct": 48
+        },
+        "raw_predicted_counts": {
+          "mentor_needed": 256,
+          "llm_direct": 48,
+          "partial_with_mentor_suggest": 16
+        },
+        "wrong_direct_count": 0,
+        "wrong_direct_case_ids": [],
+        "over_mentor_count": 112,
+        "over_mentor_case_ids": [
+          "llm_general_033",
+          "llm_general_030",
+          "llm_general_043",
+          "llm_general_046",
+          "llm_general_017",
+          "llm_general_074",
+          "llm_db_033",
+          "llm_db_023",
+          "llm_general_013",
+          "llm_db_046",
+          "llm_general_057",
+          "llm_general_044",
+          "llm_general_097",
+          "llm_db_085",
+          "llm_db_057",
+          "llm_db_049",
+          "llm_general_053",
+          "llm_general_065",
+          "llm_general_080",
+          "llm_db_024",
+          "llm_general_023",
+          "llm_general_012",
+          "llm_general_050",
+          "llm_db_096",
+          "llm_general_048",
+          "llm_general_021",
+          "llm_db_081",
+          "llm_db_001",
+          "llm_db_088",
+          "llm_general_039",
+          "llm_db_092",
+          "llm_general_095",
+          "llm_db_016",
+          "llm_general_060",
+          "llm_db_074",
+          "llm_db_040",
+          "llm_general_035",
+          "llm_general_071",
+          "llm_general_003",
+          "llm_general_020",
+          "llm_general_070",
+          "llm_general_005",
+          "llm_general_037",
+          "llm_general_001",
+          "llm_db_075",
+          "llm_general_094",
+          "llm_db_068",
+          "llm_general_099",
+          "llm_general_077",
+          "llm_general_016",
+          "llm_db_042",
+          "llm_general_096",
+          "llm_general_004",
+          "llm_db_007",
+          "llm_db_002",
+          "llm_general_025",
+          "llm_general_047",
+          "llm_general_067",
+          "llm_db_058",
+          "llm_db_017",
+          "llm_general_093",
+          "llm_general_006",
+          "llm_general_082",
+          "llm_db_094",
+          "llm_general_056",
+          "llm_general_049",
+          "llm_general_078",
+          "llm_db_035",
+          "llm_general_036",
+          "llm_general_054",
+          "llm_general_085",
+          "llm_general_022",
+          "llm_general_052",
+          "llm_general_062",
+          "llm_db_093",
+          "llm_general_038",
+          "llm_general_045",
+          "llm_db_100",
+          "llm_general_079",
+          "llm_db_011",
+          "llm_db_008",
+          "llm_general_009",
+          "llm_general_042",
+          "llm_general_066",
+          "llm_general_058",
+          "llm_general_061",
+          "llm_general_007",
+          "llm_db_027",
+          "llm_general_091",
+          "llm_general_076",
+          "llm_general_063",
+          "llm_general_010",
+          "llm_general_040",
+          "llm_general_088",
+          "llm_general_002",
+          "llm_general_024",
+          "llm_db_038",
+          "llm_general_027",
+          "llm_general_008",
+          "llm_general_068",
+          "llm_db_056",
+          "llm_general_086",
+          "llm_general_014",
+          "llm_general_081",
+          "llm_db_078",
+          "llm_general_090",
+          "llm_general_087",
+          "llm_db_031",
+          "llm_general_029",
+          "llm_db_022",
+          "llm_db_077",
+          "llm_db_069"
+        ],
+        "confusion_matrix": {
+          "llm_direct": {
+            "llm_direct": 48,
+            "mentor_needed": 112
+          },
+          "mentor_needed": {
+            "llm_direct": 0,
+            "mentor_needed": 160
+          }
+        },
+        "per_label": {
+          "llm_direct": {
+            "tp": 48,
+            "fp": 0,
+            "fn": 112,
+            "precision": 1.0,
+            "recall": 0.3,
+            "f1": 0.4615
+          },
+          "mentor_needed": {
+            "tp": 160,
+            "fp": 112,
+            "fn": 0,
+            "precision": 0.5882,
+            "recall": 1.0,
+            "f1": 0.7407
+          }
+        },
+        "subtype_recall": {
+          "llm_direct_db": 0.55,
+          "llm_direct_general": 0.05,
+          "mentor_needed": 1.0
+        }
+      }
+    },
+    {
+      "name": "current_baseline_default_thresholds",
+      "output": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\itda_method_comparison\\current_baseline_default_thresholds.json",
+      "config": {
+        "SIM_THRESHOLD": {
+          "search_first": 0.5,
+          "mentor_first": 0.45
+        },
+        "MID_THRESHOLD": {
+          "search_first": 0.45,
+          "mentor_first": 0.5
+        },
+        "THRESHOLD": {
+          "search_first": 0.65,
+          "mentor_first": 0.75
+        },
+        "GENERAL_DIRECT_GATE_CONFIDENCE_MIN": 0.8,
+        "DISABLE_GENERAL_DIRECT": false,
+        "model": "gpt-4.1-mini"
+      },
+      "summary": {
+        "case_count": 320,
+        "accuracy": 0.8906,
+        "gold_counts": {
+          "mentor_needed": 160,
+          "llm_direct": 160
+        },
+        "predicted_counts": {
+          "mentor_needed": 195,
+          "llm_direct": 125
+        },
+        "raw_predicted_counts": {
+          "mentor_needed": 177,
+          "llm_direct": 125,
+          "partial_with_mentor_suggest": 18
+        },
+        "wrong_direct_count": 0,
+        "wrong_direct_case_ids": [],
+        "over_mentor_count": 35,
+        "over_mentor_case_ids": [
+          "llm_db_033",
+          "llm_db_023",
+          "llm_db_085",
+          "llm_db_057",
+          "llm_db_049",
+          "llm_db_010",
+          "llm_db_024",
+          "llm_db_096",
+          "llm_db_081",
+          "llm_db_001",
+          "llm_db_092",
+          "llm_db_016",
+          "llm_db_074",
+          "llm_db_040",
+          "llm_db_068",
+          "llm_general_077",
+          "llm_db_042",
+          "llm_db_007",
+          "llm_db_002",
+          "llm_db_053",
+          "llm_db_058",
+          "llm_db_017",
+          "llm_db_035",
+          "llm_db_093",
+          "llm_general_038",
+          "llm_db_011",
+          "llm_general_066",
+          "llm_db_038",
+          "llm_db_056",
+          "llm_db_078",
+          "llm_general_029",
+          "llm_db_022",
+          "llm_db_020",
+          "llm_db_077",
+          "llm_db_069"
+        ],
+        "confusion_matrix": {
+          "llm_direct": {
+            "llm_direct": 125,
+            "mentor_needed": 35
+          },
+          "mentor_needed": {
+            "llm_direct": 0,
+            "mentor_needed": 160
+          }
+        },
+        "per_label": {
+          "llm_direct": {
+            "tp": 125,
+            "fp": 0,
+            "fn": 35,
+            "precision": 1.0,
+            "recall": 0.7812,
+            "f1": 0.8772
+          },
+          "mentor_needed": {
+            "tp": 160,
+            "fp": 35,
+            "fn": 0,
+            "precision": 0.8205,
+            "recall": 1.0,
+            "f1": 0.9014
+          }
+        },
+        "subtype_recall": {
+          "llm_direct_db": 0.6125,
+          "llm_direct_general": 0.95,
+          "mentor_needed": 1.0
+        }
+      }
+    },
+    {
+      "name": "grid_search_best",
+      "output": "D:\\ai rookie\\M2M\\M2M-mentoring-agent\\eval\\itda_method_comparison\\grid_search_best.json",
+      "config": {
+        "SIM_THRESHOLD": {
+          "search_first": 0.55,
+          "mentor_first": 0.55
+        },
+        "MID_THRESHOLD": {
+          "search_first": 0.45,
+          "mentor_first": 0.5
+        },
+        "THRESHOLD": {
+          "search_first": 0.6,
+          "mentor_first": 0.6
+        },
+        "GENERAL_DIRECT_GATE_CONFIDENCE_MIN": 0.75,
+        "DISABLE_GENERAL_DIRECT": false,
+        "model": "gpt-4.1-mini"
+      },
+      "summary": {
+        "case_count": 320,
+        "accuracy": 0.9313,
+        "gold_counts": {
+          "mentor_needed": 160,
+          "llm_direct": 160
+        },
+        "predicted_counts": {
+          "mentor_needed": 180,
+          "llm_direct": 140
+        },
+        "raw_predicted_counts": {
+          "mentor_needed": 176,
+          "llm_direct": 140,
+          "partial_with_mentor_suggest": 4
+        },
+        "wrong_direct_count": 1,
+        "wrong_direct_case_ids": [
+          "mentor_167"
+        ],
+        "over_mentor_count": 21,
+        "over_mentor_case_ids": [
+          "llm_db_033",
+          "llm_db_049",
+          "llm_db_024",
+          "llm_db_096",
+          "llm_db_001",
+          "llm_db_016",
+          "llm_db_040",
+          "llm_general_077",
+          "llm_db_002",
+          "llm_db_058",
+          "llm_db_035",
+          "llm_db_093",
+          "llm_general_038",
+          "llm_db_011",
+          "llm_general_066",
+          "llm_db_063",
+          "llm_db_038",
+          "llm_db_078",
+          "llm_general_029",
+          "llm_db_022",
+          "llm_db_069"
+        ],
+        "confusion_matrix": {
+          "llm_direct": {
+            "llm_direct": 139,
+            "mentor_needed": 21
+          },
+          "mentor_needed": {
+            "llm_direct": 1,
+            "mentor_needed": 159
+          }
+        },
+        "per_label": {
+          "llm_direct": {
+            "tp": 139,
+            "fp": 1,
+            "fn": 21,
+            "precision": 0.9929,
+            "recall": 0.8688,
+            "f1": 0.9267
+          },
+          "mentor_needed": {
+            "tp": 159,
+            "fp": 21,
+            "fn": 1,
+            "precision": 0.8833,
+            "recall": 0.9938,
+            "f1": 0.9353
+          }
+        },
+        "subtype_recall": {
+          "llm_direct_db": 0.7875,
+          "llm_direct_general": 0.95,
+          "mentor_needed": 0.9938
+        }
+      }
+    }
+  ]
+}

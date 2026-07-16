@@ -115,7 +115,7 @@ def eligible_for_gate(item: dict) -> bool:
 
 def judge(client: OpenAI, question: str) -> dict:
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4.1-mini",
         messages=[{"role": "user", "content": PROMPT.format(question=question)}],
         response_format={"type": "json_object"},
         temperature=0,

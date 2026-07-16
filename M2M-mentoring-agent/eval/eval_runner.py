@@ -183,7 +183,7 @@ Pred(예측): {pq}
 숫자(1.0 또는 0.5 또는 0.0)만 반환. 설명 없음."""
 
     resp = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4.1-mini",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.0,
         max_tokens=5,
