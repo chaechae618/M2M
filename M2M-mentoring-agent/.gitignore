@@ -5,6 +5,7 @@ data_db/data/
 data_db/db/
 data_db/scripts/generate_mentor_db.py
 data/cleaned/
+json_db/*.backup_*.json
 eval/*.json
 !eval/agent2_calibration_summary.json
 eval/tmp_*.json
