@@ -173,7 +173,7 @@
     {
       "mentor_id": "mr_d231f9ed17b8",
       "mentor_info": {
-        "name": "김민준",
+        "name": "정승현",
         "gender": "남",
         "age": 29
       },
@@ -299,7 +299,7 @@
     {
       "mentor_id": "mr_061e4be4a25c",
       "mentor_info": {
-        "name": "김지연",
+        "name": "최지민",
         "gender": "여",
         "age": 34
       },
@@ -320,7 +320,7 @@
     {
       "mentor_id": "mr_9cc0120eed70",
       "mentor_info": {
-        "name": "김민지",
+        "name": "허시은",
         "gender": "여",
         "age": 30
       },
@@ -404,7 +404,7 @@
     {
       "mentor_id": "mr_dd28ef20b5a4",
       "mentor_info": {
-        "name": "김민준",
+        "name": "송지후",
         "gender": "남",
         "age": 34
       },
@@ -425,7 +425,7 @@
     {
       "mentor_id": "mr_7e8b3bd16bed",
       "mentor_info": {
-        "name": "김민지",
+        "name": "신소민",
         "gender": "여",
         "age": 29
       },
@@ -530,7 +530,7 @@
     {
       "mentor_id": "mr_25bb518b5386",
       "mentor_info": {
-        "name": "김민수",
+        "name": "안성현",
         "gender": "남",
         "age": 35
       },
@@ -614,7 +614,7 @@
     {
       "mentor_id": "mr_61487649c06a",
       "mentor_info": {
-        "name": "김지연",
+        "name": "송다인",
         "gender": "여",
         "age": 35
       },
@@ -719,7 +719,7 @@
     {
       "mentor_id": "mr_2812aeea41ac",
       "mentor_info": {
-        "name": "김지훈",
+        "name": "허지호",
         "gender": "남",
         "age": 34
       },
@@ -761,7 +761,7 @@
     {
       "mentor_id": "mr_d942c08a163b",
       "mentor_info": {
-        "name": "김민정",
+        "name": "황민지",
         "gender": "여",
         "age": 32
       },
@@ -824,7 +824,7 @@
     {
       "mentor_id": "mr_e023bd735e08",
       "mentor_info": {
-        "name": "김지영",
+        "name": "서서윤",
         "gender": "여",
         "age": 34
       },
@@ -845,7 +845,7 @@
     {
       "mentor_id": "mr_2ab2d0b0550f",
       "mentor_info": {
-        "name": "김민수",
+        "name": "손규민",
         "gender": "남",
         "age": 30
       },
@@ -887,7 +887,7 @@
     {
       "mentor_id": "mr_103c6e09c511",
       "mentor_info": {
-        "name": "김민지",
+        "name": "최서현",
         "gender": "여",
         "age": 34
       },
@@ -908,7 +908,7 @@
     {
       "mentor_id": "mr_e364ef415aad",
       "mentor_info": {
-        "name": "김지영",
+        "name": "장서윤",
         "gender": "여",
         "age": 35
       },
@@ -929,7 +929,7 @@
     {
       "mentor_id": "mr_af6ba441589e",
       "mentor_info": {
-        "name": "이준혁",
+        "name": "서민준",
         "gender": "남",
         "age": 32
       },
@@ -950,7 +950,7 @@
     {
       "mentor_id": "mr_0dd8f2accb72",
       "mentor_info": {
-        "name": "김현수",
+        "name": "문우진",
         "gender": "남",
         "age": 35
       },
@@ -971,7 +971,7 @@
     {
       "mentor_id": "mr_3e1061b05dfa",
       "mentor_info": {
-        "name": "김진우",
+        "name": "이승현",
         "gender": "남",
         "age": 35
       },
@@ -992,7 +992,7 @@
     {
       "mentor_id": "mr_cf9fd66333f6",
       "mentor_info": {
-        "name": "김지영",
+        "name": "배가은",
         "gender": "여",
         "age": 34
       },
@@ -1013,7 +1013,7 @@
     {
       "mentor_id": "mr_c7fe04646fb2",
       "mentor_info": {
-        "name": "김진우",
+        "name": "고상현",
         "gender": "남",
         "age": 34
       },
@@ -1034,7 +1034,7 @@
     {
       "mentor_id": "mr_ec60b8576b3e",
       "mentor_info": {
-        "name": "김현우",
+        "name": "최현우",
         "gender": "남",
         "age": 40
       },
@@ -1055,7 +1055,7 @@
     {
       "mentor_id": "mr_aab245579119",
       "mentor_info": {
-        "name": "김현수",
+        "name": "송서준",
         "gender": "남",
         "age": 37
       },
@@ -1072,6 +1072,4206 @@
       "be_go": "HR 분야 진로를 고민하는 멘티나 노무사 자격증 취득 후 직장 생활에 대한 조언이 필요한 멘티에게 적합합니다.",
       "active": true,
       "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_6902891a4e9a",
+      "mentor_info": {
+        "name": "김서연",
+        "gender": "여",
+        "age": 27
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "IBD 어소시에이트, 신한은행",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 경영학과를 졸업하고 부트캠프를 수료한 후 신한은행 IBD 어소시에이트로 커리어를 성공적으로 전환했습니다. 금융 및 투자 분야에서 실무 경험과 전문성을 갖추었으며, 신입 및 경력 전환 희망자들의 취업 준비와 커리어 설계에 강점을 가지고 있습니다. 멘토링을 통해 실질적인 금융권 진입 전략과 직무 이해를 돕고 있습니다. 꼼꼼한 피드백과 현실적인 조언으로 멘티들의 목표 달성을 지원합니다.",
+      "be_go": "금융권 취업 준비생이나 비금융권에서 투자은행 분야로 커리어 전환을 희망하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_891357b5d89c",
+      "mentor_info": {
+        "name": "안민준",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "컴퓨터비전 엔지니어, 구글 코리아",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "저는 UNIST 전자공학 대학원에서 석사 학위를 취득한 후, 구글 코리아에서 컴퓨터비전 엔지니어로 4년간 근무하며 다양한 AI 프로젝트를 수행해왔습니다. 데이터 분석과 컴퓨터비전 분야에 대한 깊은 이해를 바탕으로 실제 산업 현장에서의 문제 해결 경험을 쌓았습니다. 최신 AI 기술 트렌드와 연구 경험을 바탕으로 실무 중심의 멘토링을 제공합니다. 데이터 기반 의사결정과 AI 모델 개발에 관심 있는 멘티에게 적합합니다.",
+      "be_go": "컴퓨터비전과 AI 분야에서 실무 경험을 쌓고자 하는 취업 준비생 및 초기 경력자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_209eb23f98f9",
+      "mentor_info": {
+        "name": "배가영",
+        "gender": "여",
+        "age": 28
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "머신러닝 엔지니어, 마켓컬리",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 경제학 대학원 석사 출신으로 데이터 분석과 머신러닝에 특화된 경력을 보유하고 있습니다. 현재 마켓컬리에서 머신러닝 엔지니어로 근무하며 실제 서비스에 AI 기술을 적용하는 경험을 쌓고 있습니다. 데이터 기반 문제 해결 능력과 함께 머신러닝 프로젝트 전반에 대한 실무 이해도가 강점입니다. 신입 및 초기 경력 개발자 분들에게 실질적인 커리어 조언과 기술 멘토링을 제공할 수 있습니다.",
+      "be_go": "데이터분석과 머신러닝 분야에 처음 도전하거나 실무 경험을 쌓고 싶은 주니어 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_7f174821d2ab",
+      "mentor_info": {
+        "name": "문민재",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "데이터사이언스",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 서비스 기획자, 삼성전자 AI연구소",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 데이터사이언스 전공 후 창업 경험을 바탕으로 삼성전자 AI연구소에서 12년간 AI 서비스 기획 업무를 수행해왔습니다. 데이터 분석과 AI 프로젝트 관리에 뛰어난 전문성을 갖추었으며, 실무 경험과 창업 경험을 접목한 멘토링이 강점입니다. AI 서비스 개발과 데이터 기반 의사결정에 관심 있는 멘티에게 효과적인 길잡이가 될 수 있습니다.",
+      "be_go": "AI 서비스 기획이나 데이터 분석, AI 프로젝트 매니지먼트에 진로를 고민하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_62149181b5b1",
+      "mentor_info": {
+        "name": "송민석",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "대화형 AI 연구원, 아마존 코리아",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 산업공학을 전공하고 스타트업 인턴 경험을 거쳐 현재 아마존 코리아에서 대화형 AI 연구원으로 7년째 근무 중입니다. NLP와 LLM 분야에 특화된 데이터 분석 및 AI 연구를 수행하며, 실무에서의 문제 해결 능력과 최신 기술 트렌드에 밝습니다. 다양한 프로젝트 경험을 바탕으로 실용적인 멘토링을 제공하며, 취업 준비생 및 AI 연구에 관심 있는 분들에게 실질적인 도움을 드릴 수 있습니다.",
+      "be_go": "AI, NLP, LLM 분야에서 실무 경험과 기술적 통찰을 얻고자 하는 취업 준비생 및 진로 탐색자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_e904fa18b197",
+      "mentor_info": {
+        "name": "김민재",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "QA 엔지니어, SK C&C",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 경제학과를 졸업한 후, IT 분야에서 QA 엔지니어로 4년간 근무하며 소프트웨어 품질 관리와 테스트 자동화에 전문성을 쌓았습니다. SK C&C에서 꾸준히 커리어를 발전시키며 다양한 프로젝트의 품질 보증을 담당해 왔고, 실무 경험을 바탕으로 취업 준비생과 신입 QA 엔지니어를 위한 멘토링에 강점을 가지고 있습니다. 체계적인 문제 해결과 커뮤니케이션 능력을 통해 현업에서 요구하는 역량을 전수하는 데 집중합니다.",
+      "be_go": "QA 엔지니어 취업을 준비하는 분이나 실무 역량 향상을 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_7cfe7181215d",
+      "mentor_info": {
+        "name": "최민석",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "커머스 데이터 분석가, 두나무(업비트)",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "서강대 물리학과를 졸업하고 대기업에서 공채로 입사하여 분석 역량을 쌓았습니다. 현재는 두나무(업비트)에서 커머스 데이터 분석가로 9년간 근무하며 다양한 데이터 기반 비즈니스 인사이트 도출과 AI 기술 적용 경험을 보유하고 있습니다. 복잡한 데이터 문제 해결과 실무 데이터 분석 프로세스에 강점을 가지고 있으며, 취업 준비생과 경력 전환자 모두에게 실질적인 멘토링을 제공할 수 있습니다. 데이터분석과 AI 분야에서 커리어를 쌓고자 하는 분들에게 특히 적합한 멘토입니다.",
+      "be_go": "데이터 분석 및 AI 분야에서 실무 경험을 쌓고 싶은 취업 준비생과 커리어 전환 희망자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_466f520750d9",
+      "mentor_info": {
+        "name": "김도현",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "포항공과대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 프로덕트 매니저, 구글 코리아",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 통계학을 졸업하고 부트캠프를 통해 데이터 분석과 AI 분야로 커리어를 성공적으로 전환한 경험이 있습니다. 현재 구글 코리아에서 데이터 프로덕트 매니저로 5년간 근무하며 AI 및 데이터 기반 제품 기획과 실행을 담당하고 있습니다. 기술적 이해와 비즈니스 요구를 조화롭게 연결하여 실제 문제 해결에 중점을 둔 멘토링을 제공합니다. 데이터 분석과 AI 분야로 경력 전환을 고민하는 분들께 실질적인 조언과 도움을 드릴 수 있습니다.",
+      "be_go": "데이터 분석과 AI 분야에 진입하거나 프로덕트 매니저 역할을 목표로 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_dc57c49ab79e",
+      "mentor_info": {
+        "name": "이정훈",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서버 개발자, LG CNS",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "저는 경희대학교 통계학과 출신으로 비전공자임에도 독학을 통해 IT 백엔드 개발자로 경력을 쌓아왔습니다. 9년간 LG CNS에서 서버 개발자로 근무하며 다양한 프로젝트를 진행했고, 실무 중심의 노하우와 문제 해결 능력을 갖추고 있습니다. 비전공자 또는 독학으로 IT 분야에 도전하는 분들에게 실질적인 가이드를 제공할 수 있으며, 커리어 전환 및 역량 강화에 대한 멘토링이 강점입니다.",
+      "be_go": "비전공자 출신으로 IT 개발에 도전하려는 멘티와 독학으로 역량을 키우고 싶은 분들에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:42"
+    },
+    {
+      "mentor_id": "mr_44268230ec00",
+      "mentor_info": {
+        "name": "김유진",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Applied Scientist, 아마존 코리아",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 수학 전공자로 비전공 분야인 데이터사이언스와 AI에 독학으로 도전해 아마존 코리아 Applied Scientist로 입사한 경험이 있습니다. 2년간 실제 산업 현장에서 머신러닝 모델 개발과 데이터 분석 업무를 수행하며 실무 역량을 쌓았습니다. 다양한 데이터 분석 툴과 프로그래밍 능력을 갖추고 있으며, 비전공자 출신 멘티에게 적합한 커리어 전환 및 실무 적응 조언에 강점이 있습니다. 기술적 전문성과 함께 실질적인 취업 전략을 멘토링할 수 있습니다.",
+      "be_go": "비전공자 출신으로 데이터사이언스와 AI 분야로 진로를 전환하려는 분들에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_989923c681e0",
+      "mentor_info": {
+        "name": "김성현",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 SRE, 아마존 코리아",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "데이터 분석 및 AI 분야에서 5년간 MLOps 및 인프라 구축 경험을 보유한 ML 플랫폼 SRE 전문가입니다. 중앙대학교 데이터사이언스학과를 졸업한 후 첫 직장부터 현재 아마존 코리아까지 꾸준히 한 분야에서 전문성을 쌓아왔습니다. 대규모 클라우드 환경과 ML 시스템의 안정성 확보에 강점을 가지고 있으며, 실무 중심의 멘토링을 제공합니다. 데이터 엔지니어링과 운영에 관심 있는 멘티들에게 실질적인 도움을 드립니다.",
+      "be_go": "데이터 분석과 AI MLOps 인프라 분야에서 실무 경험을 쌓고 싶거나, ML 플랫폼 운영에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_9a8376bd785e",
+      "mentor_info": {
+        "name": "이수민",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "대화형 AI 연구원, 메타 코리아",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 인공지능학과를 졸업하고 스타트업 인턴십을 경험한 후 메타 코리아에서 8년간 대화형 AI 연구원으로 근무하고 있습니다. 자연어 처리와 대규모 언어 모델(LLM) 분야에 전문성을 가지고 있으며, 실무 경험을 바탕으로 최신 AI 기술과 산업 동향에 밝습니다. 데이터 분석과 AI 연구에 대한 깊은 이해와 문제 해결 능력을 갖추고 있습니다. 멘토링을 통해 AI 진로를 고민하는 분들에게 실질적인 도움과 현장 노하우를 제공하는 것을 목표로 합니다.",
+      "be_go": "대화형 AI, 자연어 처리, LLM 분야에 관심이 있거나 해당 분야로 진로를 준비하는 예비 AI 연구원에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_efc09c3e8771",
+      "mentor_info": {
+        "name": "최규민",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프론트엔드 엔지니어, 직방",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 응용수학과를 졸업하고 대기업 공채로 IT 개발에 입문한 후, 현재 직방에서 7년간 프론트엔드 엔지니어로 근무 중입니다. 다양한 프로젝트 경험과 최신 웹 기술에 대한 깊은 이해를 바탕으로 실무에 강한 멘토링을 제공합니다. 프론트엔드 개발자로서 커리어 전환이나 역량 강화를 원하는 분들에게 실질적인 조언과 노하우를 공유합니다. 체계적이고 친절한 멘토링으로 성장 동반자가 되어드립니다.",
+      "be_go": "프론트엔드 개발을 희망하거나 실무 경험을 쌓고 싶은 취업 준비생과 주니어 개발자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_e4fca6ed250a",
+      "mentor_info": {
+        "name": "김서윤",
+        "gender": "여",
+        "age": 28
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 리서처, SK텔레콤 AI",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "이화여자대학교 인공지능학과를 졸업하고 해외 인턴십 경험을 바탕으로 SK텔레콤 AI팀에서 3년간 AI 리서처로 일하고 있습니다. 머신러닝과 딥러닝 분야에서 실무 경험과 연구 역량을 갖추었으며 최신 AI 트렌드와 기술을 깊이 이해하고 있습니다. 현업에서의 문제 해결 사례와 커리어 개발 노하우를 공유하며 멘토링 강점을 발휘합니다. AI 분야 진로를 고민하는 예비 전문가에게 실질적인 도움을 줄 수 있습니다.",
+      "be_go": "머신러닝 및 딥러닝 실무 경험과 연구 역량을 키우고 싶은 AI 분야 취업 준비생이나 신입 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_700e3f068120",
+      "mentor_info": {
+        "name": "최정우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "포스텍",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 사이언티스트, 쿠팡",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 컴퓨터공학 대학원에서 석사 학위를 취득한 후 쿠팡에서 데이터 사이언티스트로 2년간 근무하며 다양한 데이터 분석과 AI 프로젝트를 수행했습니다. 실제 산업 현장에서의 경험을 바탕으로 데이터 기반 문제 해결 능력과 AI 모델 개발에 강점을 가지고 있습니다. 신입 및 경력 개발자들에게 실무에 필요한 핵심 역량과 커리어 전략에 대해 구체적이고 맞춤형 조언을 제공할 수 있습니다. 데이터분석과 AI 분야에서 커리어를 시작하거나 성장시키고자 하는 분들에게 적합한 멘토입니다.",
+      "be_go": "데이터분석과 AI 분야에 진입하려는 신입과 경력 1~3년차 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_064e4068a657",
+      "mentor_info": {
+        "name": "남승현",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "인하대학교 대학원",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 엔지니어, 뱅크샐러드",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "8년 차 ML 플랫폼 엔지니어로서 뱅크샐러드에서 머신러닝 및 딥러닝 기반의 데이터 분석 플랫폼 개발에 주력해왔습니다. 인하대학교 소프트웨어학 석사 출신으로 연구직을 시작해 실무와 연구 경험을 두루 갖추고 있습니다. 데이터 기반 의사결정과 AI 모델 운영 최적화에 깊은 전문성을 보유하며, 기술적 복잡성을 쉽게 풀어 설명하는 멘토링에 강점이 있습니다. 최신 머신러닝 트렌드와 실무 적용 경험을 바탕으로 실질적 성장과 커리어 전환을 돕습니다.",
+      "be_go": "머신러닝과 딥러닝 분야에서 실무 역량을 키우고자 하는 신입 또는 경력 개발자에게 적합하며, AI 플랫폼 구축과 운영에 관심 있는 멘티에게 특히 도움이 됩니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_0a617ac5c599",
+      "mentor_info": {
+        "name": "한현수",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 두나무(업비트)",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 응용수학과를 졸업한 후 스타트업에서 인턴십을 경험했고, 현재 두나무(업비트)에서 6년간 빅데이터 엔지니어로 근무하고 있습니다. 데이터 엔지니어링과 AI 분야에서 실무 경험이 풍부하며, 빅데이터 인프라 구축 및 최적화에 전문성을 갖추고 있습니다. 스타트업과 대기업 환경을 모두 경험하여 다양한 업무 환경 적응력을 가지고 있습니다. 꼼꼼하고 현실적인 커리어 상담과 실질적인 취업 전략을 제공할 수 있는 멘토입니다.",
+      "be_go": "데이터엔지니어링 분야 취업을 준비하는 중급 이상의 멘티에게 적합하며, 실무 중심의 진로 상담과 기술 역량 강화에 도움을 주고자 하는 멘티에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_beb500c5ab57",
+      "mentor_info": {
+        "name": "윤선우",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "SRE, SK C&C",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 생명과학 전공 후 대기업 공채 입사를 시작으로 IT 개발과 클라우드 분야에서 8년간 경력을 쌓아왔습니다. 현재 SK C&C에서 SRE로 근무하며 안정성과 확장성 있는 시스템 운영에 전문성을 갖추고 있습니다. 다양한 대기업 환경에서의 실무 경험과 최신 클라우드 기술 이해를 바탕으로 실질적이고 현실적인 멘토링을 제공합니다. IT 및 클라우드 분야에서 커리어 전환이나 스킬 업을 희망하는 분들에게 특히 강점이 있습니다.",
+      "be_go": "IT 개발 및 클라우드 분야에서 커리어를 시작하거나 성장시키고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_ff640691e67f",
+      "mentor_info": {
+        "name": "김태훈",
+        "gender": "남",
+        "age": 37
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 업스테이지",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "성균관대학교 언론정보학을 전공한 후 창업 경험을 바탕으로 데이터 분야에 뛰어들어 업스테이지에서 12년간 빅데이터 엔지니어로 활약해왔습니다. 데이터 파이프라인 구축과 최적화에 강점을 가지고 있으며, AI와 빅데이터 기술을 실제 비즈니스에 적용하는 노하우를 갖추고 있습니다. 다양한 프로젝트 경험을 통해 실무 중심의 멘토링을 제공하며, 창업 경험을 살려 데이터 기반 스타트업 진로 조언도 가능합니다. 데이터 엔지니어링 분야에서 경력 전환을 고민하는 분들에게 최적의 멘토입니다.",
+      "be_go": "데이터 엔지니어링 경력을 쌓고 싶거나 AI·빅데이터 분야에서 실무 역량을 키우고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_9754b338d94c",
+      "mentor_info": {
+        "name": "이수진",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "브랜드 마케터, 아모레",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "7년간 아모레에서 브랜드 마케터로 근무하며 다양한 뷰티 브랜드의 전략 수립과 실행에 참여했습니다. 한양대학교 생명과학 전공을 바탕으로 제품과 시장에 대한 깊은 이해를 가지고 있으며, 해외 인턴십 경험으로 글로벌 브랜드 마케팅 역량을 쌓았습니다. 실무 경험과 체계적인 분석 능력을 토대로 멘토링에 강점이 있습니다. 브랜드 마케팅 진로를 고민하는 취업준비생과 신입 마케터에게 실질적인 조언을 제공합니다.",
+      "be_go": "브랜드 마케팅 분야에 취업 준비 중이거나 경력을 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_945f26987665",
+      "mentor_info": {
+        "name": "손영훈",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "클라우드 인프라 엔지니어, NHN",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 산업공학을 전공하고 해외 인턴십 경험을 통해 글로벌 IT 환경을 체험했습니다. 현재 NHN에서 클라우드 인프라 엔지니어로 3년간 근무하며 클라우드 컴퓨팅 및 인프라 운영 전문성을 쌓았습니다. 최신 클라우드 기술과 실무 경험을 바탕으로 취업 준비생과 현직 개발자들의 실질적인 진로 상담과 기술 멘토링을 지원합니다. 클라우드 분야 진로 탐색부터 자격증, 실무 역량 강화까지 폭넓은 멘토링이 가능합니다.",
+      "be_go": "클라우드 인프라 엔지니어를 목표로 하는 개발자나 클라우드 관련 직무에 관심 있는 IT 취업 준비생에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_9d75374ce327",
+      "mentor_info": {
+        "name": "허동욱",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 엔지니어, 스캐터랩",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 컴퓨터공학과를 졸업하고 대기업에서 첫 경력을 시작한 후, 현재 스캐터랩에서 ML 플랫폼 엔지니어로 6년간 일하고 있습니다. 머신러닝과 딥러닝 모델의 개발 및 운영 경험이 풍부하며, 데이터분석 기반 AI 서비스 구축에 전문성을 가지고 있습니다. 다양한 산업 현장의 실무 경험과 기술적 노하우를 바탕으로 체계적인 멘토링을 제공합니다. 최신 AI 트렌드와 효율적인 ML 플랫폼 구축 방법에 대해 깊이 있는 조언이 가능합니다.",
+      "be_go": "머신러닝과 딥러닝 기술을 실무에 적용하고자 하는 취업준비생이나 현업 초년생에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_400d9d550d32",
+      "mentor_info": {
+        "name": "김도윤",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 SRE, 네이버",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "저는 GIST 소프트웨어학과를 졸업하고 창업 경험을 가진 후 현재 네이버에서 ML 플랫폼 SRE로 근무하고 있습니다. 데이터 분석과 AI 분야 내 MLOps 및 인프라 구축에 전문성이 있으며, 실무 경험을 토대로 안정적이고 효율적인 ML 시스템 운영 노하우를 제공합니다. 스타트업부터 대기업까지 다양한 환경을 경험하여 멘티들이 실무 역량을 키우고 커리어 방향성을 잡는 데 도움을 드릴 수 있습니다. 적극적인 멘토링으로 현업 중심의 실질적 조언과 진로 설계를 지원합니다.",
+      "be_go": "데이터분석과 AI 분야에서 MLOps 및 인프라에 관심이 있으며 실무적인 운영 경험과 커리어 컨설팅을 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_63bb96c9593a",
+      "mentor_info": {
+        "name": "강도윤",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "마케팅 데이터 분석가, 두나무(업비트)",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 경영학과를 전공했으나, 데이터 분석 분야로 전향하여 독학으로 역량을 키웠습니다. 현재 두나무(업비트)에서 마케팅 데이터 분석가로 2년간 근무하며 실무 경험을 쌓았습니다. 비전공자 출신으로서 데이터 분석 입문자 및 전공 전환자에게 효과적인 학습 전략과 커리어 조언을 제공합니다. 실무 중심의 데이터 분석 기술과 AI 활용법에 대해 심도 있는 멘토링이 가능합니다.",
+      "be_go": "데이터 분석에 비전공자로 도전하는 멘티나 실무 경험을 쌓고 싶은 초기 경력자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_88fab7440df7",
+      "mentor_info": {
+        "name": "김태현",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "비전 AI 연구원, 센드버드",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "저는 건국대학교 산업공학을 졸업하고 스타트업 인턴십 경험을 통해 실무 감각을 익힌 후, 현재 센드버드에서 비전 AI 연구원으로 일하고 있습니다. 컴퓨터 비전 분야에서 현업 경험을 쌓으며 AI 모델 개발과 데이터 분석에 전문성을 키워왔습니다. 스타트업과 대기업 환경을 모두 경험해, 실무에 필요한 문제 해결 능력과 협업 능력에 강점이 있습니다. 최신 비전 AI 트렌드와 실무 적용에 대한 깊은 이해를 바탕으로 멘티 분들에게 실질적인 도움을 줄 수 있습니다.",
+      "be_go": "컴퓨터 비전과 AI 분야에서 실무 경험을 쌓고자 하는 취업 준비생이나 경력 초기 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:43"
+    },
+    {
+      "mentor_id": "mr_006f9eacea5b",
+      "mentor_info": {
+        "name": "신상현",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "금융 데이터 분석가, 크래프톤",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 인공지능학을 전공하고, 졸업 후 금융 데이터 분석 분야에서 2년간 크래프톤에서 일해왔습니다. 데이터 분석과 AI 모델링에 대한 실무 경험과 깊은 이해를 바탕으로 현업에서 필요한 기술과 문제 해결 능력을 갖추고 있습니다. 꾸준한 경력 개발과 최신 기술 습득에 집중하며, 멘티에게 실질적인 데이터 분석 역량 향상과 진로 방향성을 제시할 수 있습니다. 금융 및 게임 산업 데이터 분석에 특화된 인사이트를 제공하는 멘토입니다.",
+      "be_go": "금융 데이터 분석가를 꿈꾸거나 AI를 활용한 데이터 분석 실무 역량을 키우고 싶은 예비 데이터분석가에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_3577f49baf71",
+      "mentor_info": {
+        "name": "김준호",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "대화형 AI 연구원, 하이퍼커넥트",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "성균관대 물리학과를 졸업한 후 데이터 분석과 AI 분야에서 6년간 경력을 쌓아왔습니다. 현재 하이퍼커넥트에서 대화형 AI 연구원으로 NLP 및 LLM 기술을 전문적으로 다루고 있으며, 실무 경험과 최신 AI 트렌드에 대한 깊은 이해를 갖추고 있습니다. 꾸준한 한 우물 경력으로 현장의 문제 해결 능력과 효과적인 데이터 분석 전략 수립에 강점을 보유하고 있습니다. 멘티들에게 실질적인 프로젝트 사례를 통해 AI 연구 및 개발 노하우를 전달할 수 있습니다.",
+      "be_go": "데이터 분석, 대화형 AI, NLP 분야에 진입하고자 하는 취업 준비생 및 실무 역량을 강화하려는 초중급 개발자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_edeb3c4b3b76",
+      "mentor_info": {
+        "name": "이영훈",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서버 개발자, 현대오토에버",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 심리학 전공 후 IT 부트캠프를 수료하여 현대오토에버에서 서버 개발자로 경력을 쌓은 2년차 개발자입니다. 비전공자 출신으로서 커리어 전환에 성공한 경험과 실무 역량을 바탕으로 백엔드 개발과 관련된 실질적인 조언을 제공합니다. 다양한 프로젝트 경험과 문제 해결 능력을 통해 멘티의 성장에 도움을 줄 수 있습니다. IT 개발 분야 진입을 고민하는 분들에게 특히 유용한 멘토입니다.",
+      "be_go": "비전공자이면서 IT 개발로 커리어 전환을 희망하는 멘티에게 적합하며 백엔드 서버 개발 실무와 성장 전략에 관심 있는 분들에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_2aec238365ea",
+      "mentor_info": {
+        "name": "김준서",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "채용 담당자, 삼성전자",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 경영학과를 졸업하고 창업 경험을 가진 후 삼성전자 채용 담당자로 경력을 쌓고 있습니다. HR 분야에서 실무 경험과 창업가 정신을 바탕으로 다채로운 인재 관리 노하우를 보유하고 있습니다. 최신 채용 트렌드에 대해 깊이 이해하고 있으며, 취업 준비생들에게 실질적인 조언과 전략을 제공합니다. 경력 초기지만 빠르게 성장하는 역동적인 현장에서 얻은 인사이트를 공유합니다.",
+      "be_go": "채용 직무에 관심이 있거나 스타트업과 대기업 경험을 접목하고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_eacc21dc4712",
+      "mentor_info": {
+        "name": "허시우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "GIST",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "자산운용사 리서치 애널리스트, 맥킨지",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "GIST 경영학 전공 후 자산운용사에서 리서치 애널리스트로 3년간 근무하며 금융 및 투자 분야 전문성을 쌓았습니다. 맥킨지에서의 경험을 통해 전략적 사고와 분석 역량을 갖추었으며, 체계적인 문제 해결과 커리어 성장 멘토링에 강점이 있습니다. 금융업계 진출을 준비하는 신입 및 경력개발 희망자에게 실질적 조언을 제공합니다.",
+      "be_go": "금융 및 투자 분야에서 경력을 쌓고자 하는 취업준비생 및 초기 경력자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_30def203620e",
+      "mentor_info": {
+        "name": "송다은",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "LLM 엔지니어, 삼성전자 AI연구소",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "저는 UNIST 경영학 대학원에서 석사 학위를 취득한 후 삼성전자 AI연구소에서 LLM 엔지니어로 일하고 있습니다. 1년간 대형 언어 모델과 자연어 처리 기술을 연구하며 실질적인 AI 솔루션 개발 경험을 쌓았습니다. 경영학적 시각과 AI 기술을 접목해 데이터 분석과 NLP 분야에서 폭넓은 전문성을 갖추고 있습니다. 멘토링을 통해 실무 중심의 커리어 개발과 AI 기술 트렌트 이해에 도움을 드릴 수 있습니다.",
+      "be_go": "데이터 분석과 NLP, 특히 대형 언어 모델 분야에 관심 있고 실무 역량을 키우고자 하는 취업 준비생과 초년차 엔지니어에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_9011e45e65d6",
+      "mentor_info": {
+        "name": "홍영훈",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 엔지니어, 마켓컬리",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 경제학과 출신으로 비전공자임에도 불구하고 독학으로 머신러닝과 딥러닝을 마스터하여 마켓컬리에서 ML 플랫폼 엔지니어로 4년간 근무하고 있습니다. 데이터 분석과 AI 분야에 필요한 실무 역량과 플랫폼 구축 경험을 갖추고 있으며, 비전공자들의 진입 장벽 해소와 커리어 전환에 강점을 가지고 있습니다. 복잡한 기술을 쉽게 설명하는 멘토링으로 수많은 멘티들의 성장을 도와왔습니다. 현업에서의 트렌드와 실제 사례를 바탕으로 실질적인 조언을 제공합니다.",
+      "be_go": "비전공자이나 데이터 분석과 AI 분야로 커리어 전환을 꿈꾸는 멘티에게 매우 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_555e3cf71b5e",
+      "mentor_info": {
+        "name": "오민준",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "게임 클라이언트 개발자, 카카오뱅크",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교에서 컴퓨터공학을 전공했지만 비전공자로서 독학으로 개발 역량을 쌓아 카카오뱅크 게임 클라이언트 개발자로 입사한 신입 개발자입니다. IT개발과 게임 분야에 관심이 많으며, 실무 경험과 자기주도 학습 경험을 바탕으로 멘티들의 개발 역량 강화와 취업 준비 과정을 도울 수 있습니다. 빠르게 변화하는 IT 환경에서 적응하는 방법과 실질적인 개발 노하우를 공유합니다.",
+      "be_go": "비전공자 출신이지만 IT개발 분야에서 커리어를 시작하고자 하는 멘티나, 독학으로 개발 역량을 키우고자 하는 학생들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_dcbb7a76b34f",
+      "mentor_info": {
+        "name": "양재현",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "마케팅 데이터 분석가, 뤼튼테크놀로지스",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 응용수학 석사 출신으로 2년간 뤼튼테크놀로지스에서 마케팅 데이터 분석가로 근무하며 실무 경험을 쌓았습니다. 데이터 분석과 AI 기술을 활용해 마케팅 전략 수립과 데이터 기반 의사결정을 지원하는 데 강점을 가지고 있습니다. 석사 연구 경험과 현장 업무를 접목한 깊이 있는 분석 능력을 바탕으로 실질적이고 체계적인 멘토링을 제공합니다. 데이터분석 직무로의 진입과 커리어 전환에 관심 있는 멘티들에게 특히 유용한 멘토입니다.",
+      "be_go": "데이터 분석 및 AI 분야에서 경력을 시작하거나 성장시키고 싶은 초중급 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_2f3cd6a00cf9",
+      "mentor_info": {
+        "name": "백영훈",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "시니어 데이터 사이언티스트, 뤼튼테크놀로지스",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 산업공학을 전공하고 부트캠프를 통해 데이터 분석 및 AI 분야로 성공적으로 커리어 전환한 시니어 데이터 사이언티스트입니다. 뤼튼테크놀로지스에서 3년간 실무 경험을 쌓으며 다양한 데이터 모델링과 AI 프로젝트를 수행했습니다. 데이터 기반 의사결정과 문제 해결 능력을 갖춘 멘토로, 실무 중심의 조언과 진로 방향 설정에 강점을 가지고 있습니다. 데이터 분석과 AI에 관심이 많은 취업 준비생이나 커리어 전환 희망자에게 최적의 가이드를 제공합니다.",
+      "be_go": "데이터 분석과 AI 분야로 커리어를 시작하고자 하는 취업 준비생과 부트캠프 수료자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_6845db45c4a8",
+      "mentor_info": {
+        "name": "장시우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "HRD 매니저, SSG닷컴",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 경제학과를 졸업하고 창업 경험을 바탕으로 HR 분야에 뛰어든 HRD 매니저입니다. 현재 SSG닷컴에서 인재 개발과 조직 역량 강화를 담당하며 실무 경험을 쌓고 있습니다. 창업과 HRD 업무를 통해 얻은 다양한 시각과 실무 노하우를 멘토링에 적극 활용합니다. 신입 및 경력 초기 HR 직무 진로 고민자와 역량 개발에 관심 있는 분들에게 전문적인 조언을 제공합니다.",
+      "be_go": "HR 직무 진입을 희망하거나 초기 HRD 업무 적응에 고민이 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_21b0fb68057f",
+      "mentor_info": {
+        "name": "신승현",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "브랜드 마케터, 현대자동차",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 언론정보학을 전공하고 스타트업 인턴십 경험을 바탕으로 현대자동차 브랜드 마케팅 분야에서 2년간 실무를 쌓았습니다. 빠르게 변화하는 시장 트렌드 분석과 소비자 인사이트 도출에 강점을 가지고 있으며, 브랜드 가치를 높이기 위한 전략 수립에 능숙합니다. 스타트업부터 대기업까지 다양한 경험을 통해 멘티들에게 실질적인 취업과 진로 조언을 제공합니다. 브랜드 마케팅에 관심 있는 분들에게 실무 중심의 멘토링을 약속합니다.",
+      "be_go": "브랜드 마케팅 분야 진입을 준비하는 신입 또는 초기 경력자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_7754c1136ff0",
+      "mentor_info": {
+        "name": "이서연",
+        "gender": "여",
+        "age": 35
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "커머스 데이터 분석가, 뤼튼테크놀로지스",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "이서연 멘토는 이화여대 생명과학 석사 출신으로, 뤼튼테크놀로지스에서 10년간 커머스 데이터 분석가로 근무하며 다양한 데이터 기반 의사결정과 AI 프로젝트를 경험했습니다. 생명과학 배경과 데이터 분석 역량을 접목해 복잡한 문제 해결에 강점을 가지고 있습니다. 멘토링을 통해 실무 중심의 데이터 분석 스킬과 AI 활용 노하우를 전달하며, 현장 맞춤형 진로 상담도 제공합니다.",
+      "be_go": "데이터 분석과 AI 분야로 커리어를 준비하는 취업준비생이나 경력 전환 희망자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_a35314951000",
+      "mentor_info": {
+        "name": "이민지",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "동국대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "NLP 엔지니어, 뱅크샐러드",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "동국대학교 물리학을 전공하고 해외 인턴십 경험을 통해 실무 역량을 쌓은 뒤, 뱅크샐러드에서 3년간 NLP 엔지니어로 근무하고 있습니다. 데이터 분석과 AI, 특히 자연어 처리 분야에 깊은 전문성을 가지고 있으며, 최신 LLM 기술 적용 경험도 보유하고 있습니다. 실무 중심의 멘토링을 통해 취업 준비와 커리어 성장에 실질적인 도움을 드릴 수 있습니다. 데이터 기반 문제 해결과 모델 최적화에 관심 있는 멘티와 잘 맞습니다.",
+      "be_go": "NLP와 LLM 분야 진로를 고민하는 취업 준비생 또는 커리어 전환자가 이 멘토의 도움을 받기에 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_ccbf600fc32f",
+      "mentor_info": {
+        "name": "고형준",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "게임 클라이언트 개발자, 우아한형제들(배민)",
+      "years_of_experience": 11,
+      "total_questions": 0,
+      "matching_summary_text": "성균관대학교 응용수학과 출신으로 해외 인턴십 경험을 통해 글로벌 IT 개발 환경을 익혔습니다. 현재 우아한형제들(배민)에서 11년간 게임 클라이언트 개발자로 근무하며 다양한 프로젝트를 주도해왔습니다. 게임 개발과 클라이언트 소프트웨어 분야에 깊은 전문 지식을 보유하고 있으며, 실무 경험을 바탕으로 실질적인 취업 및 진로 멘토링이 가능합니다. 현업에서의 최신 트렌드와 개발 노하우를 공유할 수 있습니다.",
+      "be_go": "게임 클라이언트 개발을 희망하거나 IT 개발 분야에서 실무 중심의 멘토링을 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_c12bb2640181",
+      "mentor_info": {
+        "name": "홍시우",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "게임 클라이언트 개발자, 당근마켓",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "서울대 수학과를 졸업하고 부트캠프를 통해 IT 개발자로 전향한 후 12년간 게임 클라이언트 개발자로 일해왔습니다. 당근마켓에서 쌓은 실무 경험과 탄탄한 수학적 사고력을 바탕으로 복잡한 문제 해결에 능숙합니다. 다양한 기술 스택과 최신 트렌드에 대한 깊은 이해를 바탕으로 실질적이고 체계적인 멘토링을 제공합니다. 개발자로서의 경력 전환과 게임 개발 분야 진입을 희망하는 분들에게 최적의 조언을 드릴 수 있습니다.",
+      "be_go": "게임 클라이언트 개발자로 커리어를 시작하거나, IT 분야로 전환을 고민하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_3941e2d4d3b4",
+      "mentor_info": {
+        "name": "심예준",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "퍼포먼스 마케터, 이랜드",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 경영학과 졸업 후 대기업 공채로 입사하여 실무 경험을 쌓았고, 현재 이랜드에서 퍼포먼스 마케터로 6년간 근무 중입니다. 디지털 마케팅과 데이터 기반 광고 집행에 전문성을 가지고 있으며, 다양한 캠페인 성과 분석과 최적화 경험을 보유하고 있습니다. 실전 경험과 전략적 접근 방식을 바탕으로 멘티에게 현실적인 조언과 실무 노하우를 제공합니다. 퍼포먼스 마케팅 분야에서 커리어를 시작하거나 성장하고 싶은 분들에게 강력한 멘토가 될 것입니다.",
+      "be_go": "퍼포먼스 마케팅 분야에서 실무 경험을 쌓고 싶거나, 데이터 기반 마케팅 역량을 키우고자 하는 취준생 및 초기 경력자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_38879e2c4414",
+      "mentor_info": {
+        "name": "김동현",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서버 개발자, LG CNS",
+      "years_of_experience": 13,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 응용수학 석사 출신으로 LG CNS에서 13년간 서버 개발자로 근무하며 다양한 대규모 프로젝트를 성공적으로 수행했습니다. 연구직 출신답게 문제 해결 능력이 뛰어나고 최신 기술 트렌드에 밝습니다. IT개발 백엔드 분야의 실무 경험과 심도 있는 기술 지식을 바탕으로 실질적이고 체계적인 멘토링을 제공합니다. 경력 개발과 기술 성장에 집중하는 멘티에게 최적의 가이드를 제공할 수 있습니다.",
+      "be_go": "백엔드 개발 직무로 경력 전환을 희망하거나 기술 역량 강화를 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_5fb4f1fc3080",
+      "mentor_info": {
+        "name": "박예준",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프로덕트 데이터 분석가, 라인플러스",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "6년차 프로덕트 데이터 분석가로 라인플러스에서 다양한 AI 및 데이터 분석 프로젝트를 수행해왔습니다. 비전공자로 시작해 독학으로 데이터사이언스 역량을 키워 입사한 경험이 있어 비전공자 멘티에게 실질적인 조언이 가능합니다. 데이터 분석 실무와 AI 도입 사례에 강점을 가지고 있으며, 실무 중심의 멘토링을 제공합니다. 데이터분석가로 커리어 전환을 고민하는 분들에게 맞춤형 가이드를 드립니다.",
+      "be_go": "비전공자이지만 데이터 분석가로 성공하고 싶은 멘티와 실무 중심의 데이터 분석 및 AI 프로젝트 경험을 쌓고자 하는 분에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:44"
+    },
+    {
+      "mentor_id": "mr_4b460412e341",
+      "mentor_info": {
+        "name": "김진호",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "클라우드 인프라 엔지니어, 우아한형제들(배민)",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 소프트웨어학과를 졸업하고 창업 경험을 바탕으로 클라우드 인프라 분야에서 5년간 우아한형제들(배민)에서 근무 중입니다. IT개발과 클라우드 인프라 구축 및 운영에 대한 깊은 이해와 실무 노하우를 가지고 있습니다. 스타트업 경험을 살려 창업과 기술적 도전 모두를 이해할 수 있는 멘토입니다. 실질적인 커리어 성장과 클라우드 전문가를 꿈꾸는 멘티들에게 전문적인 가이드를 제공합니다.",
+      "be_go": "클라우드 인프라 엔지니어나 IT 개발 분야에서 실무 경험을 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_565f2d7a0941",
+      "mentor_info": {
+        "name": "임민재",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "동국대학교",
+        "major": "사회학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "BizDev 매니저, 미래에셋자산운용",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "동국대학교 사회학과를 졸업하고 대기업 공채로 입사하여 탄탄한 커리어를 쌓았습니다. 현재는 미래에셋자산운용에서 BizDev 매니저로서 10년간 전략기획과 비즈니스 개발 업무를 수행하며 전문성을 키워왔습니다. 다양한 산업과 시장에 대한 깊은 이해를 바탕으로 실질적인 비즈니스 성장 전략 수립에 강점이 있습니다. 멘토링 경험을 통해 취업 준비생 및 경력 전환 희망자에게 현실적인 조언과 전략적 방향 제시가 가능합니다.",
+      "be_go": "전략기획, 컨설팅, 자산운용 분야 취업을 준비하는 멘티와 경력 개발 및 전환을 고민하는 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_53126ac2455e",
+      "mentor_info": {
+        "name": "김은지",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "HRD 매니저, 아모레퍼시픽",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 심리학과 졸업 후, HR 분야에서 5년간 실무 경험을 쌓아온 HRD 매니저입니다. 첫 직장부터 현재 아모레퍼시픽까지 인재 개발과 조직문화 개선에 꾸준히 집중해왔으며, 체계적인 교육 프로그램 기획 및 실행에 강점을 가지고 있습니다. 심리학 기반의 인사 전략과 직원 역량 강화에 대한 깊은 이해를 바탕으로 멘티의 경력 성장과 실무 적응을 돕고 있습니다. 진솔한 소통과 맞춤형 조언으로 멘토링에 임하는 신뢰받는 멘토입니다.",
+      "be_go": "HRD 분야에서 경력을 쌓고 싶거나, 체계적인 교육 프로그램 기획과 실행 방법을 배우려는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_d92cc321ea64",
+      "mentor_info": {
+        "name": "최민수",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "데이터사이언스",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Applied Scientist, 아마존 코리아",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "한양대학교 데이터사이언스 전공 후 대기업 공채 입사 경험과 아마존 코리아에서 Applied Scientist로 1년간 실무 경험을 쌓았습니다. 데이터 분석과 AI 모델 개발에 전문성을 갖추었으며, 최신 클라우드 기반 기술과 머신러닝 파이프라인 운영에 능숙합니다. 실무 중심의 진로 상담과 취업 준비, 이직 전략에 강점을 가지고 멘티들의 데이터 사이언티스트 커리어 설계에 도움을 드립니다.",
+      "be_go": "초기 데이터 분석가 또는 AI 분야로 커리어 전환을 고민하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_7f3bb671f1b4",
+      "mentor_info": {
+        "name": "강연우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "금융 데이터 분석가, 라인플러스",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 인공지능학을 전공하고 스타트업 인턴 경험을 거쳐 라인플러스에서 4년간 금융 데이터 분석가로 근무했습니다. 금융 데이터 분석 및 AI 기술을 활용한 데이터 인사이트 도출에 전문성을 갖추고 있습니다. 실무 경험을 바탕으로 데이터 분석가를 꿈꾸는 분들에게 현실적이고 구체적인 진로 조언과 멘토링을 제공합니다. 데이터 처리부터 모델 구축, 결과 해석까지 폭넓은 노하우를 공유할 수 있습니다.",
+      "be_go": "데이터 분석과 AI 분야 진입을 희망하며 금융권이나 대기업 실무에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_11fd6fd1b330",
+      "mentor_info": {
+        "name": "이현수",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "컴퓨터비전 엔지니어, 두나무(업비트)",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 인공지능학과 출신으로 비전공자였으나 독학과 꾸준한 자기개발을 통해 두나무(업비트) 컴퓨터비전 엔지니어로 입사했습니다. 2년간의 실무 경험과 AI 및 컴퓨터비전 분야 전문성을 바탕으로 취업 준비생과 비전공자의 커리어 전환을 효과적으로 지원합니다. 데이터 분석과 최신 AI 기술 트렌드에 능통하며, 현실적인 멘토링으로 실무 역량 강화에 중점을 둡니다.",
+      "be_go": "데이터분석과 AI 분야 진입을 희망하거나 비전공자에서 컴퓨터비전 엔지니어로 성장하고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_aea262812a5e",
+      "mentor_info": {
+        "name": "송도윤",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "웹 프론트엔드 개발자, SK C&C",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "12년 경력의 웹 프론트엔드 개발자로서, 건국대학교 응용수학과를 졸업 후 스타트업 인턴십 경험을 바탕으로 SK C&C에서 전문성을 쌓았습니다. 최신 프론트엔드 기술과 개발 트렌드에 대한 깊은 이해를 갖추고 있으며, 실무 중심의 문제 해결 능력을 보유하고 있습니다. 풍부한 현장 경험과 체계적인 커리어 관리를 통해 멘티의 성장과 목표 달성을 지원합니다. IT 개발 직무 진입을 준비하는 취업준비생과 실무 역량 향상을 원하는 현직 개발자에게 최적의 멘토링을 제공합니다.",
+      "be_go": "프론트엔드 개발자로 커리어를 시작하거나 전문성을 키우고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_5bcec55a2e82",
+      "mentor_info": {
+        "name": "백성현",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "부산대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테크 PM, 우아한형제들(배민)",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "부산대학교 수학과를 졸업하고 해외 인턴십을 경험한 후, 9년간 우아한형제들(배민)에서 테크 프로젝트 매니저로 활약하고 있습니다. 복잡한 IT개발 프로젝트를 체계적으로 관리하며 팀과 원활한 소통을 이끌어낸 경험이 풍부합니다. 데이터 기반 문제 해결과 프로세스 최적화에 강점을 가지고 있습니다. 실무 중심의 조언과 현장감 있는 멘토링을 제공하여 IT개발 및 프로젝트 관리 분야 진로를 고민하는 분들에게 도움을 드리고자 합니다.",
+      "be_go": "IT개발과 프로젝트 관리 분야에서 실무 경험을 쌓고 싶거나, 테크 PM 직무에 관심 있는 예비 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_0e9ea80ceedb",
+      "mentor_info": {
+        "name": "문연우",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "LLM 엔지니어, 크래프톤",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "서울대 산업공학 비전공 출신으로 독학을 통해 데이터분석과 AI 분야, 특히 NLP와 LLM에 전문성을 쌓았습니다. 현재 크래프톤에서 LLM 엔지니어로 14년간 근무하며 대규모 언어 모델 개발과 적용 경험을 갖추고 있습니다. 데이터 분석과 AI 분야로 비전공자 출신의 커리어 전환을 성공적으로 이룬 사례로, 실무 중심의 멘토링을 제공합니다. 복잡한 AI 모델 이해와 실전 적용 지도를 통해 멘티들의 역량 강화를 돕습니다.",
+      "be_go": "AI와 NLP 분야에 관심 있는 비전공자 또는 데이터분석에서 LLM 개발로 경력 전환을 꿈꾸는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_68efd12ba3f6",
+      "mentor_info": {
+        "name": "이영민",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "HRD 매니저, SK하이닉스",
+      "years_of_experience": 13,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 심리학을 전공하고 부트캠프 수료 후 SK하이닉스 HRD 매니저로 13년간 경력을 쌓았습니다. 인사 및 조직개발 분야에서 폭넓은 경험과 노하우를 바탕으로 실무 중심의 멘토링을 제공합니다. 커리어 전환 경험을 가진 만큼 비전공자나 경력 초기 인사 직무 준비자에게 유용한 조언을 드릴 수 있습니다. 조직 내 인재 육성 및 역량 개발에 관심 있는 멘티에게 적합한 멘토입니다.",
+      "be_go": "HRD 분야에 관심 있는 인사 직무 초년생이나 커리어 전환을 고민하는 분들에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_652e2b536c6b",
+      "mentor_info": {
+        "name": "최성민",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 리서처, 센드버드",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "4년차 AI 리서처로서 센드버드에서 머신러닝과 딥러닝 분야를 연구하고 있습니다. 비전공자 출신으로 독학을 통해 데이터 분석과 AI 분야로 전향하며 쌓은 실질적 경험이 강점입니다. 다양한 프로젝트 경험과 최신 AI 트렌드에 밝아 실무 중심의 멘토링이 가능합니다. 비전공자나 독학으로 AI 분야 진출을 고민하는 분들에게 특히 유익한 조언을 드릴 수 있습니다.",
+      "be_go": "비전공자이거나 독학으로 머신러닝/딥러닝 분야에 도전하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_57024624fe47",
+      "mentor_info": {
+        "name": "김성민",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "시니어 데이터 사이언티스트, NC소프트",
+      "years_of_experience": 15,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 생명과학을 전공하고 창업 경험을 바탕으로 데이터 분석과 AI 분야에서 15년간 경력을 쌓았습니다. 현재 NC소프트에서 시니어 데이터 사이언티스트로 근무하며 게임 데이터 분석 및 AI 모델 개발에 전문성을 갖추고 있습니다. 다양한 프로젝트 경험으로 실무에 바로 적용할 수 있는 노하우를 전달해 드립니다. 멘토링을 통해 기술적 성장뿐 아니라 커리어 전환과 창업에 관한 조언도 제공합니다.",
+      "be_go": "데이터분석과 AI 분야에서 실무 경험을 쌓고자 하는 취준생과 경력 전환 희망자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_43db0a602811",
+      "mentor_info": {
+        "name": "이서현",
+        "gender": "여",
+        "age": 31
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 인프라 엔지니어, 카카오",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "이서연 멘토는 이화여자대학교 통계학과를 졸업하고, 해외 인턴십 경험을 살려 카카오에서 AI 인프라 엔지니어로 7년간 근무해왔습니다. 데이터 분석과 AI 분야의 MLOps 및 인프라 구축에 전문성을 갖추었으며, 실무 중심의 멘토링으로 취업 준비생과 경력 전환자에게 실질적인 도움을 제공합니다. 최신 AI 환경 구축 경험과 문제 해결 능력을 바탕으로 현업에서 요구하는 역량을 체계적으로 지도합니다.",
+      "be_go": "AI 인프라, MLOps 분야에 진입하고자 하는 취업 준비생 및 데이터 분석/AI 분야 경력 개발자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_c8d4a6c53da9",
+      "mentor_info": {
+        "name": "허예준",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "동국대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "리테일 바이어, 카카오",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "동국대 경영학을 졸업하고 해외 인턴십 경험을 바탕으로 카카오에서 리테일 바이어로 4년간 근무 중입니다. 유통과 MD 분야에 대한 깊은 이해와 실무 경험을 보유하고 있으며, 시장 트렌드 분석과 상품 기획에 강점을 가지고 있습니다. 신입부터 경력 전환 희망자까지 현실적인 취업 전략과 커리어 개발 노하우를 제공합니다. 실무 중심의 멘토링으로 빠른 현장 적응과 성장을 돕습니다.",
+      "be_go": "유통업계 진출을 준비하거나 MD, 리테일 바이어 직무에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_eecc7a71eee0",
+      "mentor_info": {
+        "name": "박민석",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "컴퓨터비전 엔지니어, SK텔레콤 AI",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 산업공학과 출신으로 대기업 공채를 통해 첫 직장을 시작했으며, 이후 SK텔레콤 AI팀에서 컴퓨터비전 엔지니어로 경력을 쌓아왔습니다. 데이터 분석과 AI, 특히 컴퓨터비전 분야에 대한 실무 경험과 전문 지식을 보유하고 있습니다. 신입 및 경력 초년층 멘티들에게 AI 산업 내 진입 전략과 실무 노하우를 제공하는 데 강점이 있습니다. 현장 중심의 멘토링으로 취업과 진로 고민을 효과적으로 도와드립니다.",
+      "be_go": "컴퓨터비전 분야 진입을 희망하거나 AI 분야에서 실무 경험을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_dd1129abd9d5",
+      "mentor_info": {
+        "name": "박성민",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "울산과학기술원(UNIST)",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "IT 프로덕트 매니저, 삼성SDS",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 소프트웨어학과 출신으로 비전공자임에도 독학과 꾸준한 자기계발로 삼성SDS IT 프로덕트 매니저로 입사해 2년간 경험을 쌓았습니다. IT 개발과 프로젝트 매니지먼트 전반에 깊은 이해를 갖추고 있으며, 비전공자 출신 멘티들이 겪는 어려움을 잘 이해하고 있습니다. 실무 경험을 바탕으로 실질적인 커리어 전환 전략과 개발 역량 강화 조언을 제공합니다. 긍정적인 마인드와 체계적인 문제 해결 능력으로 멘티의 성장에 큰 도움을 줄 수 있습니다.",
+      "be_go": "IT 개발과 프로덕트 매니저 직무에 도전하는 비전공자나 커리어 전환을 희망하는 분들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_a8913c060d37",
+      "mentor_info": {
+        "name": "최민준",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 SRE, 크래프톤",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 수학과를 졸업하고 대기업 공채를 통해 IT 업계에 첫발을 내디뎠으며, 현재는 크래프톤에서 ML 플랫폼 SRE로 근무 중입니다. 데이터분석과 AI 분야에서 특히 MLOps와 인프라 구축에 전문성을 갖추었고, 실무 경험을 기반으로 한 실질적 문제 해결 능력을 보유하고 있습니다. 신입부터 경력 개발자까지 맞춤형 멘토링을 제공하며, 기술적 도전과 커리어 전환에 도움을 드립니다.",
+      "be_go": "MLOps 및 AI 인프라 분야에 진입하거나 성장하고자 하는 주니어 및 중급 개발자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:45"
+    },
+    {
+      "mentor_id": "mr_2387b2f5757a",
+      "mentor_info": {
+        "name": "윤태민",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 프로덕트 매니저, 쿠팡",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 컴퓨터공학과를 졸업하고 대기업 공채로 입사해 데이터 분석과 AI 관련 업무를 경험했습니다. 이후 쿠팡에서 데이터 프로덕트 매니저로 1년간 근무하며 AI 기반 데이터 제품 기획과 실행을 담당하고 있습니다. 데이터와 AI 분야의 실무 경험을 바탕으로 프로젝트 관리와 팀 협업에 강점을 가지고 있어 실질적인 조언이 가능합니다. 신입 및 중급 데이터 전문가, AI 프로젝트 매니저를 희망하는 멘티에게 적합한 멘토입니다.",
+      "be_go": "데이터 분석과 AI 분야에서 실제 프로젝트를 경험하며 커리어를 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_2f8905515e8e",
+      "mentor_info": {
+        "name": "김선영",
+        "gender": "여",
+        "age": 37
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "사회학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "전략기획 매니저, 딜로이트",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 사회학 전공 후 스타트업 인턴 경험을 바탕으로 딜로이트에서 14년간 전략기획 매니저로 근무하며 다양한 산업의 경영 전략 수립과 실행을 주도했습니다. 폭넓은 현장 경험과 체계적인 문제 해결 능력을 갖추고 있으며, 신입부터 중견 직장인까지 맞춤형 진로 컨설팅과 커리어 개발 멘토링을 제공합니다. 전략적 사고와 실무 노하우를 동시에 배우고 싶은 멘티와의 소통을 즐깁니다.",
+      "be_go": "전략기획, 컨설팅 분야에 진입하고자 하는 취업 준비생과 경력 전환을 고민하는 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_7ef973f71955",
+      "mentor_info": {
+        "name": "신우진",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "컴퓨터비전 엔지니어, 두나무(업비트)",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 인공지능학과를 졸업하고, 첫 직장부터 현재까지 두나무(업비트)에서 컴퓨터비전 엔지니어로 3년간 일해왔습니다. 데이터 분석과 AI 특히 컴퓨터비전 분야에 깊은 전문성을 보유하고 있으며, 실무 경험을 바탕으로 실질적인 문제 해결과 최신 기술 트렌드에 대해 멘토링합니다. 꾸준한 경력으로 신뢰받는 멘토로, 취업 준비부터 현업 적응까지 폭넓은 지원이 가능합니다.",
+      "be_go": "컴퓨터비전 분야에서 경력을 쌓고 싶거나, AI 관련 실무 경험과 취업 전략에 도움을 받고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_f08381f98d58",
+      "mentor_info": {
+        "name": "홍현우",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "부산대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Applied Scientist, 크래프톤",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "저는 부산대학교 전자공학과를 졸업하고 스타트업에서 인턴 경험 후 크래프톤에서 7년간 Applied Scientist로 근무해왔습니다. 데이터 분석과 인공지능 분야에서 다양한 프로젝트를 수행하며 실질적인 문제 해결 능력을 쌓았습니다. 현업 경험을 바탕으로 데이터 사이언티스트를 꿈꾸는 분들에게 실무 노하우와 진로 조언을 제공할 수 있습니다. 창의적인 접근과 기술적 깊이를 모두 갖춘 멘토링이 강점입니다.",
+      "be_go": "데이터 분석과 AI 분야에 진입하고자 하거나 현업에서 실무 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_48efa0bbdfbe",
+      "mentor_info": {
+        "name": "양지우",
+        "gender": "여",
+        "age": 28
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "대화형 AI 연구원, 뱅크샐러드",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 산업공학을 졸업하고 부트캠프를 수료한 후 뱅크샐러드에서 대화형 AI 연구원으로 커리어를 시작했습니다. 데이터 분석과 AI, 특히 자연어 처리(NLP)와 대형 언어 모델(LLM) 분야에 집중하며 실무 경험을 쌓았습니다. 신입 연구원으로서 최신 AI 트렌드와 실무 적용 사례에 밝으며, 데이터 분석 기반 문제 해결 능력을 갖추고 있습니다. 멘토링을 통해 AI 진입 장벽을 낮추고 실질적 커리어 전환과 성장을 돕는 데 강점을 지니고 있습니다.",
+      "be_go": "데이터 분석과 AI, 특히 NLP 분야로 커리어를 전환하고자 하는 예비 연구원이나 신입 개발자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_4370e4e05265",
+      "mentor_info": {
+        "name": "장서준",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "이미지 인식 엔지니어, 두나무(업비트)",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 경영학과를 졸업한 후 IT 분야에 뛰어들어 2년간 두나무에서 이미지 인식 엔지니어로 일하고 있습니다. 컴퓨터 비전과 데이터 분석을 접목해 실제 서비스에 적용하는 경험을 쌓아왔으며, 스타트업 및 핀테크 산업에 대한 이해도가 높습니다. 경영학적 관점과 기술적 전문성을 융합해 멘티의 취업 준비와 실무 적응을 효과적으로 지원합니다. 세밀한 피드백과 실전 노하우 전달에 강점을 가지고 있습니다.",
+      "be_go": "컴퓨터 비전 분야로 취업을 준비하는 신입 또는 경력 초년차 멘티에게 적합하며, 기술과 비즈니스 양측면에서 멘토링을 받고 싶은 분들에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_7d64e37ff908",
+      "mentor_info": {
+        "name": "한동현",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서버 개발자, 쏘카",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "저는 광주과학기술원에서 컴퓨터공학을 전공하고, 해외 인턴십 경험을 거쳐 현재 쏘카에서 7년째 서버 개발자로 일하고 있습니다. 백엔드 시스템 설계와 운영에 대한 깊은 이해와 실무 경험을 갖추었으며, 최신 기술 트렌드와 효율적인 개발 방법론을 잘 알고 있습니다. 실무 중심의 멘토링으로 취업 준비부터 현업 적응까지 체계적으로 지원할 수 있습니다.",
+      "be_go": "서버 개발자로서 경력을 쌓고 싶거나 백엔드 분야에 대해 실무 중심의 조언을 원하는 개발자 지망생에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_bfdfd1439a98",
+      "mentor_info": {
+        "name": "황주원",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "부산대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "PB, 네이버",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "부산대학교 언론정보학과 출신으로 대기업 공채를 통해 첫 직장을 시작한 후, 현재는 네이버에서 PB 업무를 7년간 담당하고 있습니다. 금융과 투자 분야에서 쌓은 실무 경험과 대기업에서의 조직문화 이해를 바탕으로 멘토링을 진행합니다. 특히, 금융권 진출을 희망하는 분들에게 현실적인 조언과 커리어 개발 전략을 제공하는 데 강점이 있습니다. 네이버라는 IT 대기업에서의 경험을 살려 디지털 금융 트렌드와 투자 전략에 대한 인사이트도 함께 나눕니다.",
+      "be_go": "금융 및 투자 분야로 진출하고자 하는 취업 준비생이나 경력 전환 희망자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_1c974d133a7f",
+      "mentor_info": {
+        "name": "이하준",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "포항공과대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "LLM 엔지니어, 마이크로소프트 코리아",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 수학과를 졸업하고 스타트업에서 인턴십 경험을 쌓았으며 현재 마이크로소프트 코리아에서 LLM 엔지니어로 근무 중입니다. 데이터분석과 AI, 특히 NLP와 LLM 분야에 깊은 관심과 실무 경험을 가지고 있습니다. 최신 AI 기술 트렌드에 밝으며 현장 중심의 노하우를 전수할 수 있습니다. 실무 입문자부터 심화 학습자까지 맞춤형 멘토링을 제공합니다.",
+      "be_go": "데이터분석과 AI, 특히 NLP와 LLM 분야에 대해 실무 경험을 쌓고 싶은 예비 엔지니어와 취준생에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_eaff8273df01",
+      "mentor_info": {
+        "name": "임준영",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 리서처, 당근마켓",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "한양대학교 소프트웨어학과를 졸업하고 비전공자로서 독학으로 머신러닝과 딥러닝 분야에 뛰어들어 12년간 데이터 분석과 AI 리서처로 경력을 쌓았습니다. 현재 당근마켓에서 AI 리서처로 근무하며 실제 서비스에 적용 가능한 AI 모델 연구를 진행 중입니다. 비전공자의 성공적 전환 경험과 실무 중심의 깊은 전문성을 바탕으로 멘토링을 제공합니다. 데이터 분석과 AI 분야 진입을 희망하는 분들에게 적합합니다.",
+      "be_go": "AI와 머신러닝 분야에 도전하는 비전공자 및 실무 중심의 성장과 전환을 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_2f56ca38e160",
+      "mentor_info": {
+        "name": "손수빈",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "그로스 데이터 분석가, LG AI연구원",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 수학 대학원 석사 출신으로 LG AI연구원에서 3년간 그로스 데이터 분석가로 근무하며 다양한 데이터 기반 성장 전략과 AI 기술 적용 경험을 쌓았습니다. 통계와 머신러닝 기법을 활용해 비즈니스 인사이트를 도출하며 데이터 분석 역량을 키웠고, 실제 산업 현장에서의 실무 노하우를 바탕으로 멘토링을 진행합니다. 데이터 분석과 AI 분야에서 빠르게 성장하고 싶은 분들께 실질적인 조언과 커리어 전략을 제시할 수 있습니다.",
+      "be_go": "AI 및 데이터 분석 분야에 관심이 많고 실무 경험을 쌓고자 하는 취준생이나 초기 경력자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_740415d6e5b7",
+      "mentor_info": {
+        "name": "한지후",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 우아한형제들(배민)",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 컴퓨터공학과를 졸업하고 스타트업 인턴 경험을 통해 실무 역량을 쌓았습니다. 현재 우아한형제들에서 3년간 빅데이터 엔지니어로 근무하며 대용량 데이터 처리와 데이터 파이프라인 구축에 전문성을 갖추고 있습니다. 데이터 분석과 AI 분야에 대한 깊은 이해를 바탕으로 실질적인 기술과 커리어 조언을 제공할 수 있습니다. 현업 경험을 살려 실무 중심의 멘토링을 진행하며, 기술 트렌드와 효과적인 문제 해결 방법을 공유합니다.",
+      "be_go": "데이터엔지니어링 실무 경험을 쌓고 싶은 취업 준비생이나 초기 커리어 단계의 IT 인재에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_ac1181106db9",
+      "mentor_info": {
+        "name": "이성현",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Applied Scientist, 카카오",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "인하대 산업공학 대학원 석사 출신으로 카카오에서 8년간 Applied Scientist로 근무하며 데이터분석과 AI 분야에서 전문성을 쌓아왔습니다. 다양한 실제 서비스 데이터 분석과 AI 모델 개발 경험을 바탕으로 실무 중심 멘토링을 제공합니다. 데이터 사이언스 경력 전환 및 전문성 강화에 도움을 줄 수 있으며, 최신 AI 트렌드를 반영한 실질적인 조언이 가능합니다.",
+      "be_go": "데이터 분석과 AI 분야에서 실무 경험을 쌓고 싶거나 경력을 발전시키고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_78a996fbd7a8",
+      "mentor_info": {
+        "name": "박영훈",
+        "gender": "남",
+        "age": 37
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 사이언티스트, 카카오",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "광주과학기술원에서 응용수학을 전공한 후 데이터 분석과 AI 분야에서 14년간 경력을 쌓아왔습니다. 첫 직장부터 현재 카카오에 이르기까지 데이터 사이언티스트로서 다양한 프로젝트를 수행하며 전문성을 키웠습니다. 빅데이터 처리, 머신러닝 모델 개발 및 실무 적용 경험이 풍부하며, 최신 AI 트렌드에 밝습니다. 후배들의 취업 준비 및 커리어 개발을 위한 체계적인 멘토링을 제공합니다.",
+      "be_go": "데이터 분석 및 AI 분야에서 실무 능력을 키우고자 하는 취업 준비생이나 경력 전환 희망자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_6186c9961caf",
+      "mentor_info": {
+        "name": "김동혁",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "건국대학교 대학원",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "이미지 인식 엔지니어, 코난테크놀로지",
+      "years_of_experience": 11,
+      "total_questions": 0,
+      "matching_summary_text": "저는 건국대학교 경제학 대학원에서 석사 학위를 취득하고, 이후 코난테크놀로지에서 11년간 이미지 인식 엔지니어로 근무하며 컴퓨터 비전 분야의 깊은 전문성을 쌓았습니다. 데이터 분석과 AI 분야에서 실무 경험이 풍부하며, 특히 이미지 인식 알고리즘 개발과 최적화에 강점을 가지고 있습니다. 복잡한 문제 해결과 최신 기술 트렌드 적용에 능숙하여 멘토링 시 실무 중심의 조언을 제공할 수 있습니다. 진로 방향 설정과 기술 역량 강화 모두에 도움을 드릴 준비가 되어 있습니다.",
+      "be_go": "컴퓨터 비전과 이미지 인식 분야에서 실무 경험을 쌓고 싶거나, AI 기반 데이터 분석 진로를 모색하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_ee2873f9e600",
+      "mentor_info": {
+        "name": "허주원",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테크 PM, 쏘카",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 응용수학과를 졸업하고 대기업 공채로 입사하여 탄탄한 기초와 실무 경험을 쌓았습니다. 이후 쏘카로 이직하여 테크 PM으로서 2년간 IT 프로젝트 관리 및 개발팀 협업을 주도해왔습니다. 데이터 분석과 프로덕트 이해를 기반으로 한 실질적인 문제 해결 능력을 갖추고 있습니다. 기술과 비즈니스 가교 역할에 강점을 가지고, 체계적인 커뮤니케이션과 일정 관리에 능숙합니다. 신입 및 경력 개발자, PM 지망생들에게 현장 중심의 멘토링을 제공합니다.",
+      "be_go": "IT 개발과 PM 직무를 희망하거나 초기 경력 단계에 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_35ac25348c7a",
+      "mentor_info": {
+        "name": "한승우",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 리서처, 리디",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 인공지능학과를 졸업한 후 스타트업 인턴십 경험을 바탕으로 리디에서 7년간 AI 리서처로 근무했습니다. 머신러닝과 딥러닝 분야에서 실질적인 연구와 프로젝트 경험을 쌓았으며, 데이터 분석과 모델 개발에 뛰어난 전문성을 갖추고 있습니다. 복잡한 AI 문제 해결과 최신 기술 트렌드에 대한 깊은 이해를 바탕으로 실무 중심의 조언과 멘토링을 제공합니다. AI 분야 진로를 고민하는 분들에게 실질적인 도움을 드릴 수 있습니다.",
+      "be_go": "머신러닝 및 딥러닝 분야에서 실무 경험을 쌓고자 하는 취업 준비생과 경력 전환 희망자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_149e36789e27",
+      "mentor_info": {
+        "name": "양성현",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "전략기획 매니저, CJ제일제당",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "한양대 심리학을 전공하고 창업 경험을 쌓은 후 CJ제일제당에서 10년간 전략기획 매니저로 근무하며 다양한 산업군의 전략수립과 실행을 주도했습니다. 창업과 대기업 현장의 경험을 바탕으로 실질적인 비즈니스 전략 수립과 문제 해결에 강점을 가지고 있습니다. 경력 초기부터 전략기획과 컨설팅 업무에 집중해 전문성을 키웠으며 멘티들의 진로 설계 및 실무 역량 강화에 도움을 줄 수 있습니다. 변화하는 시장 환경에 맞는 유연한 전략 수립 노하우를 공유하며 취업과 커리어 전환에 있어서 맞춤형 멘토링을 제공합니다.",
+      "be_go": "전략기획 또는 컨설팅 분야에 진출하려는 취업준비생과 커리어를 발전시키고자 하는 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:46"
+    },
+    {
+      "mentor_id": "mr_5456cc5a3e3e",
+      "mentor_info": {
+        "name": "이재훈",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서버 개발자, 쏘카",
+      "years_of_experience": 15,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 산업공학을 전공하고 대기업 공채 출신으로 15년간 IT 백엔드 서버 개발에 집중해왔습니다. 현재는 쏘카에서 서버 개발자로 일하며 다양한 서비스의 안정성과 확장성을 책임지고 있습니다. 풍부한 실무 경험과 체계적인 문제 해결 능력으로 멘티 분들의 기술적 고민과 진로 고민에 깊이 공감하며 맞춤형 조언을 제공합니다. 신입부터 경력 개발자까지 백엔드 개발에 관심 있는 분들에게 실질적인 도움을 드릴 수 있습니다.",
+      "be_go": "백엔드 서버 개발자로 커리어를 쌓고 싶거나 대기업 및 스타트업 개발 직군 진로에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_87d8f3279c0b",
+      "mentor_info": {
+        "name": "오수빈",
+        "gender": "여",
+        "age": 35
+      },
+      "background": {
+        "school": "포항공과대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "NLP 엔지니어, 쿠팡",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 언론정보학을 전공하고 창업 경험을 바탕으로 쿠팡에서 10년간 NLP 엔지니어로 일하며 AI와 자연어처리 분야의 깊은 전문성을 쌓아왔습니다. 데이터분석과 대규모 언어 모델(LLM) 분야에 대한 실무 경험이 풍부하며, 혁신적인 AI 솔루션 개발에 주력하고 있습니다. 스타트업과 대기업 현장 모두를 이해하는 멘토로서, 실질적인 커리어 조언과 기술 멘토링을 제공합니다. 데이터 사이언스 및 NLP 분야 진로를 희망하는 멘티에게 최적의 방향성을 제시할 수 있습니다.",
+      "be_go": "데이터분석과 NLP, 특히 AI 및 LLM 관련 직무를 목표로 하는 멘티에게 적합하며, 실무 경험과 창업 배경을 활용한 실질적인 진로 상담을 원하시는 분께 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_cb74ce1fbca9",
+      "mentor_info": {
+        "name": "권민석",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "KAIST",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 SRE, 버킷플레이스(오늘의집)",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "KAIST 수학과 졸업 후 스타트업 창업 경험을 바탕으로 ML 플랫폼 안정화와 인프라 운영에 전문성을 쌓았습니다. 현재 버킷플레이스(오늘의집)에서 ML 플랫폼 SRE로 6년간 근무하며 MLOps 환경 구축과 데이터분석 기반 AI 인프라를 담당하고 있습니다. 데이터 엔지니어링과 AI 인프라 자동화에 관한 실무 경험이 풍부하며, 실전 중심의 멘토링을 제공합니다. 스타트업과 대기업 환경 모두를 이해하는 균형 잡힌 시각이 강점입니다.",
+      "be_go": "MLOps와 AI 인프라 구축에 관심이 있거나, 데이터분석 기반 ML 플랫폼 운영 경험을 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_d62f95d466b7",
+      "mentor_info": {
+        "name": "이민재",
+        "gender": "남",
+        "age": 33
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 코난테크놀로지",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 산업공학을 전공하고 대기업 공채로 입사하여 실무 경험을 쌓은 후, 현재는 코난테크놀로지에서 빅데이터 엔지니어로 7년간 근무하고 있습니다. 데이터 분석과 AI 분야에서 데이터 파이프라인 구축 및 최적화에 전문성을 갖추고 있으며, 실무 중심의 멘토링을 제공합니다. 복잡한 데이터 문제 해결과 최신 데이터 엔지니어링 트렌드에 대한 인사이트를 나누며 멘티의 성장에 기여합니다.",
+      "be_go": "빅데이터 엔지니어를 목표로 하거나 데이터 파이프라인 구축과 관련 기술을 심도 있게 배우고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_5372cc8fa609",
+      "mentor_info": {
+        "name": "이현진",
+        "gender": "여",
+        "age": 27
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Applied Scientist, 토스",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 산업공학을 전공했으나 데이터사이언스에 대한 열정으로 독학하여 토스 Applied Scientist로 2년간 근무했습니다. 비전공자 출신으로서 데이터 분석과 머신러닝 분야 실무 경험을 쌓으며, 비전공자들의 학습 방법과 취업 전략에 대해 깊이 이해하고 있습니다. 토스에서 다양한 금융 데이터 기반 프로젝트를 수행하며 실질적인 AI 적용 사례를 다뤘고, 이를 바탕으로 맞춤형 멘토링을 제공합니다. 데이터분석 및 AI 분야 진입을 꿈꾸는 분들께 실무 중심의 조언과 동기부여를 드립니다.",
+      "be_go": "데이터분석/AI 분야로 비전공자가 도전하는 멘티에게 적합하며, 실무 경험과 취업 노하우를 알고 싶은 분들에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_6a836698ccfb",
+      "mentor_info": {
+        "name": "장민지",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "머신러닝 엔지니어, 토스",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 통계학 대학원 석사 졸업 후 토스에서 머신러닝 엔지니어로 3년간 연구 및 개발 경험을 쌓았습니다. 딥러닝과 머신러닝 모델 구축, 데이터 분석 역량을 바탕으로 실무에 적용할 수 있는 노하우를 보유하고 있습니다. 최신 AI 트렌드와 실무 경험을 토대로 효과적인 커리어 개발과 기술 습득 방법을 멘티에게 제공합니다. 복잡한 데이터 문제 해결과 프로젝트 진행 경험을 통해 실질적 멘토링이 가능합니다.",
+      "be_go": "머신러닝과 딥러닝 분야로 진출하고자 하는 취업 준비생이나 경력 초기 단계의 엔지니어에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_6b7a3ec67319",
+      "mentor_info": {
+        "name": "백성민",
+        "gender": "남",
+        "age": 36
+      },
+      "background": {
+        "school": "동국대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "자산운용사 리서치 애널리스트, 나이키코리아",
+      "years_of_experience": 13,
+      "total_questions": 0,
+      "matching_summary_text": "동국대 언론정보학을 전공하고 해외 인턴십을 거쳐 나이키코리아에서 자산운용사 리서치 애널리스트로 13년간 근무해왔습니다. 금융과 투자 분야에서 심층적인 시장 분석 능력을 갖추었으며, 실무 경험과 글로벌 시각을 바탕으로 전문적인 멘토링을 제공합니다. 금융업계 진출을 희망하는 분들뿐만 아니라 투자전략과 자산관리에 관심 있는 멘티들에게 큰 도움이 될 수 있습니다.",
+      "be_go": "금융 및 투자 분야 취업을 준비하거나 자산운용과 리서치 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_a47b242e0513",
+      "mentor_info": {
+        "name": "김수진",
+        "gender": "여",
+        "age": 28
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서버 개발자, 당근페이",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 통계학 출신으로 부트캠프를 통해 비전공자에서 백엔드 서버 개발자로 커리어 전환에 성공했습니다. 당근페이에서 3년간 실무 경험을 쌓으며 안정적인 서버 개발과 운영 역량을 갖추었습니다. 데이터 분석과 서버 개발 두 영역의 융합 이해도가 높아 다양한 문제 해결 능력을 보유하고 있습니다. 멘토링을 통해 비전공자의 IT 개발 진로 전환과 실무 적응을 돕는 데 강점을 가지고 있습니다.",
+      "be_go": "비전공자에서 백엔드 개발자로 커리어 전환을 희망하는 분이나, 초기 개발 역량을 다지고 싶은 주니어 개발자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_c3baa3f4386c",
+      "mentor_info": {
+        "name": "권상현",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 코난테크놀로지",
+      "years_of_experience": 11,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 전자공학을 전공하고, 빅데이터 엔지니어로서 11년간 코난테크놀로지에서 풍부한 실무 경험을 쌓았습니다. 데이터엔지니어링과 AI 기반 빅데이터 파이프라인 구축에 깊은 전문성을 가지고 있으며, 복잡한 데이터 처리와 최적화에 강점을 지녔습니다. 신입부터 경력자까지 맞춤형 멘토링으로 실무능력 향상과 커리어 목표 달성을 돕습니다. 지속적인 기술 트렌드 학습과 실무 적용 경험을 바탕으로 실질적인 조언을 제공합니다.",
+      "be_go": "데이터엔지니어링과 빅데이터 분야에서 실무 경험을 쌓고자 하는 취업준비생과 경력 개발자가 이 멘토에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_4846a80a6d99",
+      "mentor_info": {
+        "name": "정지우",
+        "gender": "여",
+        "age": 35
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "퍼포먼스 마케터, CJ제일제당",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 생명과학을 전공하고 해외 인턴십 경험을 바탕으로 CJ제일제당에서 10년간 퍼포먼스 마케팅 업무를 수행해왔습니다. 디지털 마케팅 전략 수립과 데이터 기반 광고 최적화에 전문성을 갖추고 있으며, 다양한 캠페인에서 탁월한 성과를 만들어냈습니다. 신입부터 경력 전환자까지 맞춤형 멘토링을 제공하여 실무 역량 강화와 커리어 개발을 돕습니다.",
+      "be_go": "퍼포먼스 마케팅에 관심 있는 신입과 경력 전환자를 위한 실무 중심 멘토링이 필요할 때 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_9dd650335947",
+      "mentor_info": {
+        "name": "권찬우",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서비스 기획 PM, 야놀자",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 인공지능학과를 졸업하고 IT 서비스 기획과 프로젝트 관리 분야에서 2년 간 경력을 쌓았습니다. 야놀자에서 서비스 기획 PM으로서 사용자 중심의 혁신적인 서비스 개발을 주도하며 실무 경험을 폭넓게 쌓았습니다. IT 개발과 서비스 기획 분야에 대한 깊은 이해와 실제 프로젝트 관리 경험을 바탕으로 멘토링 합니다. 특히 스타트업 및 플랫폼 서비스 기획에 관심 있는 취업 준비생에게 실질적인 조언을 제공합니다.",
+      "be_go": "IT 개발 및 서비스 기획 분야에 진출하고자 하며, 실무 중심의 프로젝트 관리 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_542d0ac9c07f",
+      "mentor_info": {
+        "name": "유지유",
+        "gender": "여",
+        "age": 28
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 사이언티스트, 마이크로소프트 코리아",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 산업공학 석사 출신으로 마이크로소프트 코리아에서 데이터 사이언티스트로 경력을 쌓고 있습니다. 데이터 분석과 AI 분야에 대한 실무 경험과 연구 능력을 바탕으로 실제 업무에 적용 가능한 인사이트를 제공합니다. 최신 AI 기술 트렌드와 데이터 분석 도구 활용법에 능하며, 취업 준비생과 커리어 초기 단계의 멘티에게 실질적인 도움을 줄 수 있습니다. 멘토링을 통해 데이터를 활용한 문제 해결력과 직무 역량 향상에 기여합니다.",
+      "be_go": "데이터 분석이나 AI 분야 취업을 준비 중인 신입 또는 경력 1~2년차 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_b81298976844",
+      "mentor_info": {
+        "name": "고지훈",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "동국대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 플랫폼 엔지니어, 네이버",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "동국대학교 수학과를 졸업한 후 데이터 엔지니어로서 경력을 쌓아왔습니다. 현재 네이버에서 데이터 플랫폼 엔지니어로 근무하며 데이터 처리와 인프라 구축에 전문성을 가지고 있습니다. 처음 직장부터 꾸준히 데이터 분야에 집중해 실무 경험을 축적했습니다. 데이터 분석과 AI 관련 기술을 접목하여 효율적인 데이터 환경을 구축하는 데 강점을 가지고 있습니다. 실무 경험을 바탕으로 현업에서 필요한 스킬과 커리어 전략에 대해 조언할 수 있습니다.",
+      "be_go": "데이터 엔지니어링과 데이터 플랫폼 분야에 관심 있는 취업 준비생이나 초기 경력자가 적합합니다. 실무 중심의 멘토링을 원하는 분께 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_b7499edeacca",
+      "mentor_info": {
+        "name": "이한솔",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "부산대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 리서처, 센드버드",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "부산대학교 통계학과를 졸업하고 해외 인턴십을 통해 실무 경험을 쌓은 후, 현재 센드버드에서 7년간 AI 리서처로 근무하고 있습니다. 머신러닝과 딥러닝 분야에 전문성을 보유하며, 실제 프로젝트 경험을 바탕으로 데이터 분석 및 AI 모델 개발에 강점을 갖고 있습니다. 신입 및 경력 개발자들에게 실무 중심의 멘토링을 제공하며, 최신 AI 트렌드와 기술을 효과적으로 전달합니다. 데이터 분석과 AI 분야 진로를 고민하는 분들에게 유익한 조언을 드릴 수 있습니다.",
+      "be_go": "머신러닝과 딥러닝 분야에서 실무 경험을 쌓고자 하는 데이터분석 및 AI 진로 희망자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_a4198ca41573",
+      "mentor_info": {
+        "name": "권태민",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "웹 프론트엔드 개발자, 삼성SDS",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 통계학을 전공하고 해외 인턴십 경험을 쌓은 후 삼성SDS에서 3년간 웹 프론트엔드 개발자로 일하고 있습니다. 다양한 프로젝트 경험과 실전 노하우를 바탕으로 효율적인 UI/UX 구현과 최신 프론트엔드 기술을 다루는 데 강점을 보유하고 있습니다. 실무 중심의 멘토링으로 개발 역량 향상과 취업 준비에 도움을 드립니다.",
+      "be_go": "프론트엔드 개발자로 취업을 준비하거나 경력을 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_a3b3ba250434",
+      "mentor_info": {
+        "name": "정하연",
+        "gender": "여",
+        "age": 34
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 마이크로소프트 코리아",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "이화여자대학교 인공지능학과를 졸업하고 10년간 데이터 엔지니어로 활약하며 빅데이터 처리와 AI 기술 융합에 전문성을 쌓아왔습니다. 첫 직장부터 마이크로소프트 코리아까지 한 우물을 파며 실무 역량과 최신 기술 트렌드를 지속적으로 경험했습니다. 빅데이터 환경 구축과 효율적인 데이터 파이프라인 설계에 자신 있으며, 실무 중심 멘토링으로 데이터 엔지니어 경력을 희망하는 분들에게 큰 도움이 됩니다. 현업에서 쌓은 노하우를 바탕으로 취업 준비와 커리어 개발에 실질적인 조언을 제공합니다.",
+      "be_go": "데이터 엔지니어를 목표로 하거나 빅데이터 및 AI 기반 데이터 파이프라인 구축에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_623378b26542",
+      "mentor_info": {
+        "name": "이지훈",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "마케팅 데이터 분석가, 카카오",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 응용수학을 전공하고 창업 경험을 바탕으로 14년간 데이터 분석과 AI 분야에서 경력을 쌓았습니다. 현재 카카오에서 마케팅 데이터 분석가로 업무 중이며, 데이터 기반 의사결정과 마케팅 전략 수립에 전문성이 있습니다. 창업 경험을 통해 실무와 경영 시각을 모두 이해하는 멘토로서, 실질적인 진로 조언과 데이터 분석 역량 강화에 도움을 드립니다. 데이터 분석과 AI 분야에 관심 있는 분들에게 맞춤형 멘토링을 제공합니다.",
+      "be_go": "데이터 분석가나 AI 분야 진로를 고민하는 취업 준비생과 경력 전환 희망자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_a89f7a879681",
+      "mentor_info": {
+        "name": "장민석",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "MLOps 엔지니어, 센드버드",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 소프트웨어학과를 졸업하고 해외 인턴십 경험을 바탕으로 센드버드에서 4년간 MLOps 엔지니어로 근무 중입니다. 데이터분석과 AI 인프라 구축, 운영에 대한 전문성을 갖추었으며, 실제 서비스 환경에서 효율적인 AI 시스템 배포와 관리 경험이 풍부합니다. 최신 MLOps 트렌드와 도구 활용 노하우를 공유하며 실무 중심의 멘토링을 제공합니다. 스타트업 환경과 글로벌 협업 경험도 갖춰 취업 준비생과 경력 전환자 모두에게 실질적 도움을 드릴 수 있습니다.",
+      "be_go": "MLOps, AI 인프라 분야에 진입하거나 성장하고 싶은 취업 준비생이나 경력 초기 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:47"
+    },
+    {
+      "mentor_id": "mr_bac1a2661d7f",
+      "mentor_info": {
+        "name": "허연우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "IT 프로덕트 매니저, 토스",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "연세대 생명과학과를 졸업한 후 창업 경험을 바탕으로 IT 프로덕트 매니저로 전향하여 현재 토스에서 3년간 일하고 있습니다. 스타트업 환경에서 쌓은 실전 경험과 프로덕트 기획, 개발 프로세스에 대한 깊은 이해를 가지고 있습니다. 기술과 비즈니스를 연결하는 가교 역할을 잘 수행하며, 빠르게 변화하는 IT 업계에서의 커리어 성장을 돕는 멘토링을 제공합니다. 실무 중심의 조언과 전략적 사고를 바탕으로 멘티들의 목표 달성을 지원합니다.",
+      "be_go": "IT 개발과 프로덕트 매니저 직무에 관심이 있거나, 창업 경험을 살린 실무형 멘토링을 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_6f707fc8f5f3",
+      "mentor_info": {
+        "name": "박진우",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "경영 컨설턴트, CJ제일제당",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 생명과학을 전공하고 대기업 공채 출신으로 현재 CJ제일제당에서 경영 컨설턴트로 근무 중입니다. 1년간의 컨설팅 경험을 바탕으로 전략기획과 문제해결 역량을 갖추고 있으며, 산업 이해도와 실무를 연결하는 멘토링에 강점이 있습니다. 취업 준비부터 직무 적응까지 현실적인 조언을 제공합니다. 특히 대기업 입사를 목표로 하는 멘티들에게 유용한 가이드를 드릴 수 있습니다.",
+      "be_go": "전략기획 또는 경영 컨설팅 분야 진출을 희망하는 멘티에게 적합하며, 대기업 공채 준비생이나 직무 이해도를 높이고 싶은 분께 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_dcc640b4c3f9",
+      "mentor_info": {
+        "name": "송현우",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "동국대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테스트 자동화 엔지니어, 쿠팡",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "동국대학교 응용수학과를 졸업하고 스타트업 인턴십 경험을 거쳐 현재 쿠팡에서 테스트 자동화 엔지니어로 5년간 근무 중입니다. IT 개발과 QA 분야에서 전문성을 쌓았으며, 효율적인 테스트 자동화 도구 활용과 시스템 개선에 강점을 가지고 있습니다. 실무 경험을 기반으로 현실적인 취업 및 경력 개발 멘토링을 제공합니다. 스타트업과 대기업 환경 모두 이해하고 있어 다양한 진로 고민을 가진 멘티에게 맞춤형 조언이 가능합니다.",
+      "be_go": "IT 개발 및 QA 분야 취업을 준비하거나 테스트 자동화 경력을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_0da12723a743",
+      "mentor_info": {
+        "name": "이현준",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 플랫폼 엔지니어, 구글 코리아",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "한양대 물리학 전공 후 창업 경험을 바탕으로 데이터 분석과 AI 분야에서 실무와 기술을 겸비한 데이터 플랫폼 엔지니어입니다. 구글 코리아에서 6년간 데이터 인프라 구축 및 최적화 업무를 수행하며, 데이터 엔지니어링 전반에 대한 깊은 이해를 갖추고 있습니다. 창업 경험으로 실무와 비즈니스 관점 모두를 고려한 멘토링이 가능합니다. 데이터 엔지니어를 꿈꾸는 분들에게 실질적이고 현실적인 조언을 제공하는 데 강점이 있습니다.",
+      "be_go": "데이터 엔지니어링 분야에 진입하고자 하거나 데이터 플랫폼 관련 실무 노하우를 배우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_fb21f0e87f81",
+      "mentor_info": {
+        "name": "김민서",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "대화형 AI 연구원, 스캐터랩",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 언론정보학 대학원에서 석사를 마친 후 스캐터랩에서 3년간 대화형 AI 연구원으로 근무하며 NLP와 LLM 분야에 전문성을 쌓았습니다. 데이터 분석과 자연어 처리 기술을 바탕으로 실제 서비스에 적용 가능한 AI 모델을 개발하는 데 집중하고 있습니다. 현업 경험을 통해 실무 중심의 조언과 취업 전략을 제공할 수 있습니다. 열정적인 학습 태도와 문제 해결 능력을 갖춘 멘티들과의 소통을 즐깁니다.",
+      "be_go": "NLP 및 대화형 AI 분야에 진입하고자 하거나 실제 AI 연구 개발 현장에 대한 이해와 경험을 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_04218b44f514",
+      "mentor_info": {
+        "name": "황규민",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "딥러닝 엔지니어, 마켓컬리",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 소프트웨어학과 출신으로 비전공자임에도 독학으로 데이터 분석과 AI 분야에 뛰어들어 마켓컬리에서 딥러닝 엔지니어로 4년간 근무했습니다. 다양한 머신러닝, 딥러닝 프로젝트 경험과 실무 노하우를 바탕으로 취업과 커리어 전환에 강점을 가지고 있습니다. 특히 비전공자 및 독학자들도 AI 엔지니어로 성장할 수 있도록 체계적인 멘토링을 제공합니다. 데이터 분석, 머신러닝, 딥러닝 분야에서 실무 중심의 지식을 원하는 멘티와 잘 맞습니다.",
+      "be_go": "비전공자나 독학으로 AI 분야에 뛰어들고자 하는 취업 준비생에게 적합하며, 실무 경험과 커리어 전환 전략을 알고 싶은 분들에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_1b7734dbb184",
+      "mentor_info": {
+        "name": "박민재",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "경영 컨설턴트, CJ제일제당",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "성균관대 심리학 전공 후 창업 경험을 바탕으로 CJ제일제당에서 6년간 경영 컨설턴트로 활동 중입니다. 전략기획과 경영 컨설팅에 대한 깊은 이해와 현장 경험을 가지고 있으며, 스타트업부터 대기업까지 다양한 비즈니스 모델 분석에 강점이 있습니다. 멘티들이 실무와 전략적 사고를 함께 배우도록 돕는 멘토링을 제공합니다. 창업 경험을 살려 혁신과 문제해결 능력도 함께 전수합니다.",
+      "be_go": "전략기획이나 경영 컨설팅 분야에 진출하고자 하는 취업 준비생과 창업 및 비즈니스 전략에 관심 있는 예비 창업자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_f442ab7b62d3",
+      "mentor_info": {
+        "name": "안영훈",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 리서처, 야놀자",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 소프트웨어학 대학원에서 석사를 마친 후, 14년간 야놀자에서 AI 리서처로 근무하며 머신러닝과 딥러닝 분야 전문성을 쌓았습니다. 다수의 프로젝트 경험을 바탕으로 실무에 바로 적용 가능한 데이터 분석 및 AI 모델 개발 능력을 갖추었으며, 복잡한 문제 해결에 강점이 있습니다. 깊이 있는 연구 경험과 함께 신기술 트렌드에 밝아 실질적이고 효과적인 멘토링을 제공합니다. 경력 초기부터 현재까지 꾸준히 성장해온 노하우를 공유하며, 취업 준비부터 직무 적응까지 폭넓게 지원합니다.",
+      "be_go": "머신러닝과 딥러닝 실무 역량을 키우고 싶은 데이터분석 및 AI 분야 취업 준비생과 직무 전환자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_5012a9e0d577",
+      "mentor_info": {
+        "name": "서재원",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "시니어 데이터 사이언티스트, 마인즈랩",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "성균관대학교 전자공학을 전공하고 스타트업 인턴 경험을 거쳐 현재 마인즈랩에서 5년간 시니어 데이터 사이언티스트로 근무 중입니다. AI 및 데이터 분석 프로젝트를 다수 수행하며 실무 역량을 갖추었고, 머신러닝과 딥러닝 기술에 전문성을 보유하고 있습니다. 스타트업과 대기업 환경 모두 경험하여 다양한 업무 스타일에 적응할 수 있습니다. 후배들에게 실무 중심의 조언과 진로 설계에 도움을 주는 멘토링을 진행합니다.",
+      "be_go": "데이터 분석과 AI 분야에서 실무 경험을 쌓고자 하는 취준생과 초중급 개발자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_e3cea4953445",
+      "mentor_info": {
+        "name": "홍태민",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 뱅크샐러드",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "고려대 심리학 전공 후 스타트업 인턴 경험을 바탕으로 뱅크샐러드에서 2년간 빅데이터 엔지니어로 근무하며 데이터 분석과 AI 기반 데이터 처리 기술을 쌓아왔습니다. 다양한 데이터 파이프라인 구축과 최적화 경험을 보유하고 있어 실무 중심의 멘토링이 가능합니다. 빠르게 변화하는 데이터 엔지니어링 분야에서 현장의 노하우를 전수하며 경력 초기 데이터 직무 진입을 도와드립니다. 데이터 엔지니어링과 AI 융합에 관심 있는 멘티에게 특히 도움이 됩니다.",
+      "be_go": "데이터분석과 AI 분야에서 데이터 엔지니어로 경력을 시작하거나 실무 경험을 쌓고 싶은 신입 및 경력 초년 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_b2421e0ceae6",
+      "mentor_info": {
+        "name": "김태윤",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "KAIST",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서비스 기획 PM, 야놀자",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "KAIST 응용수학 전공자로서 데이터 기반의 문제 해결 능력을 갖추었으며, 야놀자에서 3년간 서비스 기획과 PM 역할을 맡아 다양한 프로젝트를 성공적으로 이끌었습니다. 한 우물만 파며 쌓아온 실무 경험으로 IT 개발과 서비스 기획 분야에 대한 깊은 이해를 보유하고 있습니다. 체계적인 일정 관리와 협업 능력을 바탕으로 멘토링 시 실질적인 성장 전략과 커리어 방향 설정에 강점을 보입니다.",
+      "be_go": "IT 개발과 서비스 기획 분야에서 커리어를 쌓고자 하는 주니어 또는 초기 경력 개발자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_899f71977f23",
+      "mentor_info": {
+        "name": "임승우",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "커머스 데이터 분석가, SK텔레콤 AI",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 응용수학 전공 후 해외 인턴십을 경험하고 SK텔레콤 AI팀에서 커머스 데이터 분석가로 2년간 근무했습니다. 빅데이터 분석과 AI 적용 프로젝트에 참여하며 실무 능력을 쌓았고, 데이터 기반 의사결정에 강점을 가지고 있습니다. 신입 및 경력 데이터 분석가를 위한 실질적 멘토링과 취업 준비 코칭에 자신 있습니다.",
+      "be_go": "데이터 분석과 AI 분야에서 실무 경험을 쌓고 싶은 취준생과 초급자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_cbeefdaa200e",
+      "mentor_info": {
+        "name": "서도윤",
+        "gender": "남",
+        "age": 33
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "DevOps 엔지니어, 토스",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 인공지능학과를 졸업하고 스타트업 창업 경험을 바탕으로 현재 토스에서 9년간 DevOps 엔지니어로 일하고 있습니다. 클라우드 인프라 구축과 자동화에 전문성을 갖추었으며, 대규모 서비스 운영 경험이 풍부합니다. 스타트업과 대기업 환경 모두를 경험하여 다양한 IT 개발 문화와 실무 노하우를 공유할 수 있습니다. 멘티의 진로 설계와 실질적인 기술 역량 강화에 도움을 드리겠습니다.",
+      "be_go": "클라우드 및 DevOps 분야 진로를 모색하는 분이나 스타트업 창업과 대기업 실무 경험 양쪽에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_ac658e025ced",
+      "mentor_info": {
+        "name": "임지호",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "머신러닝 엔지니어, 업스테이지",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 소프트웨어학과 졸업 후 부트캠프를 통해 머신러닝과 딥러닝 기술을 집중적으로 익혔습니다. 현재 업스테이지에서 머신러닝 엔지니어로 2년간 근무하며 실무 경험을 쌓았고, 다양한 프로젝트에서 모델 개발 및 최적화를 담당했습니다. 데이터 분석과 AI 분야로 전향을 고민하는 분들에게 실전 경험과 커리어 전환 노하우를 공유합니다. 최신 머신러닝 트렌드와 기술 적용에 강점이 있어 실질적인 멘토링이 가능합니다.",
+      "be_go": "머신러닝, 딥러닝 분야로 커리어 전환을 희망하거나 실무 역량을 강화하고 싶은 취업 준비생과 초년차 엔지니어에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_37cf4e1a7566",
+      "mentor_info": {
+        "name": "오예준",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "딥러닝 엔지니어, 우아한형제들(배민)",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 인공지능학과를 졸업하고 해외 인턴십 경험을 바탕으로 우아한형제들(배민)에서 6년간 딥러닝 엔지니어로 활약하고 있습니다. 머신러닝과 딥러닝 분야에서 실무 경험을 쌓으며 다양한 프로젝트를 성공적으로 수행해왔습니다. AI 모델 개발과 최적화에 대한 깊은 이해를 가지고 있으며, 신기술 학습과 실무 적용에 강점을 갖고 있습니다. 체계적인 문제 해결과 실무 기반 멘토링을 통해 후배들의 성장에 기여하고자 합니다.",
+      "be_go": "머신러닝과 딥러닝 분야에서 실무 경험을 쌓고자 하는 주니어 엔지니어와 AI 분야 진로를 고민하는 취업 준비생에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_b14f5192212e",
+      "mentor_info": {
+        "name": "서영훈",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테스트 자동화 엔지니어, 토스",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 인공지능학 대학원 석사 출신으로, 현재 토스에서 테스트 자동화 엔지니어로 근무 중입니다. 최신 자동화 기술과 QA 프로세스에 대한 깊은 이해를 바탕으로, 효율적인 테스트 환경 구축에 강점을 가지고 있습니다. 연구 직무와 실무 경험을 통해 체계적인 문제 해결 능력을 키웠으며, IT 개발 및 QA 분야 진로에 관심 있는 분들께 실질적인 조언을 제공합니다. 짧지만 집중도 높은 경력으로 빠르게 성장하는 IT 업계의 트렌드를 잘 반영한 멘토링이 가능합니다.",
+      "be_go": "테스트 자동화 엔지니어로서 경력을 시작하거나 인공지능 및 QA 분야에 진출하고자 하는 초년차 개발자 및 취업 준비생에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_c106b8e1062d",
+      "mentor_info": {
+        "name": "양현수",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테크 PM, 카카오뱅크",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 생명과학을 전공한 후 스타트업 인턴 경험을 거쳐 현재 카카오뱅크에서 9년간 테크 PM으로 근무하고 있습니다. IT 개발과 프로젝트 관리 능력을 바탕으로 스타트업과 대기업 환경 모두에 익숙하며, 실무 중심의 멘토링을 제공합니다. 복잡한 프로젝트를 체계적으로 관리하고 팀과 원활한 소통을 이끄는 데 강점을 가지고 있습니다. 멘티가 IT 개발 및 PM 분야에서 전문성을 키우고자 할 때 실질적인 조언과 경력 관리 노하우를 공유합니다.",
+      "be_go": "IT 개발 및 테크 프로젝트 관리에 관심 있는 취업 준비생과 경력 전환 희망자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_042cdaab5eff",
+      "mentor_info": {
+        "name": "고찬우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 마인즈랩",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 소프트웨어학과를 졸업하고 창업 경험을 바탕으로 실무 역량을 갖춘 빅데이터 엔지니어입니다. 현재 마인즈랩에서 4년간 빅데이터 및 AI 관련 인프라 구축과 데이터 파이프라인 개발을 담당하며 전문성을 쌓았습니다. 데이터 분석과 AI 데이터 엔지니어링 분야에 대한 깊은 이해와 실무 경험을 보유하고 있어 체계적인 커리어 조언과 실질적 기술 멘토링이 가능합니다. 스타트업 경험을 통해 창업과 커리어 전환에 대한 현실적인 조언도 제공할 수 있습니다.",
+      "be_go": "데이터 엔지니어 직무 진입을 준비하는 취준생이나 AI 데이터 파이프라인 개발에 관심 있는 실무자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:48"
+    },
+    {
+      "mentor_id": "mr_a4694a819428",
+      "mentor_info": {
+        "name": "김상현",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테크 PM, 핀다",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 언론정보학과를 졸업하고 스타트업 인턴 경험을 바탕으로 핀다에서 테크 PM으로 2년간 근무해왔습니다. IT 개발과 프로젝트 관리에 대한 실무 경험을 갖추고 있으며, 스타트업 환경에서 빠르게 적응하고 성장하는 노하우를 공유할 수 있습니다. 기술과 비즈니스의 중간다리 역할을 하는 테크 PM 직무에 관심 있는 멘티에게 최적의 멘토입니다. 실질적인 프로젝트 관리 및 조직 내 소통 역량 강화에도 강점을 가지고 있습니다.",
+      "be_go": "IT 개발과 프로젝트 매니지먼트에 관심 있는 신입 및 초년차 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_afcbc2950084",
+      "mentor_info": {
+        "name": "이현우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 사이언티스트, SK텔레콤 AI",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 컴퓨터공학과를 졸업하고 스타트업 창업 경험을 가진 후 SK텔레콤 AI팀에서 3년간 데이터 사이언티스트로 일하고 있습니다. 데이터 분석과 인공지능 분야에서 실무 경험을 쌓아 전문성을 갖추었으며, 창업 경험을 통해 문제 해결 능력과 실전 감각을 키웠습니다. 다양한 프로젝트에 참여하며 얻은 인사이트를 바탕으로 실질적인 커리어 상담과 멘토링을 제공합니다. 데이터 분석과 AI 분야 진로를 고민하는 분들에게 실무 중심의 조언과 네트워킹 팁을 드릴 수 있습니다.",
+      "be_go": "데이터분석 및 AI 분야에 진입하려는 취업 준비생이나 초기 경력자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_d2924dd6d7ee",
+      "mentor_info": {
+        "name": "유건우",
+        "gender": "남",
+        "age": 33
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "QA 엔지니어, 당근페이",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 전자공학을 전공한 후 창업 경험을 바탕으로 당근페이에서 7년간 QA 엔지니어로 근무하며 IT 개발과 품질관리 전반에 깊은 이해를 갖추고 있습니다. 스타트업 환경과 대규모 서비스의 QA 프로세스를 모두 경험하여 실무 적용 능력이 뛰어나며, 문제 해결과 효율적인 테스트 자동화에 강점을 지니고 있습니다. 멘티들에게 실질적인 현장 경험과 커리어 개발 전략을 제공하는 멘토링을 진행합니다.",
+      "be_go": "IT개발 및 QA 분야에서 실무 경험을 쌓고 싶거나 스타트업 및 핀테크 업계 진출을 희망하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_dc1eaedc79b7",
+      "mentor_info": {
+        "name": "전나윤",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "동국대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "채용 담당자, 아모레퍼시픽",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "아모레퍼시픽에서 4년간 채용 업무를 담당하며 인사 전반에 대한 깊은 이해를 쌓았습니다. 동국대학교에서 심리학을 전공하여 사람을 이해하는 능력을 갖추었고, 해외 인턴십 경험으로 글로벌 감각도 갖추었습니다. 채용 프로세스 최적화와 인재 발굴에 전문성을 보유하고 있습니다. 실무 중심의 멘토링으로 신입 및 경력직 취업 준비생에게 실질적인 도움을 드릴 수 있습니다.",
+      "be_go": "인사 분야에 진입을 희망하거나 채용 업무에 관심 있는 취업 준비생에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_bb493c66f6c9",
+      "mentor_info": {
+        "name": "송승현",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "백엔드 엔지니어, 라인플러스",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "저는 중앙대학교 전자공학과를 졸업하고 해외 인턴십 경험을 바탕으로 라인플러스 백엔드 엔지니어로 3년간 일하고 있습니다. 다양한 백엔드 시스템 설계와 최적화 경험을 갖추었으며, 실무 중심의 개발 노하우를 멘토링에 녹여내고 있습니다. 최신 기술 트렌드에 민감하며, 실전 준비와 커리어 개발에 강점을 가지고 있습니다.",
+      "be_go": "백엔드 개발자로서 실무 역량을 키우고 싶거나 해외 경험을 통해 성장 가능성을 모색하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_8ccff1b6b0c4",
+      "mentor_info": {
+        "name": "임동욱",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "금융 데이터 분석가, 리디",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "연세대 언론정보학을 전공한 후 금융 분야 데이터 분석가로 5년간 리디에서 경력을 쌓았습니다. 데이터 기반 의사결정과 AI 기술 활용에 전문성을 갖추었으며, 실무 경험을 바탕으로 데이터 분석 역량과 금융 도메인 이해도를 갖추고 있습니다. 꾸준한 한 우물 경험으로 깊이 있는 통찰을 제공합니다. 멘토링 과정에서 실질적인 커리어 방향 설정과 기술 역량 강화에 중점을 둡니다.",
+      "be_go": "금융 데이터 분석가를 꿈꾸거나 AI와 데이터 분석 실무 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_d4a26098bb6d",
+      "mentor_info": {
+        "name": "양도윤",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "포스텍",
+        "major": "사회학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "콘텐츠 마케팅 매니저, 현대자동차",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 사회학을 전공하고 대기업 공채를 통해 경력을 시작한 후, 현재 현대자동차에서 6년째 콘텐츠 마케팅 매니저로 일하고 있습니다. 브랜드마케팅 분야에서 실무 경험과 전략 수립 능력을 갖추었으며, 자동차 산업 내 디지털 콘텐츠 제작과 캠페인 운영에 전문성을 보유하고 있습니다. 신뢰성 높은 멘토링으로 취업 준비생과 경력 전환 희망자에게 실질적인 도움을 제공합니다.",
+      "be_go": "브랜드마케팅과 콘텐츠 마케팅 분야에서 실무 경험을 쌓고 싶거나 대기업 마케팅 직무를 목표로 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_c3df9dd320c0",
+      "mentor_info": {
+        "name": "김재훈",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "딥러닝 엔지니어, 라인플러스",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "성균관대학교 수학과 출신으로 비전공 분야였지만 독학을 통해 데이터 분석과 AI 분야에 뛰어들어 현재 라인플러스에서 딥러닝 엔지니어로 5년간 근무 중입니다. 머신러닝과 딥러닝 실무 경험이 풍부하며, 비전공자도 탄탄한 자기주도 학습으로 전문성을 키울 수 있음을 증명했습니다. 실전 프로젝트 경험과 최신 AI 트렌드에 밝아 실무 중심의 멘토링을 제공합니다. 데이터 분석과 AI 분야로 커리어 전환을 원하는 이들에게 적합한 조언을 할 수 있습니다.",
+      "be_go": "비전공자이지만 AI, 머신러닝 분야로 도전하는 분이나 독학으로 실무 능력을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_d01e0490016d",
+      "mentor_info": {
+        "name": "김지현",
+        "gender": "여",
+        "age": 30
+      },
+      "background": {
+        "school": "울산과학기술원(UNIST)",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "브랜드 마케터, 현대자동차",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST에서 심리학을 전공하고 창업 경험을 쌓은 후, 4년간 현대자동차에서 브랜드 마케터로 활동해왔습니다. 소비자 심리와 브랜드 전략에 대한 깊은 이해를 바탕으로 효과적인 마케팅 캠페인을 기획하는 데 강점을 가지고 있습니다. 창업 경험으로 실무 감각과 문제 해결 능력을 키웠으며, 브랜드와 소비자 간의 연결고리를 더욱 강화하는 방법에 대해 멘티들에게 실질적인 조언을 제공합니다. 브랜드마케팅 분야에서 경력을 쌓고자 하는 분들에게 특히 도움이 될 수 있는 멘토입니다.",
+      "be_go": "브랜드 마케팅에 관심이 있거나 자동차 산업 및 소비자 심리 기반 마케팅 전략을 배우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_ec8211837fc8",
+      "mentor_info": {
+        "name": "신지연",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "브랜드 마케터, 맥킨지",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "인하대 경영학을 졸업하고 부트캠프 수료 후 맥킨지에서 9년간 브랜드 마케팅 업무를 수행해왔습니다. 다양한 산업군의 브랜드 전략 수립과 실행 경험이 풍부하며, 데이터 기반 마케팅과 소비자 분석에 강점을 가지고 있습니다. 커리어 전환 과정에서 겪은 도전과 성공 노하우를 바탕으로 실질적인 멘토링을 제공합니다. 현업에서 직접 쌓은 경험으로 취업 준비부터 직무 역량 강화까지 폭넓게 지원할 수 있습니다.",
+      "be_go": "브랜드 마케팅 분야로 커리어를 시작하거나 전환하고자 하는 멘티에게 적합합니다. 실무 중심의 조언과 커리어 전략 수립에 도움을 줄 수 있습니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_70fc09ae56a9",
+      "mentor_info": {
+        "name": "권성민",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "울산과학기술원(UNIST)",
+        "major": "데이터사이언스",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "BI 애널리스트, 삼성전자 AI연구소",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "울산과학기술원에서 데이터사이언스를 전공하고, 해외 인턴십 경험을 바탕으로 삼성전자 AI연구소에 합류해 BI 애널리스트로 6년간 근무했습니다. 데이터 분석과 AI 기술을 접목한 프로젝트를 다수 수행하며 실무 역량과 문제 해결 능력을 쌓았습니다. 멘토링을 통해 데이터 분석 입문자부터 중급자까지 실질적 커리어 성장과 전문성 강화를 돕고 있습니다. 특히 데이터 기반 의사결정과 AI 모델 활용에 강점을 가지고 있습니다.",
+      "be_go": "데이터 분석 경력 개발을 희망하거나 AI 분야 진입을 준비하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_ec7bd6ab6680",
+      "mentor_info": {
+        "name": "임예준",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "NLP 엔지니어, 스캐터랩",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "저는 UNIST 수학과를 졸업하고 스타트업 인턴십을 거쳐 현재 스캐터랩에서 6년간 NLP 엔지니어로 일하고 있습니다. 자연어처리와 대규모 언어 모델(LLM) 개발에 전문성을 가지고 있으며, 실제 서비스 적용 경험도 풍부합니다. 데이터 분석과 AI 분야에서 실무 중심의 노하우를 나누고자 합니다. 취업 준비생과 경력 전환을 고민하는 분들에게 맞춤형 멘토링을 제공합니다.",
+      "be_go": "NLP 및 LLM 분야에 진출하고 싶은 취업 준비생이나 스타트업 경험을 쌓고자 하는 예비 엔지니어에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_ed0d86c6c198",
+      "mentor_info": {
+        "name": "손준혁",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "IT 프로덕트 매니저, 쏘카",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "성균관대학교 산업공학을 전공하고 스타트업 인턴십 경험을 거쳐 쏘카에서 IT 프로덕트 매니저로 1년간 근무 중입니다. IT 개발과 프로덕트 매니지먼트 분야에서 실무 경험과 스타트업 문화에 대한 이해를 갖추고 있습니다. 신입 및 초기 경력자의 취업 준비와 실무 적응에 강점을 가지고 있으며, 체계적인 문제 해결과 팀 내 협업 노하우를 공유합니다. 프로덕트 매니저를 꿈꾸는 분들을 위한 실질적인 조언과 멘토링을 제공합니다.",
+      "be_go": "IT 프로덕트 매니저 직무로 첫 걸음을 내딛거나 스타트업 및 빠르게 변화하는 IT 업계에서 경력을 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_2c70ac0e470f",
+      "mentor_info": {
+        "name": "박수현",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Product Designer, 딜로이트",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 언론정보학과를 졸업한 후 스타트업에서 인턴 경험을 쌓고, 현재 딜로이트에서 Product Designer로 3년간 근무하고 있습니다. UX/UI 디자인에 대한 깊은 이해와 실무 경험을 바탕으로 사용자 중심의 혁신적인 제품 디자인을 수행해왔습니다. 스타트업과 대기업 환경 모두 경험하여 다양한 조직문화 속에서 디자인 솔루션을 제시할 수 있습니다. 멘토링 시 실무 중심의 조언과 커리어 개발에 도움을 드리며, 실질적인 포트폴리오 구성 노하우도 공유합니다.",
+      "be_go": "제품 디자인 분야 진입을 희망하거나 UX/UI 실무 역량을 키우고 싶은 디자이너 지망생에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_25a7b6126117",
+      "mentor_info": {
+        "name": "장건우",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "퍼포먼스 마케터, 신한은행",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 경영학과를 졸업한 후 창업 경험을 바탕으로 퍼포먼스 마케팅 분야에서 12년간 신한은행에서 활약 중입니다. 다년간의 실무 경험과 창업을 통한 실전 감각으로 온라인 광고 및 데이터 분석에 강점을 가지고 있습니다. 퍼포먼스 마케팅 전략 수립부터 실행까지 전 과정에 대한 풍부한 노하우를 보유하고 있습니다. 신한은행이라는 대기업 환경에서 다양한 캠페인 운영 사례를 바탕으로 실질적인 멘토링을 제공할 수 있습니다.",
+      "be_go": "퍼포먼스 마케팅 분야에 관심이 있거나 금융권 마케팅 실무 경험을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_bb64fadc8845",
+      "mentor_info": {
+        "name": "권태윤",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "게임 PM, LG CNS",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 컴퓨터공학을 전공하고 첫 직장에서부터 현재까지 LG CNS에서 게임 프로젝트 매니저로 일하고 있습니다. IT개발과 게임 산업에 대한 실무 경험을 바탕으로 프로젝트 관리와 팀 협업에 강점을 가지고 있습니다. 신입부터 초중급 개발자 및 기획자를 위한 멘토링에 적합하며, 빠르게 변화하는 IT 현장에 맞춘 실질적인 조언을 제공합니다.",
+      "be_go": "게임 개발 및 PM 직무를 희망하는 신입 및 경력 초기 단계 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_6c36c995f5f4",
+      "mentor_info": {
+        "name": "백준서",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "그로스 데이터 분석가, 메타 코리아",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 수학과를 졸업하고 스타트업에서 인턴십을 경험한 후, 메타 코리아에서 3년간 그로스 데이터 분석가로 활동하고 있습니다. 데이터 기반 의사결정과 사용자 행동 분석에 전문성을 갖추었으며, AI 및 머신러닝 기법을 활용한 실무 경험이 풍부합니다. 스타트업부터 글로벌 기업까지 다양한 환경에서 쌓은 실무 경험을 바탕으로 취업 준비와 커리어 전환에 실질적인 도움을 드립니다. 데이터 분석과 AI 분야 진로에 대해 명확한 방향성을 제시하고자 합니다.",
+      "be_go": "데이터 분석 및 AI 분야에서 실무 경험을 쌓고 싶거나, 글로벌 IT 기업 취업을 목표로 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_dcdff7ecbc6f",
+      "mentor_info": {
+        "name": "조우진",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 서비스 기획자, SK텔레콤 AI",
+      "years_of_experience": 15,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 물리학과를 졸업하고 스타트업 인턴 경험을 바탕으로 SK텔레콤 AI에서 15년간 AI 서비스 기획자로 근무해왔습니다. 데이터 분석과 AI 프로젝트 매니지먼트 전반에 깊은 이해를 지니고 있으며, 실무 경험을 통해 얻은 전략적 기획 능력과 문제 해결 역량을 갖추고 있습니다. AI 및 데이터 분야 진로를 고민하는 취업 준비생과 경력 전환자에게 실질적이고 체계적인 멘토링을 제공합니다.",
+      "be_go": "AI 서비스 기획 및 데이터 분석 분야에 진출하고자 하는 취업 준비생이나 경력 전환자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:49"
+    },
+    {
+      "mentor_id": "mr_6434ecdec09f",
+      "mentor_info": {
+        "name": "손도윤",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "부산대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "대화형 AI 연구원, 뤼튼테크놀로지스",
+      "years_of_experience": 11,
+      "total_questions": 0,
+      "matching_summary_text": "부산대학교 응용수학과 출신으로 부트캠프를 통해 데이터 분석과 AI 분야로 성공적으로 커리어 전환한 대화형 AI 연구원입니다. 현재 뤼튼테크놀로지스에서 11년간 NLP 및 대화형 AI 연구를 수행하며 실무 경험과 전문성을 쌓았습니다. 복잡한 언어 모델 이해와 적용에 강점을 가지고 있어, 현장 맞춤형 멘토링을 제공합니다. 신입부터 경력 개발자까지 다양한 멘티의 진로 설계와 기술 역량 강화에 도움을 줄 수 있습니다.",
+      "be_go": "AI 및 NLP 분야로 커리어 전환을 희망하거나 대화형 AI 연구에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_5b9755f8fe2f",
+      "mentor_info": {
+        "name": "한지은",
+        "gender": "여",
+        "age": 27
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 플랫폼 엔지니어, SK텔레콤 AI",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 응용수학을 전공하고 스타트업 인턴 경험을 바탕으로 SK텔레콤 AI에서 데이터 플랫폼 엔지니어로 2년간 근무 중입니다. 데이터 분석과 AI 분야에서 실무 경험을 쌓아왔으며, 데이터 엔지니어링에 대한 깊은 이해와 문제 해결 능력을 갖추고 있습니다. 다양한 프로젝트 경험을 통해 빠르게 변화하는 기술 트렌드에 대응할 수 있습니다. 멘티들의 진로 설정과 실무 역량 강화에 실질적인 도움을 줄 수 있습니다.",
+      "be_go": "데이터 엔지니어링 분야에 진입하고자 하거나, AI 및 데이터 플랫폼 관련 실무 경험을 쌓고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_bd13a03a44da",
+      "mentor_info": {
+        "name": "홍지유",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "경제학 대학원",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 서비스 기획자, 우아한형제들(배민)",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 경제학 대학원 출신으로, 데이터 분석과 AI 분야에서 4년간 우아한형제들(배민)에서 AI 서비스 기획자로 일하고 있습니다. 연구직으로 커리어를 시작해 실무 경험과 기획 능력을 동시에 갖추었으며, AI 프로젝트 관리와 데이터 기반 의사결정에 강점을 가지고 있습니다. 다양한 AI 서비스 개발 경험을 토대로 멘티의 실무 적응과 커리어 성장을 적극 지원합니다. 복잡한 데이터와 AI 기술을 쉽게 풀어 설명할 수 있는 멘토링에 자신이 있습니다.",
+      "be_go": "AI와 데이터 분석 분야 진입을 고민하는 취준생 또는 AI 서비스 기획 분야로 커리어 전환을 희망하는 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_ea71a142e225",
+      "mentor_info": {
+        "name": "양지훈",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "UNIST",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "마케팅 데이터 분석가, 크래프톤",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 수학과를 졸업하고 대기업 공채로 입사하여 탄탄한 기초와 실무 경험을 쌓았습니다. 이후 크래프톤으로 이직해 마케팅 데이터 분석 업무를 담당하며 데이터 기반 의사결정을 지원하고 있습니다. 3년간 다양한 데이터 분석 프로젝트를 수행하며 AI 및 빅데이터 활용 능력을 키웠습니다. 실무 경험과 수학적 배경을 바탕으로 실질적인 취업 준비와 커리어 개발을 도울 수 있습니다.",
+      "be_go": "데이터분석 분야 취업을 준비하는 학생이나 경력 초년생에게 적합하며, 실무에서 요구되는 분석 역량과 커리어 전략을 알고 싶은 멘티에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_f7cb709ab85a",
+      "mentor_info": {
+        "name": "홍규민",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테스트 자동화 엔지니어, 무신사",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "서울대 컴퓨터공학 석사 출신으로 무신사에서 14년간 테스트 자동화 엔지니어로 근무하며, 다양한 자동화 도구와 프레임워크 구축 경험이 풍부합니다. 연구직으로 시작한 탄탄한 기초와 실무 경험을 바탕으로 IT개발 및 QA 분야의 최신 트렌드와 기술을 폭넓게 이해하고 있습니다. 멘토링을 통해 체계적인 테스트 자동화 방법론과 커리어 설계에 대해 깊이 있는 조언을 제공합니다. 실무 중심의 현실적인 문제 해결 능력과 경력 개발 노하우를 공유합니다.",
+      "be_go": "테스트 자동화 및 QA 분야에서 경력을 쌓고자 하는 취업 준비생이나 현직 개발자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_f9fdb349558d",
+      "mentor_info": {
+        "name": "안성민",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프로덕트 데이터 분석가, 하이퍼커넥트",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "한양대학교 통계학을 전공하고 대기업 공채로 입사해 탄탄한 기초와 실무 경험을 쌓았습니다. 이후 하이퍼커넥트에서 6년간 프로덕트 데이터 분석가로 근무하며 다양한 AI 기반 데이터 분석 프로젝트를 수행하였습니다. 데이터 분석과 AI 분야의 최신 트렌드 이해도가 높으며, 실질적 성과 창출에 집중하는 멘토링을 제공합니다. 경력 초기 취업 준비부터 실무 역량 강화까지 폭넓은 조언이 가능합니다.",
+      "be_go": "데이터 분석과 AI 분야로 취업을 준비하거나 실무 능력을 키우고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_d189645e45d6",
+      "mentor_info": {
+        "name": "손민준",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "광주과학기술원",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "DevOps 엔지니어, 쿠팡",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "광주과학기술원에서 전자공학을 전공하고, 대기업 공채로 입사한 후 쿠팡에서 2년간 DevOps 엔지니어로 근무하며 클라우드 인프라와 자동화에 전문성을 쌓았습니다. 개발과 운영의 통합 환경 구축 경험을 바탕으로 IT 개발과 클라우드 분야에서 실무 중심 멘토링이 가능합니다. 신기술 적응력이 뛰어나며 스타트업과 대기업 환경 모두 이해하는 점이 강점입니다. 체계적인 문제 해결과 효율적인 프로젝트 관리 노하우를 공유할 수 있습니다.",
+      "be_go": "IT개발 및 클라우드 분야로 진로를 고민하는 신입 또는 주니어 개발자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_17b24910210e",
+      "mentor_info": {
+        "name": "안현수",
+        "gender": "남",
+        "age": 33
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "컴퓨터비전 엔지니어, 두나무(업비트)",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 데이터사이언스학을 전공하고, 9년간 컴퓨터비전 분야에서 꾸준히 경력을 쌓아온 두나무(업비트)의 컴퓨터비전 엔지니어입니다. 딥러닝과 영상 처리 기술을 바탕으로 실제 서비스에 적용 가능한 AI 모델 개발 경험이 풍부하며, 현업에서의 실무 노하우를 체계적으로 공유할 수 있습니다. 데이터 분석과 AI, 특히 컴퓨터비전 분야에 진입하려는 분들에게 실질적인 멘토링을 제공합니다.",
+      "be_go": "컴퓨터비전 및 AI 분야에서 실무 경험을 쌓고 싶은 데이터 분석가 또는 엔지니어 지망생에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_f2364da937ce",
+      "mentor_info": {
+        "name": "이수연",
+        "gender": "여",
+        "age": 27
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "BI 애널리스트, 마켓컬리",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 수학과를 졸업하고 해외 인턴십 경험을 통해 글로벌 데이터 분석 역량을 키웠습니다. 현재 마켓컬리에서 BI 애널리스트로서 1년간 실무 경험을 쌓으며 데이터 기반 의사결정과 분석 업무에 전문성을 갖추고 있습니다. 데이터 분석과 AI 분야의 실무를 깊이 이해하며 현업에서 활발히 활동 중입니다. 멘토링 시 최신 BI 도구 및 데이터 처리 노하우를 효과적으로 전달할 수 있습니다.",
+      "be_go": "데이터 분석 분야에 입문하거나 BI 애널리스트 직무를 목표로 하는 초년차 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_0e46668de9fe",
+      "mentor_info": {
+        "name": "송동현",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "포스텍",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "MD, 현대자동차",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 경제학을 전공하고 스타트업 인턴십을 거쳐 현대자동차 MD로 경력을 쌓아온 1년 차 직장인입니다. 유통과 MD 분야에서 실무 경험을 바탕으로 최신 시장 트렌드와 데이터 기반 의사결정에 강점이 있습니다. 신입 및 경력 초기 단계 멘티를 대상으로 진로 설계와 업무 적응에 실질적인 조언을 제공합니다. 스타트업 경험을 통해 다양한 업무 환경에 대한 이해도 겸비하고 있어 폭넓은 멘토링이 가능합니다.",
+      "be_go": "MD 또는 유통 분야 진입을 희망하는 신입 멘티와 스타트업에서 대기업으로 커리어를 전환하고자 하는 분들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_3e24e6c5adc0",
+      "mentor_info": {
+        "name": "신민지",
+        "gender": "여",
+        "age": 28
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "사회학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "콘텐츠 마케팅 매니저, 나이키코리아",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 사회학과를 졸업하고 부트캠프를 통해 마케팅으로 경력 전환한 후 나이키코리아에서 2년간 콘텐츠 마케팅 매니저로 근무 중입니다. 브랜드 마케팅과 디지털 콘텐츠 제작에 전문성을 갖추었으며, 실무 경험을 바탕으로 효과적인 마케팅 전략 수립과 실행에 강점을 가지고 있습니다. 신입과 경력 전환을 고민하는 멘티들에게 현실적이고 구체적인 조언을 제공할 수 있습니다.",
+      "be_go": "브랜드마케팅 분야로 커리어 전환을 희망하거나 디지털 콘텐츠 마케팅 실무 노하우를 배우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_43a2380420bf",
+      "mentor_info": {
+        "name": "유찬우",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "전략기획 매니저, 이랜드",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 심리학과를 졸업하고 대기업 공채로 첫 경력을 시작한 뒤, 현재는 이랜드에서 전략기획 매니저로 9년간 근무하고 있습니다. 다양한 산업과 조직 내 전략 수립 경험을 바탕으로 실질적이고 실행 가능한 전략 컨설팅과 기획 역량을 갖췄습니다. 체계적인 문제 해결방식과 커뮤니케이션 능력을 통해 멘티들이 직무 이해와 전략적 사고를 높일 수 있도록 돕습니다. 실제 업무 현장의 노하우를 공유하며 취업 준비부터 경력 전환까지 폭넓은 멘토링을 제공합니다.",
+      "be_go": "전략기획 및 컨설팅 직무로 진출하고자 하거나, 대기업 및 유통업계 전략 직무에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_f453744b8d40",
+      "mentor_info": {
+        "name": "한시우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 프로덕트 매니저, 뤼튼테크놀로지스",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "GIST 전자공학을 전공하고 AI와 데이터 분야로 커리어를 전환한 데이터 프로덕트 매니저입니다. 4년간 데이터 중심의 제품 기획과 프로젝트 관리를 수행하며 실무 경험을 쌓았습니다. 부트캠프를 통해 실무형 AI 기술과 데이터 분석 역량을 강화했고, AI/데이터 프로젝트 매니지먼트에 강점을 가지고 있습니다. 취업 준비부터 현업 적응까지 전 과정에 걸친 실질적인 멘토링을 제공합니다.",
+      "be_go": "AI와 데이터 관련 비전공자 또는 커리어 전환을 희망하는 멘티에게 적합하며, 데이터 프로덕트 매니저 직무에 관심 있는 분들에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_e7ba983b197e",
+      "mentor_info": {
+        "name": "강정우",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "비전 AI 연구원, 두나무(업비트)",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 인공지능학과를 졸업하고 스타트업에서 인턴 경력을 쌓은 뒤, 두나무(업비트)에서 비전 AI 연구원으로 2년간 근무 중입니다. 컴퓨터비전과 딥러닝 분야에서 실무 경험과 연구 역량을 갖추고 있으며, 최신 AI 기술을 활용한 프로젝트 수행 경험이 풍부합니다. 데이터분석과 AI 개발에 대한 실질적인 조언과 멘토링을 제공할 수 있습니다. 실무 중심의 진로 상담과 취업 준비에 강점을 가지고 있습니다.",
+      "be_go": "컴퓨터비전 및 AI 분야에서 실무 경험을 쌓고자 하는 취업준비생이나 초기 경력자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_4e8f1ecbc5e6",
+      "mentor_info": {
+        "name": "신선우",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 엔지니어, 크래프톤",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 물리학과를 졸업하고 데이터 엔지니어로서 7년간 크래프톤에서 경력을 쌓았습니다. 데이터 파이프라인 설계와 최적화, 빅데이터 처리에 전문성을 가지고 있으며 AI 데이터 분석과 관련된 다양한 프로젝트를 수행해왔습니다. 꾸준한 현장 경험을 바탕으로 실무 중심의 멘토링을 제공합니다. 데이터 엔지니어링 분야 진입을 희망하는 분들에게 실질적인 도움을 줄 수 있습니다.",
+      "be_go": "데이터 엔지니어로 경력을 시작하거나 빅데이터 처리 기술을 배우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_def74fe2de45",
+      "mentor_info": {
+        "name": "김수연",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "이미지 인식 엔지니어, 라인플러스",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "4년차 이미지 인식 엔지니어로 라인플러스에서 컴퓨터비전 분야의 다양한 프로젝트를 수행해왔습니다. 비전공자로서 독학과 실무 경험을 통해 전문성을 쌓은 점이 큰 강점입니다. 데이터분석과 AI 기술에 대한 깊은 이해를 바탕으로 실질적인 문제 해결 능력을 보유하고 있습니다. 신입 및 비전공자 출신의 취업 준비생에게 현실적인 조언과 실무 노하우를 전달할 수 있는 멘토입니다.",
+      "be_go": "컴퓨터비전 분야 진입을 희망하거나 비전공자 출신으로 데이터분석/AI 업계 취업을 준비하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_755891228e5e",
+      "mentor_info": {
+        "name": "유선우",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "시니어 데이터 사이언티스트, 구글 코리아",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "저는 GIST에서 수학을 전공하고 데이터 분석과 AI 분야에서 5년간 경력을 쌓아왔습니다. 구글 코리아에서 시니어 데이터 사이언티스트로 일하며 다양한 대규모 데이터 프로젝트를 성공적으로 수행했습니다. 데이터 분석 역량과 AI 모델링 전문성을 바탕으로 실무 중심의 멘토링을 제공합니다. 신입부터 경력직까지 폭넓은 멘티 경험을 살려 진로와 기술 역량 향상에 도움을 드립니다.",
+      "be_go": "데이터 분석과 AI 분야에서 실무 경험을 쌓고 싶거나 경력 전환을 준비하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:50"
+    },
+    {
+      "mentor_id": "mr_2c081b89bab2",
+      "mentor_info": {
+        "name": "양준서",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "포항공과대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프론트엔드 엔지니어, 현대오토에버",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "포항공과대학교 전자공학을 전공한 후 부트캠프를 통해 프론트엔드 개발자로 커리어를 전환했습니다. 현재 현대오토에버에서 7년간 프론트엔드 엔지니어로 근무하며 다양한 프로젝트를 수행해왔습니다. 실무 경험과 탄탄한 기초 지식을 바탕으로 최신 웹 기술과 트렌드에 능숙합니다. 신입부터 경력 개발자까지 맞춤형 멘토링을 제공하며, 커리어 전환에 대한 실질적인 조언과 방향성을 제시합니다.",
+      "be_go": "프론트엔드 분야로 커리어 전환을 고민하는 분이나 실무 경험을 쌓고 싶은 초중급 개발자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_baf1f14e4c4e",
+      "mentor_info": {
+        "name": "황도윤",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "부산대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "VC 심사역, 신한은행",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "부산대학교 경제학과를 졸업하고 해외 인턴십 경험을 바탕으로 신한은행 VC 심사역으로 5년간 근무 중입니다. 금융 및 투자 분야의 실무 경험을 토대로 스타트업과 벤처 투자에 대한 깊은 이해를 가지고 있습니다. 신한은행에서의 심사역 업무를 통해 기업 가치 평가 및 투자 전략 수립 능력을 갖추었습니다. 멘토링을 통해 금융권 취업 준비생과 투자 분야 진로 희망자에게 실질적 조언을 제공합니다.",
+      "be_go": "금융권 취업을 준비하거나 벤처 투자, VC 직무에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_bfe116fbba8f",
+      "mentor_info": {
+        "name": "홍현수",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테크 PM, 티맵모빌리티",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "한양대학교 산업공학 전공 후 부트캠프를 통해 IT 개발 역량을 강화하고 티맵모빌리티에서 테크 PM으로 4년간 근무했습니다. 프로젝트 관리와 기술 이해를 모두 갖춘 멘토로, 커리어 전환을 고민하는 분들에게 실질적인 조언을 드릴 수 있습니다. 스타트업 및 대기업 프로젝트 경험을 기반으로 한 실행력과 문제 해결 능력이 강점입니다. IT개발과 PM 업무를 연결하는 가교 역할을 하며 멘티들의 성장에 기여하고자 합니다.",
+      "be_go": "IT 분야 커리어 전환을 희망하거나 테크 PM 직무에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_4edc6c222d5c",
+      "mentor_info": {
+        "name": "문민석",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "서버 개발자, 토스",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 데이터사이언스학과를 졸업하고 창업 경험을 가진 후, 현재 토스에서 서버 개발자로 근무 중입니다. 1년간 실무 경험을 쌓으며 최신 백엔드 기술과 서비스 운영에 대한 깊은 이해를 갖추었습니다. 창업 경험에서 배운 문제 해결 능력과 빠른 학습력으로 실무 적응이 뛰어나며, 개발자 커리어 전환 및 초기 경력자 멘토링에 강점을 지닙니다. IT 개발 분야에서 실질적인 성장과 도약을 원하는 멘티에게 도움을 줄 수 있습니다.",
+      "be_go": "백엔드 개발자로 커리어를 시작하거나 초기 경력을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_e8058c9a7b5c",
+      "mentor_info": {
+        "name": "한태민",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "MLOps 엔지니어, 뱅크샐러드",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "서강대 산업공학을 전공하고 창업 경험을 바탕으로 데이터분석과 AI 분야에서 MLOps 및 인프라 전문성을 쌓았습니다. 현재 뱅크샐러드에서 3년째 MLOps 엔지니어로 근무하며, 실제 서비스 환경에 AI 모델을 안정적으로 운영하는 기술과 경험을 보유하고 있습니다. 데이터 기반 의사결정과 효율적인 AI 인프라 구축에 관해 깊이 있는 멘토링이 가능합니다. 창업 경험으로 스타트업과 초기 단계 기업 성장 전략에도 조언할 수 있습니다.",
+      "be_go": "MLOps와 AI 인프라 분야 진로를 희망하거나 실무 경험을 쌓고자 하는 취업 준비생 및 초기 경력자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_3241accebaf5",
+      "mentor_info": {
+        "name": "서가은",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "UX 리서처, 아모레퍼시픽",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "저는 고려대 경영학과를 졸업하고 비전공자로서 독학으로 UX/UI 디자인 분야에 도전해 아모레퍼시픽에서 4년간 UX 리서처로 일해왔습니다. 비전공자의 입장에서 실무 경험과 독학 노하우를 바탕으로 사용자 중심 디자인 프로세스와 리서치 방법론을 체계적으로 안내할 수 있습니다. 또한 빠르게 변화하는 디자인 트렌드와 기업 요구에 맞춘 실무 팁을 제공하여 멘티의 역량 강화에 도움을 드립니다. UX/UI 전환을 고민하는 분과 실무 진입을 목표로 하는 분들께 특히 적합한 멘토입니다.",
+      "be_go": "비전공자이지만 UX/UI 분야로 전환하고 싶은 분과, 실무 중심의 UX 리서치 역량을 키우고자 하는 분들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_ade9351ddae5",
+      "mentor_info": {
+        "name": "허민재",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "부산대학교",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 엔지니어, 우아한형제들(배민)",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "부산대학교 데이터사이언스학을 전공하고 해외 인턴십 경험을 쌓은 후, 우아한형제들(배민)에서 7년간 데이터 엔지니어로 근무하며 대규모 데이터 처리 및 AI 시스템 구축에 전문성을 갖추었습니다. 데이터 파이프라인 설계부터 운영까지 실무 경험을 바탕으로 실질적인 문제 해결 능력을 갖추고 있습니다. 멘토링 강점은 실무 중심의 커리어 설계와 데이터 엔지니어링 분야의 최신 기술 트렌드 전달에 있습니다.",
+      "be_go": "데이터 엔지니어링 분야로 진로를 고민하는 취업 준비생이나 현업에서 실무 역량을 강화하고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_ca2037231809",
+      "mentor_info": {
+        "name": "한준영",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "포스텍",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 서비스 기획자, 코난테크놀로지",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "저는 포스텍 경영학을 졸업하고 해외 인턴십을 거쳐 현재 코난테크놀로지에서 AI 서비스 기획자로 12년간 근무해왔습니다. 데이터분석과 AI 프로젝트 관리(PM)에 특화된 경험을 바탕으로, 실질적인 AI 서비스 기획과 실행 노하우를 보유하고 있습니다. 다양한 산업의 AI 프로젝트를 성공적으로 이끌며 얻은 전문성과 문제 해결 능력은 멘티분들의 실무 적응에 큰 도움이 될 것입니다. 체계적인 데이터 분석과 AI 기획 역량 강화를 원하는 분들에게 최적의 멘토입니다.",
+      "be_go": "AI 서비스 기획이나 데이터 분석 분야에서 실무 경험을 쌓고 싶은 취업준비생과 초기 경력자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_dddb3d3d9baf",
+      "mentor_info": {
+        "name": "윤형준",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 왓챠",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "연세대 통계학을 전공하고 빅데이터 엔지니어로 6년간 왓챠에서 경력을 쌓았습니다. 데이터 분석과 AI 분야에서 실무 중심의 기술과 경험을 보유하고 있으며, 대규모 데이터 처리와 파이프라인 구축에 강점을 가지고 있습니다. 꾸준한 현장 경험을 바탕으로 실질적인 커리어 조언과 기술 멘토링을 제공합니다. 데이터 엔지니어를 꿈꾸는 분들께 실무 노하우와 취업 전략을 함께 나누고 있습니다.",
+      "be_go": "데이터 엔지니어 분야에서 실무 경험과 기술 역량을 키우고 싶은 취업 준비생이나 경력 초기 단계의 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_5da59a85d2f0",
+      "mentor_info": {
+        "name": "허서윤",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 서비스 기획자, 아마존 코리아",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 인공지능학과를 졸업하고 스타트업 인턴십을 거쳐 현재 아마존 코리아에서 AI 서비스 기획자로 2년간 근무 중입니다. AI 및 데이터 관련 프로젝트 관리 경험과 기획 능력을 바탕으로, 최신 AI 서비스 동향을 이해하고 실무에 적용하는 데 강점이 있습니다. 데이터분석과 AI 분야에서 커리어를 시작하려는 분들에게 현실적인 조언과 실질적인 멘토링을 제공합니다.",
+      "be_go": "AI 서비스 기획과 데이터분석 분야에 진입하고자 하는 신입 및 초급 경력자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_2f83321732eb",
+      "mentor_info": {
+        "name": "김다현",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프로덕트 데이터 분석가, 리디",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 응용수학과를 졸업하고 대기업 공채로 첫 직장에 입사하여 데이터 분석 업무를 수행했습니다. 이후 데이터 중심의 서비스 개선을 위해 리디로 이직하여 7년간 프로덕트 데이터 분석가로 일하며 다양한 프로젝트를 성공적으로 이끌었습니다. 데이터 분석과 AI 기술을 활용한 문제 해결 능력이 뛰어나며, 실무 경험을 바탕으로 현업에서 바로 활용 가능한 인사이트 도출에 강점을 가지고 있습니다. 멘토링을 통해 데이터 분석 직무 취업 준비와 실무 역량 강화에 도움을 줄 수 있습니다.",
+      "be_go": "데이터 분석 및 AI 분야 진로를 고민하는 취업 준비생과 실무 역량을 높이고 싶은 주니어 데이터 분석가에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_a2b9ed0a158d",
+      "mentor_info": {
+        "name": "조준서",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "LLM 엔지니어, 두나무(업비트)",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 생명과학을 전공한 후 스타트업 인턴십을 거쳐 두나무(업비트)에서 5년간 LLM 엔지니어로 근무하며 데이터분석과 AI, 특히 자연어처리(NLP) 분야에서 전문성을 쌓았습니다. 실제 대형 언어 모델(LLM) 개발과 운영 경험이 풍부하며, 스타트업 환경과 대기업 환경 모두 이해하고 있습니다. 현업에서의 실무 노하우와 최신 AI 트렌드를 바탕으로 멘토링을 제공하여 취업 준비생부터 경력 전환자까지 효과적인 진로 설계를 지원합니다. 데이터 분석과 AI 분야 입문자부터 심화 학습자까지 폭넓은 멘티를 도울 수 있습니다.",
+      "be_go": "데이터분석과 AI, 특히 NLP 및 LLM 분야로 진출하려는 취업 준비생이나 경력 개발 희망자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_cba65feb677c",
+      "mentor_info": {
+        "name": "이지아",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 사이언티스트, 마켓컬리",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 물리학과를 졸업한 후 스타트업 인턴 경험을 바탕으로 마켓컬리에서 4년간 데이터 사이언티스트로 일하고 있습니다. 데이터 분석과 인공지능 모델 개발에 전문성을 갖추었으며, 실무 중심의 문제 해결 능력을 갖추고 있습니다. 다양한 프로젝트 경험을 통해 실질적인 비즈니스 성과를 창출하는 방법을 터득했습니다. 취업 준비부터 현업에서 필요한 역량까지 체계적으로 멘토링할 수 있습니다.",
+      "be_go": "데이터 분석과 AI 분야 진출을 꿈꾸는 취업 준비생이나 실무 역량 향상을 원하는 주니어 데이터 사이언티스트에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_f06f50e26ffb",
+      "mentor_info": {
+        "name": "배윤서",
+        "gender": "여",
+        "age": 27
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프로덕트 데이터 분석가, LG AI연구원",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 통계학을 전공한 후 데이터 분석 부트캠프를 수료하고 LG AI연구원에서 프로덕트 데이터 분석가로 일하고 있습니다. 1년간의 실무 경험을 바탕으로 데이터 분석과 AI 분야의 실질적인 업무 프로세스와 기술을 잘 이해하고 있으며, 커리어 전환을 고민하는 분들에게 효과적인 멘토링을 제공합니다. 신입 및 경력 초년생들의 진로 방향 설정과 실무 역량 강화에 강점이 있습니다.",
+      "be_go": "데이터 분석 분야로 커리어 전환을 희망하거나 AI 관련 업무에 첫발을 내딛는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_58991de58cac",
+      "mentor_info": {
+        "name": "안재민",
+        "gender": "남",
+        "age": 36
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "머신러닝 엔지니어, 스캐터랩",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 산업공학 대학원에서 석사 학위를 취득한 후, 스캐터랩에서 머신러닝 엔지니어로 14년간 경험을 쌓았습니다. 데이터 분석과 AI 분야에서 깊이 있는 전문성을 갖추었으며, 특히 머신러닝과 딥러닝 모델 개발에 능숙합니다. 다양한 프로젝트를 통해 실무 역량과 문제 해결 능력을 키워 왔고, 후배들의 진로 상담과 기술 멘토링에도 적극 참여하고 있습니다. 실무 경험과 이론을 접목한 맞춤형 멘토링을 제공합니다.",
+      "be_go": "머신러닝 및 딥러닝 분야로 진입하고자 하는 예비 데이터 분석가와 AI 엔지니어에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_3e98bc4de980",
+      "mentor_info": {
+        "name": "김준혁",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "마케팅 데이터 분석가, 네이버",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 산업공학을 전공하고 대기업 공채로 입사해 폭넓은 업무 경험을 쌓았습니다. 이후 네이버로 이직해 마케팅 데이터 분석가로서 7년간 다양한 데이터 기반 인사이트 도출과 AI 모델 활용 경험을 보유하고 있습니다. 데이터 분석과 AI 분야에 대한 전문성을 바탕으로 실무 중심의 멘토링을 제공하며 취업 준비와 진로 설계에 실질적인 도움을 드릴 수 있습니다.",
+      "be_go": "데이터 분석 및 AI 분야에서 실무 경험을 쌓고자 하는 취준생이나 이직 준비생에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:51"
+    },
+    {
+      "mentor_id": "mr_f6709275bf3a",
+      "mentor_info": {
+        "name": "황가영",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "BI 애널리스트, 버킷플레이스(오늘의집)",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "이화여대 인공지능학을 전공한 후, 스타트업에서 인턴십 경험을 쌓고 현재는 버킷플레이스(오늘의집)에서 BI 애널리스트로 9년간 근무 중입니다. 데이터 분석과 AI 분야의 실무 경험이 풍부하며, 특히 비즈니스 인사이트 도출과 데이터 기반 의사결정에 전문성을 갖추고 있습니다. 복잡한 데이터를 체계적으로 분석하고 효과적인 전략 수립을 도울 수 있어 멘토링에 강점이 있습니다. 데이터 분석과 AI 직무를 준비하는 취업 준비생부터 실무 역량 강화가 필요한 직장인까지 폭넓게 지원 가능합니다.",
+      "be_go": "데이터 분석 및 AI 분야 진로를 희망하는 취업 준비생과 실무 능력 향상을 원하는 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_91b233509a58",
+      "mentor_info": {
+        "name": "임주원",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 인프라 엔지니어, 야놀자",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대학교 전자공학과를 졸업하고 대기업 공채로 입사해 체계적인 경험을 쌓은 후 야놀자에서 AI 인프라 엔지니어로 5년간 근무하며 MLOps 및 데이터 분석 분야의 전문성을 키웠습니다. AI 모델 배포와 인프라 자동화에 대한 깊은 이해를 바탕으로 실무 중심의 멘토링을 제공합니다. 스타트업과 대기업 환경 모두 경험하여 현장 맞춤형 진로 조언이 가능합니다. 최신 AI 인프라 트렌드와 기술을 빠르게 습득하고 적용하는 능력을 갖추고 있습니다.",
+      "be_go": "MLOps 또는 AI 인프라 분야로 진로를 희망하는 멘티에게 적합하며, 실무와 기술 모두를 균형 있게 배우고 싶은 분에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_32fecbd48eb1",
+      "mentor_info": {
+        "name": "문유나",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "GIST",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "맥킨지 자산운용사 리서치 애널리스트",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "GIST 심리학 대학원 석사를 마치고 맥킨지에서 자산운용사 리서치 애널리스트로 경력을 쌓고 있습니다. 심리학적 분석 능력과 금융 투자 리서치 경험을 결합하여 심도 있는 인사이트를 제공합니다. 1년 차 짧은 경력에도 불구하고 실무와 연구의 융합을 통한 차별화된 멘토링을 강점으로 하고 있습니다. 금융과 투자 분야에 입문하려는 분들께 실질적이고 구체적인 조언을 드릴 수 있습니다.",
+      "be_go": "심리학 배경을 금융 분야에 접목시키고자 하는 취업 준비생이나 초보 투자 애널리스트에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_c2a373209a91",
+      "mentor_info": {
+        "name": "정민준",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "중앙대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "신한은행 리테일 바이어",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "중앙대 언론정보학을 전공하고 부트캠프를 수료한 후 신한은행에서 리테일 바이어로 5년간 경력을 쌓았습니다. MD와 유통 분야에서 실무 경험과 금융업계의 인사이트를 보유하고 있으며, 커리어 전환 경험을 바탕으로 진로 고민을 가진 멘티에게 실질적인 도움을 제공합니다. 데이터 기반 의사결정과 트렌드 분석에 강점이 있으며, 멘토링을 통해 맞춤형 커리어 설계를 지원합니다.",
+      "be_go": "MD 및 유통 분야에 진입을 희망하거나 금융권 커리어 전환을 고민하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_050e0f80151f",
+      "mentor_info": {
+        "name": "장경민",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 사이언티스트, 구글 코리아",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 전자공학을 전공하고 데이터 분석과 AI 분야에서 5년간 경력을 쌓아온 데이터 사이언티스트입니다. 첫 직장부터 일관되게 데이터 과학자로 일하며, 구글 코리아에서 최신 데이터 분석 기술과 AI 모델 개발을 주도했습니다. 실무 경험과 이론적 지식을 겸비해, 복잡한 데이터 문제를 해결하고 비즈니스 인사이트를 도출하는 데 강점이 있습니다. 멘토링을 통해 실무 중심의 조언과 커리어 개발 방향성을 제시하며, 데이터 사이언티스트를 꿈꾸는 멘티들에게 실질적인 도움을 제공합니다.",
+      "be_go": "데이터 분석과 AI 분야에서 전문성을 키우고 싶은 취업 준비생이나 경력 초년생에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_4546b0f7ff6e",
+      "mentor_info": {
+        "name": "정동현",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "시니어 백엔드 엔지니어, 네이버",
+      "years_of_experience": 14,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 수학과를 졸업한 후 대기업 공채로 IT 개발에 입문하였으며, 현재는 네이버에서 시니어 백엔드 엔지니어로 14년간의 풍부한 경험을 쌓았습니다. 백엔드 시스템 아키텍처 설계와 대규모 트래픽 처리에 강점을 가지고 있습니다. 복잡한 기술 문제 해결과 효율적인 코드 작성에 자신 있으며, 신입 및 중견 개발자들에게 실무 중심의 멘토링을 제공합니다. IT 분야 전반에 대한 폭넓은 이해와 꾸준한 자기계발로 최신 트렌드에도 능통합니다.",
+      "be_go": "백엔드 개발자로 커리어를 시작하거나 성장하려는 분들에게 적합하며, 실무 경험과 기술 깊이를 함께 키우고 싶은 멘티에게 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_2c94c0c39941",
+      "mentor_info": {
+        "name": "남시은",
+        "gender": "여",
+        "age": 30
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "사회학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Product Designer, 삼성전자",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교 사회학 전공 후 창업 경험을 바탕으로 삼성전자에서 5년간 Product Designer로 일하며 UX/UI 디자인 분야에서 전문성을 쌓았습니다. 다양한 프로젝트를 진행하면서 사용자 경험을 중심으로 한 디자인 역량과 문제 해결 능력을 갖추었습니다. 창업 경험을 통해 실무와 비즈니스 이해도를 높였으며 멘토링을 통해 실질적인 성장과 진로 설계를 돕는 데 강점이 있습니다.",
+      "be_go": "UX/UI디자인 분야에 진입하거나 성장하고자 하는 예비 디자이너와 실무 경험을 쌓고 싶은 분들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_d93fe182da03",
+      "mentor_info": {
+        "name": "한재현",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "빅데이터 엔지니어, 토스",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 전자공학과를 졸업하고 빅데이터 엔지니어로서 토스에서 2년간 전문성을 쌓았습니다. 데이터 분석과 AI 분야에 대한 깊은 이해를 바탕으로, 효율적인 데이터 파이프라인 구축과 데이터 엔지니어링 업무를 수행하고 있습니다. 첫 직장부터 현재까지 한 우물을 파며 실무 경험과 최신 기술 트렌드를 겸비한 점이 강점입니다. 체계적인 멘토링으로 실무 준비에 도움을 드리고, 현업 노하우를 공유합니다.",
+      "be_go": "데이터엔지니어 직무 진입을 준비하는 취업 준비생과 실무 역량을 키우고 싶은 주니어에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_094dfdeece70",
+      "mentor_info": {
+        "name": "최민재",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "연세대학교 경영대학원",
+        "major": "경영학 석사",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "웹 프론트엔드 개발자, 핀다",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "9년 경력의 웹 프론트엔드 개발자로 핀다에서 연구직으로 커리어를 시작해 기술과 비즈니스 이해도를 모두 갖췄습니다. 프론트엔드 개발 전반에 걸친 깊은 전문성과 실무 경험을 바탕으로 최신 트렌드와 실용적인 개발 노하우를 공유합니다. 또한, 비전공자 출신으로서 개발 전환을 고민하는 분들에게도 효과적인 멘토링이 가능합니다. 체계적이고 친절한 멘토링 스타일로 취업 준비부터 현업 적응까지 맞춤형 조언을 제공합니다.",
+      "be_go": "프론트엔드 개발자로 성장하고 싶거나 비전공자 출신으로 IT 개발 분야에 진입하려는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_3f179ff57831",
+      "mentor_info": {
+        "name": "배다인",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "그로스 데이터 분석가, 두나무(업비트)",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "7년 차 데이터 분석 전문가로서, 비전공자로 시작해 독학으로 데이터 분석 역량을 쌓고 두나무(업비트)에 입사한 경험이 있습니다. 그로스 데이터 분석가로서 실무에서의 데이터 기반 의사결정과 AI 기술 활용에 능숙하며, 스타트업 및 핀테크 산업에 대한 깊은 이해를 보유하고 있습니다. 다양한 프로젝트를 통해 실질적인 성과를 창출한 경험을 바탕으로 멘티에게 맞춤형 커리어 조언과 실무 노하우를 제공합니다. 데이터 분석과 AI 분야로 커리어 전환을 고민하는 분들께 특히 도움이 되는 멘토입니다.",
+      "be_go": "비전공자 출신으로 데이터 분석 분야에 도전하고자 하는 멘티나, 스타트업 및 핀테크 산업 내 실무 역량을 키우고 싶은 분들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_1c5580668446",
+      "mentor_info": {
+        "name": "문규민",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "BI 애널리스트, 카카오",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 데이터사이언스학과를 졸업하고 스타트업 창업 경험을 바탕으로 현재 카카오에서 BI 애널리스트로 일하고 있습니다. 데이터 분석과 비즈니스 인사이트 도출에 강점을 가지고 있으며, 초기 창업 경험을 통해 데이터 기반 의사결정과 실무 적용 노하우를 보유하고 있습니다. 신입 데이터 분석가로서 커리어를 시작하는 분들을 위한 실질적인 조언과 멘토링이 가능합니다.",
+      "be_go": "데이터 분석 입문자나 창업 경험을 살려 실무에 빠르게 적응하고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_6dc8ca979982",
+      "mentor_info": {
+        "name": "김우현",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "데이터사이언스",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "딥러닝 엔지니어, 뤼튼테크놀로지스",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "광주과학기술원 데이터사이언스 전공 후 대기업에서 첫 커리어를 시작하고 현재 뤼튼테크놀로지스에서 딥러닝 엔지니어로 일하고 있습니다. 1년간의 실무 경험을 바탕으로 머신러닝과 딥러닝 모델 개발 및 최적화에 전문성을 가지고 있습니다. 현업에서 겪는 최신 AI 기술 트렌드와 실용적인 문제 해결 능력을 멘티에게 전달할 수 있습니다. 취업 준비부터 실무 적응까지 현실적인 조언과 멘토링이 강점입니다.",
+      "be_go": "머신러닝과 딥러닝 분야로 취업을 준비 중인 신입 또는 경력 초년차 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_6ee3704b62b5",
+      "mentor_info": {
+        "name": "정지후",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "이커머스 MD, 맥킨지",
+      "years_of_experience": 15,
+      "total_questions": 0,
+      "matching_summary_text": "한양대학교 경제학과를 졸업하고 비전공 분야인 MD/유통 분야로 독학하여 맥킨지에 입사한 이커머스 MD 전문가입니다. 15년간의 현장 경험과 전략 컨설팅 역량을 결합해 유통 트렌드와 고객 니즈 분석에 강점을 가지고 있습니다. 다양한 프로젝트 수행 경험을 바탕으로 실무 중심의 맞춤형 멘토링을 제공합니다. 도전적인 커리어 전환을 준비하는 분들께 특히 도움이 될 수 있습니다.",
+      "be_go": "비전공자이지만 유통/이커머스 분야로 커리어 전환을 희망하는 분들과 전략적 사고를 키우고 싶은 MD 직무 초중급자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_e2e0f95f3a92",
+      "mentor_info": {
+        "name": "박형준",
+        "gender": "남",
+        "age": 36
+      },
+      "background": {
+        "school": "건국대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "품질관리 엔지니어, 네이버",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "건국대학교 경영학과를 졸업하고 스타트업에서 인턴십 경험을 쌓은 후, 네이버에서 12년간 품질관리 엔지니어로 근무해왔습니다. 다양한 제조 및 품질관리 프로세스 개선과 문제 해결에 전문성을 갖추었으며, 스타트업부터 대기업까지의 경험으로 폭넓은 시각을 보유하고 있습니다. 체계적인 품질관리와 실무 중심의 노하우를 바탕으로 멘티의 직무 역량 향상과 커리어 목표 달성을 효과적으로 지원합니다.",
+      "be_go": "생산 및 품질관리 분야에서 실무 경험을 쌓고자 하거나, 체계적인 품질관리 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_b40ec896eb2a",
+      "mentor_info": {
+        "name": "심태민",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "포스텍",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 SRE, 구글 코리아",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 통계학을 졸업하고 부트캠프를 통해 데이터분석과 AI 분야로 커리어를 전환한 후, 구글 코리아에서 7년간 ML 플랫폼 SRE로 근무하며 MLOps와 인프라 구축에 전문성을 쌓았습니다. 실무 경험과 최신 기술 트렌드를 바탕으로 멘티들에게 실질적인 현장 노하우와 커리어 전환 전략을 제공합니다. 복잡한 AI 인프라 환경에서 안정적 운영과 자동화를 구현한 경험을 통해 문제 해결 능력과 시스템 최적화 방법에 대해 깊이 있는 멘토링을 진행합니다.",
+      "be_go": "데이터분석과 AI 분야로 커리어를 전환하고자 하거나, MLOps 및 ML 인프라 운영 실무 역량 강화를 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:52"
+    },
+    {
+      "mentor_id": "mr_73e9bf9ad9bb",
+      "mentor_info": {
+        "name": "조승현",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "울산과학기술원(UNIST)",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프로덕트 데이터 분석가, 뤼튼테크놀로지스",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "UNIST 데이터사이언스 전공자로서 6년간 뤼튼테크놀로지스에서 프로덕트 데이터 분석가로 경력을 쌓아왔습니다. 데이터 분석과 AI 분야에 깊은 전문성을 갖추고 있으며, 실무 경험을 바탕으로 실질적인 분석 기법과 문제 해결 역량을 지도합니다. 꾸준한 한 우물 경력을 통해 데이터 기반 의사결정 능력을 배양했으며, 취업 준비생과 현직자 모두에게 맞춤형 멘토링이 가능합니다. 데이터 분석가로서 커리어 성장과 직무 이해가 필요한 멘티에게 특히 적합합니다.",
+      "be_go": "데이터 분석 분야에 진입하고자 하는 취업 준비생과 현업에서 실무 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_2c036c154c21",
+      "mentor_info": {
+        "name": "문준서",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "머신러닝 엔지니어, 라인플러스",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "수학 전공 배경을 바탕으로 머신러닝과 딥러닝 분야에서 3년간 라인플러스에서 실무 경험을 쌓았습니다. 해외 인턴십 경험을 통해 글로벌 데이터 분석 트렌드와 실무 노하우를 습득하였으며, 다양한 프로젝트를 주도하며 문제 해결 능력을 키웠습니다. 전문성을 바탕으로 취업 준비생 및 신입 데이터 분석가들에게 실질적인 조언과 실무 팁을 제공할 수 있습니다. 최신 AI 기술 동향과 현업 적용 사례에 대한 깊은 이해를 가지고 있습니다.",
+      "be_go": "머신러닝이나 딥러닝 분야로 취업을 준비하는 신입 또는 경력 초기 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_bfab5618b22e",
+      "mentor_info": {
+        "name": "배형준",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "GIST",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 프로덕트 매니저, 두나무(업비트)",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "GIST 언론정보학을 전공했지만 비전공자로서 독학으로 AI와 데이터 분야에 뛰어들어 두나무(업비트)에서 AI 프로덕트 매니저로 5년간 근무해왔습니다. 다양한 AI 프로젝트를 PM하며 데이터 분석과 인공지능 기술을 실무에 적용한 경험이 풍부합니다. 비전공자 출신으로서 비전공자 멘티들에게 실질적인 커리어 전환 전략과 성장 방법을 멘토링할 수 있습니다. 기술과 기획 양쪽을 이해하는 폭넓은 시각으로 멘티의 역량 강화를 돕습니다.",
+      "be_go": "AI와 데이터 분야로의 커리어 전환을 꿈꾸는 비전공자 및 실무 중심의 데이터/AI PM 역할에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_5f3ba1089820",
+      "mentor_info": {
+        "name": "정시우",
+        "gender": "남",
+        "age": 28
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "MD, CJ제일제당",
+      "years_of_experience": 2,
+      "total_questions": 0,
+      "matching_summary_text": "한양대학교 생명과학 전공 비전공자 출신으로 독학을 통해 MD 직무로 전환하여 CJ제일제당에서 2년간 근무 중입니다. 비전공자임에도 불구하고 성공적으로 유통 및 MD 분야에 진입한 경험을 바탕으로 실질적인 취업 전략과 업무 노하우를 공유합니다. MD 직무의 전문성과 실제 현장 경험을 갖추고 있어 유통 업계 진출 희망자에게 실질적인 도움을 줄 수 있습니다. 사람 중심의 맞춤형 멘토링으로 취업 준비부터 직무 적응까지 세심하게 지원합니다.",
+      "be_go": "비전공자이지만 MD/유통 분야로 진로를 전환하고 싶은 도전적인 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_62c144fed245",
+      "mentor_info": {
+        "name": "장지호",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "소프트웨어학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "딥러닝 엔지니어, 네이버",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "한양대학교 소프트웨어학과를 졸업하고 스타트업 인턴십 경험을 바탕으로 네이버에서 딥러닝 엔지니어로 7년간 근무해왔습니다. 머신러닝과 딥러닝 분야에 깊은 전문성을 가지고 있으며, 실무 프로젝트 경험을 통해 데이터 분석 역량을 키웠습니다. 최신 AI 기술 동향과 현업 적용 사례에 밝아 현직자 맞춤형 멘토링이 가능합니다. 취업 준비생과 경력 개발자가 현업에서 요구하는 기술과 역량을 키울 수 있도록 실질적 도움을 드립니다.",
+      "be_go": "딥러닝 및 머신러닝 분야로 취업을 준비하거나 현업에서 역량을 강화하고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_7bb45e5a37c8",
+      "mentor_info": {
+        "name": "장지후",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "품질관리 엔지니어, 아모레퍼시픽",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 심리학과를 졸업하고 해외 인턴십 경험을 통해 글로벌 업무 역량을 키웠습니다. 현재 아모레퍼시픽에서 4년간 품질관리 엔지니어로 근무하며 생산 및 품질관리 전반에 대한 실무 경험을 쌓았습니다. 심리학적 지식을 바탕으로 업무 환경과 팀워크 개선에도 기여하고 있습니다. 멘토링 시 실무 중심의 조언과 커리어 전략을 함께 고민해 드립니다.",
+      "be_go": "생산 및 품질관리 분야로 진출하려는 신입 혹은 경력 초기 멘티에게 적합하며, 실무 경험과 심리학적 접근법을 배우고 싶은 분께 추천합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_df58613571fa",
+      "mentor_info": {
+        "name": "오준영",
+        "gender": "남",
+        "age": 31
+      },
+      "background": {
+        "school": "서강대학교",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "AI 인프라 엔지니어, KT AI연구소",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "서강대학교 물리학과를 졸업하고 스타트업 인턴 경험을 거쳐 KT AI연구소에서 AI 인프라 엔지니어로 6년간 근무했습니다. 데이터 분석과 AI 분야에서 MLOps 및 인프라 구축에 전문성을 갖추고 있으며, 실무 경험을 바탕으로 최신 AI 인프라 기술과 효율적인 운영 방법에 대해 심도 깊게 멘토링합니다. 스타트업과 대기업 환경 모두 이해하고 있어 다양한 진로 고민을 해결하는 데 강점이 있습니다.",
+      "be_go": "MLOps 및 AI 인프라 분야 진로를 희망하는 취업 준비생이나 경력 전환 희망자에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_8b62b7e277f3",
+      "mentor_info": {
+        "name": "임동현",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "GIST(광주과학기술원)",
+        "major": "생명과학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "LG전자 자산운용사 리서치 애널리스트",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "GIST 생명과학 대학원에서 석사 학위를 취득한 후 LG전자 연구직으로 커리어를 시작, 현재는 자산운용사 리서치 애널리스트로 7년간 근무하며 금융 및 투자 분야에 전문성을 쌓았습니다. 과학적 분석능력과 금융 데이터 해석 능력을 결합해 투자 전략 수립에 강점이 있습니다. 다양한 산업과 금융 시장의 트렌드 분석 경험으로 실무 중심의 멘토링을 제공합니다. 금융과 투자 분야 진출을 고민하는 분들에게 실질적인 도움을 줄 수 있습니다.",
+      "be_go": "금융업계 진출을 희망하거나 연구직에서 금융·투자 분야로 커리어 전환을 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_d68e4ac629dc",
+      "mentor_info": {
+        "name": "안지훈",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "응용수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "백엔드 엔지니어, 무신사",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "연세대학교 응용수학을 전공하고 비전공자로서 독학으로 백엔드 개발 역량을 키워 무신사에 입사한 경력 12년차 백엔드 엔지니어입니다. 다년간의 실무 경험을 바탕으로 다양한 개발 프로젝트를 수행했으며, 비전공자 출신으로서의 실용적인 학습방법과 취업 전략에 대해 깊은 이해를 가지고 있습니다. 최신 백엔드 기술과 서비스 운영에 대한 전문성으로 멘티들의 실무 역량 강화와 커리어 설계에 도움을 드릴 수 있습니다. 개발자로 성장하는 과정에서 겪는 어려움과 극복법에 대해 현실적이고 구체적인 조언을 제공합니다.",
+      "be_go": "비전공자 출신 개발자를 꿈꾸는 멘티나, 백엔드 개발자로서 실무 역량을 체계적으로 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_d88964e5cf75",
+      "mentor_info": {
+        "name": "최재원",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "퍼포먼스 마케터, 이랜드",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 심리학과 출신으로 부트캠프를 통해 퍼포먼스 마케팅으로 성공적인 커리어 전환을 이룬 6년차 퍼포먼스 마케터입니다. 이랜드에서 다양한 광고 캠페인 분석과 최적화 경험을 쌓으며 실무 역량을 키웠습니다. 퍼포먼스 마케팅의 기초부터 심화 전략까지 폭넓은 노하우를 갖추고 있어 실무 중심 멘토링이 가능합니다. 심리학적 접근을 접목한 데이터 분석과 고객 행동 이해에 강점이 있습니다. 경력 전환을 꿈꾸는 분과 실무 역량 강화가 필요한 마케터에게 특히 적합한 멘토입니다.",
+      "be_go": "퍼포먼스마케팅 분야에 새롭게 도전하려는 취준생과 실무 스킬을 체계적으로 배우고 싶은 현직 마케터에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_76cf32c7d5b0",
+      "mentor_info": {
+        "name": "권성현",
+        "gender": "남",
+        "age": 38
+      },
+      "background": {
+        "school": "인하대학교",
+        "major": "수학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 프로덕트 매니저, 네이버",
+      "years_of_experience": 15,
+      "total_questions": 0,
+      "matching_summary_text": "인하대학교 수학과를 졸업하고 대기업에서 공채로 입사하여 15년간 데이터 분석 및 AI 분야에서 경력을 쌓았습니다. 현재 네이버에서 데이터 프로덕트 매니저로 활동하며 AI 기반 제품을 기획하고 실행하는 전문성을 갖췄습니다. 다양한 프로젝트를 이끌며 데이터와 AI를 실무에 활용하는 능력을 보유하고 있습니다. 멘토링을 통해 실무 경험과 최신 트렌드를 아우르는 깊이 있는 조언을 제공합니다.",
+      "be_go": "데이터 분석과 AI 분야에서 실무 PM 역할을 희망하거나 데이터 기반 제품 기획에 관심이 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_3a429d9ea577",
+      "mentor_info": {
+        "name": "장승현",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "사회학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "그로스 마케터, 카카오",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "카카오에서 8년간 그로스 마케팅을 담당하며 퍼포먼스 마케팅 분야에서 전문성을 쌓았습니다. 경희대 사회학을 전공했고, 해외 인턴십 경험을 통해 글로벌 마케팅 트렌드와 실무 역량을 갖추었습니다. 데이터 기반의 마케팅 전략 수립과 실행에 강점이 있으며, 스타트업부터 대기업까지 다양한 마케팅 환경에서 성과를 만들어왔습니다. 효과적인 마케팅 KPI 설정과 문제 해결능력을 멘티에게 전달할 수 있습니다.",
+      "be_go": "퍼포먼스 마케팅 분야 진입을 목표로 하거나 그로스 마케팅 실무 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_f8beeec2f822",
+      "mentor_info": {
+        "name": "강지후",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "KAIST",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "대화형 AI 연구원, 쿠팡",
+      "years_of_experience": 11,
+      "total_questions": 0,
+      "matching_summary_text": "저는 KAIST 전자공학을 전공했으나 비전공 분야인 NLP와 대화형 AI 분야로 독학 전환 후 쿠팡에서 11년간 연구원으로 근무했습니다. 데이터 분석과 자연어 처리, 특히 대형 언어 모델(LLM) 개발 및 적용에 대한 풍부한 실무 경험을 보유하고 있습니다. 실전 중심의 멘토링으로 커리어 전환부터 심화 연구 개발까지 폭넓게 지원합니다. AI 분야에서 지속 가능한 성장과 전문성 강화를 원하는 멘티에게 큰 도움이 될 것입니다.",
+      "be_go": "NLP, 대화형 AI 분야로 커리어 전환을 희망하거나 실무 중심의 데이터 분석 및 AI 연구 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:53"
+    },
+    {
+      "mentor_id": "mr_971931dbddc9",
+      "mentor_info": {
+        "name": "조태민",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "사회학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "PB, SK하이닉스",
+      "years_of_experience": 3,
+      "total_questions": 0,
+      "matching_summary_text": "고려대학교 사회학과를 졸업하고 창업 경험을 바탕으로 금융 및 투자 분야에 전문성을 갖춘 멘토입니다. SK하이닉스에서 PB 업무를 3년간 수행하며 실무 경험과 시장 이해도를 쌓았습니다. 창업과 금융 두 분야의 경험을 접목해 진로 방향 설정과 실질적 투자 전략 수립에 도움을 드립니다. 청년 창업자 및 금융·투자 직무 희망자에게 실용적인 조언과 커리어 설계를 지원합니다.",
+      "be_go": "금융 및 투자 분야 진출을 준비하는 취준생이나 창업 경험을 살려 금융권 진로를 모색하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:54"
+    },
+    {
+      "mentor_id": "mr_120c61e9edc6",
+      "mentor_info": {
+        "name": "이서윤",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "경희대학교",
+        "major": "데이터사이언스학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프로덕트 데이터 분석가, 코난테크놀로지",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "경희대학교에서 데이터사이언스학을 전공하고 스타트업 인턴 경험을 토대로 코난테크놀로지에서 5년간 프로덕트 데이터 분석가로 근무했습니다. 제품 데이터 분석과 인사이트 도출에 강점을 가지고 있으며, 실제 업무 경험을 바탕으로 실무 중심 멘토링을 제공합니다. 데이터 기반 의사결정과 AI 활용 방법에 대해 깊이 있는 조언이 가능합니다. 데이터 분석 분야 취업과 커리어 개발을 원하는 분들에게 유용한 멘토입니다.",
+      "be_go": "데이터 분석 및 AI 분야 진출을 목표로 하는 취업준비생과 경력 초기 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:54"
+    },
+    {
+      "mentor_id": "mr_92bcb4c011f4",
+      "mentor_info": {
+        "name": "오규민",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "게임 클라이언트 개발자, 네이버",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 산업공학과를 졸업하고 해외 인턴십을 거쳐 네이버에 입사하여 5년간 게임 클라이언트 개발자로 일하고 있습니다. IT개발과 게임 분야에서의 실무 경험과 산업공학 기반의 문제해결능력을 갖추었습니다. 최신 게임 트렌드와 기술에 대한 깊은 이해와 네트워크를 보유하고 있습니다. 멘토링을 통해 실무 역량 향상과 커리어 개발에 도움을 드리고자 합니다.",
+      "be_go": "게임 개발 및 IT 분야에서 커리어를 시작하거나 성장시키고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:54"
+    },
+    {
+      "mentor_id": "mr_c5e38b53431d",
+      "mentor_info": {
+        "name": "권현우",
+        "gender": "남",
+        "age": 27
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "그로스 데이터 분석가, 하이퍼커넥트",
+      "years_of_experience": 1,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 통계학 전공 후 데이터 분석 부트캠프를 수료하고 하이퍼커넥트에서 그로스 데이터 분석가로 경력을 쌓았습니다. 데이터 분석 및 AI 분야에서 실무 경험과 이론을 겸비하고 있으며, 커리어 전환 과정에 대해 깊이 이해하고 있습니다. 초보자부터 경력 전환을 고민하는 구직자까지 맞춤형 멘토링이 가능합니다. 최신 데이터 분석 기법과 실무 적용 노하우를 공유합니다.",
+      "be_go": "데이터 분석 분야로 커리어 전환을 희망하는 취업 준비생이나 실무 경험을 쌓고 싶은 초급 데이터 분석가에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:54"
+    },
+    {
+      "mentor_id": "mr_61b9ee4db329",
+      "mentor_info": {
+        "name": "황형준",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "광주과학기술원(GIST)",
+        "major": "물리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "ML 플랫폼 엔지니어, 마켓컬리",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "GIST에서 물리학을 전공한 후 데이터 분석과 AI 분야에 뛰어들어 10년간 머신러닝과 딥러닝 플랫폼 엔지니어로서 경력을 쌓았습니다. 첫 직장부터 현재 마켓컬리까지 일관되게 한 분야에서 전문성을 키워왔으며, 실무 경험을 바탕으로 효율적인 ML 플랫폼 구축 및 운영에 능숙합니다. 데이터 사이언스 실무와 AI 서비스 개발에 대한 깊은 이해를 가지고 있어, 실질적인 문제 해결과 커리어 성장을 도와드립니다. 멘티의 고민을 경청하며 맞춤형 멘토링을 제공하는 것을 강점으로 합니다.",
+      "be_go": "머신러닝/딥러닝 기반 AI 플랫폼 개발에 관심이 있거나 실무 중심의 데이터 분석과 엔지니어링 역량을 키우고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:54"
+    },
+    {
+      "mentor_id": "mr_9d44f5c02794",
+      "mentor_info": {
+        "name": "심성민",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "인공지능학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "언어모델 리서처, 하이퍼커넥트",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 인공지능학을 전공하고 해외 인턴십 경험을 쌓은 후 하이퍼커넥트에서 5년간 언어모델 리서처로 근무하고 있습니다. NLP와 대형 언어 모델(LLM) 분야에 대한 깊은 이해와 실무 경험을 바탕으로 데이터 분석과 AI 연구에 전문성을 갖추었습니다. 다양한 프로젝트에서 문제 해결과 최적화 경험이 풍부하며, 실무에 바로 적용 가능한 멘토링을 제공합니다. 학생 및 취업준비생들이 최신 AI 기술과 연구 트렌드를 이해하고 커리어를 설계하는 데 도움을 드립니다.",
+      "be_go": "NLP, LLM 분야에서 실무 경험을 쌓고 싶거나 AI 연구 및 데이터 분석 분야로 진로를 고민하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-07-25 10:54"
     }
   ]
 }
