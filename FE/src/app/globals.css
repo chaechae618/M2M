@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Pretendard-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Pretendard-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Pretendard-Bold.woff2") format("woff2");
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #242424;
+  --brand-yellow: #ffd60a;
+  --brand-yellow-strong: #ffc700;
+  --brand-text: #504a4c;
+  --brand-muted: #585858;
+  --line-soft: #bdbdbd;
+  --surface-soft: #fbfbfb;
+  --placeholder: #9e9e9e;
+  --accent-orange: #ffa600;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-yellow-strong: var(--brand-yellow-strong);
+  --color-brand-text: var(--brand-text);
+  --color-brand-muted: var(--brand-muted);
+  --color-line-soft: var(--line-soft);
+  --color-surface-soft: var(--surface-soft);
+  --color-placeholder: var(--placeholder);
+  --color-accent-orange: var(--accent-orange);
+  --font-sans: "Pretendard";
+  --font-mono: "Pretendard";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Pretendard", Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.auth-action-link {
+  color: var(--accent-orange);
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.auth-signup-row {
+  margin-top: 24px;
+}
+
+.auth-brand-panel {
+  container-type: size;
+}
+
+.auth-brand-logo-row {
+  gap: clamp(12px, 2.3cqw, 20px);
+  max-width: min(75.2cqw, 640px);
+}
+
+.auth-brand-character {
+  width: clamp(42px, 6.9cqw, 60px);
+  height: clamp(39.846px, 6.54cqw, 56.923px);
+}
+
+.auth-brand-wordmark {
+  width: clamp(320px, 65.95cqw, 560px);
+  max-width: calc(100% - 72px);
+  height: auto;
+}
+
+.auth-brand-slogan {
+  font-size: clamp(18px, 3.88cqw, 34px);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.figma-checkbox-input:checked + .figma-checkbox-box .figma-checkbox-empty {
+  display: none;
+}
+
+.figma-checkbox-input:checked + .figma-checkbox-box .figma-checkbox-checked {
+  display: block;
+}
