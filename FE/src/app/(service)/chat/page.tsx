@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { ServiceBottomNavigation } from "@/widgets/service-bottom-navigation/ServiceBottomNavigation";
 import { cn } from "@/shared/lib/cn";
 
@@ -24,40 +25,20 @@ type ChatMessage = {
   compact?: boolean;
 };
 
-const chatTopics = [
-  "비전공자도 PM 가능할까?",
-  "PM은 개발을 얼마나 알아야 할...",
-  "서비스 기획 경험이 부족해요",
-  "인턴 지원 전에 포폴 점검",
-];
-
-const recentChats = [
-  "비전공자 PM 준비",
-  "UX 포트폴리오 개선",
-  "PM 직무 탐색",
-  "마케팅 인턴 준비",
-  "서비스 기획 포트폴리오",
-  "첫 인턴 지원 고민",
-  "데이터 직무 전환",
-  "브랜드 마케터 준비",
-  "디자인 직무 선택",
-  "개발 지식이 필요한가요",
-];
-
 const assets = {
   arrowLeft: "/figma-assets/chat/arrow-left.svg",
   avatar: "/figma-assets/chat/avatar-person.svg",
+  backgroundBottom: "/figma-assets/chat/bg-ellipse-744.svg",
+  backgroundCenter: "/figma-assets/chat/bg-ellipse-743.svg",
+  backgroundLeft: "/figma-assets/chat/bg-ellipse-742.svg",
+  backgroundRight: "/figma-assets/chat/bg-ellipse-745.svg",
   chat: "/figma-assets/chat/chat.svg",
   editLine: "/figma-assets/chat/edit-line.svg",
   editPencil: "/figma-assets/chat/edit-pencil.svg",
-  folder: "/figma-assets/chat/folder.svg",
   moreDot: "/figma-assets/chat/more-dot.svg",
   plus: "/figma-assets/chat/plus.svg",
-  searchCircle: "/figma-assets/chat/search-circle.svg",
-  searchHandle: "/figma-assets/chat/search-handle.svg",
   sendActive: "/figma-assets/chat/send-active.svg",
   sendDisabled: "/figma-assets/chat/send-disabled.svg",
-  sidebarToggle: "/figma-assets/chat/sidebar-toggle.svg",
   writeNew: "/figma-assets/chat/write-new.svg",
 };
 
@@ -116,7 +97,23 @@ const initialMessages: ChatMessage[] = [
 ];
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+  return (
+    <Suspense fallback={<div className="h-full w-full bg-white" />}>
+      <ChatPageContent />
+    </Suspense>
+  );
+}
+
+function ChatPageContent() {
+  const searchParams = useSearchParams();
+  const newChatToken = searchParams.get("new");
+
+  return <ChatSession key={newChatToken ?? "current-chat"} startsAsNewChat={newChatToken !== null} />;
+}
+
+function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
+  const [messages, setMessages] = useState<ChatMessage[]>(startsAsNewChat ? [] : initialMessages);
+  const [isNewChat, setIsNewChat] = useState(startsAsNewChat);
   const [question, setQuestion] = useState("");
   const isActive = question.trim().length > 0;
   const sendIcon = useMemo(() => (isActive ? assets.sendActive : assets.sendDisabled), [isActive]);
@@ -156,6 +153,7 @@ export default function ChatPage() {
     };
 
     setQuestion("");
+    setIsNewChat(false);
     appendMessages([userMessage, ...mockAssistantReply(question)]);
   }
 
@@ -270,11 +268,17 @@ export default function ChatPage() {
   }
 
   return (
-    <main className="flex h-dvh min-h-[720px] w-full bg-[#f9f9f9] py-2 pr-2 text-[#242424]">
-      <ChatSidebar />
-
-      <section className="relative flex min-w-0 flex-1 overflow-hidden rounded-2xl border border-[#eeeeee] bg-[#fefefe] shadow-[0_6px_20px_rgba(68,74,83,0.12)]">
-        <div className="relative z-10 flex min-h-0 w-full flex-col items-center px-[clamp(24px,12.5vw,180px)]">
+    <section className="relative flex h-full min-w-0 flex-1 overflow-hidden rounded-2xl border border-[#eeeeee] bg-[#fefefe] text-[#242424] shadow-[0_6px_20px_rgba(68,74,83,0.12)]">
+      <div className={cn("relative z-10 flex h-full min-h-0 w-full flex-col items-center", isNewChat ? "px-0" : "px-[clamp(24px,12.5vw,180px)]")}>
+        {isNewChat ? (
+          <NewChatWelcome
+            question={question}
+            setQuestion={setQuestion}
+            isActive={isActive}
+            sendIcon={sendIcon}
+            onSubmit={handleSubmit}
+          />
+        ) : (
           <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-end">
             <div className="flex min-h-0 w-full flex-1 flex-col gap-7 py-5">
               <ChatTitleBar onBack={() => setMessages(initialMessages)} />
@@ -308,13 +312,56 @@ export default function ChatPage() {
               />
             </div>
           </div>
+        )}
 
-          <div className="shrink-0 pb-6 pt-3">
-            <ServiceBottomNavigation className="!mb-0 !mt-0" />
-          </div>
+        <div className="shrink-0 pb-6 pt-3">
+          <ServiceBottomNavigation className="!fixed !bottom-6 !left-1/2 !z-30 !m-0 !-translate-x-1/2" />
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  );
+}
+
+function NewChatWelcome({
+  question,
+  setQuestion,
+  isActive,
+  sendIcon,
+  onSubmit,
+}: {
+  question: string;
+  setQuestion: (value: string) => void;
+  isActive: boolean;
+  sendIcon: string;
+  onSubmit: () => void;
+}) {
+  return (
+    <div className="relative flex min-h-0 w-full flex-1 overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Image src={assets.backgroundLeft} alt="" width={1023} height={1719} className="absolute -left-[520px] top-[-80px] max-w-none opacity-75" draggable={false} />
+        <Image src={assets.backgroundBottom} alt="" width={1957} height={1496} className="absolute -left-[260px] top-[52%] max-w-none opacity-75" draggable={false} />
+        <Image src={assets.backgroundCenter} alt="" width={1267} height={1204} className="absolute left-[44%] top-[56%] max-w-none opacity-75" draggable={false} />
+        <Image src={assets.backgroundRight} alt="" width={1296} height={1015} className="absolute left-[58%] top-[58%] max-w-none opacity-70" draggable={false} />
+      </div>
+
+      <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center px-[clamp(24px,4.2vw,60px)] py-[clamp(56px,7vw,100px)]">
+        <div className="flex min-h-0 w-full flex-1 items-center justify-center">
+          <h1 className="text-center text-[24px] font-extrabold leading-[1.6] text-[#242424] sm:text-[28px]">
+            이름님 반가워요
+            <br />
+            막막한 고민을 질문으로 바꿔보세요
+          </h1>
+        </div>
+        <ChatComposer
+          className="w-full max-w-[574px]"
+          question={question}
+          setQuestion={setQuestion}
+          isActive={isActive}
+          sendIcon={sendIcon}
+          onSubmit={onSubmit}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -737,12 +784,14 @@ function MentorRequestEditor({ onComplete }: { onComplete: () => void }) {
 }
 
 function ChatComposer({
+  className,
   question,
   setQuestion,
   isActive,
   sendIcon,
   onSubmit,
 }: {
+  className?: string;
   question: string;
   setQuestion: (value: string) => void;
   isActive: boolean;
@@ -751,7 +800,7 @@ function ChatComposer({
 }) {
   return (
     <form
-      className="relative z-10 w-full rounded-2xl border border-[#eeeeee] bg-white px-6 pb-4 pt-6 shadow-[0_6px_10px_rgba(68,74,83,0.12)]"
+      className={cn("relative z-10 w-full rounded-2xl border border-[#eeeeee] bg-white px-6 pb-4 pt-6 shadow-[0_6px_10px_rgba(68,74,83,0.12)]", className)}
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit();
@@ -788,102 +837,5 @@ function ChatComposer({
         </button>
       </div>
     </form>
-  );
-}
-
-function ChatSidebar() {
-  return (
-    <aside className="hidden h-full w-[296px] shrink-0 overflow-hidden rounded-lg bg-[#f9f9f9] p-6 lg:flex">
-      <div className="flex min-h-0 w-full flex-col gap-7">
-        <div className="flex min-h-0 flex-1 flex-col gap-7 overflow-hidden">
-          <div className="flex shrink-0 flex-col items-end gap-3">
-            <div className="flex items-end gap-5 p-2.5">
-              <button type="button" aria-label="새 대화" className="relative size-5">
-                <Image src={assets.writeNew} alt="" fill sizes="20px" draggable={false} />
-              </button>
-              <button type="button" aria-label="사이드바 접기" className="relative size-5">
-                <Image src={assets.sidebarToggle} alt="" fill sizes="20px" draggable={false} />
-              </button>
-            </div>
-            <div className="flex h-11 w-full items-center gap-1 rounded-xl bg-[#eeeeee] px-3 py-2">
-              <span className="relative size-5 shrink-0">
-                <Image src={assets.searchHandle} alt="" width={4} height={4} className="absolute bottom-0.5 right-0.5" draggable={false} />
-                <Image src={assets.searchCircle} alt="" width={14} height={14} className="absolute left-0.5 top-0.5" draggable={false} />
-              </span>
-              <span className="text-[16px] font-medium leading-[1.6] text-[#9e9e9e]">검색</span>
-            </div>
-          </div>
-
-          <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
-            <SidebarSection title="커피챗">
-              <FolderItem label="답변 기다리는 질문" />
-              <FolderItem label="답변 받은 질문" />
-              {chatTopics.map((topic) => (
-                <SidebarItem key={topic} label={topic} nested />
-              ))}
-            </SidebarSection>
-
-            <SidebarSection title="최근 대화" className="mt-6">
-              {recentChats.map((chat) => (
-                <SidebarItem key={chat} label={chat} active={chat === "비전공자 PM 준비"} />
-              ))}
-            </SidebarSection>
-          </div>
-        </div>
-
-        <div className="flex h-11 shrink-0 items-center rounded-xl px-3 py-2">
-          <div className="flex items-center gap-3">
-            <span className="relative flex size-8 items-center justify-center rounded-full bg-[#cecccb]">
-              <Image src={assets.avatar} alt="" width={14} height={16} draggable={false} />
-            </span>
-            <div className="flex items-center gap-2">
-              <span className="text-[15px] font-medium leading-[1.7]">이름</span>
-              <span className="rounded-lg bg-[#ffddb3] px-2 py-1 text-[14px] font-medium leading-none text-[#ce5f1a]">멘티</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </aside>
-  );
-}
-
-function SidebarSection({
-  title,
-  children,
-  className,
-}: {
-  title: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section className={cn("flex w-full flex-col gap-3", className)}>
-      <h2 className="px-1 text-[14px] font-medium leading-none text-[#969696]">{title}</h2>
-      <div className="flex w-full flex-col gap-1">{children}</div>
-    </section>
-  );
-}
-
-function FolderItem({ label }: { label: string }) {
-  return (
-    <button type="button" className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left">
-      <Image src={assets.folder} alt="" width={20} height={20} draggable={false} />
-      <span className="min-w-0 flex-1 truncate text-[16px] font-medium leading-[1.6]">{label}</span>
-    </button>
-  );
-}
-
-function SidebarItem({ label, active = false, nested = false }: { label: string; active?: boolean; nested?: boolean }) {
-  return (
-    <button
-      type="button"
-      className={cn(
-        "flex w-full items-center rounded-xl py-2 text-left",
-        nested ? "pl-10 pr-3" : "px-3",
-        active && "bg-[#eeeeee]",
-      )}
-    >
-      <span className="min-w-0 flex-1 truncate text-[16px] font-medium leading-[1.6]">{label}</span>
-    </button>
   );
 }

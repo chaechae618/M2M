@@ -7,9 +7,24 @@ import { routes } from "@/shared/constants/routes";
 import { cn } from "@/shared/lib/cn";
 
 const items = [
-  { href: routes.chat, icon: "/figma-assets/chat/nav-home.svg", label: "홈" },
-  { href: routes.knowledge, icon: "/figma-assets/qna-nav-qna.svg", label: "Q&A" },
-  { href: routes.my, icon: "/figma-assets/qna-nav-profile.svg", label: "마이" },
+  {
+    href: routes.chat,
+    activeIcon: "/figma-assets/chat/nav-home.svg",
+    inactiveIcon: "/figma-assets/qna-nav-chat.svg",
+    label: "홈",
+  },
+  {
+    href: routes.knowledge,
+    activeIcon: "/figma-assets/qna-nav-qna.svg",
+    inactiveIcon: "/figma-assets/chat/nav-qna.svg",
+    label: "Q&A",
+  },
+  {
+    href: routes.my,
+    activeIcon: "/figma-assets/qna-nav-profile.svg",
+    inactiveIcon: "/figma-assets/qna-nav-profile.svg",
+    label: "마이",
+  },
 ];
 
 type ServiceBottomNavigationProps = {
@@ -48,7 +63,14 @@ export function ServiceBottomNavigation({ className, hideOnChat = false }: Servi
               {active ? (
                 <span className="text-[16px] font-medium leading-[1.7]">{item.label}</span>
               ) : null}
-              <Image src={item.icon} alt="" width={24} height={24} className="size-6" draggable={false} />
+              <Image
+                src={active ? item.activeIcon : item.inactiveIcon}
+                alt=""
+                width={24}
+                height={24}
+                className="size-6"
+                draggable={false}
+              />
             </Link>
           );
         })}
