@@ -17,6 +17,8 @@ def test_signup_login_refresh_and_logout() -> None:
                 "password": password,
                 "name": "김멘티",
                 "currentStatus": "student",
+                "targetRoles": ["프로덕트 매니저"],
+                "interestDomains": ["IT"],
                 "termsConsent": True,
                 "privacyConsent": True,
             },
@@ -35,6 +37,13 @@ def test_signup_login_refresh_and_logout() -> None:
         )
         assert me_response.status_code == 200
         assert me_response.json()["data"]["email"] == email
+
+        profile_response = client.get(
+            "/api/v1/mentees/me",
+            headers={"Authorization": f"Bearer {access_token}"},
+        )
+        assert profile_response.json()["data"]["targetRoles"] == ["프로덕트 매니저"]
+        assert profile_response.json()["data"]["interestDomains"] == ["IT"]
 
         duplicate_response = client.post(
             "/api/v1/auth/signup",

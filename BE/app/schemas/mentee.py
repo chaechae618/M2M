@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 
 
 class MenteeProfileUpdateRequest(BaseModel):
+    name: str | None = Field(default=None, min_length=2, max_length=50)
     current_status: str | None = Field(default=None, alias="currentStatus", max_length=30)
     background: dict | None = None
     considering_options: list[str] | None = Field(default=None, alias="consideringOptions")

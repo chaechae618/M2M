@@ -21,6 +21,19 @@ M2M API 명세서 v1.1의 멘티 전용 로그인·AI 멘토 페르소나 구조
 
 Python 3.11 이상이 필요하다.
 
+macOS에서 프로젝트용 Conda 환경을 사용하는 경우:
+
+```bash
+cd BE
+conda create -n m2m-be python=3.11 -y
+conda run -n m2m-be pip install -r requirements.txt
+cp .env.example .env
+# .env의 OPENAI_API_KEY에 실제 키 설정
+conda run --no-capture-output -n m2m-be python -m uvicorn app.main:app --reload
+```
+
+Windows PowerShell에서 venv를 사용하는 경우:
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1

@@ -2,14 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
 import { Button } from "@/shared/components/Button";
+import { Checkbox } from "@/shared/components/Checkbox";
+import { apiRequest, jsonRequest } from "@/shared/api/client";
+import type { AuthSession } from "@/shared/api/types";
 import { routes } from "@/shared/constants/routes";
 import { cn } from "@/shared/lib/cn";
 
 type SignupType = "mentee" | "mentor";
 
-const statusOptions = ["학생", "취업준비", "이직/전환", "재직중", "진로탐색", "기타"];
+const statusOptions = [
+  { label: "학생", value: "student" },
+  { label: "취업준비", value: "job_seeker" },
+  { label: "이직/전환", value: "career_change" },
+  { label: "재직중", value: "employed" },
+  { label: "진로탐색", value: "career_exploration" },
+  { label: "기타", value: "other" },
+] as const;
+
+type StatusSelection = (typeof statusOptions)[number]["value"];
+type CurrentStatus = "student" | "job_seeker" | "career_change" | "employed" | "other";
 
 function RequiredDot() {
   return (
@@ -63,20 +77,33 @@ function SignupTextField({
   type = "text",
   rightIcon,
   rightText,
+  name,
+  value,
+  onChange,
+  minLength,
 }: {
   label: string;
   placeholder?: string;
   required?: boolean;
   type?: string;
-  rightIcon?: React.ReactNode;
+  rightIcon?: ReactNode;
   rightText?: string;
+  name: string;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  minLength?: number;
 }) {
   return (
     <label className="flex w-full flex-col gap-2">
       <FieldLabel required={required}>{label}</FieldLabel>
       <span className="flex h-[51px] w-full items-center rounded-lg border border-line-soft bg-white px-4">
         <input
+          name={name}
           type={type}
+          value={value}
+          onChange={onChange}
+          minLength={minLength}
+          required={required}
           className="min-w-0 flex-1 bg-transparent text-[16px] font-medium leading-[1.7] text-[#242424] outline-none placeholder:text-placeholder"
           placeholder={placeholder}
         />
@@ -91,7 +118,17 @@ function SignupTextField({
   );
 }
 
-function FileField({ label }: { label: string }) {
+function FileField({
+  label,
+  accept,
+  fileName,
+  onChange,
+}: {
+  label: string;
+  accept: string;
+  fileName?: string;
+  onChange: (file: File | null) => void;
+}) {
   return (
     <label className="flex w-full flex-col gap-2">
       <FieldLabel>{label}</FieldLabel>
@@ -104,8 +141,13 @@ function FileField({ label }: { label: string }) {
           className="size-5 shrink-0"
           draggable={false}
         />
-        파일 첨부
-        <input type="file" className="sr-only" />
+        <span className="truncate">{fileName ?? "파일 첨부"}</span>
+        <input
+          type="file"
+          accept={accept}
+          className="sr-only"
+          onChange={(event) => onChange(event.target.files?.[0] ?? null)}
+        />
       </span>
     </label>
   );
@@ -125,17 +167,21 @@ function RoleTabs({
         ["mentor", "멘토"],
       ].map(([type, label]) => {
         const selected = value === type;
+        const disabled = type === "mentor";
 
         return (
           <button
             key={type}
             type="button"
             onClick={() => onChange(type as SignupType)}
+            disabled={disabled}
+            title={disabled ? "멘토 가입은 준비 중입니다." : undefined}
             className={cn(
               "flex min-w-0 flex-1 items-center justify-center rounded-lg px-5 py-1 text-[16px] font-medium leading-[1.7]",
               selected
                 ? "bg-white text-[#242424] shadow-[0_1px_4px_rgba(88,88,88,0.12)]"
                 : "text-placeholder",
+              disabled && "cursor-not-allowed opacity-50",
             )}
           >
             {label}
@@ -146,9 +192,7 @@ function RoleTabs({
   );
 }
 
-function StatusRadioGrid() {
-  const [selected, setSelected] = useState(statusOptions[0]);
-
+function StatusRadioGrid({ value, onChange }: { value: StatusSelection; onChange: (value: StatusSelection) => void }) {
   return (
     <fieldset className="flex w-full flex-col gap-2">
       <legend>
@@ -156,13 +200,13 @@ function StatusRadioGrid() {
       </legend>
       <div className="grid w-full grid-cols-2 gap-x-5 gap-y-4 py-2 sm:grid-cols-3">
         {statusOptions.map((option) => {
-          const checked = selected === option;
+          const checked = value === option.value;
 
           return (
             <button
-              key={option}
+              key={option.label}
               type="button"
-              onClick={() => setSelected(option)}
+              onClick={() => onChange(option.value)}
               className="flex items-center gap-1.5 text-left text-[16px] font-medium leading-[1.7] text-[#242424]"
             >
               <Image
@@ -173,7 +217,7 @@ function StatusRadioGrid() {
                 className="size-4 shrink-0"
                 draggable={false}
               />
-              {option}
+              {option.label}
             </button>
           );
         })}
@@ -183,23 +227,78 @@ function StatusRadioGrid() {
 }
 
 export function SignupForm() {
+  const router = useRouter();
   const [signupType, setSignupType] = useState<SignupType>("mentee");
-  const isMentor = signupType === "mentor";
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [statusSelection, setStatusSelection] = useState<StatusSelection>("student");
+  const [targetRole, setTargetRole] = useState("");
+  const [resume, setResume] = useState<File | null>(null);
+  const [portfolio, setPortfolio] = useState<File | null>(null);
+  const [termsConsent, setTermsConsent] = useState(false);
+  const [privacyConsent, setPrivacyConsent] = useState(false);
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function uploadFile(path: string, file: File) {
+    const formData = new FormData();
+    formData.append("file", file);
+    await apiRequest(path, { method: "POST", body: formData });
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!termsConsent || !privacyConsent) {
+      setError("이용약관과 개인정보 수집에 동의해주세요.");
+      return;
+    }
+    setError("");
+    setIsSubmitting(true);
+    try {
+      const currentStatus: CurrentStatus = statusSelection === "career_exploration" ? "other" : statusSelection;
+      await apiRequest<AuthSession>(
+        "auth/signup",
+        jsonRequest("POST", {
+          email,
+          password,
+          name,
+          currentStatus,
+          targetRoles: targetRole ? [targetRole] : [],
+          interestDomains: [],
+          termsConsent,
+          privacyConsent,
+        }),
+      );
+      if (resume) await uploadFile("mentees/me/resume", resume);
+      if (portfolio) await uploadFile("mentees/me/portfolio", portfolio);
+      router.push(routes.chat);
+      router.refresh();
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : "회원가입에 실패했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   return (
-    <form className="flex w-full max-w-[510px] flex-col gap-12" aria-label="회원가입">
+    <form className="flex w-full max-w-[510px] flex-col gap-12" aria-label="회원가입" onSubmit={handleSubmit}>
       <h1 className="text-[23px] font-bold leading-[1.6] text-[#242424]">계정 만들기</h1>
 
       <RoleTabs value={signupType} onChange={setSignupType} />
 
       <div className="flex w-full flex-col gap-7">
-        <SignupTextField label="이름" placeholder="이름을 적어주세요." required />
-        <SignupTextField label="이메일" placeholder="이메일을 적어주세요." required />
+        <SignupTextField name="name" value={name} onChange={(event) => setName(event.target.value)} label="이름" placeholder="이름을 적어주세요." required />
+        <SignupTextField name="email" value={email} onChange={(event) => setEmail(event.target.value)} label="이메일" placeholder="이메일을 적어주세요." required type="email" />
         <SignupTextField
+          name="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
           label="비밀번호"
           placeholder="비밀번호를 적어주세요."
           required
           type="password"
+          minLength={8}
           rightIcon={
             <Image
               src="/figma-assets/eye-off.svg"
@@ -216,25 +315,27 @@ export function SignupForm() {
       <div className="h-px w-full bg-[#e0e0e0]" />
 
       <div className="flex w-full flex-col gap-7">
-        {isMentor ? (
-          <>
-            <SignupTextField label="총 경력" required rightText="년" />
-            <SignupTextField label="전문 직무" required rightIcon={<SearchIcon />} />
-          </>
-        ) : (
-          <>
-            <StatusRadioGrid />
-            <SignupTextField label="관심 직무" required rightIcon={<SearchIcon />} />
-          </>
-        )}
+        <StatusRadioGrid value={statusSelection} onChange={setStatusSelection} />
+        <SignupTextField name="targetRole" value={targetRole} onChange={(event) => setTargetRole(event.target.value)} label="관심 직무" required rightIcon={<SearchIcon />} />
 
-        <FileField label="이력서 및 경력기술서" />
-        <FileField label="포트폴리오" />
+        <FileField label="이력서 및 경력기술서" accept=".pdf,.docx" fileName={resume?.name} onChange={setResume} />
+        <FileField label="포트폴리오" accept=".pdf,.pptx" fileName={portfolio?.name} onChange={setPortfolio} />
       </div>
 
       <div className="flex w-full flex-col gap-5">
-        <Button type="submit" fullWidth>
-          {isMentor ? "멘토로 시작하기" : "멘티로 시작하기"}
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center justify-between gap-4">
+            <Checkbox label="이용약관에 동의합니다." checked={termsConsent} onChange={(event) => setTermsConsent(event.target.checked)} />
+            <Link href={routes.terms} className="text-[14px] font-medium text-brand-muted underline">보기</Link>
+          </div>
+          <div className="flex items-center justify-between gap-4">
+            <Checkbox label="개인정보 수집에 동의합니다." checked={privacyConsent} onChange={(event) => setPrivacyConsent(event.target.checked)} />
+            <Link href={routes.privacy} className="text-[14px] font-medium text-brand-muted underline">보기</Link>
+          </div>
+        </div>
+        {error ? <p role="alert" className="text-[14px] text-red-600">{error}</p> : null}
+        <Button type="submit" fullWidth disabled={isSubmitting}>
+          {isSubmitting ? "가입 중..." : "멘티로 시작하기"}
         </Button>
         <p className="flex items-center justify-center gap-3 text-center text-[14px] font-medium leading-[1.4] text-brand-muted">
           계정이 이미 있으신가요?

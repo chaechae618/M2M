@@ -33,7 +33,11 @@ class AuthService:
             password_hash=hash_password(payload.password),
             name=payload.name.strip(),
         )
-        user.profile = MenteeProfile(current_status=payload.current_status)
+        user.profile = MenteeProfile(
+            current_status=payload.current_status,
+            target_roles=payload.target_roles,
+            interest_domains=payload.interest_domains,
+        )
         self.db.add(user)
         self.db.flush()
 

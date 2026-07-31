@@ -33,12 +33,14 @@ def test_profile_and_experience_crud() -> None:
             "/api/v1/mentees/me",
             headers=headers,
             json={
+                "name": "김수정",
                 "background": {"school": "M2M대학교", "major": "경영학"},
                 "targetRoles": ["데이터 분석가"],
                 "interestDomains": ["IT", "금융"],
             },
         )
         assert update_response.status_code == 200
+        assert update_response.json()["data"]["name"] == "김수정"
         assert update_response.json()["data"]["targetRoles"] == ["데이터 분석가"]
 
         create_response = client.post(
@@ -94,6 +96,35 @@ def test_resume_upload_validation() -> None:
             "/api/v1/mentees/me/resume",
             headers=headers,
             files={"file": ("resume.exe", b"invalid", "application/octet-stream")},
+        )
+        assert invalid_response.status_code == 400
+        assert invalid_response.json()["error"]["code"] == "INVALID_FILE_TYPE"
+
+
+def test_portfolio_accepts_pdf_and_pptx_only() -> None:
+    with TestClient(app) as client:
+        auth = signup(client)
+        headers = {"Authorization": f"Bearer {auth['accessToken']}"}
+
+        for file_name, content_type in [
+            ("portfolio.pdf", "application/pdf"),
+            (
+                "portfolio.pptx",
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+            ),
+        ]:
+            response = client.post(
+                "/api/v1/mentees/me/portfolio",
+                headers=headers,
+                files={"file": (file_name, b"test", content_type)},
+            )
+            assert response.status_code == 200
+            assert response.json()["data"]["fileType"] == "portfolio"
+
+        invalid_response = client.post(
+            "/api/v1/mentees/me/portfolio",
+            headers=headers,
+            files={"file": ("portfolio.docx", b"invalid", "application/octet-stream")},
         )
         assert invalid_response.status_code == 400
         assert invalid_response.json()["error"]["code"] == "INVALID_FILE_TYPE"

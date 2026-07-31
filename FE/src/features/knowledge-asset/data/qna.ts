@@ -11,6 +11,7 @@ export type QnaArticle = {
   saved: boolean;
   avatarColor: string;
   imagePosition: QnaImagePosition;
+  imageUrl?: string;
 };
 
 export const qnaArticles: QnaArticle[] = [

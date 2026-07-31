@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { ServiceBottomNavigation } from "@/widgets/service-bottom-navigation/ServiceBottomNavigation";
+import { ApiError, apiRequest, jsonRequest } from "@/shared/api/client";
+import type { AuthUser } from "@/shared/api/types";
+import { routes } from "@/shared/constants/routes";
 import { cn } from "@/shared/lib/cn";
 
 type MessageRole = "user" | "assistant";
@@ -23,6 +26,28 @@ type ChatMessage = {
   text?: string;
   userActions?: boolean;
   compact?: boolean;
+  mentors?: MentorRecommendation[];
+};
+
+type ApiChatMessage = { id: string; role: MessageRole; content: string; createdAt: string };
+type RefinedQuestion = { content: string | null };
+type ConsultationSession = { id: string; title: string; status: string; refinedQuestion: string | null; route: string | null };
+type MentorRecommendation = {
+  personaId: string;
+  displayName: string;
+  currentRole: string;
+  yearsOfExperience: number;
+  expertise: string[] | Record<string, unknown>;
+  profileSummary: string;
+  recommendationReason: string;
+  matchScore: number;
+};
+type Job = { jobId: string; status: string; progress: number; currentStep: string; error?: { message?: string } | null };
+type ConsultationResult = {
+  status: string;
+  route: string | null;
+  reason?: string | null;
+  answer: { id: string; content: string; summary?: string | null } | null;
 };
 
 const assets = {
@@ -41,7 +66,7 @@ const assets = {
   writeNew: "/figma-assets/chat/write-new.svg",
 };
 
-const initialMessages: ChatMessage[] = [
+const demoMessages: ChatMessage[] = [
   {
     id: "u-1",
     role: "user",
@@ -107,13 +132,20 @@ function ChatPageContent() {
   const searchParams = useSearchParams();
   const newChatToken = searchParams.get("new");
 
-  return <ChatSession key={newChatToken ?? "current-chat"} startsAsNewChat={newChatToken !== null} />;
+  return <ChatSession key={newChatToken ?? "current-chat"} startsAsNewChat />;
 }
 
 function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
-  const [messages, setMessages] = useState<ChatMessage[]>(startsAsNewChat ? [] : initialMessages);
+  const router = useRouter();
+  const [messages, setMessages] = useState<ChatMessage[]>(startsAsNewChat ? [] : demoMessages);
   const [isNewChat, setIsNewChat] = useState(startsAsNewChat);
   const [question, setQuestion] = useState("");
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [sessionTitle, setSessionTitle] = useState("새 상담");
+  const [refinedQuestion, setRefinedQuestion] = useState("");
+  const [selectedMentor, setSelectedMentor] = useState<MentorRecommendation | null>(null);
+  const [userName, setUserName] = useState("이름");
+  const [isBusy, setIsBusy] = useState(false);
   const isActive = question.trim().length > 0;
   const sendIcon = useMemo(() => (isActive ? assets.sendActive : assets.sendDisabled), [isActive]);
   const lastMessage = messages[messages.length - 1];
@@ -121,6 +153,14 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
   const showMentorRecommendations = lastMessage?.kind === "mentor_recommendations";
   const visibleMessages = showRefinedChoices ? messages.slice(-1) : showMentorRecommendations ? messages.slice(-2) : messages;
   const messageScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    apiRequest<AuthUser>("auth/me")
+      .then((user) => setUserName(user.name))
+      .catch((requestError) => {
+        if (requestError instanceof ApiError && requestError.status === 401) router.replace(routes.login);
+      });
+  }, [router]);
 
   useEffect(() => {
     const scrollArea = messageScrollRef.current;
@@ -139,8 +179,22 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
     });
   }
 
-  function handleSubmit() {
-    if (!question.trim()) {
+  function appendError(requestError: unknown) {
+    appendMessages([{ id: `a-error-${Date.now()}`, role: "assistant", kind: "text", text: requestError instanceof Error ? requestError.message : "요청을 처리하지 못했습니다." }]);
+  }
+
+  function apiMessage(message: ApiChatMessage): ChatMessage {
+    return { id: message.id, role: message.role, kind: "text", text: message.content };
+  }
+
+  async function handleSubmit() {
+    const content = question.trim();
+    if (!content || isBusy) {
+      return;
+    }
+
+    if (!sessionId && content.length < 10) {
+      appendMessages([{ id: `a-short-${Date.now()}`, role: "assistant", kind: "text", text: "고민을 조금만 더 자세히 적어주세요. 첫 질문은 10자 이상이어야 해요." }]);
       return;
     }
 
@@ -148,15 +202,52 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
       id: `u-${Date.now()}`,
       role: "user",
       kind: "text",
-      text: question.trim(),
+      text: content,
     };
 
     setQuestion("");
     setIsNewChat(false);
-    appendMessages([userMessage, ...mockAssistantReply(question)]);
+    appendMessages([userMessage]);
+    setIsBusy(true);
+    try {
+      if (!sessionId) {
+        const created = await apiRequest<{ session: ConsultationSession; assistantMessage: ApiChatMessage }>("consultations", jsonRequest("POST", { initialMessage: content }));
+        setSessionId(created.session.id);
+        setSessionTitle(created.session.title);
+        if (created.session.refinedQuestion) {
+          setRefinedQuestion(created.session.refinedQuestion);
+          appendMessages([{ id: `a-refined-${Date.now()}`, role: "assistant", kind: "refined_question", text: created.session.refinedQuestion }]);
+        } else {
+          appendMessages([apiMessage(created.assistantMessage)]);
+        }
+      } else {
+        const result = await apiRequest<{ sessionStatus: string; needMoreInfo: boolean; assistantMessage: ApiChatMessage | null; refinedQuestion: RefinedQuestion | null }>(`consultations/${sessionId}/messages`, jsonRequest("POST", { content }));
+        if (result.refinedQuestion?.content) {
+          setRefinedQuestion(result.refinedQuestion.content);
+          appendMessages([{ id: `a-refined-${Date.now()}`, role: "assistant", kind: "refined_question", text: result.refinedQuestion.content }]);
+        } else if (result.assistantMessage) {
+          appendMessages([apiMessage(result.assistantMessage)]);
+        }
+      }
+    } catch (requestError) {
+      appendError(requestError);
+    } finally {
+      setIsBusy(false);
+    }
   }
 
-  function handleSendRefinedQuestion() {
+  async function waitForJob(jobId: string) {
+    for (let attempt = 0; attempt < 90; attempt += 1) {
+      const job = await apiRequest<Job>(`jobs/${jobId}`);
+      if (job.status === "completed") return;
+      if (job.status === "failed") throw new Error(job.error?.message ?? "답변 생성 작업에 실패했습니다.");
+      await new Promise((resolve) => setTimeout(resolve, 800));
+    }
+    throw new Error("답변 생성 시간이 길어지고 있습니다. 잠시 후 다시 시도해주세요.");
+  }
+
+  async function handleSendRefinedQuestion() {
+    if (!sessionId || isBusy) return;
     appendMessages([
       {
         id: `u-refined-send-${Date.now()}`,
@@ -165,15 +256,34 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
         compact: true,
         text: "이 질문으로 보내기",
       },
-      {
-        id: `a-mentors-${Date.now()}`,
-        role: "assistant",
-        kind: "mentor_recommendations",
-      },
+      { id: `a-analyzing-${Date.now()}`, role: "assistant", kind: "mentor_request_status", text: "질문을 분석하고 있어요" },
     ]);
+    setIsBusy(true);
+    try {
+      const confirmation = await apiRequest<{ jobId: string }>(`consultations/${sessionId}/confirm`, { method: "POST", headers: { "Idempotency-Key": crypto.randomUUID() } });
+      await waitForJob(confirmation.jobId);
+      const result = await apiRequest<ConsultationResult>(`consultations/${sessionId}/result`);
+      if (result.route === "llm_direct" && result.answer) {
+        appendMessages([{ id: `a-answer-${Date.now()}`, role: "assistant", kind: "text", text: result.answer.content }]);
+      } else {
+        const recommendations = await apiRequest<{ personas: MentorRecommendation[] }>(`consultations/${sessionId}/persona-recommendations`);
+        appendMessages([{ id: `a-mentors-${Date.now()}`, role: "assistant", kind: "mentor_recommendations", mentors: recommendations.personas }]);
+      }
+    } catch (requestError) {
+      appendError(requestError);
+    } finally {
+      setIsBusy(false);
+    }
   }
 
-  function handleCancelRefinedQuestion() {
+  async function handleCancelRefinedQuestion() {
+    if (!sessionId) return;
+    try {
+      await apiRequest(`consultations/${sessionId}`, { method: "DELETE" });
+    } catch (requestError) {
+      appendError(requestError);
+      return;
+    }
     appendMessages([
       {
         id: `u-refined-cancel-${Date.now()}`,
@@ -189,16 +299,20 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
         text: "좋아요. 더 이야기하면서 질문을 다듬어도 되고, 준비되면 다시 멘토에게 보낼 수 있어요.",
       },
     ]);
+    setSessionId(null);
+    setRefinedQuestion("");
+    setSelectedMentor(null);
   }
 
-  function handleMentorSelect(mentorName: string) {
+  function handleMentorSelect(mentor: MentorRecommendation) {
+    setSelectedMentor(mentor);
     appendMessages([
       {
         id: `u-mentor-select-${Date.now()}`,
         role: "user",
         kind: "text",
         compact: true,
-        text: `${mentorName}에게 보낼래`,
+        text: `${mentor.displayName} 멘토를 선택할게`,
       },
       {
         id: `a-mentor-confirm-${Date.now()}`,
@@ -208,7 +322,8 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
     ]);
   }
 
-  function handleConfirmMentorRequest() {
+  async function handleConfirmMentorRequest() {
+    if (!sessionId || !selectedMentor || isBusy) return;
     appendMessages([
       {
         id: `u-mentor-confirm-${Date.now()}`,
@@ -221,21 +336,21 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
         id: `a-status-${Date.now()}`,
         role: "assistant",
         kind: "mentor_request_status",
-        text: "멘토에게 질문을 보내는 중이에요",
-      },
-      {
-        id: `a-done-${Date.now()}`,
-        role: "assistant",
-        kind: "text",
-        content: (
-          <>
-            멘토에게 질문을 보냈어요.
-            <br />
-            보통 24시간 이내에 답변을 받을 수 있어요. 기다리는 동안 이 질문을 더 보완하거나 다른 멘토에게도 요청할 수 있어요.
-          </>
-        ),
+        text: "선택한 AI 멘토가 답변을 작성하고 있어요",
       },
     ]);
+    setIsBusy(true);
+    try {
+      const selection = await apiRequest<{ jobId: string }>(`consultations/${sessionId}/persona-selection`, jsonRequest("POST", { personaId: selectedMentor.personaId }));
+      await waitForJob(selection.jobId);
+      const result = await apiRequest<ConsultationResult>(`consultations/${sessionId}/result`);
+      if (!result.answer) throw new Error("생성된 답변을 찾지 못했습니다.");
+      appendMessages([{ id: `a-persona-answer-${Date.now()}`, role: "assistant", kind: "text", text: result.answer.content }]);
+    } catch (requestError) {
+      appendError(requestError);
+    } finally {
+      setIsBusy(false);
+    }
   }
 
   function handleEditRequest() {
@@ -248,22 +363,23 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
     ]);
   }
 
-  function handleEditorComplete() {
-    setMessages((current) => [
-      ...current.filter((message) => message.kind !== "mentor_request_editor"),
-      {
-        id: `u-edit-complete-${Date.now()}`,
-        role: "user",
-        kind: "text",
-        compact: true,
-        text: "수정완료",
-      },
-      {
-        id: `a-refined-again-${Date.now()}`,
-        role: "assistant",
-        kind: "refined_question",
-      },
-    ]);
+  async function handleEditorComplete(content: string) {
+    if (!sessionId || content.trim().length < 10) return;
+    setIsBusy(true);
+    try {
+      const result = await apiRequest<{ refinedQuestion: RefinedQuestion }>(`consultations/${sessionId}/refined-question`, jsonRequest("PATCH", { content: content.trim() }));
+      const nextQuestion = result.refinedQuestion.content ?? content.trim();
+      setRefinedQuestion(nextQuestion);
+      setMessages((current) => [
+        ...current.filter((message) => message.kind !== "mentor_request_editor"),
+        { id: `u-edit-complete-${Date.now()}`, role: "user", kind: "text", compact: true, text: "수정완료" },
+        { id: `a-refined-again-${Date.now()}`, role: "assistant", kind: "refined_question", text: nextQuestion },
+      ]);
+    } catch (requestError) {
+      appendError(requestError);
+    } finally {
+      setIsBusy(false);
+    }
   }
 
   return (
@@ -271,16 +387,18 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
       <div className={cn("relative z-10 flex h-full min-h-0 w-full flex-col items-center", isNewChat ? "px-0" : "px-[clamp(24px,12.5vw,180px)]")}>
         {isNewChat ? (
           <NewChatWelcome
+            userName={userName}
             question={question}
             setQuestion={setQuestion}
             isActive={isActive}
             sendIcon={sendIcon}
             onSubmit={handleSubmit}
+            disabled={isBusy}
           />
         ) : (
           <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-end">
             <div className="flex min-h-0 w-full flex-1 flex-col gap-7 py-5">
-              <ChatTitleBar />
+              <ChatTitleBar title={sessionTitle} />
 
               <div ref={messageScrollRef} className="min-h-0 flex-1 overflow-y-auto">
                 <MessageList
@@ -289,6 +407,8 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
                   onConfirmMentorRequest={handleConfirmMentorRequest}
                   onEditRequest={handleEditRequest}
                   onEditorComplete={handleEditorComplete}
+                  refinedQuestion={refinedQuestion}
+                  selectedMentor={selectedMentor}
                 />
               </div>
             </div>
@@ -308,6 +428,7 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
                 isActive={isActive}
                 sendIcon={sendIcon}
                 onSubmit={handleSubmit}
+                disabled={isBusy}
               />
             </div>
           </div>
@@ -322,17 +443,21 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
 }
 
 function NewChatWelcome({
+  userName,
   question,
   setQuestion,
   isActive,
   sendIcon,
   onSubmit,
+  disabled,
 }: {
+  userName: string;
   question: string;
   setQuestion: (value: string) => void;
   isActive: boolean;
   sendIcon: string;
   onSubmit: () => void;
+  disabled: boolean;
 }) {
   return (
     <div className="relative flex min-h-0 w-full flex-1 overflow-hidden">
@@ -346,7 +471,7 @@ function NewChatWelcome({
       <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center px-[clamp(24px,4.2vw,60px)] py-[clamp(56px,7vw,100px)]">
         <div className="flex min-h-0 w-full flex-1 items-center justify-center">
           <h1 className="text-center text-[24px] font-extrabold leading-[1.6] text-[#242424] sm:text-[28px]">
-            이름님 반가워요
+            {userName}님 반가워요
             <br />
             막막한 고민을 질문으로 바꿔보세요
           </h1>
@@ -358,48 +483,18 @@ function NewChatWelcome({
           isActive={isActive}
           sendIcon={sendIcon}
           onSubmit={onSubmit}
+          disabled={disabled}
         />
       </div>
     </div>
   );
 }
 
-function mockAssistantReply(input: string): ChatMessage[] {
-  if (input.includes("조회수") || input.includes("작")) {
-    return [
-      {
-        id: `a-refined-${Date.now()}`,
-        role: "assistant",
-        kind: "refined_question",
-      },
-    ];
-  }
-
-  return [
-    {
-      id: `a-${Date.now()}`,
-      role: "assistant",
-      kind: "text",
-      content: (
-        <>
-          좋아요. 지금 질문은 더 구체화할 수 있어요.
-          <br />
-          어떤 직무, 어떤 경험, 어떤 판단을 받고 싶은지까지 적으면 멘토가 훨씬 정확하게 답할 수 있어요.
-        </>
-      ),
-    },
-  ];
-}
-
-function refinedQuestionText() {
-  return "개인 인스타그램에서 자취 생활 팁 콘텐츠를 3개월간 운영했고, 릴스 12개와 카드뉴스 8개를 제작했습니다. 팔로워는 180명 정도지만 일부 릴스가 조회수 4,800회를 기록했습니다. 마케팅 포트폴리오에서 이 경험을 어떻게 구조화하고, 낮은 팔로워 수보다 콘텐츠 실험과 성과 분석을 설득력 있게 보여주려면 어떤 점을 강조해야 할까요?";
-}
-
-function ChatTitleBar() {
+function ChatTitleBar({ title }: { title: string }) {
   return (
     <header className="grid h-8 w-full shrink-0 grid-cols-[20px_minmax(0,1fr)_20px] items-center">
       <span aria-hidden="true" />
-      <h1 className="min-w-0 text-center text-[17px] font-semibold leading-[1.55]">비전공자 PM 준비</h1>
+      <h1 className="min-w-0 truncate text-center text-[17px] font-semibold leading-[1.55]">{title}</h1>
       <button type="button" aria-label="더보기" className="flex size-5 items-center justify-center gap-[3px]">
         <Image src={assets.moreDot} alt="" width={20} height={20} draggable={false} />
       </button>
@@ -413,12 +508,16 @@ function MessageList({
   onConfirmMentorRequest,
   onEditRequest,
   onEditorComplete,
+  refinedQuestion,
+  selectedMentor,
 }: {
   messages: ChatMessage[];
-  onMentorSelect: (mentorName: string) => void;
+  onMentorSelect: (mentor: MentorRecommendation) => void;
   onConfirmMentorRequest: () => void;
   onEditRequest: () => void;
-  onEditorComplete: () => void;
+  onEditorComplete: (content: string) => void;
+  refinedQuestion: string;
+  selectedMentor: MentorRecommendation | null;
 }) {
   return (
     <div className="flex w-full flex-col gap-2 pb-4 text-[15px] font-medium leading-[1.6]">
@@ -430,6 +529,8 @@ function MessageList({
           onConfirmMentorRequest={onConfirmMentorRequest}
           onEditRequest={onEditRequest}
           onEditorComplete={onEditorComplete}
+          refinedQuestion={refinedQuestion}
+          selectedMentor={selectedMentor}
         />
       ))}
     </div>
@@ -442,12 +543,16 @@ function MessageRenderer({
   onConfirmMentorRequest,
   onEditRequest,
   onEditorComplete,
+  refinedQuestion,
+  selectedMentor,
 }: {
   message: ChatMessage;
-  onMentorSelect: (mentorName: string) => void;
+  onMentorSelect: (mentor: MentorRecommendation) => void;
   onConfirmMentorRequest: () => void;
   onEditRequest: () => void;
-  onEditorComplete: () => void;
+  onEditorComplete: (content: string) => void;
+  refinedQuestion: string;
+  selectedMentor: MentorRecommendation | null;
 }) {
   if (message.role === "user") {
     return (
@@ -458,15 +563,15 @@ function MessageRenderer({
   }
 
   if (message.kind === "refined_question") {
-    return <RefinedQuestionMessage />;
+    return <RefinedQuestionMessage question={message.text ?? refinedQuestion} />;
   }
 
   if (message.kind === "mentor_recommendations") {
-    return <MentorRecommendationsMessage onSelect={onMentorSelect} />;
+    return <MentorRecommendationsMessage mentors={message.mentors ?? []} onSelect={onMentorSelect} />;
   }
 
   if (message.kind === "mentor_confirmation") {
-    return <MentorConfirmationMessage onConfirm={onConfirmMentorRequest} onEdit={onEditRequest} />;
+    return <MentorConfirmationMessage mentorName={selectedMentor?.displayName ?? "선택한 멘토"} question={refinedQuestion} onConfirm={onConfirmMentorRequest} onEdit={onEditRequest} />;
   }
 
   if (message.kind === "mentor_request_status") {
@@ -474,7 +579,7 @@ function MessageRenderer({
   }
 
   if (message.kind === "mentor_request_editor") {
-    return <MentorRequestEditor onComplete={onEditorComplete} />;
+    return <MentorRequestEditor initialValue={refinedQuestion} onComplete={onEditorComplete} />;
   }
 
   return (
@@ -485,7 +590,7 @@ function MessageRenderer({
   );
 }
 
-function RefinedQuestionMessage() {
+function RefinedQuestionMessage({ question }: { question: string }) {
   return (
     <div className="w-full">
       <p className="text-[14px] font-normal leading-none text-[#9e9e9e]">멘토에게 보낼 질문</p>
@@ -495,7 +600,7 @@ function RefinedQuestionMessage() {
           <h2 className="text-[16px] font-medium leading-[1.6] text-black">비전공자 PM 직무 준비</h2>
         </div>
         <div className="mt-2 rounded-3xl bg-[#f7f7f7] px-6 py-5 text-[16px] font-medium leading-[1.6] text-[#585858]">
-          비전공자로 PM 직무를 준비하고 있습니다. 현재 학교 팀플에서 진행한 서비스 기획 프로젝트 하나를 포트폴리오에 넣으려고 하는데, 현업 PM 관점에서 이 경험이 충분히 설득력 있을지 궁금합니다. 특히 문제 정의, 사용자 리서치, 기능 우선순위, 화면 기획 중 어떤 부분을 강조해야 할지 조언 받고 싶습니다.
+          {question}
         </div>
       </section>
       <div className="mt-3">
@@ -569,86 +674,73 @@ function ChoiceRow({
   );
 }
 
-const mentors = [
-  {
-    name: "콘텐츠 마케터",
-    experience: "3년 8개월",
-    tags: ["콘텐츠 기획", "콘텐츠 마케팅", "브랜드 마케팅"],
-    avatarColor: "#ffddb3",
-    gradient: "radial-gradient(75% 34% at 50% 0%, rgba(255,221,179,0.5) 0%, rgba(255,255,255,0) 100%)",
-  },
-  {
-    name: "브랜드 마케터",
-    experience: "3년 8개월",
-    tags: ["캠페인 기획", "브랜딩", "콘텐츠 마케팅"],
-    avatarColor: "#efc4ad",
-    gradient: "radial-gradient(75% 34% at 50% 0%, rgba(239,196,173,0.5) 0%, rgba(255,255,255,0) 100%)",
-  },
-  {
-    name: "퍼포먼스 마케터",
-    experience: "3년 8개월",
-    tags: ["광고 기획", "콘텐츠 마케팅", "리포트 구성"],
-    avatarColor: "#ecdfa5",
-    gradient: "radial-gradient(75% 34% at 50% 0%, rgba(236,223,165,0.5) 0%, rgba(255,255,255,0) 100%)",
-  },
+const mentorColors = ["#ffddb3", "#efc4ad", "#ecdfa5"];
+const mentorGradients = [
+  "radial-gradient(75% 34% at 50% 0%, rgba(255,221,179,0.5) 0%, rgba(255,255,255,0) 100%)",
+  "radial-gradient(75% 34% at 50% 0%, rgba(239,196,173,0.5) 0%, rgba(255,255,255,0) 100%)",
+  "radial-gradient(75% 34% at 50% 0%, rgba(236,223,165,0.5) 0%, rgba(255,255,255,0) 100%)",
 ];
 
-function MentorRecommendationsMessage({ onSelect }: { onSelect: (mentorName: string) => void }) {
+function MentorRecommendationsMessage({ mentors, onSelect }: { mentors: MentorRecommendation[]; onSelect: (mentor: MentorRecommendation) => void }) {
   return (
     <AssistantBlock>
       <div className="text-[15px] font-medium leading-[1.6] text-[#101010]">
         <p>
-          작성한 질문에는 콘텐츠 운영 경험을 포트폴리오로 바꿔본 멘토가 잘 맞아요.
+          질문의 의도와 막힌 지점을 기준으로 잘 맞는 AI 멘토를 찾았어요.
           <br />
-          관심 직무와 막힌 지점을 기준으로 추천 멘토 3명을 찾았어요.
+          추천 결과를 확인한 뒤 원하는 멘토를 직접 선택해 주세요.
         </p>
         <div className="mt-5">
           <p>원하는 멘토를 직접 선택해 주세요.</p>
         </div>
       </div>
       <div className="mt-2 flex max-w-full flex-wrap gap-2">
-        {mentors.map((mentor) => (
+        {mentors.map((mentor, index) => {
+          const tags = Array.isArray(mentor.expertise) ? mentor.expertise : Object.keys(mentor.expertise ?? {});
+          return (
           <button
-            key={mentor.name}
+            key={mentor.personaId}
             type="button"
-            onClick={() => onSelect(mentor.name)}
+            onClick={() => onSelect(mentor)}
             className="flex h-[240px] w-[200px] flex-col gap-4 rounded-2xl border border-[#eeeeee] bg-white px-4 py-5 text-left shadow-[0_16px_12px_rgba(94,107,127,0.16)] transition hover:border-[#ffd60a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffa600]"
-            style={{ backgroundImage: mentor.gradient }}
+            style={{ backgroundImage: mentorGradients[index % mentorGradients.length] }}
           >
             <span className="flex flex-col gap-2">
-              <span className="flex size-10 items-center justify-center rounded-full" style={{ backgroundColor: mentor.avatarColor }}>
+              <span className="flex size-10 items-center justify-center rounded-full" style={{ backgroundColor: mentorColors[index % mentorColors.length] }}>
                 <Image src={assets.avatar} alt="" width={14} height={16} draggable={false} />
               </span>
               <span className="flex flex-col">
-                <span className="text-[15px] font-medium leading-[1.7] text-[#242424]">{mentor.name}</span>
-                <span className="text-[14px] font-normal leading-none text-[#585858]">{mentor.experience}</span>
+                <span className="text-[15px] font-medium leading-[1.7] text-[#242424]">{mentor.displayName}</span>
+                <span className="text-[14px] font-normal leading-none text-[#585858]">{mentor.currentRole} · {mentor.yearsOfExperience}년</span>
               </span>
             </span>
             <span className="flex h-[90px] flex-wrap content-start gap-x-1.5 gap-y-1">
-              {mentor.tags.map((tag) => (
+              {tags.slice(0, 4).map((tag) => (
                 <span key={tag} className="rounded-lg bg-[#eeeeee] px-2 py-1 text-[13px] font-medium leading-none text-[#585858]">
                   {tag}
                 </span>
               ))}
             </span>
           </button>
-        ))}
+          );
+        })}
       </div>
+      <p className="mt-3 text-[13px] text-[#9e9e9e]">추천 멘토는 실제 인물이 아닌 AI 페르소나입니다.</p>
       <MessageActions />
     </AssistantBlock>
   );
 }
 
-function MentorConfirmationMessage({ onConfirm, onEdit }: { onConfirm: () => void; onEdit: () => void }) {
+function MentorConfirmationMessage({ mentorName, question, onConfirm, onEdit }: { mentorName: string; question: string; onConfirm: () => void; onEdit: () => void }) {
   return (
     <AssistantBlock>
       <p>
-        선택한 멘토에게 아래 질문을 보낼까요?
+        {mentorName} 멘토에게 아래 질문을 보낼까요?
         <br />
         보내기 전에 내용을 한 번 더 수정할 수 있어요.
       </p>
       <div className="mt-4 max-w-[640px] rounded-3xl bg-[#f7f7f7] px-6 py-5 text-[15px] font-medium leading-[1.6] text-[#585858]">
-        {refinedQuestionText()}
+        {question}
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         <FlowActionButton onClick={onConfirm} emphasis>
@@ -754,7 +846,8 @@ function MessageActions({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-function MentorRequestEditor({ onComplete }: { onComplete: () => void }) {
+function MentorRequestEditor({ initialValue, onComplete }: { initialValue: string; onComplete: (content: string) => void }) {
+  const [content, setContent] = useState(initialValue);
   return (
     <div className="flex h-full w-full flex-col gap-2 pb-4">
       <p className="text-[14px] font-normal leading-none text-[#9e9e9e]">질문 직접 수정하기</p>
@@ -763,13 +856,12 @@ function MentorRequestEditor({ onComplete }: { onComplete: () => void }) {
           <Image src={assets.editLine} alt="" width={20} height={20} draggable={false} />
           <h2 className="text-[15px] font-medium leading-[1.6] text-black">비전공자 PM 직무 준비</h2>
         </div>
-        <div className="mt-2 rounded-3xl bg-[#f7f7f7] px-6 py-5 text-[15px] font-medium leading-[1.6] text-[#585858]">
-          비전공자로 PM 직무를 준비하고 있습니다. 현재 학교 팀플에서 진행한 서비스 기획 프로젝트 하나를 포트폴리오에 넣으려고 하는데, 현업 PM 관점에서 이 경험이 충분히 설득력 있을지 궁금합니다. 특히 문제 정의, 사용자 리서치, 기능 우선순위, 화면 기획 중 어떤 부분을 강조해야 할지 조언 받고 싶습니다.
-        </div>
+        <textarea value={content} onChange={(event) => setContent(event.target.value)} className="mt-2 min-h-36 w-full resize-y rounded-3xl border-0 bg-[#f7f7f7] px-6 py-5 text-[15px] font-medium leading-[1.6] text-[#585858] outline-none focus:ring-2 focus:ring-[#ffd60a]" />
         <div className="mt-2 flex justify-end">
           <button
             type="button"
-            onClick={onComplete}
+            onClick={() => onComplete(content)}
+            disabled={content.trim().length < 10}
             className="rounded-lg bg-[#eeeeee] px-3 py-2 text-[14px] font-semibold leading-[1.4] text-[#242424]"
           >
             수정완료
@@ -787,6 +879,7 @@ function ChatComposer({
   isActive,
   sendIcon,
   onSubmit,
+  disabled = false,
 }: {
   className?: string;
   question: string;
@@ -794,6 +887,7 @@ function ChatComposer({
   isActive: boolean;
   sendIcon: string;
   onSubmit: () => void;
+  disabled?: boolean;
 }) {
   return (
     <form
@@ -805,6 +899,7 @@ function ChatComposer({
     >
       <textarea
         value={question}
+        disabled={disabled}
         onChange={(event) => setQuestion(event.target.value)}
         placeholder="무엇이 궁금하신가요?"
         rows={1}
@@ -824,7 +919,7 @@ function ChatComposer({
         <button
           type="submit"
           aria-label="질문 보내기"
-          disabled={!isActive}
+          disabled={!isActive || disabled}
           className={cn(
             "flex size-8 items-center justify-center rounded-full p-1.5 shadow-[0_2px_2px_rgba(25,33,61,0.08)]",
             isActive ? "bg-[#ffd60a]" : "bg-[#ffe66c]",

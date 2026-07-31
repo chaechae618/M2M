@@ -11,6 +11,12 @@ class SignupRequest(BaseModel):
     password: str = Field(min_length=8, max_length=72)
     name: str = Field(min_length=2, max_length=50)
     current_status: CurrentStatus = Field(alias="currentStatus")
+    target_roles: list[str] = Field(default_factory=list, alias="targetRoles", max_length=10)
+    interest_domains: list[str] = Field(
+        default_factory=list,
+        alias="interestDomains",
+        max_length=10,
+    )
     terms_consent: bool = Field(alias="termsConsent")
     privacy_consent: bool = Field(alias="privacyConsent")
 

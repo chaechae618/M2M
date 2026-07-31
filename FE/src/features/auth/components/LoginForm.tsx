@@ -2,9 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
 import { Button } from "@/shared/components/Button";
 import { Checkbox } from "@/shared/components/Checkbox";
 import { Input } from "@/shared/components/Input";
+import { apiRequest, jsonRequest } from "@/shared/api/client";
+import type { AuthSession } from "@/shared/api/types";
 import { routes } from "@/shared/constants/routes";
 
 function ProfileIcon() {
@@ -39,8 +43,29 @@ function ProfileIcon() {
 }
 
 export function LoginForm() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+    try {
+      await apiRequest<AuthSession>("auth/login", jsonRequest("POST", { email, password }));
+      router.push(routes.chat);
+      router.refresh();
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : "로그인에 실패했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
-    <form className="w-full max-w-[clamp(440px,23.5vw,480px)]" aria-label="로그인">
+    <form className="w-full max-w-[clamp(440px,23.5vw,480px)]" aria-label="로그인" onSubmit={handleSubmit}>
       <div className="mb-[60px] text-center text-[20px] font-semibold leading-[1.55] text-brand-muted max-sm:mb-10 max-sm:text-[18px]">
         <h1>안녕하세요.</h1>
         <p>고민을 질문으로, 질문을 답변으로 바꿔보세요!</p>
@@ -49,12 +74,16 @@ export function LoginForm() {
       <div className="space-y-7">
         <label className="block">
           <span className="mb-2 block text-[16px] font-medium leading-[1.7] text-[#242424]">
-            이름 또는 이메일
+            이메일
           </span>
           <Input
-            name="identifier"
+            name="email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
             autoComplete="username"
-            placeholder="이름 또는 이메일을 적어주세요."
+            placeholder="이메일을 적어주세요."
             leftIcon={<ProfileIcon />}
           />
         </label>
@@ -72,6 +101,9 @@ export function LoginForm() {
           <Input
             name="password"
             type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            required
             autoComplete="current-password"
             placeholder="비밀번호를 적어주세요."
             leftIconSrc="/figma-assets/lock-icon.svg"
@@ -85,8 +117,9 @@ export function LoginForm() {
       </div>
 
       <div className="mt-7">
-        <Button type="submit" fullWidth className="flex">
-          로그인하기
+        {error ? <p role="alert" className="mb-3 text-[14px] text-red-600">{error}</p> : null}
+        <Button type="submit" fullWidth className="flex" disabled={isSubmitting}>
+          {isSubmitting ? "로그인 중..." : "로그인하기"}
         </Button>
       </div>
 

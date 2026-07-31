@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { QnaAvatar } from "@/features/knowledge-asset/components/QnaAvatar";
 import { ScrapIcon } from "@/features/knowledge-asset/components/QnaIcons";
@@ -38,10 +39,13 @@ export function QnaArticleItem({ article }: { article: QnaArticle }) {
       </Link>
 
       <Link href={`/knowledge/${article.id}`} className="hidden shrink-0 sm:block">
-        <QnaSpriteImage
-          position={article.imagePosition}
-          className="h-[125px] w-[125px] rounded overflow-hidden bg-[#f2f2f2]"
-        />
+        {article.imageUrl ? (
+          <div className="relative h-[125px] w-[125px] overflow-hidden rounded bg-[#f2f2f2]">
+            <Image src={article.imageUrl} alt="" fill sizes="125px" className="object-cover" />
+          </div>
+        ) : (
+          <QnaSpriteImage position={article.imagePosition} className="h-[125px] w-[125px] overflow-hidden rounded bg-[#f2f2f2]" />
+        )}
       </Link>
     </article>
   );

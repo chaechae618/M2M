@@ -54,7 +54,11 @@ def update_profile(
 ) -> SuccessResponse[MenteeProfileResponse]:
     service = MenteeService(db, current_user)
     profile = service.get_profile()
-    for field, value in payload.model_dump(exclude_unset=True).items():
+    updates = payload.model_dump(exclude_unset=True)
+    name = updates.pop("name", None)
+    if name is not None:
+        current_user.name = name.strip()
+    for field, value in updates.items():
         setattr(profile, field, value)
     db.commit()
     db.refresh(profile)
