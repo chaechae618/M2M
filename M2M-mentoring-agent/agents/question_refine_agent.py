@@ -18,6 +18,9 @@ from utils.env import load_project_env
 load_project_env()
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
+# 충분성 체크 등 내부 판단 로그 노출 여부. 기본은 숨김 (.env에 M2M_DEBUG=true 추가하면 노출)
+DEBUG = os.environ.get("M2M_DEBUG", "").strip().lower() == "true"
+
 
 # ─────────────────────────────────────────
 # 유틸리티
@@ -643,19 +646,20 @@ class QuestionRefineAgent:
 
         sufficient = mandatory_ok and count_ok and quality_ok
 
-        # ── 디버그 로그 ──
-        print(f"  충분성 체크 | 통과 {len(passed)}/5 | 필수항목 {'OK' if mandatory_ok else 'NG'} "
-              f"| 질문품질 {'OK' if quality_ok else 'NG'} | 성숙도 {maturity} | {'충분' if sufficient else '부족'}")
-        for field, val in fields.items():
-            mark = "✓" if scores.get(field, 0) >= self.FIELD_THRESHOLD else "✗"
-            print(f"    {mark} {field}: {scores.get(field, 0):.1f} — {val.get('evidence', '')}")
-        print(f"    질문품질 specificity={clamp01(qq.get('specificity',0)):.1f} "
-              f"answerability={clamp01(qq.get('mentor_answerability',0)):.1f} "
-              f"priority={clamp01(qq.get('priority_clarity',0)):.1f}")
-        if not sufficient:
-            nq = result.get("next_best_question", "")
-            if nq:
-                print(f"    → 다음 질문 제안: {nq}")
+        # ── 디버그 로그 (기본 숨김, .env에 M2M_DEBUG=true 설정 시 노출) ──
+        if DEBUG:
+            print(f"  충분성 체크 | 통과 {len(passed)}/5 | 필수항목 {'OK' if mandatory_ok else 'NG'} "
+                  f"| 질문품질 {'OK' if quality_ok else 'NG'} | 성숙도 {maturity} | {'충분' if sufficient else '부족'}")
+            for field, val in fields.items():
+                mark = "✓" if scores.get(field, 0) >= self.FIELD_THRESHOLD else "✗"
+                print(f"    {mark} {field}: {scores.get(field, 0):.1f} — {val.get('evidence', '')}")
+            print(f"    질문품질 specificity={clamp01(qq.get('specificity',0)):.1f} "
+                  f"answerability={clamp01(qq.get('mentor_answerability',0)):.1f} "
+                  f"priority={clamp01(qq.get('priority_clarity',0)):.1f}")
+            if not sufficient:
+                nq = result.get("next_best_question", "")
+                if nq:
+                    print(f"    → 다음 질문 제안: {nq}")
 
         return sufficient, next_action
 
@@ -695,9 +699,10 @@ class QuestionRefineAgent:
             passed = check.get("pass", True)
             fix    = check.get("fix_instructions", "")
             fail_n = check.get("fail_count", 0)
-            print(f"  self-refine 체크 | {'통과' if passed else f'실패 {fail_n}항목'}")
-            if not passed:
-                print(f"    수정 지시: {fix[:80]}...")
+            if DEBUG:
+                print(f"  self-refine 체크 | {'통과' if passed else f'실패 {fail_n}항목'}")
+                if not passed:
+                    print(f"    수정 지시: {fix[:80]}...")
             return passed, fix
         except Exception as e:
             print(f"  self-refine 체크 실패: {e} → 통과로 처리")
