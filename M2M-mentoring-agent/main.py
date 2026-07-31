@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 from agents.question_refine_agent import QuestionRefineAgent
 from agents.search_verify_agent import SearchVerifyAgent
 from agents.mentor_match_agent import MentorMatchAgent
+from agents.mentor_persona_agent import MentorPersonaAgent
 from agents.assetize import AssetizeAgent, update_satisfaction
 from db.json_db import (
     get_mentee, update_mentee_persistent_bottleneck,
@@ -309,7 +310,7 @@ def run_mentee_flow(mentee_id: str | None = None) -> None:
     print_divider("STEP 1 | 질문 정제 에이전트")
 
     agent = QuestionRefineAgent(mentee_id=mentee_id)
-    intro = "안녕! 나는 맸투맸 진로 상담 에이전트야. 어떤 진로 고민이 있는지 편하게 얘기해줘"
+    intro = "안녕! 나는 맨투맨 진로 상담 에이전트야. 어떤 진로 고민이 있는지 편하게 얘기해줘"
     print(f"\n에이전트: {intro}\n")
 
     while True:
@@ -417,25 +418,43 @@ def run_mentee_flow(mentee_id: str | None = None) -> None:
             print(f"\n✓ {selected.get('mentor_info', {}).get('name', '')} 멘토에게 정제된 질문을 전달했어!")
             print(f"질문: {ctx['refined_question']}")
 
-        print_divider("STEP 4 | 멘토 답변 자산화 (시뮬레이션)")
-        print("멘토 답변을 입력해줘 (실제 서비스에서는 멘토 앱에서 입력됨)")
-        print("(건너뛰려면 엔터)\n")
-        answer_content = input("멘토 답변: ").strip()
+        print_divider("STEP 4 | 멘토 페르소나 답변 생성")
+
+        selected_item = (
+            match_result["top3"][0]
+            if choice not in ("1", "2", "3")
+            else match_result["top3"][int(choice) - 1]
+        )
+        mentor_id   = selected_item["mentor_id"]
+        mentor_name = selected_item.get("mentor_info", {}).get("name", "멘토")
+
+        print(f"'{mentor_name}' 멘토 페르소나가 답변을 생성하는 중이야...\n")
+
+        persona_result = MentorPersonaAgent().run(
+            mentor_id=             mentor_id,
+            refined_question=      ctx["refined_question"],
+            context=                ctx["safe_context"],
+            current_bottleneck=    ctx["current_bottleneck"],
+            expected_answer_type=  ctx["expected_answer_type"],
+            bridge_hypothesis=     ctx["bridge_hypothesis"],
+            transferable_skills=   ctx["transferable_skills"],
+            question_units=        ctx["question_units"],
+            recommendation_reason= selected_item.get("recommendation_reason", ""),
+        )
+
+        if persona_result is None:
+            print("  페르소나 답변 생성에 실패했어. 대신 직접 답변을 입력해줘 (건너뛰려면 엔터).\n")
+            answer_content = input("멘토 답변: ").strip()
+            answer_summary = (input("답변 요약 (한 줄): ").strip() or answer_content[:100]) if answer_content else ""
+        else:
+            answer_content = persona_result["answer_content"]
+            answer_summary = persona_result["answer_summarize"]
+            print(f"[{mentor_name}]\n{answer_content}\n")
+
         if answer_content:
-            answer_summary    = input("답변 요약 (한 줄): ").strip() or answer_content[:100]
-            domain_tags_input = input("도메인 태그 (쉼표 구분, 예: 데이터분석,비전공전환): ").strip()
-            domain_tags = [t.strip() for t in domain_tags_input.split(",") if t.strip()]
-
-            print("\n이 답변이 유사한 고민을 가진 다른 학생들에게 익명으로 참고자료로 활용될 수 있습니다.")
-            mentor_consent = (input("멘토 동의 여부 (y/n): ").strip().lower() == "y")
-            print("이 상담 내용이 다른 학생들을 위해 익명으로 활용될 수 있습니다.")
+            print("이 답변이 유사한 고민을 가진 다른 학생들에게 익명으로 참고자료로 활용될 수 있습니다.")
             mentee_consent = (input("멘티 동의 여부 (y/n): ").strip().lower() == "y")
-
-            mentor_id = (
-                match_result["top3"][0]["mentor_id"]
-                if choice not in ("1", "2", "3")
-                else match_result["top3"][int(choice) - 1]["mentor_id"]
-            )
+            mentor_consent = True  # 페르소나 멘토는 동의 절차가 필요 없어 자동 처리
 
             result_record = AssetizeAgent().run(
                 session_id=           ctx["session_id"],
@@ -443,7 +462,7 @@ def run_mentee_flow(mentee_id: str | None = None) -> None:
                 question_content=     ctx["refined_question"],
                 answer_content=       answer_content,
                 answer_summarize=     answer_summary,
-                domain_tags=          domain_tags,
+                domain_tags=          [],
                 mentor_consent=       mentor_consent,
                 mentee_consent=       mentee_consent,
                 satisfaction_score=   None,
@@ -477,7 +496,7 @@ def run_setup() -> None:
 def main() -> None:
     run_setup()
     print("=" * 50)
-    print("  맸투맸(M2M) - AI 진로 멘토링 서비스")
+    print("  맨투맨(M2M) - AI 진로 멘토링 서비스")
     print("=" * 50)
     print("\n메뉴:")
     print("  1. 진로 상담 시작 (멘티 플로우)")
