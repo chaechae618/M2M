@@ -26,7 +26,6 @@ type ChatMessage = {
 };
 
 const assets = {
-  arrowLeft: "/figma-assets/chat/arrow-left.svg",
   avatar: "/figma-assets/chat/avatar-person.svg",
   backgroundBottom: "/figma-assets/chat/bg-ellipse-744.svg",
   backgroundCenter: "/figma-assets/chat/bg-ellipse-743.svg",
@@ -281,7 +280,7 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
         ) : (
           <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-end">
             <div className="flex min-h-0 w-full flex-1 flex-col gap-7 py-5">
-              <ChatTitleBar onBack={() => setMessages(initialMessages)} />
+              <ChatTitleBar />
 
               <div ref={messageScrollRef} className="min-h-0 flex-1 overflow-y-auto">
                 <MessageList
@@ -396,13 +395,11 @@ function refinedQuestionText() {
   return "개인 인스타그램에서 자취 생활 팁 콘텐츠를 3개월간 운영했고, 릴스 12개와 카드뉴스 8개를 제작했습니다. 팔로워는 180명 정도지만 일부 릴스가 조회수 4,800회를 기록했습니다. 마케팅 포트폴리오에서 이 경험을 어떻게 구조화하고, 낮은 팔로워 수보다 콘텐츠 실험과 성과 분석을 설득력 있게 보여주려면 어떤 점을 강조해야 할까요?";
 }
 
-function ChatTitleBar({ onBack }: { onBack: () => void }) {
+function ChatTitleBar() {
   return (
-    <header className="flex h-8 w-full shrink-0 items-center gap-2">
-      <button type="button" aria-label="뒤로가기" onClick={onBack} className="relative flex size-5 items-center justify-center">
-        <Image src={assets.arrowLeft} alt="" width={8} height={15} draggable={false} />
-      </button>
-      <h1 className="min-w-0 flex-1 text-center text-[17px] font-semibold leading-[1.55]">비전공자 PM 준비</h1>
+    <header className="grid h-8 w-full shrink-0 grid-cols-[20px_minmax(0,1fr)_20px] items-center">
+      <span aria-hidden="true" />
+      <h1 className="min-w-0 text-center text-[17px] font-semibold leading-[1.55]">비전공자 PM 준비</h1>
       <button type="button" aria-label="더보기" className="flex size-5 items-center justify-center gap-[3px]">
         <Image src={assets.moreDot} alt="" width={20} height={20} draggable={false} />
       </button>
