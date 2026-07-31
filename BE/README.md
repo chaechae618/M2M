@@ -22,7 +22,6 @@ M2M API 명세서 v1.1의 멘티 전용 로그인·AI 멘토 페르소나 구조
 Python 3.11 이상이 필요하다.
 
 ```powershell
-cd "D:\ai rookie\M2M\BE"
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
