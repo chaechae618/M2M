@@ -26,7 +26,9 @@ class MenteeProfile(TimestampMixin, Base):
     target_roles: Mapped[list] = mapped_column(JSON, default=list, nullable=False)
     interest_domains: Mapped[list] = mapped_column(JSON, default=list, nullable=False)
     resume_url: Mapped[str | None] = mapped_column(String(1000))
+    resume_file_name: Mapped[str | None] = mapped_column(String(255))
     portfolio_url: Mapped[str | None] = mapped_column(String(1000))
+    portfolio_file_name: Mapped[str | None] = mapped_column(String(255))
 
     user: Mapped["User"] = relationship(back_populates="profile")  # noqa: F821
 

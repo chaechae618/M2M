@@ -91,6 +91,10 @@ def test_resume_upload_validation() -> None:
         )
         assert response.status_code == 200
         assert response.json()["data"]["fileType"] == "resume"
+        assert response.json()["data"]["fileName"] == "resume.pdf"
+
+        profile_response = client.get("/api/v1/mentees/me", headers=headers)
+        assert profile_response.json()["data"]["resumeFileName"] == "resume.pdf"
 
         invalid_response = client.post(
             "/api/v1/mentees/me/resume",
@@ -120,6 +124,10 @@ def test_portfolio_accepts_pdf_and_pptx_only() -> None:
             )
             assert response.status_code == 200
             assert response.json()["data"]["fileType"] == "portfolio"
+            assert response.json()["data"]["fileName"] == file_name
+
+            profile_response = client.get("/api/v1/mentees/me", headers=headers)
+            assert profile_response.json()["data"]["portfolioFileName"] == file_name
 
         invalid_response = client.post(
             "/api/v1/mentees/me/portfolio",

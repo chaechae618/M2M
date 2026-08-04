@@ -24,7 +24,9 @@ class MenteeProfileResponse(BaseModel):
     target_roles: list[str] = Field(alias="targetRoles")
     interest_domains: list[str] = Field(alias="interestDomains")
     resume_url: str | None = Field(alias="resumeUrl")
+    resume_file_name: str | None = Field(alias="resumeFileName")
     portfolio_url: str | None = Field(alias="portfolioUrl")
+    portfolio_file_name: str | None = Field(alias="portfolioFileName")
     updated_at: datetime = Field(alias="updatedAt")
 
     model_config = {"populate_by_name": True, "from_attributes": True}

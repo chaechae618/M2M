@@ -32,7 +32,9 @@ def to_profile_response(user: object, profile: object) -> MenteeProfileResponse:
         targetRoles=profile.target_roles,
         interestDomains=profile.interest_domains,
         resumeUrl=profile.resume_url,
+        resumeFileName=profile.resume_file_name,
         portfolioUrl=profile.portfolio_url,
+        portfolioFileName=profile.portfolio_file_name,
         updatedAt=profile.updated_at,
     )
 
@@ -113,6 +115,7 @@ async def upload_resume(
     )
     profile = MenteeService(db, current_user).get_profile()
     profile.resume_url = result.url
+    profile.resume_file_name = result.file_name
     db.commit()
     return SuccessResponse(data=result)
 
@@ -132,6 +135,7 @@ async def upload_portfolio(
     )
     profile = MenteeService(db, current_user).get_profile()
     profile.portfolio_url = result.url
+    profile.portfolio_file_name = result.file_name
     db.commit()
     return SuccessResponse(data=result)
 
