@@ -20,6 +20,7 @@ from app.models.consultation import (
 from app.models.enums import AnswerRoute, AnswerType, ConsultationStatus, JobStatus
 from app.models.job import AsyncJob
 from app.models.persona import MentorPersona
+from app.models.qna import QnaPost
 from app.services.mentoring_agent_adapter import build_agent_adapter
 
 RETRYABLE_JOB_TYPES = {
@@ -265,6 +266,8 @@ class AgentPipeline:
                     question_units=context_data.get("question_units", []),
                 )
                 self._mirror_asset_result(db, session, answer, result)
+                if result.get("is_assetized"):
+                    self._create_qna_post(db, session, result)
                 session.status = (
                     ConsultationStatus.ASSETIZED
                     if result.get("is_assetized")
@@ -427,6 +430,23 @@ class AgentPipeline:
             else:
                 embedding.vector = vector
                 embedding.model = "text-embedding-3-small"
+
+    @staticmethod
+    def _create_qna_post(db: Session, session: ConsultationSession, result: dict) -> None:
+        """동의 후 자산화에 성공한 답변을 Q&A 게시판에도 익명으로 게재한다."""
+        domain_tags = result.get("domain_tags") or []
+        category = str(domain_tags[0]) if domain_tags else "진로상담"
+        question = result.get("question_content") or session.title
+        answer_content = result.get("answer_content", "")
+        db.add(
+            QnaPost(
+                author_id=session.mentee_id,
+                category=category[:50],
+                title=question[:120],
+                content=f"Q. {question}\n\nA. {answer_content}",
+                anonymous=True,
+            )
+        )
 
     @staticmethod
     def _fail_job(

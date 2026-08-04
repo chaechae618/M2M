@@ -77,14 +77,16 @@ UI에서 "멘토 답변 대기"에 해당하는 상태는 `PERSONA_ANSWER_GENERA
 
 ## 현재 상태 (2026-08 기준)
 
-- **FE는 BE와 전혀 연결되어 있지 않다.** `FE/src`에 `fetch` 호출이 0건이고 API 클라이언트 레이어가 없다. 모든 화면이 하드코딩 데이터 또는 플레이스홀더다.
-- 미구현 BE 엔드포인트: 비밀번호 찾기·재설정, Q&A 스크랩, 이름 변경(`MenteeProfileUpdateRequest`에 `name` 없음), 업로드 파일 삭제.
+- **FE는 BE에 대부분 연결되어 있다.** `FE/src/shared/api/client.ts`의 `apiRequest()`가 `FE/src/app/api/backend/[...path]/route.ts`(BFF 프록시, 쿠키에 JWT 보관)를 통해 실제 FastAPI를 호출한다. 로그인/회원가입, 상담 챗 전체 플로우, Q&A 게시판, 마이페이지, 사이드바(사용자 이름·최근 대화)까지 연결 완료.
+- 아직 연결 안 된 화면: `mentors`/`mentors/[mentorId]`(멘토 카탈로그·상세), `answers/[answerId]`(답변 단건 조회), `forgot-password`(비밀번호 재설정), Q&A 스크랩, 프로필 이미지 업로드 — **전부 BE에 해당 엔드포인트 자체가 없어서** 못 붙인 것이지 FE가 안 붙인 게 아니다.
+- 미구현 BE 엔드포인트: 비밀번호 찾기·재설정, Q&A 스크랩, 이름 변경(`MenteeProfileUpdateRequest`에 `name` 없음), 업로드 파일 삭제, 멘토 카탈로그/상세 조회, 답변 단건 조회.
 - 페르소나 멘토는 세션 단위 Top-3 추천(`/consultations/{id}/persona-recommendations`)만 있다. 사용자가 전체 목록을 둘러보고 직접 검색·선택하는 카탈로그 엔드포인트는 없다.
 
 ## 함정
 
 - `data_db/`는 사용하지 않는 초기 잔재다. 실제 데이터는 `M2M-mentoring-agent/json_db/`에 있다.
-- `json_db/mentor_answers.json`은 9.5MB(임베딩 포함)다. 통째로 읽지 말고 스크립트로 처리할 것.
+- `json_db/mentor_answers.json`은 9.5MB(임베딩 포함)다. 통째로 읽지 말고 스크립트로 처리할 것. Agent 2가 검색하는 실제 자산 DB이며 **180건**: 원본 잇다 Q&A 140건(`itda_1`~`itda_140`, 2026-07-13) + IT개발 도메인 보강 40건(`itda_141`~`itda_180`, `domain_tags: "it개발-추가본"`, 2026-07-25 추가). 파일 상단 `description`/`version`(`itda_140_v1`) 메타는 40건 추가 후 갱신 안 돼서 여전히 140건 기준으로 적혀있다 — 믿지 말 것. `M2M-mentoring-agent/README.md`의 "50건"도 마찬가지로 오래된 값.
+- Agent 2 검색 임계값(`SIM_THRESHOLD`, `agents/search_verify_agent.py:452`)은 0.55로 꽤 엄격하다. 180건이 있어도 domain_tags에 없는 니치한 도메인 질문(예: 공공사업개발, 사회학 계열)은 유사도가 안 나와서 `no_similar_answers`로 정상적으로 멘토 매칭행 처리된다 — 데이터 부족 버그가 아님.
 - `BE/README.md`의 실행 경로(`D:\ai rookie\...`)는 오래된 값이다.
 - BE README가 참조하는 `../docs/` API 명세서는 레포에 없다. 명세가 필요하면 사용자에게 요청할 것.
 - 루트의 `제목 없음 *.csv`는 `example_data.csv`의 사본으로 보인다.

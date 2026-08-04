@@ -194,6 +194,1460 @@
       },
       "created_at": "2026-06-23 16:10",
       "closed_at": "2026-06-23 16:11"
+    },
+    {
+      "session_id": "ses_eca517b7ac92",
+      "mentee_id": "usr_e0de24de-b311-48dc-be71-6d3c8eefc0ca",
+      "mentor_id": "mr_f06f50e26ffb",
+      "answer_id": null,
+      "refined_question": "사회학과 재학 중 통계학 복수전공자로서, 인과추론 분야를 제대로 공부하려면 대학원 진학과 기업 현직 경험 중 어떤 경로가 더 효과적일까요? 각 선택지의 장단점과 준비 방법에 대해 조언을 듣고 싶습니다.",
+      "conversation_summary": "고려대 사회학과 재학 중이며 통계학을 복수전공하고 있습니다. 비전공자로서 인과추론 관련 연구를 하는 국책 연구기관 입사를 목표로 하고 있습니다. 인과추론 분야가 학사 수준에서 다루기 어렵다는 점 때문에 대학원 진학과 기업 현직 경험 중 어느 경로가 더 적합한지 고민하고 있습니다.",
+      "safe_context": "사회학과 재학 중 통계학 복수전공이며, 인과추론 연구 분야 국책 연구기관 입사를 목표로 하는 비전공자입니다. 대학원 진학과 기업 현직 경험 중 어느 경로가 더 적합한지 고민 중입니다.",
+      "search_query": "인과추론, 대학원 진학, 기업 현직 경험, 국책 연구기관, 비전공자, 연구 역량, 진로 선택",
+      "match_query": "사회학과 재학생으로 통계학 복수전공 중이며, 인과추론 연구 분야 국책 연구기관 입사를 준비하는 비전공자입니다. 대학원 진학과 기업 현직 경험 중 어떤 경로가 더 효과적인지, 각 경로의 장단점과 준비 방법에 대해 조언을 구합니다.",
+      "current_bottleneck": "진로 적합성 판단 — 인과추론 분야 학사 수준 한계로 인해 대학원 진학과 현직 경험 중 어떤 경로가 더 효과적인지 결정하지 못함",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "진로탐색",
+          "question": "인과추론 분야를 제대로 공부하려면 대학원 진학과 기업 현직 경험 중 어떤 경로가 더 효과적인가요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        },
+        {
+          "rank": 2,
+          "type": "진로탐색",
+          "question": "각 경로의 장단점과 준비 방법은 무엇인가요?",
+          "priority": "secondary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "사회과학 연구",
+          "인과추론",
+          "국책 연구기관"
+        ],
+        "question_type_tags": [
+          "진로탐색",
+          "스킬준비",
+          "커리어로드맵"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ],
+        "constraint_tags": [
+          "비전공"
+        ],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "인과추론 연구원",
+        "interest_domain": [
+          "사회과학 연구",
+          "통계학",
+          "인과추론"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "진로 적합성, 스킬 준비, 커리어 로드맵",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "constraints": [
+          "비전공"
+        ],
+        "personal_context_strength": "strong",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "인과추론 연구원",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "answer_status": "mentor_matched",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_eca517b7ac92",
+        "timestamp": "2026-08-04T13:51:26.320751",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "인과추론 연구원",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "진로탐색",
+            "question": "인과추론 분야를 제대로 공부하려면 대학원 진학과 기업 현직 경험 중 어떤 경로가 더 효과적인가요?",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          },
+          {
+            "rank": 2,
+            "type": "진로탐색",
+            "question": "각 경로의 장단점과 준비 방법은 무엇인가요?",
+            "priority": "secondary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "fallback_type": "no_similar_answers",
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 13:51",
+      "closed_at": null
+    },
+    {
+      "session_id": "ses_4d43f3e2dbcc",
+      "mentee_id": "usr_e0de24de-b311-48dc-be71-6d3c8eefc0ca",
+      "mentor_id": "mr_dcdff7ecbc6f",
+      "answer_id": null,
+      "refined_question": "고려대 사회학과 3학년이며 통계학 복수전공 중인 예비 졸업생으로서, AI 시대에 사회학과 통계학을 활용하는 공공사업개발 직무에 신입으로 진입하려면 어떻게 준비하는 것이 좋을까요? 특히 신입 채용 현황과 본인이 해당 직무에 적합한지 판단하는 기준에 대해 알고 싶습니다.",
+      "conversation_summary": "고려대 사회학과 3학년이며 통계학을 복수전공 중인 멘티는 AI 시대에 사회학과 통계학을 모두 활용할 수 있는 공공사업개발 직무에 관심이 많습니다. 데이터 분석을 통한 정책 제안, 프로젝트 기획, 공공기관과 협업 등 다양한 역할을 경험해보고 싶어 하며, 데이터사이언스/AI 학회에서 머신러닝과 AI 에이전트 프로젝트 경험이 있습니다. 서울 지역에서 활동을 희망하고 경제적 부담은 크지 않습니다.",
+      "safe_context": "대학 3학년 사회학과 학생이며 통계학 복수전공 중, 데이터사이언스/AI 학회 활동 경험 보유, 서울 지역 활동 희망, 경제적 부담 없음.",
+      "search_query": "공공사업개발 직무 진입 방법, 신입 채용 현황, 사회학과 통계학 활용, 데이터 분석 기반 정책 제안, 프로젝트 기획, 공공기관 협업",
+      "match_query": "고려대 사회학과 3학년이며 통계학 복수전공 중인 학생으로, 데이터사이언스/AI 학회에서 머신러닝과 AI 프로젝트 경험이 있음. AI 시대에 사회학과 통계학을 활용하는 공공사업개발 직무에 신입으로 진입하는 방법과 적합성 판단 기준에 대해 조언을 구함.",
+      "current_bottleneck": "가능성_불확실 — 공공사업개발 직무 신입 채용 현황과 본인의 적합성에 대한 확신 부족",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "직무이해",
+          "question": "공공사업개발 직무에 신입으로 진입하려면 어떻게 준비하는 것이 좋을까요? 신입 채용이 이루어지는지와 본인이 해당 직무에 적합한지 판단하는 기준이 궁금합니다.",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "공공사업개발",
+          "데이터 분석",
+          "정책 제안"
+        ],
+        "question_type_tags": [
+          "진로탐색",
+          "직무이해",
+          "스킬준비"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ],
+        "constraint_tags": [
+          "지역_서울",
+          "경제적부담_없음"
+        ],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "공공사업개발",
+        "interest_domain": [
+          "공공사업개발",
+          "데이터 분석",
+          "정책 제안"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "직무 이해 및 진입 방법",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 프로젝트 경험",
+          "통계학 지식",
+          "사회학 도메인 지식"
+        ],
+        "target_domain_candidates": [],
+        "constraints": [
+          "서울 지역 활동 희망",
+          "경제적 부담 없음"
+        ],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [
+          "success_probability_asked"
+        ],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [
+          "success_probability_asked"
+        ],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "공공사업개발",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 프로젝트 경험",
+          "통계학 지식",
+          "사회학 도메인 지식"
+        ],
+        "target_domain_candidates": []
+      },
+      "answer_status": "mentor_matched",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_4d43f3e2dbcc",
+        "timestamp": "2026-08-04T14:06:17.314037",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "success_probability_asked"
+          ],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "공공사업개발",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [
+            "머신러닝 프로젝트 경험",
+            "AI 에이전트 프로젝트 경험",
+            "통계학 지식",
+            "사회학 도메인 지식"
+          ],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "직무이해",
+            "question": "공공사업개발 직무에 신입으로 진입하려면 어떻게 준비하는 것이 좋을까요? 신입 채용이 이루어지는지와 본인이 해당 직무에 적합한지 판단하는 기준이 궁금합니다.",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 프로젝트 경험",
+          "통계학 지식",
+          "사회학 도메인 지식"
+        ],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "fallback_type": "no_similar_answers",
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 14:05",
+      "closed_at": null
+    },
+    {
+      "session_id": "ses_f91fb107532f",
+      "mentee_id": "usr_e0de24de-b311-48dc-be71-6d3c8eefc0ca",
+      "mentor_id": "mr_e4fca6ed250a",
+      "answer_id": null,
+      "refined_question": "사회학 전공에 통계학 이중전공 중인 3학년 휴학생으로서, 공공사업개발 직무가 신입 채용을 하는지 궁금합니다. 또한, 이 직무나 유사 분야로 가기 위해 어떤 준비를 우선적으로 해야 할지 구체적인 조언을 부탁드립니다.",
+      "conversation_summary": "사회학과 통계학을 전공하며 데이터사이언스/AI 동아리에서 머신러닝과 AI 에이전트 프로젝트를 진행한 3학년 휴학생입니다. 공공사업개발 직무에 관심이 있으며, 신입 채용 여부와 준비 방법에 대해 멘토의 조언을 구하고자 합니다.",
+      "safe_context": "사회학 전공, 통계학 이중전공 중인 3학년 휴학생이며, 데이터사이언스/AI 동아리에서 머신러닝과 AI 프로젝트를 수행한 경험이 있음. 공공사업개발 직무에 관심을 가지고 있음.",
+      "search_query": "공공사업개발 신입 채용, 준비 방법, 사회학 통계학 배경, 데이터사이언스 AI 경험",
+      "match_query": "사회학 전공과 통계학 이중전공 중인 3학년 휴학생으로, 데이터사이언스/AI 동아리에서 머신러닝과 AI 프로젝트 경험이 있습니다. 공공사업개발 직무에 관심이 있으며, 신입 채용 가능성과 준비 방법에 대해 구체적인 조언을 원합니다.",
+      "current_bottleneck": "가능성_불확실 — 공공사업개발 직무의 신입 채용 여부와 구체적인 준비 방법에 대한 정보 부족",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "직무이해",
+          "question": "공공사업개발 직무가 신입을 뽑는지 궁금합니다.",
+          "priority": "primary",
+          "answerability": "searchable",
+          "recency_sensitive": false
+        },
+        {
+          "rank": 2,
+          "type": "스킬준비",
+          "question": "이 직무나 비슷한 직무로 가기 위해 어떤 준비를 해야 하는지 구체적인 조언을 듣고 싶습니다.",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "공공사업개발",
+          "정책",
+          "사회문제 해결",
+          "통계학",
+          "데이터사이언스"
+        ],
+        "question_type_tags": [
+          "직무이해",
+          "스킬준비"
+        ],
+        "career_stage_tags": [
+          "대학생",
+          "휴학생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "공공사업개발",
+        "interest_domain": [
+          "정책",
+          "공공기관",
+          "사회문제 해결"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "스킬 준비, 직무 이해",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학",
+          "머신러닝",
+          "AI 프로젝트 경험"
+        ],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [
+          "success_probability_asked"
+        ],
+        "recency_sensitive": false,
+        "question_structure": "multi_part_same_goal",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [
+          "success_probability_asked"
+        ],
+        "question_structure": "multi_part_same_goal",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "공공사업개발",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학",
+          "머신러닝",
+          "AI 프로젝트 경험"
+        ],
+        "target_domain_candidates": []
+      },
+      "answer_status": "mentor_matched",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_f91fb107532f",
+        "timestamp": "2026-08-04T14:14:53.805495",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [
+            "success_probability_asked"
+          ],
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "공공사업개발",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [
+            "통계학",
+            "머신러닝",
+            "AI 프로젝트 경험"
+          ],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": true,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "직무이해",
+            "question": "공공사업개발 직무가 신입을 뽑는지 궁금합니다.",
+            "priority": "primary",
+            "answerability": "searchable",
+            "recency_sensitive": false
+          },
+          {
+            "rank": 2,
+            "type": "스킬준비",
+            "question": "이 직무나 비슷한 직무로 가기 위해 어떤 준비를 해야 하는지 구체적인 조언을 듣고 싶습니다.",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.05,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학",
+          "머신러닝",
+          "AI 프로젝트 경험"
+        ],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "fallback_type": "no_similar_answers",
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 14:14",
+      "closed_at": null
+    },
+    {
+      "session_id": "ses_7552c0f24776",
+      "mentee_id": "usr_e0de24de-b311-48dc-be71-6d3c8eefc0ca",
+      "mentor_id": "mr_70fc09ae56a9",
+      "answer_id": "ans_c0ffe782114c",
+      "refined_question": "사회학과 통계학 복수전공자로서 공공기관이나 공공사업개발 직무에 취업하려면, 데이터사이언스와 AI 학회에서 수행한 머신러닝 및 AI 에이전트 프로젝트 경험을 어떻게 활용해 준비하면 좋을까요? 구체적인 취업 준비 방법과 전략을 알고 싶습니다.",
+      "conversation_summary": "사용자는 사회학과와 통계학을 복수전공 중이며, 사회학을 도메인으로 삼아 통계학과 컴퓨터 사이언스를 활용하고자 합니다. 관심 직무는 공공기관 및 공공사업개발 분야이며, 데이터사이언스/AI 학회에서 머신러닝과 AI 에이전트 프로젝트 경험이 있습니다. 이 직무 관련 취업 준비 방법에 대해 구체적으로 알고 싶어 합니다.",
+      "safe_context": "사회학과 통계학 복수전공 대학생이 공공기관 및 공공사업개발 직무 취업 준비 관련 질문을 했으며, 데이터사이언스/AI 학회에서 머신러닝과 AI 프로젝트 경험이 있음.",
+      "search_query": "공공기관 공공사업개발 직무 취업 준비 방법, 데이터사이언스 AI 프로젝트 경험 활용, 사회학 통계학 복수전공",
+      "match_query": "사회학과 통계학 복수전공 대학생으로, 공공기관 및 공공사업개발 직무에 관심이 있습니다. 데이터사이언스와 AI 학회에서 머신러닝과 AI 에이전트 프로젝트 경험이 있으며, 이를 바탕으로 취업 준비 방법에 대해 구체적인 조언을 원합니다.",
+      "current_bottleneck": "실행순서_불명확 — 데이터사이언스 및 AI 프로젝트 경험을 공공기관 공공사업개발 직무 취업 준비에 어떻게 구체적으로 연결하고 준비해야 할지 우선순위와 방법이 불명확함",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "스킬준비",
+          "question": "사회학과 통계학 복수전공자로서 공공기관 공공사업개발 직무에 취업하려면, 데이터사이언스와 AI 학회에서 수행한 머신러닝 및 AI 에이전트 프로젝트 경험을 어떻게 활용해 준비하면 좋을까요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "공공기관",
+          "공공사업개발",
+          "데이터사이언스",
+          "AI"
+        ],
+        "question_type_tags": [
+          "스킬준비",
+          "진로탐색",
+          "직무이해"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "공공기관 공공사업개발",
+        "interest_domain": [
+          "공공기관",
+          "데이터사이언스",
+          "AI"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "스킬 준비",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 프로젝트 경험",
+          "통계학 및 컴퓨터 사이언스 지식"
+        ],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "공공기관 공공사업개발",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 프로젝트 경험",
+          "통계학 및 컴퓨터 사이언스 지식"
+        ],
+        "target_domain_candidates": []
+      },
+      "answer_status": "closed",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_7552c0f24776",
+        "timestamp": "2026-08-04T15:09:57.168430",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "공공기관 공공사업개발",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [
+            "머신러닝 프로젝트 경험",
+            "AI 에이전트 프로젝트 경험",
+            "통계학 및 컴퓨터 사이언스 지식"
+          ],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "스킬준비",
+            "question": "사회학과 통계학 복수전공자로서 공공기관 공공사업개발 직무에 취업하려면, 데이터사이언스와 AI 학회에서 수행한 머신러닝 및 AI 에이전트 프로젝트 경험을 어떻게 활용해 준비하면 좋을까요?",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 프로젝트 경험",
+          "통계학 및 컴퓨터 사이언스 지식"
+        ],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "fallback_type": "no_similar_answers",
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 15:09",
+      "closed_at": "2026-08-04 15:20"
+    },
+    {
+      "session_id": "ses_a3c4af0d6687",
+      "mentee_id": "usr_6fb9b1a1-70bc-4017-a623-90955569f07b",
+      "mentor_id": "mr_396bc2f17c9e",
+      "answer_id": "ans_340a41df0e41",
+      "refined_question": "경영학과 졸업생으로서 마케팅 직무에 관심이 있는데, 공모전 수상 경험 외에 데이터 분석 역량을 융합한 마케팅 직무 준비는 어떻게 하면 좋을까요? 구체적으로 어떤 스킬과 경험을 쌓아야 하는지 알고 싶습니다.",
+      "conversation_summary": "인서울 4년제 경영학과 졸업생이며, 마케팅 동아리에서 공모전 2회 수상 경험이 있습니다. 마케팅 직무를 구체적으로 준비하는 방법이 궁금하며, 특히 데이터 분석과 융합한 마케팅 역량 개발에 대해 알고 싶어 합니다.",
+      "safe_context": "인서울 4년제 경영학과 졸업생이며, 마케팅 동아리에서 공모전 2회 수상 경험이 있음. 마케팅 직무 준비와 데이터 분석 융합에 관심 있음.",
+      "search_query": "마케팅 직무 준비, 데이터 분석 융합, 경영학과 졸업생, 공모전 경험, 스킬과 실무 경험",
+      "match_query": "경영학과 졸업생으로 마케팅 직무에 관심이 있으며, 마케팅 동아리 공모전 수상 경험이 있습니다. 데이터 분석과 결합한 마케팅 직무 준비 방법과 필요한 스킬, 경험에 대해 구체적인 조언을 원합니다. 직무 준비 로드맵과 실무 역량 개발에 도움을 요청합니다.",
+      "current_bottleneck": "실행순서_불명확 — 공모전 수상 경험은 있으나 데이터 분석 역량을 포함한 구체적 마케팅 직무 준비 방법과 우선순위가 불명확함",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "스킬준비",
+          "question": "경영학과 졸업생이 공모전 수상 경험 외에 데이터 분석 역량을 융합한 마케팅 직무 준비는 어떻게 하면 좋을까요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        },
+        {
+          "rank": 2,
+          "type": "직무이해",
+          "question": "마케팅 직무에서 어떤 스킬과 경험을 쌓아야 하는지 구체적으로 알고 싶습니다.",
+          "priority": "secondary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "마케팅"
+        ],
+        "question_type_tags": [
+          "스킬준비",
+          "직무이해"
+        ],
+        "career_stage_tags": [
+          "졸업생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "마케팅",
+        "interest_domain": [
+          "마케팅",
+          "데이터 분석 융합"
+        ],
+        "career_stage": "미상",
+        "desired_help": "스킬 준비, 직무 이해",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.8,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "마케팅",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "answer_status": "closed",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_a3c4af0d6687",
+        "timestamp": "2026-08-04T15:32:04.269870",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "마케팅",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "스킬준비",
+            "question": "경영학과 졸업생이 공모전 수상 경험 외에 데이터 분석 역량을 융합한 마케팅 직무 준비는 어떻게 하면 좋을까요?",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          },
+          {
+            "rank": 2,
+            "type": "직무이해",
+            "question": "마케팅 직무에서 어떤 스킬과 경험을 쌓아야 하는지 구체적으로 알고 싶습니다.",
+            "priority": "secondary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": "답변 1은 공공기관 직무와 머신러닝/AI 프로젝트 경험에 초점을 맞추어, 경영학과 출신의 마케팅 직무 및 데이터 분석 융합 준비에 대한 구체적 조언이나 실행 로드맵을 제공하지 않아 근거로 활용하기에 부족함.",
+      "fallback_type": "no_usable_answers",
+      "mentor_match_hints": {
+        "risk_flags": [],
+        "question_units": [
+          "경영학과 졸업생이 공모전 수상 경험 외에 데이터 분석 역량을 융합한 마케팅 직무 준비는 어떻게 하면 좋을까요?",
+          "마케팅 직무에서 어떤 스킬과 경험을 쌓아야 하는지 구체적으로 알고 싶습니다."
+        ],
+        "current_bottleneck": "실행순서_불명확 — 공모전 수상 경험은 있으나 데이터 분석 역량을 포함한 구체적 마케팅 직무 준비 방법과 우선순위가 불명확함"
+      },
+      "created_at": "2026-08-04 15:31",
+      "closed_at": "2026-08-04 15:33"
+    },
+    {
+      "session_id": "ses_9e5891a72eec",
+      "mentee_id": "usr_6fb9b1a1-70bc-4017-a623-90955569f07b",
+      "mentor_id": null,
+      "answer_id": null,
+      "refined_question": "인서울 4년제 컴퓨터공학과 졸업자로서 게임 개발 동아리에서 두 개의 게임을 개발한 경험이 있는데, 게임 개발자 직무 지원 시 서류 전형에서 경쟁력을 갖추려면 자기소개서와 이력서를 어떻게 구성해야 할까요?",
+      "conversation_summary": "사용자는 인서울 4년제 컴퓨터공학과를 졸업했고, 게임 개발자가 되고자 게임 개발 동아리에서 두 개의 게임 프로젝트를 경험했습니다. 현재 게임 개발 직무 지원 시 서류 전형을 어떻게 준비해야 할지 구체적으로 알고 싶어 합니다.",
+      "safe_context": "인서울 4년제 컴퓨터공학과 졸업생이며 게임 개발 동아리에서 게임 개발 경험이 있음. 게임 개발자 취업 준비 중이며 서류 전형 준비에 대한 구체적 조언을 희망함.",
+      "search_query": "게임 개발자 서류 준비, 컴퓨터공학과 졸업, 게임 개발 동아리 경험, 자기소개서 작성법, 이력서 구성",
+      "match_query": "인서울 4년제 컴퓨터공학과 졸업생으로 게임 개발 동아리에서 두 개의 게임 프로젝트 경험이 있는 취업 준비생이 게임 개발자 직무 서류 전형 준비 방법에 대해 구체적인 조언을 원함",
+      "current_bottleneck": "서류 전형 준비 방법이 구체적으로 불명확하여 경쟁력 있는 자기소개서와 이력서 작성법을 모름",
+      "expected_answer_type": "경험기반조언 + 서류전략",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "서류전략",
+          "question": "게임 개발자 직무 지원 시 서류 전형에서 자기소개서와 이력서를 어떻게 구성해야 경쟁력을 가질 수 있을까요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "게임 개발"
+        ],
+        "question_type_tags": [
+          "서류전략"
+        ],
+        "career_stage_tags": [
+          "졸업생",
+          "취준생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "서류전략"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "게임 개발자",
+        "interest_domain": [
+          "게임 개발"
+        ],
+        "career_stage": "미상",
+        "desired_help": "서류 전략",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "strong",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "게임 개발자",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "answer_status": "pending",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {},
+      "mentor_fallback_reason": null,
+      "fallback_type": null,
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 15:36",
+      "closed_at": null
+    },
+    {
+      "session_id": "ses_521aa66e1a9d",
+      "mentee_id": "usr_6fb9b1a1-70bc-4017-a623-90955569f07b",
+      "mentor_id": null,
+      "answer_id": "ans_a8d1c5ec6af0",
+      "refined_question": "사회학과 통계학 복수전공 대학생으로서, 공공사업개발 직무가 구체적으로 어떤 역할을 하는지 알고 싶고, 관련 지식을 갖추기 위해 어떤 준비를 우선적으로 해야 할까요?",
+      "conversation_summary": "사회학과 통계학을 복수전공 중인 3학년 대학생이 공공사업개발 직무에 관심을 갖게 되었습니다. 사회학 전공이 실제 회사에서 활용하기 애매하다고 느끼는 반면, 사회과학 도메인에 통계학적 분석과 개발 역량을 결합한 공공사업개발 직무가 적합할 것 같아 준비 방법에 대해 궁금해합니다. 데이터사이언스/AI 동아리에서 머신러닝과 AI 에이전트 프로젝트 경험을 쌓으며 관련 지식을 갖추려 노력 중입니다.",
+      "safe_context": "사회학과 통계학 복수전공 3학년 대학생이 공공사업개발 직무에 대해 구체적 역할과 준비 방법을 묻고 있으며, 데이터사이언스/AI 동아리에서 프로젝트 경험이 있음.",
+      "search_query": "공공사업개발 직무 역할과 준비 방법, 사회학과 통계학 복수전공, 데이터사이언스 AI 프로젝트 경험",
+      "match_query": "사회학과 통계학 복수전공 3학년 대학생으로, 공공사업개발 직무에 관심이 있으며, 데이터사이언스와 AI 동아리에서 머신러닝 및 AI 에이전트 프로젝트 경험을 쌓으며 준비 중입니다. 직무의 구체적 역할과 효과적인 준비 방법에 대해 경험 기반 조언을 원합니다.",
+      "current_bottleneck": "실행순서_불명확 — 공공사업개발 직무가 구체적으로 어떤 역할을 하며, 어떻게 준비해야 할지 우선순위가 명확하지 않음",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "직무이해/스킬준비",
+          "question": "공공사업개발 직무가 구체적으로 어떤 역할을 하며, 관련 역량을 갖추기 위해 어떤 준비를 우선적으로 해야 할까요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "공공사업개발",
+          "사회과학 데이터 분석"
+        ],
+        "question_type_tags": [
+          "직무이해",
+          "스킬준비"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "공공사업개발",
+        "interest_domain": [
+          "사회과학",
+          "데이터 분석",
+          "공공정책"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "직무 이해 및 스킬 준비",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학 분석 역량",
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 개발 경험"
+        ],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "공공사업개발",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학 분석 역량",
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 개발 경험"
+        ],
+        "target_domain_candidates": []
+      },
+      "answer_status": "closed",
+      "llm_direct_answer": "기존 멘토 경험과 직무 정보를 바탕으로 한 참고 답변입니다.\n\n1. 기존 멘토 답변에서 확인되는 핵심 내용  \n사회학과 통계학 복수전공자로서 공공사업개발 직무를 준비하는 경우, 공공기관에서는 데이터 기반 의사결정과 정책효과 분석에 큰 비중을 둡니다. 따라서 멘티가 가진 머신러닝과 AI 프로젝트 경험은 공공 이슈나 정책 문제 해결 관점에서 재해석하는 것이 중요합니다. 구체적으로는 사회학적 데이터와 통계 지식을 활용해 사회 문제를 정의하고, 이를 바탕으로 예측모델이나 분류모델을 만드는 과정을 체계적으로 정리해야 합니다. 또한, 단순히 기술적 결과를 나열하는 것이 아니라 ‘문제 정의–데이터 수집 및 처리–모델링–결과 해석 및 정책 제안’이라는 흐름으로 프로젝트 경험을 스토리텔링하는 능력이 필요합니다. 공공기관 담당자들은 기술적 성과와 함께 그 사회적 의미와 정책적 활용 가능성을 중시하는 경향이 반복적으로 언급됩니다.\n\n2. 멘티 상황에 적용해볼 수 있는 점  \n데이터사이언스/AI 동아리에서의 프로젝트 경험을 공공사업개발 직무에서 요구하는 사회 문제 해결과 정책 제안으로 연결해보세요. 예를 들어, 사회학과 통계학 지식을 활용해 공공 이슈를 정의하고, 프로젝트에서 사용한 머신러닝 기법을 사회적 문제 예측이나 정책 효과 분석에 적용하는 방식을 구체화하는 연습이 필요합니다. 또한, 프로젝트 진행 과정을 ‘문제 정의부터 정책 제안까지’ 단계별로 정리하고 설명하는 스토리텔링 연습을 통해 면접이나 자기소개서에서 효과적으로 어필할 수 있습니다.\n\n3. 일반적으로는...  \n공공사업개발 직무는 다양한 이해관계자와 협업하며 정책 및 사업 기획, 실행, 평가 과정을 담당하는 경우가 많으므로, 관련 법규, 정책 흐름, 공공행정에 대한 기본 이해도 함께 갖추는 것이 도움이 됩니다. 또한, 통계 및 데이터 분석 역량과 더불어 정책분석, 경제성 평가, 리스크 관리 등 공공사업 특유의 분석 방법론에 대한 학습도 병행하면 좋습니다.\n\n4. 지금 할 수 있는 다음 행동  \n- 현재 진행 중인 프로젝트를 ‘문제 정의–데이터 수집 및 처리–모델링–결과 해석 및 정책 제안’ 흐름에 맞춰 문서화하고 발표 연습 해보기  \n- 공공사업 관련 정책 보고서나 사례 연구를 찾아 읽고, 사회 문제 해결과 데이터 분석이 어떻게 연결되는지 분석해보기  \n- 공공사업개발 직무 관련 기본 지식(정책 과정, 공공행정, 관련 법규 등)에 대한 온라인 강의나 자료를 찾아 학습 시작하기  \n\n이 내용이 본인 상황과 다르다면 현직자 멘토 연결을 추천해드릴게요.",
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_521aa66e1a9d",
+        "timestamp": "2026-08-04T16:14:10.297935",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "공공사업개발",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [
+            "통계학 분석 역량",
+            "머신러닝 프로젝트 경험",
+            "AI 에이전트 개발 경험"
+          ],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": false
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "직무이해/스킬준비",
+            "question": "공공사업개발 직무가 구체적으로 어떤 역할을 하며, 관련 역량을 갖추기 위해 어떤 준비를 우선적으로 해야 할까요?",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 4,
+        "usable_count": 4,
+        "stale_ids": [],
+        "avg_score": 0.675,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학 분석 역량",
+          "머신러닝 프로젝트 경험",
+          "AI 에이전트 개발 경험"
+        ],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": null,
+      "fallback_type": null,
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 16:14",
+      "closed_at": "2026-08-04 16:15"
+    },
+    {
+      "session_id": "ses_089a8a3effb1",
+      "mentee_id": "usr_6fb9b1a1-70bc-4017-a623-90955569f07b",
+      "mentor_id": null,
+      "answer_id": "ans_9a414e01035c",
+      "refined_question": "사회학 본전공과 통계학 복수전공을 바탕으로 공공사업개발 직무를 준비하려는 3학년 휴학생이, 이 직무에 필요한 구체적인 스킬과 경험은 무엇인지, 그리고 어떤 방식으로 준비하면 좋을지 알려주세요.",
+      "conversation_summary": "사회학 본전공과 통계학 복수전공 중인 3학년 휴학생으로, 공공사업개발 직무에 관심이 있습니다. 데이터사이언스와 AI 동아리에서 머신러닝과 AI 에이전트 프로젝트 경험이 있으며, 이 직무에 필요한 준비 방법과 직무 이해에 대해 궁금해합니다.",
+      "safe_context": "사회학 본전공과 통계학 복수전공 중인 3학년 휴학생이며, 데이터사이언스와 AI 동아리에서 머신러닝과 AI 에이전트 프로젝트를 수행한 경험이 있습니다. 공공사업개발 직무에 관심이 있습니다.",
+      "search_query": "공공사업개발 직무 준비 방법, 사회학과 통계학 배경, 필요한 스킬과 경험, 머신러닝 프로젝트 경험",
+      "match_query": "사회학 본전공과 통계학 복수전공 중인 3학년 휴학생으로, 공공사업개발 직무에 관심이 있으며 데이터사이언스와 AI 동아리에서 머신러닝 및 AI 프로젝트 경험이 있습니다. 이 직무에 필요한 스킬과 경험 준비법에 대해 구체적인 조언을 원합니다.",
+      "current_bottleneck": "실행순서_불명확 — 공공사업개발 직무 준비에 필요한 구체적 스킬과 경험을 어떻게 체계적으로 쌓아야 할지 모름",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "스킬준비",
+          "question": "공공사업개발 직무를 준비하려면 어떤 스킬과 경험을 쌓아야 하며, 구체적으로 어떻게 준비하는 것이 효과적인가요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "공공사업개발",
+          "데이터분석"
+        ],
+        "question_type_tags": [
+          "스킬준비",
+          "직무이해"
+        ],
+        "career_stage_tags": [
+          "대학생",
+          "휴학생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "공공사업개발",
+        "interest_domain": [
+          "공공사업개발",
+          "데이터분석"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "스킬 준비",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계분석",
+          "머신러닝",
+          "AI 프로젝트 경험"
+        ],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "strong",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "공공사업개발",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계분석",
+          "머신러닝",
+          "AI 프로젝트 경험"
+        ],
+        "target_domain_candidates": []
+      },
+      "answer_status": "closed",
+      "llm_direct_answer": "기존 멘토 경험과 직무 정보를 바탕으로 한 참고 답변입니다.\n\n1. 기존 멘토 답변에서 확인되는 핵심 내용  \n사회학과 통계학 복수전공자들이 공공사업개발 직무를 준비할 때, 데이터 기반 의사결정과 정책효과 분석 역량이 매우 중요하다고 합니다. 멘티가 수행한 머신러닝과 AI 프로젝트 경험을 공공 이슈나 정책 문제 해결에 맞춰 재해석하는 것이 필요하며, 프로젝트 경험을 ‘문제 정의–데이터 수집 및 처리–모델링–결과 해석 및 정책 제안’의 흐름으로 구체적이고 체계적으로 스토리텔링하는 연습이 강조됩니다. 공공기관 담당자들은 단순 기술적 성과보다 사회적 의미와 정책적 활용 가능성에 주목하는 경향이 반복적으로 언급됩니다.\n\n2. 멘티 상황에 적용해볼 수 있는 점  \n멘티님은 사회학과 통계학을 전공하고 데이터사이언스 및 AI 동아리에서 머신러닝과 AI 에이전트 프로젝트 경험이 있으므로, 이를 바탕으로 사회 문제를 정의하고 관련 데이터를 수집·처리하여 예측 모델이나 분류 모델을 만드는 과정을 구체적으로 정리해보세요. 또한, 프로젝트 결과가 공공 정책이나 사회적 문제 해결에 어떻게 기여할 수 있는지 명확하게 설명하는 스토리텔링을 준비하는 것이 좋습니다.\n\n3. 일반적으로는 준비 방향  \n일반적으로는 공공사업개발 직무에서 요구하는 통계 분석 능력, 데이터 시각화, 정책분석 및 평가 역량을 키우는 것이 중요합니다. 또한, 공공기관의 사업 목표와 정책 환경을 이해하고, 관련 법규나 제도에 대한 기본 지식을 갖추는 것도 도움이 됩니다. 데이터 분석 도구(예: Python, R) 활용 능력과 더불어, 정책 제안서 작성 능력 및 커뮤니케이션 스킬도 함께 준비하는 것이 바람직합니다.\n\n4. 지금 할 수 있는 다음 행동  \n- 현재 수행한 머신러닝 및 AI 프로젝트를 공공 이슈 해결 관점에서 재구성하고, ‘문제 정의–데이터 처리–모델링–정책 제안’ 순으로 정리해보세요.  \n- 공공사업개발 관련 정책 사례나 사업 계획서를 찾아 읽고, 데이터 분석이 어떻게 활용되는지 학습해보세요.  \n- 데이터 분석 및 정책 제안 역량을 강화할 수 있는 온라인 강의나 워크숍에 참여해 실무 감각을 높이세요.\n\n이 내용이 본인 상황과 다르다면 현직자 멘토 연결을 추천해드릴게요.",
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_089a8a3effb1",
+        "timestamp": "2026-08-04T16:22:55.445951",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "공공사업개발",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [
+            "통계분석",
+            "머신러닝",
+            "AI 프로젝트 경험"
+          ],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "스킬준비",
+            "question": "공공사업개발 직무를 준비하려면 어떤 스킬과 경험을 쌓아야 하며, 구체적으로 어떻게 준비하는 것이 효과적인가요?",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 5,
+        "usable_count": 4,
+        "stale_ids": [],
+        "avg_score": 0.76,
+        "verdict": "llm_direct",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계분석",
+          "머신러닝",
+          "AI 프로젝트 경험"
+        ],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": null,
+      "fallback_type": null,
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 16:22",
+      "closed_at": "2026-08-04 16:23"
+    },
+    {
+      "session_id": "ses_1c346cb405a1",
+      "mentee_id": "usr_6fb9b1a1-70bc-4017-a623-90955569f07b",
+      "mentor_id": null,
+      "answer_id": null,
+      "refined_question": "식품영양학과 3학년 재학생으로서 신입 식품 MD를 목표로 할 때, 관련 인턴이나 실무 경험이 없는 상태에서 신입으로 준비해야 할 핵심 역량은 무엇인지 구체적으로 알고 싶습니다.",
+      "conversation_summary": "식품영양학과 3학년 재학 중인 신입생으로, 식품 MD 직무에 집중하고 있습니다. 관련 인턴이나 프로젝트 경험은 없으며, 시간·지역·전공 관련 제약 조건도 없습니다. 신입으로서 준비해야 할 역량에 대해 멘토의 구체적인 조언을 구하고 있습니다.",
+      "safe_context": "식품영양학과 3학년 재학 중이며 신입 식품 MD를 목표로 하고, 관련 경험은 없는 상태입니다. 제약 조건은 없습니다.",
+      "search_query": "식품 MD 신입 준비 역량, 인턴 경험 부족, 식품영양학과 3학년 재학생, 신입 식품 MD 준비 방법",
+      "match_query": "식품영양학과 3학년 재학생이며 신입 식품 MD를 목표로 하고 있습니다. 관련 인턴이나 실무 경험은 없고, 제약 조건도 없습니다. 신입으로서 준비해야 할 핵심 역량과 구체적인 준비 방법에 대한 멘토 조언을 원합니다.",
+      "current_bottleneck": "경험_공백_극복 — 신입으로서 관련 인턴·프로젝트 경험이 없어 어떤 역량을 우선 준비해야 할지 모름",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "스킬준비",
+          "question": "신입 식품 MD를 목표로 할 때, 관련 경험이 없는 상태에서 준비해야 할 핵심 역량은 무엇인가요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "식품/유통/MD"
+        ],
+        "question_type_tags": [
+          "스킬준비",
+          "진로탐색"
+        ],
+        "career_stage_tags": [
+          "대학생",
+          "신입 준비생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "식품 MD",
+        "interest_domain": [
+          "식품/유통/MD"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "스킬 준비",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "식품 MD",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "answer_status": "pending",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {},
+      "mentor_fallback_reason": null,
+      "fallback_type": null,
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 16:31",
+      "closed_at": null
+    },
+    {
+      "session_id": "ses_2a96942102ef",
+      "mentee_id": "usr_6fb9b1a1-70bc-4017-a623-90955569f07b",
+      "mentor_id": "mr_5f3ba1089820",
+      "answer_id": "ans_2cd8b1806f09",
+      "refined_question": "식품영양학과 3학년 재학생으로서 관련 인턴이나 실무 경험 없이 신입 식품 MD를 목표로 할 때, 특히 협상 및 커뮤니케이션 스킬 역량을 어떻게 준비하면 좋을까요?",
+      "conversation_summary": "멘티는 식품영양학과 3학년 재학생이며 신입 식품 MD를 목표로 하고 있습니다. 관련 인턴이나 실무 경험은 없으며, 특히 협상 및 커뮤니케이션 스킬에 집중해 준비 방법을 구체적으로 알고 싶어 합니다.",
+      "safe_context": "식품영양학과 3학년 재학생, 신입 식품 MD 목표, 관련 인턴 경험 없음, 협상 및 커뮤니케이션 스킬 준비에 관심",
+      "search_query": "신입 식품 MD 준비, 협상 및 커뮤니케이션 스킬, 인턴 경험 없음, 식품영양학과 3학년",
+      "match_query": "식품영양학과 3학년 재학생으로 신입 식품 MD를 목표로 하며 관련 인턴이나 실무 경험이 없는 상태에서 협상 및 커뮤니케이션 스킬 준비 방법에 대해 구체적인 조언을 원하는 멘티",
+      "current_bottleneck": "경험_공백_극복 — 관련 인턴 및 실무 경험 없이 신입 식품 MD 준비 시 핵심 역량과 구체적 준비 방법에 대한 정보 부족",
+      "expected_answer_type": "경험기반조언 + 실행로드맵",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "스킬준비",
+          "question": "식품영양학과 3학년 재학생으로서 관련 인턴이나 실무 경험 없이 신입 식품 MD를 목표로 할 때, 특히 협상 및 커뮤니케이션 스킬 역량을 어떻게 준비하면 좋을까요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "식품/유통/MD"
+        ],
+        "question_type_tags": [
+          "스킬준비"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ],
+        "constraint_tags": [
+          "유관인턴부족"
+        ],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "신입 식품 MD",
+        "interest_domain": [
+          "식품 유통",
+          "MD"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "스킬 준비",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "constraints": [
+          "유관인턴부족"
+        ],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.9,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "신입 식품 MD",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "answer_status": "closed",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_2a96942102ef",
+        "timestamp": "2026-08-04T16:36:30.089101",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "risk_flags": [],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": "",
+          "source_role": "",
+          "target_role": "신입 식품 MD",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [],
+          "target_domain_candidates": [],
+          "requires_personal_decision": false,
+          "personal_decision_guard": {
+            "has_personal_context": false,
+            "has_decision_request": false,
+            "has_high_risk_career_choice": true
+          },
+          "personal_decision_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "스킬준비",
+            "question": "식품영양학과 3학년 재학생으로서 관련 인턴이나 실무 경험 없이 신입 식품 MD를 목표로 할 때, 특히 협상 및 커뮤니케이션 스킬 역량을 어떻게 준비하면 좋을까요?",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 0,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": "유사한 멘토 답변이 아직 없습니다",
+      "fallback_type": "no_similar_answers",
+      "mentor_match_hints": {},
+      "created_at": "2026-08-04 16:36",
+      "closed_at": "2026-08-04 16:37"
     }
   ]
 }

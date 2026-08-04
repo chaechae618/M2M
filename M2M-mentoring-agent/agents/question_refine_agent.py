@@ -651,7 +651,7 @@ class QuestionRefineAgent:
             print(f"  충분성 체크 | 통과 {len(passed)}/5 | 필수항목 {'OK' if mandatory_ok else 'NG'} "
                   f"| 질문품질 {'OK' if quality_ok else 'NG'} | 성숙도 {maturity} | {'충분' if sufficient else '부족'}")
             for field, val in fields.items():
-                mark = "✓" if scores.get(field, 0) >= self.FIELD_THRESHOLD else "✗"
+                mark = "[O]" if scores.get(field, 0) >= self.FIELD_THRESHOLD else "[X]"
                 print(f"    {mark} {field}: {scores.get(field, 0):.1f} — {val.get('evidence', '')}")
             print(f"    질문품질 specificity={clamp01(qq.get('specificity',0)):.1f} "
                   f"answerability={clamp01(qq.get('mentor_answerability',0)):.1f} "

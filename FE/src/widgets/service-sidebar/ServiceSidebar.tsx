@@ -81,7 +81,13 @@ export function ServiceSidebar() {
           <UserAvatar collapsed />
         </div>
       ) : (
-        <ExpandedSidebar userName={userName} recentChats={recentChats} onToggle={toggleSidebar} onNewChat={startNewChat} />
+        <ExpandedSidebar
+          userName={userName}
+          recentChats={recentChats}
+          onToggle={toggleSidebar}
+          onNewChat={startNewChat}
+          onSelectChat={(id) => router.push(`/chat?session=${id}`)}
+        />
       )}
     </aside>
   );
@@ -92,11 +98,13 @@ function ExpandedSidebar({
   recentChats,
   onToggle,
   onNewChat,
+  onSelectChat,
 }: {
   userName: string;
   recentChats: ConsultationSummary[];
   onToggle: () => void;
   onNewChat: () => void;
+  onSelectChat: (id: string) => void;
 }) {
   return (
     <div className="flex min-h-0 w-full flex-col gap-7">
@@ -123,7 +131,7 @@ function ExpandedSidebar({
 
           <SidebarSection title="최근 대화" className="mt-6">
             {recentChats.map((chat) => (
-              <SidebarItem key={chat.id} label={chat.title} />
+              <SidebarItem key={chat.id} label={chat.title} onClick={() => onSelectChat(chat.id)} />
             ))}
           </SidebarSection>
         </div>
@@ -176,10 +184,21 @@ function FolderItem({ label }: { label: string }) {
   );
 }
 
-function SidebarItem({ label, active = false, nested = false }: { label: string; active?: boolean; nested?: boolean }) {
+function SidebarItem({
+  label,
+  active = false,
+  nested = false,
+  onClick,
+}: {
+  label: string;
+  active?: boolean;
+  nested?: boolean;
+  onClick?: () => void;
+}) {
   return (
     <button
       type="button"
+      onClick={onClick}
       className={cn("flex w-full items-center rounded-xl py-2 text-left", nested ? "pl-10 pr-3" : "px-3", active && "bg-[#eeeeee]")}
     >
       <span className="min-w-0 flex-1 truncate text-[16px] font-medium leading-[1.6] text-[#242424]">{label}</span>

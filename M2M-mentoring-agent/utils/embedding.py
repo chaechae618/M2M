@@ -30,6 +30,19 @@ def get_embedding(text: str) -> list[float]:
     return response.data[0].embedding
 
 
+def get_embeddings_batch(texts: list[str]) -> list[list[float]]:
+    """여러 텍스트를 한 번의 API 호출로 임베딩. 반환 순서는 texts와 동일."""
+    if not texts:
+        return []
+    client = _get_client()
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=[text.strip() for text in texts],
+    )
+    ordered = sorted(response.data, key=lambda item: item.index)
+    return [item.embedding for item in ordered]
+
+
 def cosine_similarity(vec_a: list[float], vec_b: list[float]) -> float:
     """두 벡터의 cosine similarity (-1 ~ 1)"""
     a = np.array(vec_a, dtype=np.float32)

@@ -16,7 +16,9 @@ type MessageKind =
   | "mentor_recommendations"
   | "mentor_confirmation"
   | "mentor_request_status"
-  | "mentor_request_editor";
+  | "mentor_request_editor"
+  | "answer_feedback"
+  | "job_retry";
 
 type ChatMessage = {
   id: string;
@@ -27,7 +29,32 @@ type ChatMessage = {
   userActions?: boolean;
   compact?: boolean;
   mentors?: MentorRecommendation[];
+  answerId?: string;
+  jobId?: string;
+  retryKind?: "analysis" | "persona";
 };
+
+class JobFailedError extends Error {
+  constructor(
+    public jobId: string,
+    message: string,
+    public retryable: boolean,
+  ) {
+    super(message);
+  }
+}
+
+async function waitForJob(jobId: string) {
+  for (let attempt = 0; attempt < 180; attempt += 1) {
+    const job = await apiRequest<Job>(`jobs/${jobId}`);
+    if (job.status === "completed") return;
+    if (job.status === "failed") {
+      throw new JobFailedError(jobId, job.error?.message ?? "답변 생성 작업에 실패했습니다.", Boolean(job.error?.retryable));
+    }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  }
+  throw new JobFailedError(jobId, "답변 생성 시간이 길어지고 있습니다. 잠시 후 다시 시도해주세요.", false);
+}
 
 type ApiChatMessage = { id: string; role: MessageRole; content: string; createdAt: string };
 type RefinedQuestion = { content: string | null };
@@ -42,7 +69,7 @@ type MentorRecommendation = {
   recommendationReason: string;
   matchScore: number;
 };
-type Job = { jobId: string; status: string; progress: number; currentStep: string; error?: { message?: string } | null };
+type Job = { jobId: string; status: string; progress: number; currentStep: string; error?: { message?: string; retryable?: boolean } | null };
 type ConsultationResult = {
   status: string;
   route: string | null;
@@ -77,11 +104,18 @@ export default function ChatPage() {
 function ChatPageContent() {
   const searchParams = useSearchParams();
   const newChatToken = searchParams.get("new");
+  const resumeSessionId = searchParams.get("session");
 
-  return <ChatSession key={newChatToken ?? "current-chat"} startsAsNewChat />;
+  return (
+    <ChatSession
+      key={resumeSessionId ?? newChatToken ?? "current-chat"}
+      startsAsNewChat={!resumeSessionId}
+      resumeSessionId={resumeSessionId}
+    />
+  );
 }
 
-function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
+function ChatSession({ startsAsNewChat, resumeSessionId }: { startsAsNewChat: boolean; resumeSessionId: string | null }) {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isNewChat, setIsNewChat] = useState(startsAsNewChat);
@@ -129,9 +163,65 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
     appendMessages([{ id: `a-error-${Date.now()}`, role: "assistant", kind: "text", text: requestError instanceof Error ? requestError.message : "요청을 처리하지 못했습니다." }]);
   }
 
+  function appendJobError(requestError: unknown, retryKind: "analysis" | "persona") {
+    if (requestError instanceof JobFailedError && requestError.retryable) {
+      appendMessages([
+        {
+          id: `a-job-error-${Date.now()}`,
+          role: "assistant",
+          kind: "job_retry",
+          text: requestError.message,
+          jobId: requestError.jobId,
+          retryKind,
+        },
+      ]);
+      return;
+    }
+    appendError(requestError);
+  }
+
   function apiMessage(message: ApiChatMessage): ChatMessage {
     return { id: message.id, role: message.role, kind: "text", text: message.content };
   }
+
+  async function loadSession(sid: string) {
+    try {
+      const data = await apiRequest<{
+        session: ConsultationSession;
+        messages: ApiChatMessage[];
+        refinedQuestion: { content: string } | null;
+      }>(`consultations/${sid}`);
+      setSessionId(data.session.id);
+      setSessionTitle(data.session.title);
+      setMessages(data.messages.map(apiMessage));
+      if (data.session.refinedQuestion) setRefinedQuestion(data.session.refinedQuestion);
+
+      const status = data.session.status;
+      if (status === "awaiting_confirmation" && data.session.refinedQuestion) {
+        appendMessages([{ id: `a-refined-resume-${Date.now()}`, role: "assistant", kind: "refined_question", text: data.session.refinedQuestion }]);
+      } else if (status === "persona_recommended") {
+        const recommendations = await apiRequest<{ personas: MentorRecommendation[] }>(`consultations/${sid}/persona-recommendations`);
+        appendMessages([{ id: `a-mentors-resume-${Date.now()}`, role: "assistant", kind: "mentor_recommendations", mentors: recommendations.personas }]);
+      } else if (["ai_answered", "persona_answer_generating", "persona_answered", "awaiting_feedback", "assetizing", "assetized", "completed"].includes(status)) {
+        const result = await apiRequest<ConsultationResult>(`consultations/${sid}/result`);
+        if (result.answer) {
+          const resumed: ChatMessage[] = [{ id: `a-answer-resume-${Date.now()}`, role: "assistant", kind: "text", text: result.answer.content }];
+          if (!["completed", "cancelled", "failed"].includes(status)) {
+            resumed.push({ id: `a-feedback-resume-${Date.now()}`, role: "assistant", kind: "answer_feedback", answerId: result.answer.id });
+          }
+          appendMessages(resumed);
+        }
+      }
+    } catch (requestError) {
+      appendError(requestError);
+    }
+  }
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 세션 하이드레이션은 mount 시 1회만 수행
+    if (resumeSessionId) loadSession(resumeSessionId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resumeSessionId]);
 
   async function handleSubmit() {
     const content = question.trim();
@@ -151,13 +241,15 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
       text: content,
     };
 
+    const thinkingId = `a-thinking-${Date.now()}`;
     setQuestion("");
     setIsNewChat(false);
-    appendMessages([userMessage]);
+    appendMessages([userMessage, { id: thinkingId, role: "assistant", kind: "text", text: "필요한 정보를 모아서 질문을 정리하고 있어요..." }]);
     setIsBusy(true);
     try {
       if (!sessionId) {
         const created = await apiRequest<{ session: ConsultationSession; assistantMessage: ApiChatMessage }>("consultations", jsonRequest("POST", { initialMessage: content }));
+        setMessages((current) => current.filter((message) => message.id !== thinkingId));
         setSessionId(created.session.id);
         setSessionTitle(created.session.title);
         if (created.session.refinedQuestion) {
@@ -168,6 +260,7 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
         }
       } else {
         const result = await apiRequest<{ sessionStatus: string; needMoreInfo: boolean; assistantMessage: ApiChatMessage | null; refinedQuestion: RefinedQuestion | null }>(`consultations/${sessionId}/messages`, jsonRequest("POST", { content }));
+        setMessages((current) => current.filter((message) => message.id !== thinkingId));
         if (result.refinedQuestion?.content) {
           setRefinedQuestion(result.refinedQuestion.content);
           appendMessages([{ id: `a-refined-${Date.now()}`, role: "assistant", kind: "refined_question", text: result.refinedQuestion.content }]);
@@ -176,20 +269,51 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
         }
       }
     } catch (requestError) {
+      setMessages((current) => current.filter((message) => message.id !== thinkingId));
       appendError(requestError);
     } finally {
       setIsBusy(false);
     }
   }
 
-  async function waitForJob(jobId: string) {
-    for (let attempt = 0; attempt < 90; attempt += 1) {
-      const job = await apiRequest<Job>(`jobs/${jobId}`);
-      if (job.status === "completed") return;
-      if (job.status === "failed") throw new Error(job.error?.message ?? "답변 생성 작업에 실패했습니다.");
-      await new Promise((resolve) => setTimeout(resolve, 800));
+  async function finishAnalysis(sid: string) {
+    const result = await apiRequest<ConsultationResult>(`consultations/${sid}/result`);
+    if (result.route === "llm_direct" && result.answer) {
+      appendMessages([
+        { id: `a-answer-${Date.now()}`, role: "assistant", kind: "text", text: result.answer.content },
+        { id: `a-feedback-${Date.now()}`, role: "assistant", kind: "answer_feedback", answerId: result.answer.id },
+      ]);
+    } else {
+      const recommendations = await apiRequest<{ personas: MentorRecommendation[] }>(`consultations/${sid}/persona-recommendations`);
+      appendMessages([{ id: `a-mentors-${Date.now()}`, role: "assistant", kind: "mentor_recommendations", mentors: recommendations.personas }]);
     }
-    throw new Error("답변 생성 시간이 길어지고 있습니다. 잠시 후 다시 시도해주세요.");
+  }
+
+  async function finishPersonaAnswer(sid: string) {
+    const result = await apiRequest<ConsultationResult>(`consultations/${sid}/result`);
+    if (!result.answer) throw new Error("생성된 답변을 찾지 못했습니다.");
+    appendMessages([
+      { id: `a-persona-answer-${Date.now()}`, role: "assistant", kind: "text", text: result.answer.content },
+      { id: `a-feedback-${Date.now()}`, role: "assistant", kind: "answer_feedback", answerId: result.answer.id },
+    ]);
+  }
+
+  async function handleRetryJob(jobId: string, retryKind: "analysis" | "persona") {
+    if (!sessionId || isBusy) return;
+    setIsBusy(true);
+    try {
+      await apiRequest(`jobs/${jobId}/retry`, { method: "POST" });
+      await waitForJob(jobId);
+      if (retryKind === "analysis") {
+        await finishAnalysis(sessionId);
+      } else {
+        await finishPersonaAnswer(sessionId);
+      }
+    } catch (requestError) {
+      appendJobError(requestError, retryKind);
+    } finally {
+      setIsBusy(false);
+    }
   }
 
   async function handleSendRefinedQuestion() {
@@ -208,15 +332,9 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
     try {
       const confirmation = await apiRequest<{ jobId: string }>(`consultations/${sessionId}/confirm`, { method: "POST", headers: { "Idempotency-Key": crypto.randomUUID() } });
       await waitForJob(confirmation.jobId);
-      const result = await apiRequest<ConsultationResult>(`consultations/${sessionId}/result`);
-      if (result.route === "llm_direct" && result.answer) {
-        appendMessages([{ id: `a-answer-${Date.now()}`, role: "assistant", kind: "text", text: result.answer.content }]);
-      } else {
-        const recommendations = await apiRequest<{ personas: MentorRecommendation[] }>(`consultations/${sessionId}/persona-recommendations`);
-        appendMessages([{ id: `a-mentors-${Date.now()}`, role: "assistant", kind: "mentor_recommendations", mentors: recommendations.personas }]);
-      }
+      await finishAnalysis(sessionId);
     } catch (requestError) {
-      appendError(requestError);
+      appendJobError(requestError, "analysis");
     } finally {
       setIsBusy(false);
     }
@@ -289,11 +407,9 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
     try {
       const selection = await apiRequest<{ jobId: string }>(`consultations/${sessionId}/persona-selection`, jsonRequest("POST", { personaId: selectedMentor.personaId }));
       await waitForJob(selection.jobId);
-      const result = await apiRequest<ConsultationResult>(`consultations/${sessionId}/result`);
-      if (!result.answer) throw new Error("생성된 답변을 찾지 못했습니다.");
-      appendMessages([{ id: `a-persona-answer-${Date.now()}`, role: "assistant", kind: "text", text: result.answer.content }]);
+      await finishPersonaAnswer(sessionId);
     } catch (requestError) {
-      appendError(requestError);
+      appendJobError(requestError, "persona");
     } finally {
       setIsBusy(false);
     }
@@ -355,6 +471,8 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
                   onEditorComplete={handleEditorComplete}
                   refinedQuestion={refinedQuestion}
                   selectedMentor={selectedMentor}
+                  sessionId={sessionId}
+                  onRetryJob={handleRetryJob}
                 />
               </div>
             </div>
@@ -374,13 +492,21 @@ function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
                 isActive={isActive}
                 sendIcon={sendIcon}
                 onSubmit={handleSubmit}
-                disabled={isBusy}
+                disabled={isBusy || Boolean(refinedQuestion)}
               />
             </div>
           </div>
         )}
 
         <div className="shrink-0 pb-6 pt-3">
+          <button
+            type="button"
+            aria-label="새 대화"
+            onClick={() => router.push(`/chat?new=${Date.now()}`)}
+            className="!fixed !bottom-6 !right-6 !z-30 flex size-11 items-center justify-center rounded-full bg-[#ffd60a] shadow-[0_6px_20px_rgba(68,74,83,0.24)] lg:hidden"
+          >
+            <Image src={assets.writeNew} alt="" width={20} height={20} draggable={false} />
+          </button>
           <ServiceBottomNavigation className="!fixed !bottom-6 !left-1/2 !z-30 !m-0 !-translate-x-1/2" />
         </div>
       </div>
@@ -456,6 +582,8 @@ function MessageList({
   onEditorComplete,
   refinedQuestion,
   selectedMentor,
+  sessionId,
+  onRetryJob,
 }: {
   messages: ChatMessage[];
   onMentorSelect: (mentor: MentorRecommendation) => void;
@@ -464,6 +592,8 @@ function MessageList({
   onEditorComplete: (content: string) => void;
   refinedQuestion: string;
   selectedMentor: MentorRecommendation | null;
+  sessionId: string | null;
+  onRetryJob: (jobId: string, retryKind: "analysis" | "persona") => void;
 }) {
   return (
     <div className="flex w-full flex-col gap-2 pb-4 text-[15px] font-medium leading-[1.6]">
@@ -477,6 +607,8 @@ function MessageList({
           onEditorComplete={onEditorComplete}
           refinedQuestion={refinedQuestion}
           selectedMentor={selectedMentor}
+          sessionId={sessionId}
+          onRetryJob={onRetryJob}
         />
       ))}
     </div>
@@ -491,6 +623,8 @@ function MessageRenderer({
   onEditorComplete,
   refinedQuestion,
   selectedMentor,
+  sessionId,
+  onRetryJob,
 }: {
   message: ChatMessage;
   onMentorSelect: (mentor: MentorRecommendation) => void;
@@ -499,6 +633,8 @@ function MessageRenderer({
   onEditorComplete: (content: string) => void;
   refinedQuestion: string;
   selectedMentor: MentorRecommendation | null;
+  sessionId: string | null;
+  onRetryJob: (jobId: string, retryKind: "analysis" | "persona") => void;
 }) {
   if (message.role === "user") {
     return (
@@ -526,6 +662,21 @@ function MessageRenderer({
 
   if (message.kind === "mentor_request_editor") {
     return <MentorRequestEditor initialValue={refinedQuestion} onComplete={onEditorComplete} />;
+  }
+
+  if (message.kind === "answer_feedback" && message.answerId && sessionId) {
+    return <AnswerFeedbackMessage sessionId={sessionId} answerId={message.answerId} />;
+  }
+
+  if (message.kind === "job_retry" && message.jobId && message.retryKind) {
+    const jobId = message.jobId;
+    const retryKind = message.retryKind;
+    return (
+      <JobRetryMessage
+        text={message.text ?? "작업에 실패했습니다."}
+        onRetry={() => onRetryJob(jobId, retryKind)}
+      />
+    );
   }
 
   return (
@@ -703,17 +854,20 @@ function FlowActionButton({
   children,
   onClick,
   emphasis = false,
+  disabled = false,
 }: {
   children: ReactNode;
   onClick: () => void;
   emphasis?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}
       className={cn(
-        "rounded-[28px] px-4 py-2 text-[14px] font-semibold leading-[1.45] transition",
+        "rounded-[28px] px-4 py-2 text-[14px] font-semibold leading-[1.45] transition disabled:cursor-not-allowed disabled:opacity-50",
         emphasis
           ? "bg-[#ffd60a] text-[#242424] shadow-[0_2px_2px_rgba(25,33,61,0.08)]"
           : "bg-[#eeeeee] text-[#585858] hover:bg-[#e6e6e6]",
@@ -721,6 +875,123 @@ function FlowActionButton({
     >
       {children}
     </button>
+  );
+}
+
+function AnswerFeedbackMessage({ sessionId, answerId }: { sessionId: string; answerId: string }) {
+  const [step, setStep] = useState<"rating" | "consent" | "done" | "error">("rating");
+  const [failedStep, setFailedStep] = useState<"rating" | "consent">("rating");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorText, setErrorText] = useState("");
+
+  async function submitRating(rating: number) {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    try {
+      await apiRequest(`consultations/${sessionId}/feedback`, jsonRequest("POST", { answerId, rating }));
+      setStep("consent");
+    } catch (requestError) {
+      setErrorText(requestError instanceof Error ? requestError.message : "요청을 처리하지 못했습니다.");
+      setFailedStep("rating");
+      setStep("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  async function submitConsent(consent: boolean) {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    try {
+      const result = await apiRequest<{ consent: boolean; jobId?: string }>(
+        `consultations/${sessionId}/reuse-consent`,
+        jsonRequest("PUT", { answerId, consent }),
+      );
+      if (result.jobId) {
+        await waitForJob(result.jobId);
+      }
+      // 거부 응답은 BE가 이미 세션을 completed로 만들어주므로 이 호출은 안전한 no-op이 된다.
+      await apiRequest(`consultations/${sessionId}/complete`, { method: "POST" });
+      setStep("done");
+    } catch (requestError) {
+      setErrorText(requestError instanceof Error ? requestError.message : "요청을 처리하지 못했습니다.");
+      setFailedStep("consent");
+      setStep("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  if (step === "rating") {
+    return (
+      <AssistantBlock>
+        <p>이 답변이 도움이 되었나요?</p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          {[1, 2, 3, 4, 5].map((rating) => (
+            <FlowActionButton key={rating} onClick={() => submitRating(rating)} emphasis={rating >= 4} disabled={isSubmitting}>
+              {rating}점
+            </FlowActionButton>
+          ))}
+          {isSubmitting ? <span className="text-[13px] text-[#9e9e9e]">처리 중...</span> : null}
+        </div>
+        <MessageActions hidden />
+      </AssistantBlock>
+    );
+  }
+
+  if (step === "consent") {
+    return (
+      <AssistantBlock>
+        <p>
+          이 답변을 익명 처리해서 다른 멘티에게도 재사용해도 될까요?
+          <br />
+          동의하시면 다음에 비슷한 고민을 하는 멘티에게 참고 답변으로 쓰일 수 있어요.
+        </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <FlowActionButton onClick={() => submitConsent(true)} emphasis disabled={isSubmitting}>
+            동의할게요
+          </FlowActionButton>
+          <FlowActionButton onClick={() => submitConsent(false)} disabled={isSubmitting}>
+            아니요, 괜찮아요
+          </FlowActionButton>
+          {isSubmitting ? <span className="text-[13px] text-[#9e9e9e]">처리 중이에요, 잠시만 기다려주세요...</span> : null}
+        </div>
+        <MessageActions hidden />
+      </AssistantBlock>
+    );
+  }
+
+  if (step === "error") {
+    return (
+      <AssistantBlock>
+        <p className="text-[#c0392b]">{errorText}</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <FlowActionButton onClick={() => setStep(failedStep)}>다시 시도</FlowActionButton>
+        </div>
+        <MessageActions hidden />
+      </AssistantBlock>
+    );
+  }
+
+  return (
+    <AssistantBlock>
+      <p className="text-[#9e9e9e]">소중한 의견 감사합니다. 새로운 상담은 사이드바에서 &quot;새 대화&quot;로 시작할 수 있어요.</p>
+      <MessageActions hidden />
+    </AssistantBlock>
+  );
+}
+
+function JobRetryMessage({ text, onRetry }: { text: string; onRetry: () => void }) {
+  return (
+    <AssistantBlock>
+      <p className="text-[#c0392b]">{text}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <FlowActionButton onClick={onRetry} emphasis>
+          다시 시도
+        </FlowActionButton>
+      </div>
+      <MessageActions hidden />
+    </AssistantBlock>
   );
 }
 
@@ -777,7 +1048,7 @@ function UserMessage({
 function AssistantBlock({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full flex-col items-start gap-1">
-      <div className="w-full text-[#242424]">{children}</div>
+      <div className="w-full whitespace-pre-wrap text-[#242424]">{children}</div>
     </div>
   );
 }
@@ -835,6 +1106,15 @@ function ChatComposer({
   onSubmit: () => void;
   disabled?: boolean;
 }) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
+  }, [question]);
+
   return (
     <form
       className={cn("relative z-10 w-full rounded-2xl border border-[#eeeeee] bg-white px-6 pb-4 pt-6 shadow-[0_6px_10px_rgba(68,74,83,0.12)]", className)}
@@ -844,12 +1124,13 @@ function ChatComposer({
       }}
     >
       <textarea
+        ref={textareaRef}
         value={question}
         disabled={disabled}
         onChange={(event) => setQuestion(event.target.value)}
         placeholder="무엇이 궁금하신가요?"
         rows={1}
-        className="block min-h-[24px] w-full resize-none border-0 bg-transparent text-[15px] font-medium leading-[1.6] text-[#242424] outline-none placeholder:text-[#9e9e9e]"
+        className="block max-h-40 min-h-[24px] w-full resize-none overflow-y-auto border-0 bg-transparent text-[15px] font-medium leading-[1.6] text-[#242424] outline-none placeholder:text-[#9e9e9e]"
         onKeyDown={(event) => {
           if (event.key === "Enter" && !event.shiftKey) {
             event.preventDefault();

@@ -1,3 +1,4 @@
+import sys
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -23,6 +24,10 @@ upload_root = Path("uploads")
 
 @asynccontextmanager
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    # Windows 콘솔 기본 코드페이지(cp949)는 ✓/✗ 같은 유니코드 기호를 인코딩하지 못해
+    # 에이전트 로그의 print()가 UnicodeEncodeError로 죽는 걸 막는다.
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     upload_root.mkdir(parents=True, exist_ok=True)
     if settings.auto_create_tables and settings.is_development:
         Base.metadata.create_all(bind=engine)

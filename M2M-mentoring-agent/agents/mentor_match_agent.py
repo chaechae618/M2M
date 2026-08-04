@@ -22,7 +22,7 @@ from db.json_db import (
     update_session,
 )
 from utils.embedding import (
-    get_embedding, cosine_similarity,
+    get_embedding, get_embeddings_batch, cosine_similarity,
     build_profile_text, build_career_text, build_answer_text,
 )
 from utils.env import load_project_env
@@ -202,41 +202,69 @@ class MentorMatchAgent:
             return False, f"평균 유사도 {avg_sim:.3f} < {self.QUALITY_MIN_AVG_SIM}"
         return True, f"후보 {len(top_k)}명, 평균 유사도 {avg_sim:.3f}"
 
+    def _batch_embed(self, pending: dict[str, str]) -> dict[str, list[float]]:
+        """mentor_id → text 매핑을 한 번의 배치 API 호출로 임베딩"""
+        if not pending:
+            return {}
+        ids = list(pending.keys())
+        vectors = get_embeddings_batch([pending[mentor_id] for mentor_id in ids])
+        return dict(zip(ids, vectors))
+
     def _score_by_embedding(
         self,
         query_vec: list[float],
         mentors: list[dict],
         all_answers: list[dict],
     ) -> list[tuple[dict, float]]:
-        """3채널 임베딩 유사도 계산 (프로필·경력·기존답변)"""
-        scored = []
+        """3채널 임베딩 유사도 계산 (프로필·경력·기존답변).
+
+        멘토 수만큼 개별 임베딩 API를 순차 호출하면 (최대 3 * N회) 지연이 커서,
+        채널별로 아직 캐시에 없는 텍스트만 모아 배치 호출 3번으로 처리한다.
+        """
+        profile_pending: dict[str, str] = {}
+        career_pending:  dict[str, str] = {}
+        answers_pending: dict[str, str] = {}
+        career_empty:  list[str] = []
+        answers_empty: list[str] = []
+
         for mentor in mentors:
-            mentor_id   = mentor["mentor_id"]
-            experiences = get_mentor_experiences(mentor_id)
-            answer_sums = [
-                a["answer_summarize"]
-                for a in all_answers
-                if a["mentor_id"] == mentor_id and a.get("answer_summarize")
-            ]
+            mentor_id = mentor["mentor_id"]
 
             if mentor_id not in self._cache_profile:
-                self._cache_profile[mentor_id] = get_embedding(build_profile_text(mentor))
-            sim_profile = cosine_similarity(query_vec, self._cache_profile[mentor_id])
+                profile_pending[mentor_id] = build_profile_text(mentor)
 
             if mentor_id not in self._cache_career:
-                career_text = build_career_text(experiences)
-                self._cache_career[mentor_id] = (
-                    get_embedding(career_text) if career_text.strip()
-                    else self._cache_profile[mentor_id]
-                )
-            sim_career = cosine_similarity(query_vec, self._cache_career[mentor_id])
+                career_text = build_career_text(get_mentor_experiences(mentor_id))
+                if career_text.strip():
+                    career_pending[mentor_id] = career_text
+                else:
+                    career_empty.append(mentor_id)
 
             if mentor_id not in self._cache_answers:
+                answer_sums = [
+                    a["answer_summarize"]
+                    for a in all_answers
+                    if a["mentor_id"] == mentor_id and a.get("answer_summarize")
+                ]
                 answer_text = build_answer_text(answer_sums)
-                self._cache_answers[mentor_id] = (
-                    get_embedding(answer_text) if answer_text.strip()
-                    else self._cache_profile[mentor_id]
-                )
+                if answer_text.strip():
+                    answers_pending[mentor_id] = answer_text
+                else:
+                    answers_empty.append(mentor_id)
+
+        self._cache_profile.update(self._batch_embed(profile_pending))
+        self._cache_career.update(self._batch_embed(career_pending))
+        self._cache_answers.update(self._batch_embed(answers_pending))
+        for mentor_id in career_empty:
+            self._cache_career[mentor_id] = self._cache_profile[mentor_id]
+        for mentor_id in answers_empty:
+            self._cache_answers[mentor_id] = self._cache_profile[mentor_id]
+
+        scored = []
+        for mentor in mentors:
+            mentor_id = mentor["mentor_id"]
+            sim_profile = cosine_similarity(query_vec, self._cache_profile[mentor_id])
+            sim_career  = cosine_similarity(query_vec, self._cache_career[mentor_id])
             sim_answers = cosine_similarity(query_vec, self._cache_answers[mentor_id])
 
             sim = (

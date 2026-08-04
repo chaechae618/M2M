@@ -464,7 +464,7 @@ class AssetizeAgent:
             "created_at":     now_str(),
         }
         save_answer(record)
-        label = "✓ 자산화" if is_assetized else "✗ 비자산화"
+        label = "[O] 자산화" if is_assetized else "[X] 비자산화"
         print(f"  {label} 저장 완료: {record['answer_id']}")
 
         update_session(session_id, {

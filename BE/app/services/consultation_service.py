@@ -21,13 +21,6 @@ from app.services.mentoring_agent_adapter import (
     build_agent_adapter,
 )
 
-ACTIVE_STATUSES = {
-    status.value
-    for status in ConsultationStatus
-    if status not in {ConsultationStatus.COMPLETED, ConsultationStatus.CANCELLED}
-}
-
-
 class ConsultationService:
     def __init__(self, db: Session, user: User, settings: Settings | None = None) -> None:
         self.db = db
@@ -35,21 +28,6 @@ class ConsultationService:
         self.agent = build_agent_adapter(settings) if settings is not None else None
 
     def create(self, initial_message: str) -> tuple[ConsultationSession, ConsultationMessage]:
-        active_count = self.db.scalar(
-            select(func.count())
-            .select_from(ConsultationSession)
-            .where(
-                ConsultationSession.mentee_id == self.user.id,
-                ConsultationSession.status.in_(ACTIVE_STATUSES),
-            )
-        )
-        if (active_count or 0) >= 3:
-            raise DomainError(
-                "ACTIVE_SESSION_LIMIT_EXCEEDED",
-                "진행 중인 상담은 최대 3개까지 만들 수 있습니다.",
-                409,
-            )
-
         title = initial_message.strip().replace("\n", " ")[:60]
         session = ConsultationSession(
             mentee_id=self.user.id,
