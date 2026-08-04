@@ -472,6 +472,7 @@ function ChatSession({ startsAsNewChat, resumeSessionId }: { startsAsNewChat: bo
                   refinedQuestion={refinedQuestion}
                   selectedMentor={selectedMentor}
                   sessionId={sessionId}
+                  sessionTitle={sessionTitle}
                   onRetryJob={handleRetryJob}
                 />
               </div>
@@ -583,6 +584,7 @@ function MessageList({
   refinedQuestion,
   selectedMentor,
   sessionId,
+  sessionTitle,
   onRetryJob,
 }: {
   messages: ChatMessage[];
@@ -593,6 +595,7 @@ function MessageList({
   refinedQuestion: string;
   selectedMentor: MentorRecommendation | null;
   sessionId: string | null;
+  sessionTitle: string;
   onRetryJob: (jobId: string, retryKind: "analysis" | "persona") => void;
 }) {
   return (
@@ -608,6 +611,7 @@ function MessageList({
           refinedQuestion={refinedQuestion}
           selectedMentor={selectedMentor}
           sessionId={sessionId}
+          sessionTitle={sessionTitle}
           onRetryJob={onRetryJob}
         />
       ))}
@@ -624,6 +628,7 @@ function MessageRenderer({
   refinedQuestion,
   selectedMentor,
   sessionId,
+  sessionTitle,
   onRetryJob,
 }: {
   message: ChatMessage;
@@ -634,6 +639,7 @@ function MessageRenderer({
   refinedQuestion: string;
   selectedMentor: MentorRecommendation | null;
   sessionId: string | null;
+  sessionTitle: string;
   onRetryJob: (jobId: string, retryKind: "analysis" | "persona") => void;
 }) {
   if (message.role === "user") {
@@ -645,7 +651,7 @@ function MessageRenderer({
   }
 
   if (message.kind === "refined_question") {
-    return <RefinedQuestionMessage question={message.text ?? refinedQuestion} />;
+    return <RefinedQuestionMessage question={message.text ?? refinedQuestion} title={sessionTitle} />;
   }
 
   if (message.kind === "mentor_recommendations") {
@@ -661,7 +667,7 @@ function MessageRenderer({
   }
 
   if (message.kind === "mentor_request_editor") {
-    return <MentorRequestEditor initialValue={refinedQuestion} onComplete={onEditorComplete} />;
+    return <MentorRequestEditor initialValue={refinedQuestion} title={sessionTitle} onComplete={onEditorComplete} />;
   }
 
   if (message.kind === "answer_feedback" && message.answerId && sessionId) {
@@ -687,14 +693,14 @@ function MessageRenderer({
   );
 }
 
-function RefinedQuestionMessage({ question }: { question: string }) {
+function RefinedQuestionMessage({ question, title }: { question: string; title: string }) {
   return (
     <div className="w-full">
       <p className="text-[14px] font-normal leading-none text-[#9e9e9e]">멘토에게 보낼 질문</p>
       <section className="mt-1.5 w-full max-w-[600px] rounded-2xl border border-[#e0e0e0] bg-white px-6 py-5 shadow-[0_6px_10px_rgba(68,74,83,0.12)]">
         <div className="flex items-center gap-2 px-1">
           <Image src={assets.chat} alt="" width={20} height={20} draggable={false} />
-          <h2 className="text-[16px] font-medium leading-[1.6] text-black">비전공자 PM 직무 준비</h2>
+          <h2 className="text-[16px] font-medium leading-[1.6] text-black">{title}</h2>
         </div>
         <div className="mt-2 rounded-3xl bg-[#f7f7f7] px-6 py-5 text-[16px] font-medium leading-[1.6] text-[#585858]">
           {question}
@@ -1063,7 +1069,7 @@ function MessageActions({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-function MentorRequestEditor({ initialValue, onComplete }: { initialValue: string; onComplete: (content: string) => void }) {
+function MentorRequestEditor({ initialValue, title, onComplete }: { initialValue: string; title: string; onComplete: (content: string) => void }) {
   const [content, setContent] = useState(initialValue);
   return (
     <div className="flex h-full w-full flex-col gap-2 pb-4">
@@ -1071,7 +1077,7 @@ function MentorRequestEditor({ initialValue, onComplete }: { initialValue: strin
       <section className="w-full rounded-2xl border border-[#e0e0e0] bg-white px-6 py-5 shadow-[0_6px_10px_rgba(68,74,83,0.12)]">
         <div className="flex items-center gap-2 px-1">
           <Image src={assets.editLine} alt="" width={20} height={20} draggable={false} />
-          <h2 className="text-[15px] font-medium leading-[1.6] text-black">비전공자 PM 직무 준비</h2>
+          <h2 className="text-[15px] font-medium leading-[1.6] text-black">{title}</h2>
         </div>
         <textarea value={content} onChange={(event) => setContent(event.target.value)} className="mt-2 min-h-36 w-full resize-y rounded-3xl border-0 bg-[#f7f7f7] px-6 py-5 text-[15px] font-medium leading-[1.6] text-[#585858] outline-none focus:ring-2 focus:ring-[#ffd60a]" />
         <div className="mt-2 flex justify-end">
