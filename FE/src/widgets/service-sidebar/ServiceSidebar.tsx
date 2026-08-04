@@ -1,29 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { apiRequest } from "@/shared/api/client";
+import type { AuthUser } from "@/shared/api/types";
 import { cn } from "@/shared/lib/cn";
 
-const chatTopics = [
-  "비전공자도 PM 가능할까?",
-  "PM은 개발을 얼마나 알아야 할...",
-  "서비스 기획 경험이 부족해요",
-  "인턴 지원 전에 포폴 점검",
-];
-
-const recentChats = [
-  "비전공자 PM 준비",
-  "UX 포트폴리오 개선",
-  "PM 직무 탐색",
-  "마케팅 인턴 준비",
-  "서비스 기획 포트폴리오",
-  "첫 인턴 지원 고민",
-  "데이터 직무 전환",
-  "브랜드 마케터 준비",
-  "디자인 직무 선택",
-  "개발 지식이 필요한가요",
-];
+type ConsultationSummary = {
+  id: string;
+  title: string;
+  status: string;
+};
 
 const assets = {
   avatar: "/figma-assets/chat/avatar-person.svg",
@@ -54,7 +42,20 @@ export function ServiceSidebarProvider({ children }: { children: ReactNode }) {
 export function ServiceSidebar() {
   const context = useContext(ServiceSidebarContext);
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const [userName, setUserName] = useState("이름");
+  const [recentChats, setRecentChats] = useState<ConsultationSummary[]>([]);
+
+  useEffect(() => {
+    apiRequest<AuthUser>("auth/me")
+      .then((user) => setUserName(user.name))
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    apiRequest<{ items: ConsultationSummary[] }>("consultations?limit=10")
+      .then((result) => setRecentChats(result.items))
+      .catch(() => {});
+  }, []);
 
   if (!context) {
     throw new Error("ServiceSidebar must be used inside ServiceSidebarProvider.");
@@ -62,7 +63,6 @@ export function ServiceSidebar() {
 
   const { isCollapsed, toggleSidebar } = context;
   const startNewChat = () => router.push(`/chat?new=${Date.now()}`);
-  const activeChat = searchParams.has("new") ? "PM 직무 탐색" : "비전공자 PM 준비";
 
   return (
     <aside
@@ -81,18 +81,20 @@ export function ServiceSidebar() {
           <UserAvatar collapsed />
         </div>
       ) : (
-        <ExpandedSidebar activeChat={activeChat} onToggle={toggleSidebar} onNewChat={startNewChat} />
+        <ExpandedSidebar userName={userName} recentChats={recentChats} onToggle={toggleSidebar} onNewChat={startNewChat} />
       )}
     </aside>
   );
 }
 
 function ExpandedSidebar({
-  activeChat,
+  userName,
+  recentChats,
   onToggle,
   onNewChat,
 }: {
-  activeChat: string;
+  userName: string;
+  recentChats: ConsultationSummary[];
   onToggle: () => void;
   onNewChat: () => void;
 }) {
@@ -117,14 +119,11 @@ function ExpandedSidebar({
           <SidebarSection title="커피챗">
             <FolderItem label="답변 기다리는 질문" />
             <FolderItem label="답변 받은 질문" />
-            {chatTopics.map((topic) => (
-              <SidebarItem key={topic} label={topic} nested />
-            ))}
           </SidebarSection>
 
           <SidebarSection title="최근 대화" className="mt-6">
             {recentChats.map((chat) => (
-              <SidebarItem key={chat} label={chat} active={chat === activeChat} />
+              <SidebarItem key={chat.id} label={chat.title} />
             ))}
           </SidebarSection>
         </div>
@@ -134,7 +133,7 @@ function ExpandedSidebar({
         <div className="flex items-center gap-3">
           <UserAvatar />
           <div className="flex items-center gap-2">
-            <span className="text-[15px] font-medium leading-[1.7] text-[#242424]">이름</span>
+            <span className="text-[15px] font-medium leading-[1.7] text-[#242424]">{userName}</span>
             <span className="rounded-lg bg-[#ffddb3] px-2 py-1 text-[14px] font-medium leading-none text-[#ce5f1a]">멘티</span>
           </div>
         </div>

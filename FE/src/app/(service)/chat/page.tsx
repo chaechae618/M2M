@@ -66,60 +66,6 @@ const assets = {
   writeNew: "/figma-assets/chat/write-new.svg",
 };
 
-const demoMessages: ChatMessage[] = [
-  {
-    id: "u-1",
-    role: "user",
-    kind: "text",
-    text: "마케팅 직무 준비 중인데 포트폴리오에 쓸 게 너무 애매해. 인턴도 없고 공모전 수상도 없어.",
-  },
-  {
-    id: "a-1",
-    role: "assistant",
-    kind: "text",
-    content: (
-      <>
-        지금 갖고 있는 경험을 먼저 쪼개보면 좋아요.
-        <br />
-        혹시 직접 운영해본 SNS 계정, 학교 과제에서 만든 캠페인 기획안, 브랜드 분석 자료, 콘텐츠 제작 경험 같은 게 있어요?
-      </>
-    ),
-  },
-  {
-    id: "u-2",
-    role: "user",
-    kind: "text",
-    userActions: true,
-    text: "개인 인스타 계정 3개월 정도 운영한 거 있어. 대학생 자취 생활 팁 올렸고 릴스랑 카드뉴스 섞어서 올렸어. 근데 팔로워가 180명밖에 안 돼.",
-  },
-  {
-    id: "a-2",
-    role: "assistant",
-    kind: "text",
-    content: (
-      <>
-        <p>
-          팔로워 180명이라도 포트폴리오 소재가 될 수 있어요.
-          <br />
-          다만 “인스타 운영함”으로 쓰면 약하고, “자취 대학생 타깃 콘텐츠 실험”으로 바꿔야 해요.
-        </p>
-        <p className="mt-5">몇 개 정도 올렸고, 반응이 좋았던 콘텐츠가 있었어요?</p>
-      </>
-    ),
-  },
-  {
-    id: "u-3",
-    role: "user",
-    kind: "text",
-    text: "릴스 12개, 카드뉴스 8개 정도.\n조회수 4,800 정도 나왔어. 나머지는 300~700 정도.",
-  },
-  {
-    id: "a-3",
-    role: "assistant",
-    kind: "refined_question",
-  },
-];
-
 export default function ChatPage() {
   return (
     <Suspense fallback={<div className="h-full w-full bg-white" />}>
@@ -137,7 +83,7 @@ function ChatPageContent() {
 
 function ChatSession({ startsAsNewChat }: { startsAsNewChat: boolean }) {
   const router = useRouter();
-  const [messages, setMessages] = useState<ChatMessage[]>(startsAsNewChat ? [] : demoMessages);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isNewChat, setIsNewChat] = useState(startsAsNewChat);
   const [question, setQuestion] = useState("");
   const [sessionId, setSessionId] = useState<string | null>(null);
