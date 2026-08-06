@@ -77,6 +77,8 @@ function SignupTextField({
   type = "text",
   rightIcon,
   rightText,
+  onRightIconClick,
+  rightIconLabel,
   name,
   value,
   onChange,
@@ -88,6 +90,8 @@ function SignupTextField({
   type?: string;
   rightIcon?: ReactNode;
   rightText?: string;
+  onRightIconClick?: () => void;
+  rightIconLabel?: string;
   name: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -112,7 +116,20 @@ function SignupTextField({
             {rightText}
           </span>
         ) : null}
-        {rightIcon ? <span className="ml-3 flex size-5 shrink-0 items-center justify-center">{rightIcon}</span> : null}
+        {rightIcon ? (
+          onRightIconClick ? (
+            <button
+              type="button"
+              onClick={onRightIconClick}
+              aria-label={rightIconLabel}
+              className="ml-3 flex size-5 shrink-0 items-center justify-center"
+            >
+              {rightIcon}
+            </button>
+          ) : (
+            <span className="ml-3 flex size-5 shrink-0 items-center justify-center">{rightIcon}</span>
+          )
+        ) : null}
       </span>
     </label>
   );
@@ -232,6 +249,7 @@ export function SignupForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [statusSelection, setStatusSelection] = useState<StatusSelection>("student");
   const [targetRole, setTargetRole] = useState("");
   const [resume, setResume] = useState<File | null>(null);
@@ -297,11 +315,11 @@ export function SignupForm() {
           label="비밀번호"
           placeholder="비밀번호를 적어주세요."
           required
-          type="password"
+          type={isPasswordVisible ? "text" : "password"}
           minLength={8}
           rightIcon={
             <Image
-              src="/figma-assets/eye-off.svg"
+              src={isPasswordVisible ? "/figma-assets/eye-fill.svg" : "/figma-assets/eye-off.svg"}
               alt=""
               width={20}
               height={20}
@@ -309,6 +327,8 @@ export function SignupForm() {
               draggable={false}
             />
           }
+          onRightIconClick={() => setIsPasswordVisible((value) => !value)}
+          rightIconLabel={isPasswordVisible ? "비밀번호 숨기기" : "비밀번호 보기"}
         />
       </div>
 
