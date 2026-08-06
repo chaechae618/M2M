@@ -7,7 +7,7 @@ import type { QnaArticle } from "@/features/knowledge-asset/data/qna";
 
 export function QnaArticleItem({ article }: { article: QnaArticle }) {
   return (
-    <article className="flex w-full gap-5 border-b border-[#e0e0e0] pb-10 md:gap-9">
+    <article className="flex w-full gap-5 border-b border-[#e0e0e0] pb-10 last:border-b-0 md:gap-9">
       <Link href={`/knowledge/${article.id}`} className="min-w-0 flex-1">
         <div className="flex min-w-0 flex-col gap-4">
           <p className="truncate text-[15px] font-medium leading-none text-accent-orange">
