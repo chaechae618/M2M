@@ -133,7 +133,6 @@ export default function MyPage() {
               ) : (
                 <div>
                   <p className="text-[20px] font-semibold leading-[1.55] text-[#242424]">{profile.name}</p>
-                  <p className="mt-1 text-[14px] text-[#9e9e9e]">{profile.email}</p>
                 </div>
               )}
             </div>
@@ -177,13 +176,13 @@ export default function MyPage() {
 
                 <ProfileRow label="이력서" align="start">
                   <div className="w-full">
-                    <FileEntry kind="resume" name="이력서" url={profile.resumeUrl} fileName={profile.resumeFileName} accept=".pdf,.docx" onUploaded={applyUploadedFile} onError={setError} />
+                    <FileEntry kind="resume" name="이력서" url={profile.resumeUrl} fileName={profile.resumeFileName} accept=".pdf,.docx" isEditing={isEditing} onUploaded={applyUploadedFile} onError={setError} />
                     <p className="mt-1 pl-8 text-[14px] leading-[1.4] text-[#9e9e9e]">이력서는 다른 사람들에게 공개되지 않아요.</p>
                   </div>
                 </ProfileRow>
 
                 <ProfileRow label="포트폴리오" align="start">
-                  <FileEntry kind="portfolio" name="포트폴리오" url={profile.portfolioUrl} fileName={profile.portfolioFileName} accept=".pdf,.pptx" onUploaded={applyUploadedFile} onError={setError} />
+                  <FileEntry kind="portfolio" name="포트폴리오" url={profile.portfolioUrl} fileName={profile.portfolioFileName} accept=".pdf,.pptx" isEditing={isEditing} onUploaded={applyUploadedFile} onError={setError} />
                 </ProfileRow>
               </div>
             </div>
@@ -209,6 +208,7 @@ function FileEntry({
   url,
   fileName,
   accept,
+  isEditing,
   onUploaded,
   onError,
 }: {
@@ -217,6 +217,7 @@ function FileEntry({
   url: string | null;
   fileName: string | null;
   accept: string;
+  isEditing: boolean;
   onUploaded: (kind: "resume" | "portfolio", upload: FileUpload) => void;
   onError: (message: string) => void;
 }) {
@@ -243,10 +244,12 @@ function FileEntry({
     <div className="flex items-center gap-3">
       <FileText size={20} className="shrink-0 text-[#585858]" />
       <span className="min-w-0 flex-1 truncate text-[18px] font-medium leading-[1.6] text-[#242424]">{fileName || (url ? `${name} 등록됨` : `${name} 없음`)}</span>
-      <label className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-[#eeeeee] text-[#585858]" title={`${name} 업로드`}>
-        <Upload size={18} strokeWidth={1.6} />
-        <input type="file" accept={accept} disabled={isUploading} className="sr-only" onChange={(event) => upload(event.target.files?.[0] ?? null)} />
-      </label>
+      {isEditing ? (
+        <label className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-[#eeeeee] text-[#585858]" title={`${name} 업로드`}>
+          <Upload size={18} strokeWidth={1.6} />
+          <input type="file" accept={accept} disabled={isUploading} className="sr-only" onChange={(event) => upload(event.target.files?.[0] ?? null)} />
+        </label>
+      ) : null}
       {downloadUrl ? (
         <a href={downloadUrl} target="_blank" rel="noreferrer" aria-label={`${name} 다운로드`} className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#eeeeee] text-[#585858]">
           <Download size={18} strokeWidth={1.6} />
