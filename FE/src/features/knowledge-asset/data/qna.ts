@@ -19,4 +19,5 @@ export type RelatedArticle = {
   excerpt: string;
   scraps: number;
   imagePosition: QnaImagePosition;
+  imageUrl?: string;
 };

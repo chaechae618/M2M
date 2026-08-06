@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from "react";
 import { QnaAvatar } from "@/features/knowledge-asset/components/QnaAvatar";
 import { ArrowIcon, ScrapIcon, SearchIcon } from "@/features/knowledge-asset/components/QnaIcons";
 import { RelatedArticleCard } from "@/features/knowledge-asset/components/RelatedArticleCard";
@@ -11,6 +11,7 @@ import { apiAssetUrl, ApiError, apiRequest, jsonRequest } from "@/shared/api/cli
 import { relativeDate, type QnaComment, type QnaPost, type QnaPostList } from "@/features/knowledge-asset/api/qna";
 import type { RelatedArticle } from "@/features/knowledge-asset/data/qna";
 import { routes } from "@/shared/constants/routes";
+import { cn } from "@/shared/lib/cn";
 
 export default function KnowledgeDetailPage() {
   const { assetId } = useParams<{ assetId: string }>();
@@ -32,6 +33,7 @@ export default function KnowledgeDetailPage() {
         excerpt: item.content,
         scraps: 0,
         imagePosition: (["top-left", "top-right", "bottom-left", "bottom-right"] as const)[index],
+        imageUrl: apiAssetUrl(item.images[0]?.url) ?? undefined,
       })));
     }).catch((requestError) => {
       if (requestError instanceof ApiError && requestError.status === 401) {
@@ -82,7 +84,7 @@ export default function KnowledgeDetailPage() {
           <h1 className="text-[28px] font-bold leading-[1.4] text-black">{post.title}</h1>
           <div className="flex flex-wrap items-center justify-between gap-4 text-[16px] font-normal leading-none text-brand-muted">
             <span>{relativeDate(post.createdAt)} · {post.author.name}</span>
-            <div className="flex items-center gap-5"><span>조회수 {post.viewCount}</span><span className="flex items-center gap-2"><ScrapIcon filled={false} />0</span></div>
+            <div className="flex items-center gap-5"><span>조회수 {post.viewCount.toLocaleString()}</span><span className="flex items-center gap-2"><ScrapIcon filled={false} />0</span></div>
           </div>
         </section>
 
@@ -101,13 +103,7 @@ export default function KnowledgeDetailPage() {
       <section className="mt-[72px] flex flex-col gap-9">
         <h2 className="text-[23px] font-bold leading-[1.6] text-brand-muted">답변 {post.commentCount}</h2>
         {post.comments?.map((item, index) => (
-          <article key={item.id} className="flex flex-col gap-5 border-b border-[#eeeeee] pb-8">
-            <div className="flex items-center gap-5">
-              <div className="flex items-center gap-3"><QnaAvatar color={index % 2 ? "#cdd6d8" : "#ffddb3"} /><span className="text-[16px] font-medium leading-[1.7] text-[#242424]">{item.author.name}</span></div>
-              <span className="text-[16px] font-normal leading-none text-placeholder">{relativeDate(item.createdAt)}</span>
-            </div>
-            <p className="whitespace-pre-wrap text-[18px] font-medium leading-[1.6] text-[#242424]">{item.content}</p>
-          </article>
+          <CommentItem key={item.id} item={item} avatarColor={index % 2 ? "#cdd6d8" : "#ffddb3"} />
         ))}
         {!post.comments?.length ? <p className="text-[16px] text-[#9e9e9e]">아직 등록된 답변이 없습니다.</p> : null}
         <form onSubmit={submitComment} className="flex flex-col gap-3">
@@ -126,5 +122,45 @@ export default function KnowledgeDetailPage() {
         </>
       ) : null}
     </main>
+  );
+}
+
+function CommentItem({ item, avatarColor }: { item: QnaComment; avatarColor: string }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const contentRef = useRef<HTMLParagraphElement>(null);
+
+  useLayoutEffect(() => {
+    const el = contentRef.current;
+    if (el) setIsOverflowing(el.scrollHeight > el.clientHeight + 1);
+  }, [item.content]);
+
+  return (
+    <article className="flex flex-col gap-5 border-b border-[#eeeeee] pb-8">
+      <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3"><QnaAvatar color={avatarColor} /><span className="text-[16px] font-medium leading-[1.7] text-[#242424]">{item.author.name}</span></div>
+        <span className="text-[16px] font-normal leading-none text-placeholder">{relativeDate(item.createdAt)}</span>
+      </div>
+      <div className="flex flex-col gap-3">
+        <p
+          ref={contentRef}
+          className={cn(
+            "whitespace-pre-wrap text-[18px] font-medium leading-[1.6] text-[#242424]",
+            !isExpanded && "line-clamp-5",
+          )}
+        >
+          {item.content}
+        </p>
+        {isOverflowing ? (
+          <button
+            type="button"
+            onClick={() => setIsExpanded((value) => !value)}
+            className="self-start text-[15px] font-semibold text-[#9e9e9e]"
+          >
+            {isExpanded ? "접기" : "더보기"}
+          </button>
+        ) : null}
+      </div>
+    </article>
   );
 }
