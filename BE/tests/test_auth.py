@@ -79,3 +79,29 @@ def test_signup_login_refresh_and_logout() -> None:
         )
         assert logout_response.status_code == 200
         assert logout_response.json()["data"]["loggedOut"] is True
+
+
+def test_signup_accepts_career_exploration_status() -> None:
+    email = f"mentee-{uuid4()}@example.com"
+    password = "password123!"
+
+    with TestClient(app) as client:
+        signup_response = client.post(
+            "/api/v1/auth/signup",
+            json={
+                "email": email,
+                "password": password,
+                "name": "김멘티",
+                "currentStatus": "career_exploration",
+                "termsConsent": True,
+                "privacyConsent": True,
+            },
+        )
+        assert signup_response.status_code == 201
+        access_token = signup_response.json()["data"]["accessToken"]
+
+        profile_response = client.get(
+            "/api/v1/mentees/me",
+            headers={"Authorization": f"Bearer {access_token}"},
+        )
+        assert profile_response.json()["data"]["currentStatus"] == "career_exploration"

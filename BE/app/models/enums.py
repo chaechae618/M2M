@@ -10,6 +10,7 @@ class CurrentStatus(StrEnum):
     JOB_SEEKER = "job_seeker"
     CAREER_CHANGE = "career_change"
     EMPLOYED = "employed"
+    CAREER_EXPLORATION = "career_exploration"
     OTHER = "other"
 
 

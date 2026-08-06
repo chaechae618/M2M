@@ -3,7 +3,9 @@ from typing import Literal
 
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
-CurrentStatus = Literal["student", "job_seeker", "career_change", "employed", "other"]
+CurrentStatus = Literal[
+    "student", "job_seeker", "career_change", "employed", "career_exploration", "other"
+]
 
 
 class SignupRequest(BaseModel):

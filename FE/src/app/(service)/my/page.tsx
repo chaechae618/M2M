@@ -30,6 +30,7 @@ const statusOptions = [
   ["job_seeker", "취업준비"],
   ["career_change", "이직/전환"],
   ["employed", "재직중"],
+  ["career_exploration", "진로탐색"],
   ["other", "기타"],
 ] as const;
 

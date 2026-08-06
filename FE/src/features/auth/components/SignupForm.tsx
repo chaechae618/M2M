@@ -23,7 +23,7 @@ const statusOptions = [
 ] as const;
 
 type StatusSelection = (typeof statusOptions)[number]["value"];
-type CurrentStatus = "student" | "job_seeker" | "career_change" | "employed" | "other";
+type CurrentStatus = "student" | "job_seeker" | "career_change" | "employed" | "career_exploration" | "other";
 
 function RequiredDot() {
   return (
@@ -274,7 +274,7 @@ export function SignupForm() {
     setError("");
     setIsSubmitting(true);
     try {
-      const currentStatus: CurrentStatus = statusSelection === "career_exploration" ? "other" : statusSelection;
+      const currentStatus: CurrentStatus = statusSelection;
       await apiRequest<AuthSession>(
         "auth/signup",
         jsonRequest("POST", {
