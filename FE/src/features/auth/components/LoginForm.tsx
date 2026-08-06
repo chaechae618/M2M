@@ -91,12 +91,9 @@ export function LoginForm() {
         <label className="block">
           <span className="mb-2 flex flex-wrap items-center justify-between gap-2 text-[16px] font-medium leading-[1.7] text-[#242424]">
             <span>비밀번호</span>
-            <Link
-              href={routes.forgotPassword}
-              className="auth-action-link text-[15px] font-semibold leading-[1.4]"
-            >
+            <span className="text-[15px] font-semibold leading-[1.4] text-[#9e9e9e]">
               비밀번호를 잊어버리셨나요?
-            </Link>
+            </span>
           </span>
           <Input
             name="password"
