@@ -7,6 +7,8 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   leftIconSrc?: string;
   rightIcon?: ReactNode;
   rightIconSrc?: string;
+  onRightIconClick?: () => void;
+  rightIconLabel?: string;
 };
 
 export function Input({
@@ -15,6 +17,8 @@ export function Input({
   leftIconSrc,
   rightIcon,
   rightIconSrc,
+  onRightIconClick,
+  rightIconLabel,
   ...props
 }: InputProps) {
   return (
@@ -45,20 +49,49 @@ export function Input({
         {...props}
       />
       {rightIconSrc ? (
-        <span className="absolute right-4 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center">
-          <Image
-            src={rightIconSrc}
-            alt=""
-            width={20}
-            height={20}
-            className="block size-5"
-            draggable={false}
-          />
-        </span>
+        onRightIconClick ? (
+          <button
+            type="button"
+            onClick={onRightIconClick}
+            aria-label={rightIconLabel}
+            className="absolute right-4 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center"
+          >
+            <Image
+              src={rightIconSrc}
+              alt=""
+              width={20}
+              height={20}
+              className="block size-5"
+              draggable={false}
+            />
+          </button>
+        ) : (
+          <span className="absolute right-4 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center">
+            <Image
+              src={rightIconSrc}
+              alt=""
+              width={20}
+              height={20}
+              className="block size-5"
+              draggable={false}
+            />
+          </span>
+        )
       ) : rightIcon ? (
-        <span className="absolute right-4 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center text-placeholder">
-          {rightIcon}
-        </span>
+        onRightIconClick ? (
+          <button
+            type="button"
+            onClick={onRightIconClick}
+            aria-label={rightIconLabel}
+            className="absolute right-4 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center text-placeholder"
+          >
+            {rightIcon}
+          </button>
+        ) : (
+          <span className="absolute right-4 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center text-placeholder">
+            {rightIcon}
+          </span>
+        )
       ) : null}
     </div>
   );

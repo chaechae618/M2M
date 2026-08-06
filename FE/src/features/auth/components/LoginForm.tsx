@@ -46,6 +46,7 @@ export function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -97,14 +98,16 @@ export function LoginForm() {
           </span>
           <Input
             name="password"
-            type="password"
+            type={isPasswordVisible ? "text" : "password"}
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
             autoComplete="current-password"
             placeholder="비밀번호를 적어주세요."
             leftIconSrc="/figma-assets/lock-icon.svg"
-            rightIconSrc="/figma-assets/eye-off.svg"
+            rightIconSrc={isPasswordVisible ? "/figma-assets/eye-fill.svg" : "/figma-assets/eye-off.svg"}
+            onRightIconClick={() => setIsPasswordVisible((value) => !value)}
+            rightIconLabel={isPasswordVisible ? "비밀번호 숨기기" : "비밀번호 보기"}
           />
         </label>
       </div>
