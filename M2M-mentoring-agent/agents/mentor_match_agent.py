@@ -565,10 +565,15 @@ class MentorMatchAgent:
         valid_top3 = valid_top3[:3]
 
         mentor_dict = {m["mentor_id"]: m for m, _ in top_k}
+        score_dict = {m["mentor_id"]: score for m, score in top_k}
         for item in valid_top3:
             mentor = mentor_dict.get(item["mentor_id"], {})
             item["mentor_info"]  = mentor.get("mentor_info", {})
             item["current_role"] = mentor.get("current_role", "")
+            item["algorithm_score"] = round(
+                score_dict.get(item["mentor_id"], 0.0),
+                4,
+            )
 
         result["top3"]             = valid_top3
         result["total_candidates"] = len(top_k)

@@ -1,10 +1,13 @@
+from datetime import UTC, datetime
+
 from fastapi import APIRouter, BackgroundTasks, Header, status
 from sqlalchemy import select
 
 from app.api.deps import AppSettings, CurrentUser, DbSession
 from app.core.exceptions import DomainError
+from app.models.coffee_chat import CoffeeChatRequest
 from app.models.consultation import PersonaRecommendation
-from app.models.enums import ConsultationStatus, JobStatus
+from app.models.enums import CoffeeChatStatus, ConsultationStatus, JobStatus
 from app.models.job import AsyncJob
 from app.models.persona import MentorPersona
 from app.schemas.common import SuccessResponse
@@ -107,6 +110,36 @@ def select_persona(
     session.selected_persona_id = persona.id
     session.selected_persona_version = persona.version
     session.status = ConsultationStatus.PERSONA_ANSWER_GENERATING
+    now = datetime.now(UTC)
+    pending_requests = list(
+        db.scalars(
+            select(CoffeeChatRequest).where(
+                CoffeeChatRequest.session_id == session.id,
+                CoffeeChatRequest.status == CoffeeChatStatus.REQUESTED,
+            )
+        )
+    )
+    selected_request = next(
+        (item for item in pending_requests if item.persona_id == persona.id),
+        None,
+    )
+    for item in pending_requests:
+        if item is selected_request:
+            item.status = CoffeeChatStatus.ACCEPTED
+            item.accepted_at = now
+        else:
+            item.status = CoffeeChatStatus.CANCELLED
+            item.cancelled_at = now
+    if selected_request is None:
+        selected_request = CoffeeChatRequest(
+            session_id=session.id,
+            mentee_id=current_user.id,
+            persona_id=persona.id,
+            request_message=session.refined_question or session.title,
+            status=CoffeeChatStatus.ACCEPTED,
+            accepted_at=now,
+        )
+        db.add(selected_request)
     job = AsyncJob(
         owner_id=current_user.id,
         session_id=session.id,
@@ -129,6 +162,7 @@ def select_persona(
                 "personaVersion": persona.version,
                 "isAiPersona": True,
             },
+            "coffeeChatRequestId": selected_request.id,
             "sessionStatus": ConsultationStatus.PERSONA_ANSWER_GENERATING,
             "jobId": job.id,
             "pollingUrl": f"/api/v1/jobs/{job.id}",

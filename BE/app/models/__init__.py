@@ -5,7 +5,8 @@ from app.models.answer import (
     Feedback,
     ReuseConsent,
 )
-from app.models.auth import RefreshToken, User
+from app.models.auth import PasswordResetToken, RefreshToken, User
+from app.models.coffee_chat import CoffeeChatRequest
 from app.models.consultation import (
     ConsultationAgentContext,
     ConsultationMessage,
@@ -22,6 +23,7 @@ __all__ = [
     "AnswerAsset",
     "AnswerAssetEmbedding",
     "AsyncJob",
+    "CoffeeChatRequest",
     "ConsultationMessage",
     "ConsultationAgentContext",
     "ConsultationSession",
@@ -30,6 +32,7 @@ __all__ = [
     "MenteeProfile",
     "MentorPersona",
     "PersonaRecommendation",
+    "PasswordResetToken",
     "QnaComment",
     "QnaImage",
     "QnaPost",

@@ -9,3 +9,4 @@ data_db/scripts/generate_mentor_db.py
 *.pdf
 *.docx
 __pycache__/
+BE/uploads/

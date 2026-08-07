@@ -686,6 +686,25 @@ class SearchVerifyAgent:
             "target_domain_candidates": hard_case_flags.get("target_domain_candidates", []),
         }
 
+        # 사용자가 멘토 연결을 명시적으로 요청한 경우 정보가 부족하더라도
+        # 그 의사를 우선한다. 최종 라우팅 책임은 Agent 2에 유지된다.
+        if safe_bool(routing_hints.get("explicit_mentor_request")):
+            print("  guard | explicit_mentor_request=True -> mentor_needed")
+            retrieval_log["strategy"] = "mentor_first"
+            retrieval_log["verdict"] = "mentor_needed"
+            return self._mentor_fallback(
+                session_id,
+                "mentor_first",
+                fallback_type="explicit_mentor_request",
+                reason="사용자가 멘토 연결을 명시적으로 요청했습니다.",
+                mentor_match_hints={
+                    "desired_help": routing_hints.get("desired_help", ""),
+                    "risk_flags": risk_flags,
+                    "question_units": _question_unit_texts(question_units),
+                },
+                retrieval_log=retrieval_log,
+            )
+
         # ─────────────────────────────────────────
         # 관찰0: hard_case_flags 선처리
         # ─────────────────────────────────────────

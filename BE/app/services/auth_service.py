@@ -1,4 +1,6 @@
-from datetime import UTC, datetime
+import hashlib
+import secrets
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -12,7 +14,7 @@ from app.core.security import (
     hash_password,
     verify_password,
 )
-from app.models.auth import RefreshToken, User
+from app.models.auth import PasswordResetToken, RefreshToken, User
 from app.models.mentee import MenteeProfile
 from app.schemas.auth import SignupRequest
 
@@ -89,6 +91,77 @@ class AuthService:
             stored.revoked_at = datetime.now(UTC)
             self.db.commit()
 
+    def request_password_reset(self, email: str) -> tuple[str | None, datetime | None]:
+        user = self.db.scalar(select(User).where(User.email == email.lower()))
+        if user is None or not user.is_active:
+            return None, None
+
+        now = datetime.now(UTC)
+        existing_tokens = self.db.scalars(
+            select(PasswordResetToken).where(
+                PasswordResetToken.user_id == user.id,
+                PasswordResetToken.used_at.is_(None),
+            )
+        )
+        for item in existing_tokens:
+            item.used_at = now
+
+        raw_token = secrets.token_urlsafe(32)
+        expires_at = now + timedelta(minutes=self.settings.password_reset_expire_minutes)
+        self.db.add(
+            PasswordResetToken(
+                user_id=user.id,
+                token_hash=self._token_digest(raw_token),
+                expires_at=expires_at,
+            )
+        )
+        self.db.commit()
+        return raw_token, expires_at
+
+    def reset_password(self, token: str, new_password: str) -> User:
+        now = datetime.now(UTC)
+        reset_token = self.db.scalar(
+            select(PasswordResetToken).where(
+                PasswordResetToken.token_hash == self._token_digest(token),
+                PasswordResetToken.used_at.is_(None),
+            )
+        )
+        if reset_token is None:
+            raise DomainError(
+                "INVALID_PASSWORD_RESET_TOKEN",
+                "유효하지 않은 비밀번호 재설정 토큰입니다.",
+                400,
+            )
+
+        expires_at = reset_token.expires_at
+        if expires_at.tzinfo is None:
+            expires_at = expires_at.replace(tzinfo=UTC)
+        if expires_at <= now:
+            reset_token.used_at = now
+            self.db.commit()
+            raise DomainError(
+                "PASSWORD_RESET_TOKEN_EXPIRED",
+                "비밀번호 재설정 토큰이 만료되었습니다.",
+                400,
+            )
+
+        user = self.db.get(User, reset_token.user_id)
+        if user is None or not user.is_active:
+            raise DomainError("ACCOUNT_DISABLED", "사용할 수 없는 계정입니다.", 403)
+
+        user.password_hash = hash_password(new_password)
+        reset_token.used_at = now
+        refresh_tokens = self.db.scalars(
+            select(RefreshToken).where(
+                RefreshToken.user_id == user.id,
+                RefreshToken.revoked_at.is_(None),
+            )
+        )
+        for refresh_token in refresh_tokens:
+            refresh_token.revoked_at = now
+        self.db.commit()
+        return user
+
     def _issue_refresh_token(self, user_id: str) -> str:
         token, jti, expires_at = create_refresh_token(user_id, self.settings)
         self.db.add(
@@ -99,3 +172,7 @@ class AuthService:
             )
         )
         return token
+
+    @staticmethod
+    def _token_digest(token: str) -> str:
+        return hashlib.sha256(token.encode("utf-8")).hexdigest()

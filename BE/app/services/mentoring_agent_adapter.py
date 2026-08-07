@@ -282,6 +282,30 @@ class CoreMentoringAgentAdapter:
                 503,
             ) from exc
 
+    def list_mentors(self) -> list[dict]:
+        try:
+            db_module = importlib.import_module("db.json_db")
+            return db_module.get_all_mentors()
+        except Exception as exc:
+            logger.exception("멘토 페르소나 목록 조회 실패")
+            raise DomainError(
+                "MENTOR_PERSONA_READ_FAILED",
+                "멘토 페르소나 목록을 읽지 못했습니다.",
+                503,
+            ) from exc
+
+    def get_mentor_experiences(self, mentor_id: str) -> list[dict]:
+        try:
+            db_module = importlib.import_module("db.json_db")
+            return db_module.get_mentor_experiences(mentor_id)
+        except Exception as exc:
+            logger.exception("멘토 페르소나 경험 조회 실패")
+            raise DomainError(
+                "MENTOR_PERSONA_READ_FAILED",
+                "멘토 페르소나 경험을 읽지 못했습니다.",
+                503,
+            ) from exc
+
     def generate_persona_answer(
         self,
         *,

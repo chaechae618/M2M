@@ -124,6 +124,19 @@ class FakeMentoringAgentAdapter:
             "active": True,
         }
 
+    def list_mentors(self) -> list[dict]:
+        return [self.get_mentor(f"mr_test_{rank}") for rank in range(1, 4)]
+
+    def get_mentor_experiences(self, mentor_id: str) -> list[dict]:
+        return [
+            {
+                "experience_id": f"exp_{mentor_id}",
+                "mentor_id": mentor_id,
+                "title": "데이터 분석 직무 전환",
+                "description": "비전공 배경에서 데이터 분석가로 전환한 경험",
+            }
+        ]
+
     def generate_persona_answer(self, **kwargs) -> dict:
         content = (
             "저는 실제 사람이 아닌 AI 멘토 페르소나입니다. 먼저 목표 채용공고를 "
@@ -156,11 +169,12 @@ class FakeMentoringAgentAdapter:
 def use_fake_mentoring_agents(
     monkeypatch: pytest.MonkeyPatch,
 ) -> type[FakeMentoringAgentAdapter]:
-    from app.api.v1 import feedback
+    from app.api.v1 import feedback, mentor_catalog
     from app.services import agent_pipeline, consultation_service
 
     factory = lambda settings: FakeMentoringAgentAdapter()  # noqa: E731, ARG005
     monkeypatch.setattr(consultation_service, "build_agent_adapter", factory)
     monkeypatch.setattr(agent_pipeline, "build_agent_adapter", factory)
     monkeypatch.setattr(feedback, "build_agent_adapter", factory)
+    monkeypatch.setattr(mentor_catalog, "build_agent_adapter", factory)
     return FakeMentoringAgentAdapter

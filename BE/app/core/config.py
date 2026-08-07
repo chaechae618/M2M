@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
     refresh_token_expire_days: int = 14
+    password_reset_expire_minutes: int = 30
 
     cors_origins: Annotated[list[str], NoDecode] = [
         "http://localhost:3000",

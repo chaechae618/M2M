@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from datetime import UTC, datetime
+
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
@@ -12,12 +14,19 @@ from app.models.answer import (
     AnswerAssetEmbedding,
     Feedback,
 )
+from app.models.coffee_chat import CoffeeChatRequest
 from app.models.consultation import (
     ConsultationAgentContext,
     ConsultationSession,
     PersonaRecommendation,
 )
-from app.models.enums import AnswerRoute, AnswerType, ConsultationStatus, JobStatus
+from app.models.enums import (
+    AnswerRoute,
+    AnswerType,
+    CoffeeChatStatus,
+    ConsultationStatus,
+    JobStatus,
+)
 from app.models.job import AsyncJob
 from app.models.persona import MentorPersona
 from app.models.qna import QnaPost
@@ -195,6 +204,18 @@ class AgentPipeline:
                     )
                 )
                 session.status = ConsultationStatus.PERSONA_ANSWERED
+                coffee_chat = db.scalar(
+                    select(CoffeeChatRequest)
+                    .where(
+                        CoffeeChatRequest.session_id == session.id,
+                        CoffeeChatRequest.persona_id == persona.id,
+                        CoffeeChatRequest.status == CoffeeChatStatus.ACCEPTED,
+                    )
+                    .order_by(CoffeeChatRequest.created_at.desc())
+                )
+                if coffee_chat is not None:
+                    coffee_chat.status = CoffeeChatStatus.COMPLETED
+                    coffee_chat.completed_at = datetime.now(UTC)
                 job.status = JobStatus.COMPLETED
                 job.progress = 100
                 job.current_step = "completed"

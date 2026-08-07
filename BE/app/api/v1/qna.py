@@ -7,7 +7,9 @@ from fastapi import APIRouter, File, Query, UploadFile, status
 from sqlalchemy import func, or_, select
 
 from app.api.deps import CurrentUser, DbSession
+from app.core.config import get_settings
 from app.core.exceptions import DomainError
+from app.core.uploads import delete_uploaded_file
 from app.models.auth import User
 from app.models.qna import QnaComment, QnaImage, QnaPost
 from app.schemas.common import SuccessResponse
@@ -19,7 +21,7 @@ from app.schemas.qna import (
 )
 
 router = APIRouter(prefix="/qna", tags=["Q&A"])
-QNA_UPLOAD_ROOT = Path("uploads/qna")
+QNA_UPLOAD_ROOT = get_settings().upload_root / "qna"
 
 
 def get_post(db: DbSession, post_id: str) -> QnaPost:
@@ -315,6 +317,46 @@ async def upload_qna_image(
             "fileName": image.original_name,
             "size": image.size,
         }
+    )
+
+
+@router.delete(
+    "/images/{image_id}",
+    response_model=SuccessResponse[dict[str, bool]],
+)
+def delete_qna_image(
+    image_id: str,
+    current_user: CurrentUser,
+    db: DbSession,
+) -> SuccessResponse[dict[str, bool]]:
+    image = db.scalar(
+        select(QnaImage).where(
+            QnaImage.id == image_id,
+            QnaImage.owner_id == current_user.id,
+        )
+    )
+    if image is None:
+        raise DomainError("QNA_IMAGE_NOT_FOUND", "이미지를 찾을 수 없습니다.", 404)
+
+    owner_posts = db.scalars(
+        select(QnaPost).where(
+            QnaPost.author_id == current_user.id,
+            QnaPost.deleted.is_(False),
+        )
+    )
+    if any(image.id in (post.image_ids or []) for post in owner_posts):
+        raise DomainError(
+            "QNA_IMAGE_IN_USE",
+            "게시글에서 사용 중인 이미지는 삭제할 수 없습니다.",
+            409,
+        )
+
+    file_deleted = delete_uploaded_file(image.url)
+    db.delete(image)
+    db.commit()
+    return SuccessResponse(
+        data={"deleted": True, "fileDeleted": file_deleted},
+        message="Q&A 이미지를 삭제했습니다.",
     )
 
 

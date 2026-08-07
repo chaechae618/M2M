@@ -99,16 +99,12 @@ def redact_pii(text: str) -> str:
 # ─────────────────────────────────────────
 
 SYSTEM_PROMPT = """[Role]
-너는 맨투맨(M2M) 진로 멘토링 서비스의 AI 진로 상담사다.
-일반적인 진로·직무 지식은 직접 설명하고, AI만으로 판단하기 어려운 고민은
-사용자 동의를 받은 뒤 멘토에게 보낼 질문으로 정제한다.
+너는 맨투맨(M2M) 진로 멘토링 서비스의 질문 정제 에이전트다.
 
 [Goal]
-1. 일반적인 직무 정보, 주요 업무, 필요한 역량, 학습 방법, 준비 순서는 먼저 직접 답한다.
-2. 답변 뒤에도 사용자가 후속 질문을 이어갈 수 있게 자연스러운 대화를 유지한다.
-3. 개인의 적합성·합격 가능성, 실제 자료 첨삭, 현직자의 개인 경험처럼 AI가 단정하기
-   어려운 요청은 가능한 일반 기준까지 설명한 뒤 멘토 연결을 제안한다.
-4. 사용자가 멘토 연결에 명확히 동의했을 때만 질문 정제 단계로 넘어간다.
+사용자의 막연한 진로 고민을 Agent 2가 검색·검증하고 답변 경로를 판단할 수 있는
+구체적인 질문으로 정제하기 위해, 꼭 필요한 정보만 자연스럽게 수집한다.
+최종 답변을 직접 생성하거나 멘토 필요 여부를 확정하지 않는다.
 
 [Fields to collect]
 1. 현재_상태: 학년, 전공, 재학/휴학/졸업 여부
@@ -125,17 +121,16 @@ SYSTEM_PROMPT = """[Role]
 5. 제약_조건은 필요할 때만 묻는다.
 
 [Conversation policy]
-- 사용자의 질문이 일반 지식으로 답변 가능하면 필요한 내용을 먼저 충분히 설명한다.
-- 일반 정보 질문에 답하기 위해 전공·학년·경험을 의례적으로 캐묻지 않는다.
-- 사용자가 개인 배경을 말했더라도 답변 방향이 달라지지 않는 일반 질문이면 직접 답한다.
-- 대화 정보가 충분히 모였다는 이유만으로 자동으로 질문을 정제하거나 멘토에게 보내지 않는다.
-- 멘토 연결은 사용자가 "멘토에게 물어볼래", "연결해줘"처럼 명확히 동의한 뒤 진행한다.
+- 일반적인 직무 정보 질문은 관심 직무와 알고 싶은 내용이 명확하면 추가 개인정보를 묻지 않는다.
+- 개인 상황에 따라 답이 달라지는 질문에만 현재 상태와 관련 경험을 확인한다.
+- 최종 답변과 llm_direct/mentor_needed 판단은 Agent 2의 책임이다.
+- 사용자가 명시적으로 멘토 또는 현직자 연결을 요청하면 정보가 부족해도 현재 대화로 질문을 정제한다.
 - 한 번에 한두 가지 질문만 한다.
 - 이미 사용자가 말한 정보는 반복해서 묻지 않는다.
 - 사용자가 막연하게 말하면 선택지 2~3개를 제시해 답하기 쉽게 돕는다.
 - 짧게 공감한 뒤 질문한다. 심문처럼 나열하지 않는다.
 - 사용자가 이미 잘 정리된 복수 질문을 가져오면, 뭉개지 말고 우선순위를 확인한다.
-- 모르는 최신 사실이나 특정 회사 내부 정보는 추측하지 말고 한계를 분명히 말한다.
+- 충분성 평가가 제안한 다음 질문을 우선한다.
 
 [Conversation examples]
 
@@ -172,107 +167,31 @@ SYSTEM_PROMPT = """[Role]
 에이전트: "스포츠 브랜드 쪽 관심이 분명한 건 큰 장점이에요. 마케팅 안에서도 브랜드, 콘텐츠, 퍼포먼스, 리테일 CRM처럼 갈래가 나뉘는데요. 지금은 어떤 세부 직무를 좁히고 싶은지, 아니면 스포츠 리테일 기업에서 경험을 쌓는 방법이 더 궁금하신가요?" """
 
 
-ACTION_GUIDANCE = {
-    "answer_directly": """[이번 응답 지침]
-사용자의 최신 질문에 일반적인 진로·직무 지식으로 바로 답해라.
-프로필 정보를 더 받기 위한 질문으로 답변을 미루지 말고, 핵심 설명과 실행 가능한 예시를 제공해라.
-답변 끝에는 관련된 후속 질문을 편하게 이어갈 수 있도록 짧게 열어 둬라.
-사용자가 요청하지 않았다면 멘토 연결이나 질문 정제를 먼저 권하지 마라.""",
-    "ask_followup": """[이번 응답 지침]
-지금까지 확인된 내용에는 먼저 짧게 도움을 주고, 사용자의 실제 고민을 이해하는 데 꼭 필요한
-질문 한두 개만 자연스럽게 물어라. 이미 말한 정보는 반복해서 묻지 마라.""",
-    "offer_mentor": """[이번 응답 지침]
-AI가 안전하게 설명할 수 있는 일반적인 판단 기준이나 준비 방향은 먼저 알려줘라.
-그 다음 이 요청에서 개인 경험·적합성 판단·자료 검토가 필요한 부분을 짧게 설명하고,
-원하면 멘토에게 보낼 질문으로 정리해도 되는지 사용자에게 물어라. 아직 정제를 확정하지 마라.""",
-}
+FOLLOWUP_GUIDANCE = """[이번 응답 지침]
+최종 답변을 대신 생성하지 말고, 아래에 제시된 다음 질문을 중심으로 꼭 필요한 내용 한두 가지만
+자연스럽게 확인해라. 이미 사용자가 말한 정보는 다시 묻지 마라."""
 
-
-ACTION_ROUTER_SYSTEM = """너는 AI 진로 상담 대화의 다음 행동만 결정하는 라우터다.
-정보 수집량이나 질문 정제 완성도를 평가하지 말고, 사용자의 현재 의도에 맞는 action을
-반드시 JSON으로만 반환한다."""
-
-ACTION_ROUTER_PROMPT = """[Actions]
-- answer_directly: 일반적인 직무 설명, 주요 업무, 필요 역량, 준비 방법, 학습 순서, 개념 차이
-- ask_followup: 고민이나 원하는 도움 자체가 모호해서 한두 가지 확인이 필요한 경우
-- offer_mentor: 개인 적합성·합격 가능성·개인 자료 평가·현직자의 실제 경험이 필요하지만,
-  사용자가 아직 멘토 연결에 동의하지 않은 경우
-- finalize: 사용자가 멘토 연결 또는 현직자에게 질문 보내기에 명확히 동의한 경우
-
-[Absolute rules]
-1. 사용자 프로필이 많이 수집되었거나 대화가 길다는 이유로 finalize하지 않는다.
-2. 전공·학년·프로젝트 경험이 함께 언급되어도 최신 질문이 일반 직무 정보라면 answer_directly다.
-3. 일반 질문에 답할 수 있으면 추가 프로필을 묻기보다 answer_directly를 우선한다.
-4. offer_mentor 뒤 사용자가 "응", "좋아", "연결해줘"라고 답하면 finalize다.
-5. 사용자가 먼저 "멘토에게 물어볼래", "현직자 연결해줘"라고 명시해도 finalize다.
-
-[Examples]
-대화: 사용자: MLOps가 정확히 어떤 직무야?\n최신 사용자 의도: 주요 업무가 궁금해
-출력: {"action":"answer_directly","reason":"일반 직무 정보 질문"}
-
-대화: 사용자: 데이터사이언스 전공 4학년이고 AI 프로젝트를 했어. MLOps의 주요 업무는 뭐야?
-출력: {"action":"answer_directly","reason":"개인 배경과 무관하게 설명 가능한 일반 정보"}
-
-대화: 사용자: 제 포트폴리오로 MLOps에 합격할 수 있을까요?
-출력: {"action":"offer_mentor","reason":"개인 자료와 합격 가능성 판단 필요"}
-
-대화: 에이전트: 멘토에게 보낼 질문으로 정리할까요?\n사용자: 응, 멘토 연결해줘
-출력: {"action":"finalize","reason":"사용자가 멘토 연결에 명시적으로 동의"}
-
-대화 내용:
-{transcript}
-
-[Output]
-{"action":"answer_directly 또는 ask_followup 또는 offer_mentor 또는 finalize","reason":"한 문장"}"""
-
-VALID_CONVERSATION_ACTIONS = {
-    "answer_directly",
-    "ask_followup",
-    "offer_mentor",
-    "finalize",
-}
-
-_MENTOR_CONSENT_HINTS = (
+_EXPLICIT_MENTOR_REQUEST_HINTS = (
     "멘토 연결",
     "멘토에게 연결",
+    "멘토한테 연결",
+    "멘토와 연결",
     "멘토한테 보내",
     "멘토에게 보내",
+    "멘토에게 물어",
     "현직자 연결",
+    "현직자에게 연결",
     "현직자에게 물어",
 )
-_AFFIRMATIVE_HINTS = {"응", "네", "좋아", "그래", "해줘", "연결해줘", "정리해줘"}
-_PERSONAL_JUDGMENT_HINTS = (
-    "합격 가능",
-    "취업 가능",
-    "저한테 맞",
-    "나한테 맞",
-    "제게 맞",
-    "내상황",
-    "제상황",
-    "맞을까",
-    "가능할까",
-    "가능할까요",
-    "포트폴리오 봐",
-    "포트폴리오 평가",
-    "자소서 봐",
-    "이력서 봐",
-    "첨삭",
-)
-_GENERAL_INFORMATION_HINTS = (
-    "주요 업무",
-    "무슨 업무",
-    "어떤 업무",
-    "어떤 직무",
-    "무슨 직무",
-    "필요 역량",
-    "필요한 역량",
-    "준비 방법",
-    "준비 순서",
-    "학습 방법",
-    "로드맵",
-    "차이점",
-    "무엇인지",
-    "뭐야",
+_EXPLICIT_MENTOR_REQUEST_EXACT = {"연결해줘", "멘토링해줘"}
+_MENTOR_REQUEST_NEGATION_HINTS = (
+    "연결하지마",
+    "연결하지말아",
+    "연결안해",
+    "연결은싫",
+    "멘토말고",
+    "멘토는싫",
+    "원하지않",
 )
 
 
@@ -639,20 +558,20 @@ CHECK_PROMPT = """[Task]
 - question_maturity: "vague"(막연함) / "semi_structured"(어느 정도 정리됨) / "well_structured"(잘 정리됨)
 - needs_clarification: 아직 물어볼 게 남아있는가?
 - clarification_type: "priority"(우선순위 불명확) / "role"(직무 불명확) / "experience"(경험 불명확) / "constraint"(제약 불명확) / "bottleneck"(병목 불명확) / "none"
-- next_action은 아래 네 가지 중 하나다.
-  - "answer_directly": 일반적인 직무 정보·주요 업무·역량·준비법처럼 AI가 바로 답할 수 있음
-  - "ask_followup": 사용자의 고민이나 질문 자체가 아직 모호해 대화를 조금 더 해야 함
-  - "offer_mentor": 개인 적합성·합격 가능성·자료 첨삭·실제 현직 경험이 필요하지만 사용자가 아직 멘토 연결에 동의하지 않음
-  - "finalize": 사용자가 멘토 연결 또는 현직자에게 질문 보내기에 명확히 동의했고, 보낼 질문의 주제도 파악됨
+- context_requirement: 정제에 필요한 개인 맥락 수준
+  - "minimal": 일반 직무 정보·업무·역량·학습 순서처럼 관심 직무와 질문만 명확하면 됨
+  - "personalized": 적합성·가능성·개인 전략처럼 현재 상태와 경험에 따라 답이 달라짐
+  - "artifact_review": 이력서·포트폴리오·자소서 등 실제 자료와 경험 맥락이 필요함
+- next_action:
+  - "ask_followup": 필요한 정보가 부족함
+  - "ready_for_refinement": Agent 2에 전달할 질문을 정제하기에 충분함
 
-[Routing rules]
-- 배경 정보가 이미 충분하다는 이유만으로 "finalize"하지 않는다.
-- 전공·학년 등 개인 배경이 포함되어도 "MLOps의 주요 업무가 무엇인가요?"처럼 답변 방향이
-  달라지지 않는 일반 정보 질문은 "answer_directly"다.
-- 일반 정보와 개인 판단이 섞여 있으면 일반 정보에 먼저 답할 수 있도록 "answer_directly" 또는
-  "offer_mentor"를 선택한다. 자동으로 "finalize"하지 않는다.
-- "멘토 연결해줘", "현직자에게 물어보고 싶어", 앞선 멘토 제안에 대한 "응/좋아"처럼
-  명시적인 동의가 대화에 있을 때만 "finalize"한다.
+[Readiness rules]
+- llm_direct/mentor_needed를 판단하지 않는다. 그 결정은 Agent 2의 책임이다.
+- minimal 질문에는 현재 상태·경험·제약 조건을 의례적으로 요구하지 않는다.
+- personalized/artifact_review 질문은 현재 상태, 관심 직무, 알고 싶은 내용과 함께
+  보유 경험 또는 제약·병목 중 적어도 하나가 구체적이어야 한다.
+- 질문이 vague이거나 needs_clarification=true이면 ready_for_refinement로 판단하지 않는다.
 
 [Output] JSON만 출력한다.
 {
@@ -673,7 +592,8 @@ CHECK_PROMPT = """[Task]
     "question_maturity": "vague",
     "needs_clarification": true,
     "clarification_type": "none",
-    "next_action": "answer_directly 또는 ask_followup 또는 offer_mentor 또는 finalize"
+    "context_requirement": "minimal 또는 personalized 또는 artifact_review",
+    "next_action": "ask_followup 또는 ready_for_refinement"
   },
   "missing_fields": ["부족한 항목명"],
   "next_best_question": "아직 부족하다면 다음에 물어볼 가장 중요한 질문 1개"
@@ -689,27 +609,35 @@ CHECK_PROMPT = """[Task]
 
 class QuestionRefineAgent:
     FIELD_THRESHOLD   = 0.7
-    REQUIRED_COUNT    = 4
-    MANDATORY_FIELDS  = ["관심_직무", "알고_싶은_내용"]
-    QUALITY_THRESHOLD = 0.6   # question_quality 항목별 최소치
+    DESIRED_HELP_THRESHOLD = 0.8
+    QUALITY_THRESHOLD = 0.7
+    MAX_FOLLOWUP_TURNS = 3
 
     def __init__(self, mentee_id: str | None = None):
         self.mentee_id = mentee_id or new_id("mt_")
         self.messages: list[dict] = [{"role": "system", "content": SYSTEM_PROMPT}]
         self.turn_count = 0
-        self.max_turns  = 10
+        self.max_turns = self.MAX_FOLLOWUP_TURNS + 1
         self.is_done    = False
+        self.next_best_question = ""
+        self.explicit_mentor_request = False
 
     def chat(self, user_input: str) -> str:
         self.messages.append({"role": "user", "content": user_input})
         self.turn_count += 1
 
-        next_action = self._decide_next_action()
-        if next_action == "finalize":
+        # 사용자가 직접 멘토/현직자 연결을 요청하면 정보가 부족해도 현재 내용으로 정제한다.
+        if self._has_explicit_mentor_request(user_input):
+            self.explicit_mentor_request = True
             return self._finalize()
 
-        guidance = ACTION_GUIDANCE.get(next_action, ACTION_GUIDANCE["ask_followup"])
+        sufficient, _ = self._check_sufficiency()
+        if sufficient or self.turn_count >= self.max_turns:
+            return self._finalize()
 
+        guidance = FOLLOWUP_GUIDANCE
+        if self.next_best_question:
+            guidance += f"\n\n[다음에 확인할 핵심 질문]\n{self.next_best_question}"
         response = client.chat.completions.create(
             model="gpt-4.1-mini",
             messages=[*self.messages, {"role": "system", "content": guidance}],
@@ -719,59 +647,18 @@ class QuestionRefineAgent:
         self.messages.append({"role": "assistant", "content": assistant_msg})
         return assistant_msg
 
-    def _decide_next_action(self) -> str:
-        rule_based_action = self._fallback_next_action()
-        if rule_based_action != "ask_followup":
-            return rule_based_action
-
-        transcript = "\n".join(
-            f"{'사용자' if m['role'] == 'user' else '에이전트'}: {m['content']}"
-            for m in self.messages
-            if m["role"] in ("user", "assistant")
-        )
-        prompt = ACTION_ROUTER_PROMPT.replace("{transcript}", transcript)
-        try:
-            response = client.chat.completions.create(
-                model="gpt-4.1-mini",
-                messages=[
-                    {"role": "system", "content": ACTION_ROUTER_SYSTEM},
-                    {"role": "user", "content": prompt},
-                ],
-                response_format={"type": "json_object"},
-                temperature=0,
+    @staticmethod
+    def _has_explicit_mentor_request(user_input: str) -> bool:
+        normalized = re.sub(r"\s+", "", user_input).strip(".,!?~")
+        if any(hint in normalized for hint in _MENTOR_REQUEST_NEGATION_HINTS):
+            return False
+        return (
+            normalized in _EXPLICIT_MENTOR_REQUEST_EXACT
+            or any(
+                re.sub(r"\s+", "", hint) in normalized
+                for hint in _EXPLICIT_MENTOR_REQUEST_HINTS
             )
-            result = json.loads(response.choices[0].message.content)
-            action = result.get("action", "")
-            if action in VALID_CONVERSATION_ACTIONS:
-                return action
-        except Exception as error:
-            if DEBUG:
-                print(f"  대화 행동 분류 실패: {error} → 규칙 기반 폴백")
-        return self._fallback_next_action()
-
-    def _fallback_next_action(self) -> str:
-        conversation = [
-            message for message in self.messages if message["role"] in ("user", "assistant")
-        ]
-        latest = next(
-            (str(message["content"]).replace(" ", "") for message in reversed(conversation)
-             if message["role"] == "user"),
-            "",
         )
-        previous_assistant = next(
-            (str(message["content"]).replace(" ", "") for message in reversed(conversation[:-1])
-             if message["role"] == "assistant"),
-            "",
-        )
-        if any(hint.replace(" ", "") in latest for hint in _MENTOR_CONSENT_HINTS):
-            return "finalize"
-        if latest in _AFFIRMATIVE_HINTS and "멘토" in previous_assistant:
-            return "finalize"
-        if any(hint.replace(" ", "") in latest for hint in _PERSONAL_JUDGMENT_HINTS):
-            return "offer_mentor"
-        if any(hint.replace(" ", "") in latest for hint in _GENERAL_INFORMATION_HINTS):
-            return "answer_directly"
-        return "ask_followup"
 
     # ── 충분성 체크 ─────────────────────────
 
@@ -806,46 +693,78 @@ class QuestionRefineAgent:
         fields = result.get("fields", {})
         scores = {k: clamp01(v.get("score", 0)) for k, v in fields.items() if isinstance(v, dict)}
 
-        passed       = [f for f, s in scores.items() if s >= self.FIELD_THRESHOLD]
-        mandatory_ok = all(scores.get(f, 0.0) >= self.FIELD_THRESHOLD for f in self.MANDATORY_FIELDS)
-        count_ok     = len(passed) >= self.REQUIRED_COUNT
-
         # ── 질문 품질 판단 ──
         qq = result.get("question_quality", {})
-        quality_ok = (
-            clamp01(qq.get("specificity",          0)) >= self.QUALITY_THRESHOLD and
-            clamp01(qq.get("mentor_answerability", 0)) >= self.QUALITY_THRESHOLD and
-            clamp01(qq.get("priority_clarity",     0)) >= self.QUALITY_THRESHOLD
-        )
+        specificity = clamp01(qq.get("specificity", 0))
+        answerability = clamp01(qq.get("mentor_answerability", 0))
+        priority = clamp01(qq.get("priority_clarity", 0))
 
         # ── intent_router ──
         intent  = result.get("intent_router", {})
-        next_action = intent.get("next_action", "ask_followup")
-        valid_actions = {"answer_directly", "ask_followup", "offer_mentor", "finalize"}
-        if next_action not in valid_actions:
-            next_action = "ask_followup"
-        maturity    = intent.get("question_maturity", "vague")
+        maturity = intent.get("question_maturity", "vague")
+        context_requirement = intent.get("context_requirement", "personalized")
+        if context_requirement not in {"minimal", "personalized", "artifact_review"}:
+            context_requirement = "personalized"
+        needs_clarification = intent.get("needs_clarification", True)
+        if not isinstance(needs_clarification, bool):
+            needs_clarification = str(needs_clarification).lower() == "true"
+        evaluator_ready = intent.get("next_action") == "ready_for_refinement"
 
-        # well_structured면 quality_ok 조건 완화
-        if maturity == "well_structured":
-            quality_ok = True
+        role_ok = scores.get("관심_직무", 0.0) >= self.FIELD_THRESHOLD
+        desired_help_ok = (
+            scores.get("알고_싶은_내용", 0.0) >= self.DESIRED_HELP_THRESHOLD
+        )
+        base_quality_ok = (
+            specificity >= self.QUALITY_THRESHOLD
+            and priority >= self.QUALITY_THRESHOLD
+        )
+        personalized_context_ok = (
+            scores.get("현재_상태", 0.0) >= self.FIELD_THRESHOLD
+            and (
+                scores.get("보유_경험", 0.0) >= self.FIELD_THRESHOLD
+                or scores.get("제약_조건", 0.0) >= self.FIELD_THRESHOLD
+            )
+        )
+        personalized_quality_ok = (
+            base_quality_ok and answerability >= self.QUALITY_THRESHOLD
+        )
+        common_ready = (
+            role_ok
+            and desired_help_ok
+            and maturity != "vague"
+            and not needs_clarification
+            and evaluator_ready
+        )
+        if context_requirement == "minimal":
+            sufficient = common_ready and base_quality_ok
+        else:
+            sufficient = (
+                common_ready
+                and personalized_context_ok
+                and personalized_quality_ok
+            )
 
-        sufficient = mandatory_ok and count_ok and quality_ok
+        self.next_best_question = str(result.get("next_best_question", "")).strip()
+        next_action = "ready_for_refinement" if sufficient else "ask_followup"
 
         # ── 디버그 로그 (기본 숨김, .env에 M2M_DEBUG=true 설정 시 노출) ──
         if DEBUG:
-            print(f"  충분성 체크 | 통과 {len(passed)}/5 | 필수항목 {'OK' if mandatory_ok else 'NG'} "
-                  f"| 질문품질 {'OK' if quality_ok else 'NG'} | 성숙도 {maturity} | {'충분' if sufficient else '부족'}")
+            print(
+                f"  충분성 체크 | 맥락 {context_requirement} | 직무 {'OK' if role_ok else 'NG'} "
+                f"| 질문 {'OK' if desired_help_ok else 'NG'} "
+                f"| 개인맥락 {'OK' if personalized_context_ok else 'NG'} "
+                f"| 성숙도 {maturity} | {'충분' if sufficient else '부족'}"
+            )
             for field, val in fields.items():
                 mark = "[O]" if scores.get(field, 0) >= self.FIELD_THRESHOLD else "[X]"
                 print(f"    {mark} {field}: {scores.get(field, 0):.1f} — {val.get('evidence', '')}")
-            print(f"    질문품질 specificity={clamp01(qq.get('specificity',0)):.1f} "
-                  f"answerability={clamp01(qq.get('mentor_answerability',0)):.1f} "
-                  f"priority={clamp01(qq.get('priority_clarity',0)):.1f}")
+            print(
+                f"    질문품질 specificity={specificity:.1f} "
+                f"answerability={answerability:.1f} priority={priority:.1f}"
+            )
             if not sufficient:
-                nq = result.get("next_best_question", "")
-                if nq:
-                    print(f"    → 다음 질문 제안: {nq}")
+                if self.next_best_question:
+                    print(f"    → 다음 질문 제안: {self.next_best_question}")
 
         return sufficient, next_action
 
@@ -951,6 +870,12 @@ class QuestionRefineAgent:
         routing_hints["search_strategy_confidence"] = clamp01(
             routing_hints.get("search_strategy_confidence", 0.5)
         )
+        # 명시적인 사용자 요청은 정보 충분성보다 우선한다. Agent 1은 이를
+        # 라우팅 신호로만 전달하고, 최종 mentor_needed 결정은 Agent 2가 한다.
+        if self.explicit_mentor_request:
+            routing_hints["explicit_mentor_request"] = True
+            routing_hints["search_strategy_hint"] = "mentor_first"
+            routing_hints["search_strategy_confidence"] = 1.0
         # bool 필드 안전 변환
         for bool_field in ("requires_artifact_review", "recency_sensitive", "scope_too_broad"):
             v = routing_hints.get(bool_field, False)

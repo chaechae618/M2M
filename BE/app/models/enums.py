@@ -52,3 +52,10 @@ class JobStatus(StrEnum):
     PROCESSING = "processing"
     COMPLETED = "completed"
     FAILED = "failed"
+
+
+class CoffeeChatStatus(StrEnum):
+    REQUESTED = "requested"
+    ACCEPTED = "accepted"
+    COMPLETED = "completed"
+    CANCELLED = "cancelled"

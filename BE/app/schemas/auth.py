@@ -44,6 +44,21 @@ class LoginRequest(BaseModel):
     password: str = Field(min_length=1, max_length=72)
 
 
+class NameUpdateRequest(BaseModel):
+    name: str = Field(min_length=2, max_length=50)
+
+
+class PasswordForgotRequest(BaseModel):
+    email: EmailStr
+
+
+class PasswordResetRequest(BaseModel):
+    token: str = Field(min_length=32, max_length=300)
+    new_password: str = Field(alias="newPassword", min_length=8, max_length=72)
+
+    model_config = {"populate_by_name": True}
+
+
 class RefreshRequest(BaseModel):
     refresh_token: str = Field(alias="refreshToken")
 
