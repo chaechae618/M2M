@@ -78,6 +78,17 @@ FastAPI → Agent 1 → Agent 2 → Agent 3 → 페르소나 답변 → Agent 4
 현재 비동기 작업은 FastAPI 프로세스 내부 백그라운드 작업이다. 운영 환경에서는
 Celery, RQ 또는 Dramatiq와 같은 영속 Worker로 교체해야 한다.
 
+## 테스트 데이터 격리
+
+`pytest`는 프로세스별 임시 디렉터리에 `m2m-test.db`와 업로드 폴더를 만든다.
+각 테스트를 시작하기 전에 모든 테이블을 다시 생성하고, 테스트 세션이 끝나면 임시
+디렉터리를 삭제한다. 따라서 테스트 실행은 개발용 `BE/m2m.db`와
+`BE/uploads`를 변경하지 않는다.
+
+```bash
+conda run -n m2m-be pytest -q
+```
+
 ## 구현 기준
 
 - `../docs/M2M_API_명세서_v1.1_페르소나.md`

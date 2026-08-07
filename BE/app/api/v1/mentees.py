@@ -8,6 +8,7 @@ from fastapi import APIRouter, File, UploadFile, status
 from fastapi.responses import FileResponse
 
 from app.api.deps import CurrentUser, DbSession
+from app.core.config import get_settings
 from app.core.exceptions import DomainError
 from app.schemas.common import SuccessResponse
 from app.schemas.mentee import (
@@ -21,7 +22,7 @@ from app.schemas.mentee import (
 from app.services.mentee_service import MenteeService
 
 router = APIRouter(prefix="/mentees/me", tags=["Mentees"])
-UPLOAD_ROOT = Path("uploads")
+UPLOAD_ROOT = get_settings().upload_root
 FILE_MEDIA_TYPES = {
     ".pdf": "application/pdf",
     ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
@@ -135,7 +136,8 @@ def validate_file_content(content: bytes, extension: str) -> None:
 def stored_upload_path(url: str | None, user_id: str) -> Path | None:
     if not url or not url.startswith(f"/uploads/{user_id}/"):
         return None
-    candidate = Path(url.lstrip("/")).resolve()
+    relative_path = Path(url.removeprefix("/uploads/"))
+    candidate = (UPLOAD_ROOT / relative_path).resolve()
     user_root = (UPLOAD_ROOT / user_id).resolve()
     return candidate if candidate.is_relative_to(user_root) else None
 

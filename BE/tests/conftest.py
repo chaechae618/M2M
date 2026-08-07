@@ -1,10 +1,45 @@
 from __future__ import annotations
 
+import os
+import shutil
+import tempfile
+from pathlib import Path
 from uuid import uuid4
 
 import pytest
 
-from app.services.mentoring_agent_adapter import RefineResult
+TEST_RUNTIME_ROOT = Path(tempfile.gettempdir()) / f"m2m-pytest-{os.getpid()}"
+TEST_DATABASE_PATH = TEST_RUNTIME_ROOT / "m2m-test.db"
+TEST_UPLOAD_ROOT = TEST_RUNTIME_ROOT / "uploads"
+
+shutil.rmtree(TEST_RUNTIME_ROOT, ignore_errors=True)
+TEST_RUNTIME_ROOT.mkdir(parents=True)
+os.environ["APP_ENV"] = "test"
+os.environ["AUTO_CREATE_TABLES"] = "false"
+os.environ["DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH}"
+os.environ["UPLOAD_ROOT"] = str(TEST_UPLOAD_ROOT)
+
+from app.services.mentoring_agent_adapter import RefineResult  # noqa: E402
+
+
+@pytest.fixture(scope="session", autouse=True)
+def cleanup_test_runtime() -> None:
+    yield
+    from app.db.session import engine
+
+    engine.dispose()
+    shutil.rmtree(TEST_RUNTIME_ROOT, ignore_errors=True)
+
+
+@pytest.fixture(autouse=True)
+def reset_test_database() -> None:
+    import app.models  # noqa: F401
+    from app.db.base import Base
+    from app.db.session import engine
+
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    yield
 
 
 class FakeMentoringAgentAdapter:

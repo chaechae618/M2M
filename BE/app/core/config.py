@@ -22,6 +22,7 @@ class Settings(BaseSettings):
 
     database_url: str = "sqlite:///./m2m.db"
     auto_create_tables: bool = True
+    upload_root: Path = Path("uploads")
 
     jwt_secret_key: str = Field(
         default="change-this-to-a-random-secret-at-least-32-characters",

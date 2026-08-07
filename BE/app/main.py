@@ -1,7 +1,6 @@
 import sys
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from pathlib import Path
 from uuid import uuid4
 
 from fastapi import FastAPI, Request
@@ -20,7 +19,7 @@ from app.db.session import engine
 from app.db.sqlite_compat import ensure_sqlite_compatibility
 
 settings = get_settings()
-upload_root = Path("uploads")
+upload_root = settings.upload_root
 
 
 @asynccontextmanager
