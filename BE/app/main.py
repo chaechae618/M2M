@@ -17,6 +17,7 @@ from app.core.config import get_settings
 from app.core.exceptions import DomainError
 from app.db.base import Base
 from app.db.session import engine
+from app.db.sqlite_compat import ensure_sqlite_compatibility
 
 settings = get_settings()
 upload_root = Path("uploads")
@@ -30,6 +31,7 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     upload_root.mkdir(parents=True, exist_ok=True)
     if settings.auto_create_tables and settings.is_development:
+        ensure_sqlite_compatibility(engine)
         Base.metadata.create_all(bind=engine)
     yield
 

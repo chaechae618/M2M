@@ -22,7 +22,7 @@ M2M/
 - npm
 - Conda
 - Python 3.11
-- OpenAI API 키
+- OpenAI API 키 (실제 Agent 연동 시에만 필요)
 
 ## 최초 설치
 
@@ -43,8 +43,9 @@ OPENAI_API_KEY=your-openai-api-key
 JWT_SECRET_KEY=replace-with-a-random-secret-at-least-32-characters
 ```
 
-API 키가 없어도 인증, 프로필, Q&A와 테스트는 사용할 수 있지만 실제 상담 Agent
-호출은 `503 AGENT1_EXECUTION_FAILED`로 종료됩니다.
+기본값인 `MENTORING_AGENT_MODE=auto`에서는 API 키가 없으면 비용 없는 데모 Agent로
+상담 전체 흐름을 확인할 수 있습니다. 실제 Agent만 사용하려면 `live`, 항상 데모
+데이터를 사용하려면 `demo`로 설정합니다.
 
 ### 2. 프론트엔드 환경
 

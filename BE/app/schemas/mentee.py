@@ -84,5 +84,6 @@ class FileUploadResponse(BaseModel):
     file_name: str = Field(alias="fileName")
     url: str
     size: int
+    content_type: str = Field(alias="contentType")
 
     model_config = {"populate_by_name": True}

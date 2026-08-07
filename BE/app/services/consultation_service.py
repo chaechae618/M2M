@@ -16,10 +16,11 @@ from app.models.consultation import (
 from app.models.enums import ConsultationStatus, JobStatus, MessageRole
 from app.models.job import AsyncJob
 from app.services.mentoring_agent_adapter import (
-    CoreMentoringAgentAdapter,
+    MentoringAgentAdapter,
     RefineResult,
     build_agent_adapter,
 )
+
 
 class ConsultationService:
     def __init__(self, db: Session, user: User, settings: Settings | None = None) -> None:
@@ -285,7 +286,7 @@ class ConsultationService:
                 409,
             )
 
-    def _require_agent(self) -> CoreMentoringAgentAdapter:
+    def _require_agent(self) -> MentoringAgentAdapter:
         if self.agent is None:
             raise RuntimeError("Mentoring Agent adapter requires application settings")
         return self.agent

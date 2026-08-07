@@ -9,6 +9,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 from app.core.config import Settings
 from app.core.exceptions import DomainError
@@ -357,5 +358,176 @@ class CoreMentoringAgentAdapter:
             ) from exc
 
 
-def build_agent_adapter(settings: Settings) -> CoreMentoringAgentAdapter:
+class DemoMentoringAgentAdapter:
+    """API 키 없이 제품의 전체 상담 흐름을 확인하는 로컬 대역."""
+
+    _mentors = {
+        "mr_demo_pm": {
+            "mentor_id": "mr_demo_pm",
+            "mentor_info": {"name": "김도윤"},
+            "background": {"status": "현직자", "company": "테크 스타트업"},
+            "current_role": "프로덕트 매니저",
+            "years_of_experience": 7,
+            "domain_tags": ["커리어 전환", "서비스 기획", "포트폴리오"],
+            "matching_summary_text": "비전공자의 직무 전환과 포트폴리오 설계를 돕습니다.",
+            "be_go": "막연한 고민을 실행 가능한 준비 순서로 바꾸는 데 적합합니다.",
+            "active": True,
+        },
+        "mr_demo_data": {
+            "mentor_id": "mr_demo_data",
+            "mentor_info": {"name": "박서연"},
+            "background": {"status": "현직자", "company": "데이터 플랫폼 기업"},
+            "current_role": "데이터 분석가",
+            "years_of_experience": 6,
+            "domain_tags": ["데이터 분석", "직무 전환", "프로젝트"],
+            "matching_summary_text": "학습 내용을 채용 가능한 프로젝트로 연결해 왔습니다.",
+            "be_go": "준비 경험을 구체적인 결과물과 일정으로 정리하는 데 적합합니다.",
+            "active": True,
+        },
+        "mr_demo_career": {
+            "mentor_id": "mr_demo_career",
+            "mentor_info": {"name": "이현우"},
+            "background": {"status": "현직자", "company": "커리어 교육 기업"},
+            "current_role": "커리어 코치",
+            "years_of_experience": 8,
+            "domain_tags": ["취업 준비", "이력서", "면접"],
+            "matching_summary_text": "지원 전략과 경험 정리를 함께 점검합니다.",
+            "be_go": "현재 고민의 우선순위와 다음 행동을 정하는 데 적합합니다.",
+            "active": True,
+        },
+    }
+
+    def refine(
+        self,
+        history: list[dict],
+        *,
+        mentee_id: str,
+        force_finalize: bool = False,
+        revision_instruction: str = "",
+    ) -> RefineResult:
+        user_messages = [
+            str(item["content"]).strip()
+            for item in history
+            if CoreMentoringAgentAdapter._role_value(item["role"]) == "user"
+        ]
+        if len(user_messages) < 2 and not force_finalize:
+            return RefineResult(
+                need_more_info=True,
+                assistant_message=(
+                    "고민을 더 구체적으로 정리해볼게요. 현재 상황과 이미 "
+                    "시도해본 것, 가장 원하는 결과를 알려주세요."
+                ),
+            )
+
+        original = user_messages[0] if user_messages else "커리어 고민"
+        detail = user_messages[-1] if user_messages else original
+        refined_question = self._question_from(detail)
+        if revision_instruction:
+            refined_question = (
+                f"{refined_question.rstrip('?')} - {revision_instruction.strip()}을 "
+                "반영하면 어떻게 준비하는 것이 좋을까요?"
+            )
+        return RefineResult(
+            need_more_info=False,
+            refined_question=refined_question,
+            conversation_summary=f"{original}에 관해 현재 상황과 원하는 결과를 상담함",
+            safe_context=detail,
+            search_query=refined_question,
+            match_query=f"{original} 경험이 있는 커리어 멘토",
+            current_bottleneck="우선순위와 실행 계획이 구체적이지 않음",
+            expected_answer_type="경험에 기반한 실행 순서와 점검 기준",
+            question_units=[{"question": refined_question}],
+            taxonomy_tags={"domain_tags": ["커리어", "취업 준비"]},
+            routing_hints={
+                "search_strategy_hint": "mentor_first",
+                "search_strategy_confidence": 0.9,
+            },
+            hard_case_flags={"risk_flags": []},
+            raw={"coreSessionId": f"ses_demo_{uuid4().hex[:10]}"},
+        )
+
+    @staticmethod
+    def _question_from(detail: str) -> str:
+        normalized = detail.strip().rstrip(".!? ")
+        if not normalized:
+            normalized = "현재 커리어 고민"
+        return f"{normalized} 상황에서 무엇부터 어떤 순서로 준비하는 것이 좋을까요?"
+
+    def ensure_core_session(self, **kwargs: Any) -> str:
+        return kwargs.get("core_session_id") or f"ses_demo_{uuid4().hex[:10]}"
+
+    def route(self, **kwargs: Any) -> dict:
+        return {
+            "verdict": "mentor_needed",
+            "answer": None,
+            "fallback_type": "demo",
+            "fallback_reason": "개인 경험에 기반한 조언이 필요한 질문입니다.",
+            "mentor_match_hints": {},
+            "retrieval_log": {"mode": "demo"},
+        }
+
+    def recommend_mentors(self, **kwargs: Any) -> dict:
+        return {
+            "top3": [
+                {
+                    "mentor_id": mentor_id,
+                    "rank": rank,
+                    "algorithm_score": 1.0 - rank * 0.1,
+                    "recommendation_reason": mentor["be_go"],
+                }
+                for rank, (mentor_id, mentor) in enumerate(
+                    self._mentors.items(), start=1
+                )
+            ]
+        }
+
+    def get_mentor(self, mentor_id: str) -> dict | None:
+        return self._mentors.get(mentor_id)
+
+    def generate_persona_answer(self, **kwargs: Any) -> dict:
+        question = kwargs.get("refined_question", "현재 고민")
+        content = (
+            "저는 실제 사람이 아닌 AI 멘토 페르소나입니다.\n\n"
+            f"## 고민 정리\n{question}\n\n"
+            "## 추천 순서\n"
+            "1. 원하는 결과와 기한을 한 문장으로 적어보세요.\n"
+            "2. 현재 가진 경험을 결과물 중심으로 세 가지까지 정리하세요.\n"
+            "3. 부족한 역량은 작은 프로젝트로 검증하고 매주 결과를 남기세요.\n\n"
+            "처음부터 완벽한 계획을 만들기보다, 이번 주에 끝낼 수 있는 결과물 "
+            "하나를 정하고 피드백을 받는 방식이 가장 현실적입니다."
+        )
+        return {
+            "content": content,
+            "summary": "목표를 정한 뒤 경험 정리와 작은 프로젝트를 순서대로 진행합니다.",
+            "model": "m2m-demo-agent",
+        }
+
+    def assetize(self, **kwargs: Any) -> dict:
+        return {
+            "answer_id": f"ans_demo_{uuid4().hex[:10]}",
+            "question_content": kwargs["question_content"],
+            "answer_content": kwargs["answer_content"],
+            "embedding": [0.1, 0.2, 0.3],
+            "is_assetized": True,
+            "reject_reasons": {},
+        }
+
+    def withdraw_asset(self, answer_id: str) -> bool:
+        return bool(answer_id)
+
+
+MentoringAgentAdapter = CoreMentoringAgentAdapter | DemoMentoringAgentAdapter
+
+
+def build_agent_adapter(settings: Settings) -> MentoringAgentAdapter:
+    mode = settings.mentoring_agent_mode
+    if mode == "demo" or (mode == "auto" and not settings.openai_api_key):
+        logger.info("M2M Agent를 데모 모드로 실행합니다.")
+        return DemoMentoringAgentAdapter()
+    if not settings.openai_api_key:
+        raise DomainError(
+            "OPENAI_API_KEY_MISSING",
+            "실제 Agent 실행을 위한 OPENAI_API_KEY가 설정되지 않았습니다.",
+            503,
+        )
     return CoreMentoringAgentAdapter(settings)

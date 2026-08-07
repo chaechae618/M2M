@@ -118,7 +118,9 @@ class FakeMentoringAgentAdapter:
 
 
 @pytest.fixture(autouse=True)
-def use_fake_mentoring_agents(monkeypatch: pytest.MonkeyPatch) -> None:
+def use_fake_mentoring_agents(
+    monkeypatch: pytest.MonkeyPatch,
+) -> type[FakeMentoringAgentAdapter]:
     from app.api.v1 import feedback
     from app.services import agent_pipeline, consultation_service
 
@@ -126,3 +128,4 @@ def use_fake_mentoring_agents(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(consultation_service, "build_agent_adapter", factory)
     monkeypatch.setattr(agent_pipeline, "build_agent_adapter", factory)
     monkeypatch.setattr(feedback, "build_agent_adapter", factory)
+    return FakeMentoringAgentAdapter

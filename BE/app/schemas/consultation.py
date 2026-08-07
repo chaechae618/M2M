@@ -25,7 +25,7 @@ class RefinedQuestionRevision(BaseModel):
 
 
 class ConsultationCreateRequest(BaseModel):
-    initial_message: str = Field(alias="initialMessage", min_length=10, max_length=3000)
+    initial_message: str = Field(alias="initialMessage", min_length=1, max_length=3000)
 
     model_config = {"populate_by_name": True}
 

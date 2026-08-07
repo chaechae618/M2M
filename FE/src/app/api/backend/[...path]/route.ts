@@ -99,6 +99,9 @@ async function proxy(request: Request, context: { params: Promise<{ path: string
     status: backendResponse.status,
     headers: {
       "Content-Type": backendResponse.headers.get("content-type") ?? "application/json",
+      ...(backendResponse.headers.get("content-disposition")
+        ? { "Content-Disposition": backendResponse.headers.get("content-disposition") as string }
+        : {}),
       "Cache-Control": "no-store",
     },
   });

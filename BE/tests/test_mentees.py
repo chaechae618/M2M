@@ -1,8 +1,18 @@
+from io import BytesIO
 from uuid import uuid4
+from zipfile import ZipFile
 
 from fastapi.testclient import TestClient
 
 from app.main import app
+
+
+def valid_pptx_bytes() -> bytes:
+    buffer = BytesIO()
+    with ZipFile(buffer, "w") as archive:
+        archive.writestr("[Content_Types].xml", "<Types />")
+        archive.writestr("ppt/presentation.xml", "<presentation />")
+    return buffer.getvalue()
 
 
 def signup(client: TestClient) -> dict:
@@ -92,6 +102,7 @@ def test_resume_upload_validation() -> None:
         assert response.status_code == 200
         assert response.json()["data"]["fileType"] == "resume"
         assert response.json()["data"]["fileName"] == "resume.pdf"
+        assert response.json()["data"]["contentType"] == "application/pdf"
 
         profile_response = client.get("/api/v1/mentees/me", headers=headers)
         assert profile_response.json()["data"]["resumeFileName"] == "resume.pdf"
@@ -103,6 +114,29 @@ def test_resume_upload_validation() -> None:
         )
         assert invalid_response.status_code == 400
         assert invalid_response.json()["error"]["code"] == "INVALID_FILE_TYPE"
+
+        disguised_response = client.post(
+            "/api/v1/mentees/me/resume",
+            headers=headers,
+            files={"file": ("resume.pdf", b"not-a-pdf", "application/pdf")},
+        )
+        assert disguised_response.status_code == 400
+        assert disguised_response.json()["error"]["code"] == "INVALID_FILE_CONTENT"
+
+        download_response = client.get(
+            "/api/v1/mentees/me/resume/file",
+            headers=headers,
+        )
+        assert download_response.status_code == 200
+        assert download_response.content.startswith(b"%PDF-")
+        assert "resume.pdf" in download_response.headers["content-disposition"]
+
+        delete_response = client.delete("/api/v1/mentees/me/resume", headers=headers)
+        assert delete_response.status_code == 200
+        assert delete_response.json()["data"]["deleted"] is True
+        deleted_profile = client.get("/api/v1/mentees/me", headers=headers).json()["data"]
+        assert deleted_profile["resumeUrl"] is None
+        assert deleted_profile["resumeFileName"] is None
 
 
 def test_portfolio_accepts_pdf_and_pptx_only() -> None:
@@ -117,10 +151,11 @@ def test_portfolio_accepts_pdf_and_pptx_only() -> None:
                 "application/vnd.openxmlformats-officedocument.presentationml.presentation",
             ),
         ]:
+            content = b"%PDF-portfolio" if file_name.endswith(".pdf") else valid_pptx_bytes()
             response = client.post(
                 "/api/v1/mentees/me/portfolio",
                 headers=headers,
-                files={"file": (file_name, b"test", content_type)},
+                files={"file": (file_name, content, content_type)},
             )
             assert response.status_code == 200
             assert response.json()["data"]["fileType"] == "portfolio"
@@ -136,3 +171,31 @@ def test_portfolio_accepts_pdf_and_pptx_only() -> None:
         )
         assert invalid_response.status_code == 400
         assert invalid_response.json()["error"]["code"] == "INVALID_FILE_TYPE"
+
+        invalid_pptx = client.post(
+            "/api/v1/mentees/me/portfolio",
+            headers=headers,
+            files={
+                "file": (
+                    "portfolio.pptx",
+                    b"not-a-presentation",
+                    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                )
+            },
+        )
+        assert invalid_pptx.status_code == 400
+        assert invalid_pptx.json()["error"]["code"] == "INVALID_FILE_CONTENT"
+
+        download_response = client.get(
+            "/api/v1/mentees/me/portfolio/file",
+            headers=headers,
+        )
+        assert download_response.status_code == 200
+        assert download_response.content.startswith(b"PK")
+
+        delete_response = client.delete("/api/v1/mentees/me/portfolio", headers=headers)
+        assert delete_response.status_code == 200
+        assert client.get(
+            "/api/v1/mentees/me/portfolio/file",
+            headers=headers,
+        ).status_code == 404

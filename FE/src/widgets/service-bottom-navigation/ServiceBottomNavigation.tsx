@@ -42,7 +42,7 @@ export function ServiceBottomNavigation({ className, hideOnChat = false }: Servi
   return (
     <nav
       className={cn(
-        "mx-auto mb-6 mt-3 w-fit rounded-[40px] bg-[rgba(247,247,247,0.7)] px-3 py-2 shadow-[0_6px_20px_rgba(68,74,83,0.12)] backdrop-blur",
+        "mx-auto mb-6 mt-3 w-fit max-w-[calc(100vw-24px)] rounded-[40px] bg-[rgba(247,247,247,0.88)] px-2 py-2 shadow-[0_6px_20px_rgba(68,74,83,0.12)] backdrop-blur sm:px-3",
         className,
       )}
     >
@@ -55,8 +55,8 @@ export function ServiceBottomNavigation({ className, hideOnChat = false }: Servi
               key={item.href}
               href={item.href}
               className={cn(
-                "flex h-10 items-center justify-center rounded-[40px] px-3",
-                active ? "gap-1.5 bg-accent-orange text-white" : "text-[#242424]",
+                "flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-[40px] px-3",
+                active ? "min-w-16 gap-1.5 bg-accent-orange text-white" : "text-[#242424]",
               )}
               aria-label={item.label}
             >

@@ -1,8 +1,11 @@
+from io import BytesIO
 from pathlib import Path
 from typing import Annotated
 from uuid import uuid4
+from zipfile import BadZipFile, ZipFile
 
 from fastapi import APIRouter, File, UploadFile, status
+from fastapi.responses import FileResponse
 
 from app.api.deps import CurrentUser, DbSession
 from app.core.exceptions import DomainError
@@ -19,6 +22,10 @@ from app.services.mentee_service import MenteeService
 
 router = APIRouter(prefix="/mentees/me", tags=["Mentees"])
 UPLOAD_ROOT = Path("uploads")
+FILE_MEDIA_TYPES = {
+    ".pdf": "application/pdf",
+    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+}
 
 
 def to_profile_response(user: object, profile: object) -> MenteeProfileResponse:
@@ -74,7 +81,9 @@ async def save_upload(
     allowed_extensions: set[str],
     max_size: int,
 ) -> FileUploadResponse:
-    original_name = file.filename or ""
+    original_name = Path(file.filename or "").name
+    if not original_name or len(original_name) > 255:
+        raise DomainError("INVALID_FILE_NAME", "파일 이름을 확인해주세요.", 400)
     extension = Path(original_name).suffix.lower()
     if extension not in allowed_extensions:
         raise DomainError(
@@ -84,8 +93,11 @@ async def save_upload(
         )
 
     content = await file.read(max_size + 1)
+    if not content:
+        raise DomainError("EMPTY_FILE", "비어 있는 파일은 업로드할 수 없습니다.", 400)
     if len(content) > max_size:
         raise DomainError("FILE_TOO_LARGE", "파일 용량 제한을 초과했습니다.", 413)
+    validate_file_content(content, extension)
 
     target_dir = UPLOAD_ROOT / user_id
     target_dir.mkdir(parents=True, exist_ok=True)
@@ -97,6 +109,57 @@ async def save_upload(
         fileName=original_name,
         url=f"/uploads/{user_id}/{stored_name}",
         size=len(content),
+        contentType=FILE_MEDIA_TYPES[extension],
+    )
+
+
+def validate_file_content(content: bytes, extension: str) -> None:
+    if extension == ".pdf" and not content.startswith(b"%PDF-"):
+        raise DomainError("INVALID_FILE_CONTENT", "올바른 PDF 파일이 아닙니다.", 400)
+    if extension == ".pptx":
+        try:
+            with ZipFile(BytesIO(content)) as archive:
+                names = set(archive.namelist())
+        except BadZipFile as exc:
+            raise DomainError(
+                "INVALID_FILE_CONTENT",
+                "올바른 PPTX 파일이 아닙니다.",
+                400,
+            ) from exc
+        if "[Content_Types].xml" not in names or not any(
+            name.startswith("ppt/") for name in names
+        ):
+            raise DomainError("INVALID_FILE_CONTENT", "올바른 PPTX 파일이 아닙니다.", 400)
+
+
+def stored_upload_path(url: str | None, user_id: str) -> Path | None:
+    if not url or not url.startswith(f"/uploads/{user_id}/"):
+        return None
+    candidate = Path(url.lstrip("/")).resolve()
+    user_root = (UPLOAD_ROOT / user_id).resolve()
+    return candidate if candidate.is_relative_to(user_root) else None
+
+
+def remove_stored_upload(url: str | None, user_id: str) -> bool:
+    path = stored_upload_path(url, user_id)
+    if path is None or not path.is_file():
+        return False
+    path.unlink()
+    return True
+
+
+def profile_file_response(
+    url: str | None,
+    file_name: str | None,
+    user_id: str,
+) -> FileResponse:
+    path = stored_upload_path(url, user_id)
+    if path is None or not path.is_file():
+        raise DomainError("FILE_NOT_FOUND", "등록된 파일을 찾을 수 없습니다.", 404)
+    return FileResponse(
+        path,
+        filename=file_name or path.name,
+        media_type=FILE_MEDIA_TYPES.get(path.suffix.lower(), "application/octet-stream"),
     )
 
 
@@ -110,14 +173,40 @@ async def upload_resume(
         file,
         current_user.id,
         "resume",
-        {".pdf", ".docx"},
+        {".pdf"},
         10 * 1024 * 1024,
     )
     profile = MenteeService(db, current_user).get_profile()
+    previous_url = profile.resume_url
     profile.resume_url = result.url
     profile.resume_file_name = result.file_name
     db.commit()
+    remove_stored_upload(previous_url, current_user.id)
     return SuccessResponse(data=result)
+
+
+@router.get("/resume/file", response_class=FileResponse)
+def download_resume(current_user: CurrentUser, db: DbSession) -> FileResponse:
+    profile = MenteeService(db, current_user).get_profile()
+    return profile_file_response(
+        profile.resume_url,
+        profile.resume_file_name,
+        current_user.id,
+    )
+
+
+@router.delete("/resume", response_model=SuccessResponse[dict[str, object]])
+def delete_resume(
+    current_user: CurrentUser,
+    db: DbSession,
+) -> SuccessResponse[dict[str, object]]:
+    profile = MenteeService(db, current_user).get_profile()
+    previous_url = profile.resume_url
+    profile.resume_url = None
+    profile.resume_file_name = None
+    db.commit()
+    removed = remove_stored_upload(previous_url, current_user.id)
+    return SuccessResponse(data={"fileType": "resume", "deleted": True, "fileRemoved": removed})
 
 
 @router.post("/portfolio", response_model=SuccessResponse[FileUploadResponse])
@@ -134,10 +223,36 @@ async def upload_portfolio(
         20 * 1024 * 1024,
     )
     profile = MenteeService(db, current_user).get_profile()
+    previous_url = profile.portfolio_url
     profile.portfolio_url = result.url
     profile.portfolio_file_name = result.file_name
     db.commit()
+    remove_stored_upload(previous_url, current_user.id)
     return SuccessResponse(data=result)
+
+
+@router.get("/portfolio/file", response_class=FileResponse)
+def download_portfolio(current_user: CurrentUser, db: DbSession) -> FileResponse:
+    profile = MenteeService(db, current_user).get_profile()
+    return profile_file_response(
+        profile.portfolio_url,
+        profile.portfolio_file_name,
+        current_user.id,
+    )
+
+
+@router.delete("/portfolio", response_model=SuccessResponse[dict[str, object]])
+def delete_portfolio(
+    current_user: CurrentUser,
+    db: DbSession,
+) -> SuccessResponse[dict[str, object]]:
+    profile = MenteeService(db, current_user).get_profile()
+    previous_url = profile.portfolio_url
+    profile.portfolio_url = None
+    profile.portfolio_file_name = None
+    db.commit()
+    removed = remove_stored_upload(previous_url, current_user.id)
+    return SuccessResponse(data={"fileType": "portfolio", "deleted": True, "fileRemoved": removed})
 
 
 @router.get("/experiences", response_model=SuccessResponse[list[ExperienceResponse]])

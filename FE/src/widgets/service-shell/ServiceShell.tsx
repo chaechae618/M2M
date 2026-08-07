@@ -23,7 +23,7 @@ export function ServiceShell({ children }: { children: ReactNode }) {
 
   return (
     <ServiceSidebarProvider>
-      <div className="flex h-dvh min-h-[720px] w-full bg-[#f9f9f9] py-2 pr-2">
+      <div className="flex h-dvh min-h-0 w-full bg-[#f9f9f9] py-2 pr-2">
         <Suspense fallback={<aside className="h-full w-[68px] shrink-0" />}>
           <ServiceSidebar />
         </Suspense>

@@ -28,7 +28,7 @@ cd BE
 conda create -n m2m-be python=3.11 -y
 conda run -n m2m-be pip install -r requirements.txt
 cp .env.example .env
-# .env의 OPENAI_API_KEY에 실제 키 설정
+# 실제 Agent를 사용할 때만 .env의 OPENAI_API_KEY에 키 설정
 conda run --no-capture-output -n m2m-be python -m uvicorn app.main:app --reload
 ```
 
@@ -39,7 +39,7 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 Copy-Item .env.example .env
-# .env의 OPENAI_API_KEY에 실제 키 설정
+# 실제 Agent를 사용할 때만 .env의 OPENAI_API_KEY에 키 설정
 python -m uvicorn app.main:app --reload
 ```
 
@@ -70,8 +70,10 @@ postgresql+psycopg://m2m:m2m@localhost:5432/m2m
 FastAPI → Agent 1 → Agent 2 → Agent 3 → 페르소나 답변 → Agent 4
 ```
 
-운영 실행에는 `.env`의 `OPENAI_API_KEY`가 필요하다. 일반 `pytest`는
-`tests/conftest.py`의 테스트 대역을 사용하므로 OpenAI를 호출하거나 비용을 발생시키지 않는다.
+`MENTORING_AGENT_MODE`는 `auto`, `live`, `demo`를 지원한다. 기본 `auto`는
+`OPENAI_API_KEY`가 있으면 실제 Agent를, 없으면 전체 UI 흐름을 검증할 수 있는 로컬
+데모 Agent를 사용한다. 운영에서는 `live`와 실제 키를 사용한다. 일반 `pytest`도
+테스트 대역을 사용하므로 OpenAI를 호출하거나 비용을 발생시키지 않는다.
 
 현재 비동기 작업은 FastAPI 프로세스 내부 백그라운드 작업이다. 운영 환경에서는
 Celery, RQ 또는 Dramatiq와 같은 영속 Worker로 교체해야 한다.

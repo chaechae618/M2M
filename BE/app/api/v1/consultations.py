@@ -4,8 +4,9 @@ from fastapi import APIRouter, BackgroundTasks, Header, Query, status
 from sqlalchemy import select
 
 from app.api.deps import AppSettings, CurrentUser, DbSession
-from app.models.answer import Answer
+from app.models.answer import Answer, Feedback, ReuseConsent
 from app.models.consultation import ConsultationMessage, ConsultationSession
+from app.models.job import AsyncJob
 from app.schemas.common import SuccessResponse
 from app.schemas.consultation import (
     ConsultationCreateRequest,
@@ -76,6 +77,72 @@ def answer_source_data(answer: Answer) -> dict[str, object] | None:
     }
 
 
+def answer_data(answer: Answer | None) -> dict[str, object] | None:
+    if answer is None:
+        return None
+    return {
+        "id": answer.id,
+        "answerType": answer.answer_type,
+        "route": answer.route,
+        "content": answer.final_content,
+        "summary": answer.summary,
+        "confidenceScore": answer.confidence_score,
+        "model": answer.model,
+        "promptVersion": answer.prompt_version,
+        "source": answer_source_data(answer),
+        "persona": (
+            {
+                "personaId": answer.persona_id,
+                "personaVersion": answer.persona_version,
+                "isAiPersona": True,
+            }
+            if answer.persona_id
+            else None
+        ),
+        "generatedAt": answer.created_at,
+    }
+
+
+def job_data(job: AsyncJob | None) -> dict[str, object] | None:
+    if job is None:
+        return None
+    return {
+        "jobId": job.id,
+        "jobType": job.job_type,
+        "status": job.status,
+        "progress": job.progress,
+        "currentStep": job.current_step,
+        "resultUrl": job.result_url,
+        "error": job.error,
+        "createdAt": job.created_at,
+        "updatedAt": job.updated_at,
+    }
+
+
+def feedback_data(feedback: Feedback | None) -> dict[str, object] | None:
+    if feedback is None:
+        return None
+    return {
+        "id": feedback.id,
+        "answerId": feedback.answer_id,
+        "rating": feedback.rating,
+        "createdAt": feedback.created_at,
+    }
+
+
+def consent_data(consent: ReuseConsent | None) -> dict[str, object] | None:
+    if consent is None:
+        return None
+    return {
+        "id": consent.id,
+        "answerId": consent.answer_id,
+        "consent": consent.consent,
+        "scope": consent.scope,
+        "createdAt": consent.created_at,
+        "updatedAt": consent.updated_at,
+    }
+
+
 @router.post(
     "",
     response_model=SuccessResponse[dict[str, object]],
@@ -140,6 +207,26 @@ def get_consultation(
 ) -> SuccessResponse[dict[str, object]]:
     service = ConsultationService(db, current_user, settings)
     session = service.get_owned(session_id)
+    latest_job = db.scalar(
+        select(AsyncJob)
+        .where(AsyncJob.session_id == session.id, AsyncJob.owner_id == current_user.id)
+        .order_by(AsyncJob.updated_at.desc())
+    )
+    answer = db.scalar(
+        select(Answer)
+        .where(Answer.session_id == session.id)
+        .order_by(Answer.created_at.desc())
+    )
+    feedback = (
+        db.scalar(select(Feedback).where(Feedback.answer_id == answer.id))
+        if answer is not None
+        else None
+    )
+    consent = (
+        db.scalar(select(ReuseConsent).where(ReuseConsent.answer_id == answer.id))
+        if answer is not None
+        else None
+    )
     return SuccessResponse(
         data={
             "session": session_summary(session),
@@ -147,6 +234,10 @@ def get_consultation(
             "refinedQuestion": (
                 refined_question_data(session) if session.refined_question else None
             ),
+            "latestJob": job_data(latest_job),
+            "answer": answer_data(answer),
+            "feedback": feedback_data(feedback),
+            "reuseConsent": consent_data(consent),
         }
     )
 
@@ -267,36 +358,13 @@ def get_consultation_result(
         .where(Answer.session_id == session.id)
         .order_by(Answer.created_at.desc())
     )
-    answer_data = None
-    if answer is not None:
-        answer_data = {
-            "id": answer.id,
-            "answerType": answer.answer_type,
-            "route": answer.route,
-            "content": answer.final_content,
-            "summary": answer.summary,
-            "confidenceScore": answer.confidence_score,
-            "model": answer.model,
-            "promptVersion": answer.prompt_version,
-            "source": answer_source_data(answer),
-            "persona": (
-                {
-                    "personaId": answer.persona_id,
-                    "personaVersion": answer.persona_version,
-                    "isAiPersona": True,
-                }
-                if answer.persona_id
-                else None
-            ),
-            "generatedAt": answer.created_at,
-        }
     return SuccessResponse(
         data={
             "sessionId": session.id,
             "status": session.status,
             "route": session.route,
             "reason": session.route_reason,
-            "answer": answer_data,
+            "answer": answer_data(answer),
         }
     )
 

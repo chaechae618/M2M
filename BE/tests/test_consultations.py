@@ -114,3 +114,18 @@ def test_consultation_requires_authentication() -> None:
     with TestClient(app) as client:
         response = client.get("/api/v1/consultations")
         assert response.status_code == 401
+
+
+def test_short_first_message_starts_consultation() -> None:
+    with TestClient(app) as client:
+        auth = signup(client)
+        headers = {"Authorization": f"Bearer {auth['accessToken']}"}
+
+        response = client.post(
+            "/api/v1/consultations",
+            headers=headers,
+            json={"initialMessage": "고민 있어"},
+        )
+
+        assert response.status_code == 201
+        assert response.json()["data"]["session"]["status"] == "collecting_context"
