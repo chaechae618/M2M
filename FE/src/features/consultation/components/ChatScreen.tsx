@@ -658,12 +658,25 @@ function composerPlaceholder(sessionStatus: string | null, isBusy: boolean) {
 
 function ChatComposer({ className, question, setQuestion, isActive, sendIcon, onSubmit, disabled = false, placeholder = "무엇이 궁금하신가요?" }: { className?: string; question: string; setQuestion: (value: string) => void; isActive: boolean; sendIcon: string; onSubmit: () => void; disabled?: boolean; placeholder?: string }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const wasDisabledRef = useRef(disabled);
+
   useEffect(() => {
     const element = textareaRef.current;
     if (!element) return;
     element.style.height = "auto";
     element.style.height = `${Math.min(element.scrollHeight, 160)}px`;
   }, [question]);
+
+  useEffect(() => {
+    const becameAvailable = wasDisabledRef.current && !disabled;
+    wasDisabledRef.current = disabled;
+    if (!becameAvailable) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      textareaRef.current?.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [disabled]);
 
   return (
     <form className={cn("relative z-10 w-full rounded-2xl border border-[#eeeeee] bg-white px-6 pb-4 pt-6 shadow-[0_6px_10px_rgba(68,74,83,0.12)]", className)} onSubmit={(event) => { event.preventDefault(); onSubmit(); }}>

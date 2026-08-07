@@ -430,7 +430,7 @@ export function useConsultationChat({
         id: thinkingId,
         role: "assistant",
         kind: "mentor_request_status",
-        text: "필요한 정보를 모아서 질문을 정리하고 있어요",
+        text: "답변을 준비하고 있어요",
       },
     ]);
     setIsBusy(true);
